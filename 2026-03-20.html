@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年3月20日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">3月20日（周五）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-03-17</span>
+      </div>
+      <h3>黄仁勋GTC 2026：「2026是AI工业化元年」，Vera Rubin平台预计订单超万亿美元</h3>
+      <p>英伟达发布由7大芯片+5个机架系统构成的Vera Rubin全栈AI平台。黄仁勋宣布AI已从「技术狂热」迈向「工业文明」，预计Blackwell与Vera Rubin芯片2027年订单超1万亿美元。物理AI和机器人被列为下一个数万亿美元市场。</p>
+      <div class="source">腾讯新闻</div>
+      <a class="read-more" href="https://news.qq.com/rain/a/20260317A05V6E00" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-03-18</span>
+      </div>
+      <h3>英伟达成立Nemotron Coalition联盟：Cursor、Mistral、Perplexity等共建开放前沿模型</h3>
+      <p>英伟达宣布成立由全球领先AI实验室组成的Nemotron Coalition联盟，基于DGX Cloud训练，成果将开源。创始成员包括Cursor、Mistral、Perplexity、Thinking Machines Lab等，这是模型构建者的首个全球合作项目。</p>
+      <div class="source">IT之家</div>
+      <a class="read-more" href="https://www.ithome.com/0/930/116.htm" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-03-14</span>
+      </div>
+      <h3>Anthropic百万Token上下文正式GA：取消溢价，Opus 4.6长上下文检索碾压GPT-5.4</h3>
+      <p>Claude Opus 4.6和Sonnet 4.6的100万Token上下文窗口全面开放，彻底取消长上下文溢价。MRCR v2测试中Opus 4.6以78.3%得分大幅领先GPT-5.4的36.6%。Claude Code用户上下文从20万升至100万。</p>
+      <div class="source">博客园</div>
+      <a class="read-more" href="https://www.cnblogs.com/jiafeng1323/p/19718305" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-03-07</span>
+      </div>
+      <h3>Claude 3.7 Sonnet发布：市场首款「混合推理模型」，快速与深度思考自由切换</h3>
+      <p>Anthropic推出Claude 3.7 Sonnet，定义为首款混合推理模型，支持在快速响应与深度思考两种模式间动态切换，无需用户指定。这一设计让同一模型兼顾日常对话效率和复杂任务推理能力。</p>
+      <div class="source">新浪科技</div>
+      <a class="read-more" href="https://k.sina.com.cn/article_7857201856_1d45362c001902y7v6.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-03-04</span>
+      </div>
+      <h3>OpenAI发布GPT-5.3 Instant，预告GPT-5.4比想象更快到来</h3>
+      <p>OpenAI对ChatGPT最常用的「即时响应」模型进行全面优化升级，速度更快、准确性更高、判断力更强。OpenAI同时预告下一代旗舰模型GPT-5.4将比预期更快推出，行业迭代节奏持续加速。</p>
+      <div class="source">网易科技</div>
+      <a class="read-more" href="https://www.163.com/dy/article/KN5QHCC205118I96.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-03-08</span>
+      </div>
+      <h3>2026年AI Agent智能体：从「工具辅助」向「自主执行」范式转移</h3>
+      <p>行业报告显示，2026年AI Agent已从概念验证迈向规模化商业应用，正经历从「工具辅助」到「自主执行」的范式转移。赛迪顾问预测未来5年全球AI Agent市场规模将以超40%年均复合增长率增长。</p>
+      <div class="source">新浪科技</div>
+      <a class="read-more" href="https://k.sina.com.cn/article_7857201856_1d45362c001902z6r0.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-03-17</span>
+      </div>
+      <h3>英伟达GTC 2026发布NemoClaw：为AI智能体提供企业级安全与隐私保护</h3>
+      <p>英伟达在GTC期间推出NemoClaw平台，针对AI Agent运行提供企业级安全和隐私保护，让各类企业能在自己的硬件上安全构建和管理AI「员工」。黄仁勋提问CEO们：「你们的AI Agent战略是什么？」</p>
+      <div class="source">动点科技</div>
+      <a class="read-more" href="https://cn.technode.com/post/2026-03-17/nvidia-nemoclaw/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-03-14</span>
+      </div>
+      <h3>Claude Opus 4.6、Sonnet 4.6百万上下文全量上线：标准价格，零附加费</h3>
+      <p>Anthropic宣布Opus 4.6（$5/$25每百万Token）和Sonnet 4.6（$3/$15每百万Token）整个100万Token窗口均适用标准价格，所有上下文长度提供完整速率限制，消除此前需Tier 4账户且价格翻倍的门槛。</p>
+      <div class="source">界面新闻</div>
+      <a class="read-more" href="https://www.jiemian.com/article/14112842.html" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>百万Token上下文「去溢价」：AI能力的奢侈品正在变成水电煤</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>3月13日，Anthropic宣布Claude Opus 4.6和Sonnet 4.6的100万Token上下文窗口全面GA，彻底取消溢价——90万Token与9000Token单价相同（Opus 4.6输入5美元/百万Token）；MRCR v2长上下文检索测试中，Opus 4.6以78.3%的成绩碾压GPT-5.4的36.6%</li><li>3月16日，英伟达在GTC 2026发布Vera Rubin全栈AI平台（7大芯片+5个机架系统），黄仁勋宣布「2026是AI工业化元年」，预测2027年订单额将超1万亿美元；同日宣布成立Nemotron Coalition联盟，Cursor、Mistral、Perplexity等加入，共建开放前沿模型</li><li>3月初，OpenAI发布GPT-5.3 Instant并预告GPT-5.4即将到来；Anthropic此前发布Claude 3.7 Sonnet，定义为市场首款「混合推理模型」，可在快速响应与深度思考两种模式间自由切换</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>百万Token上下文取消溢价，不只是Anthropic的一次定价调整，而是整个行业「能力民主化」浪潮中的一个明确信号。一年前，百万Token上下文是少数顶级账户的特权；今天，它以标准价格向所有开发者开放。结合GTC 2026黄仁勋的「AI工业化元年」宣言和各大厂商的模型迭代节奏，可以看到一个清晰的趋势：AI能力的「天花板」每季度都在上移，而「地板」（可负担的基础能力）也在以同样速度下降。这意味着，未来的竞争壁垒不再是「能不能用上最好的AI」，而是「谁能把AI能力嵌入工作流的深度」。</p>
+      <div class="highlight">能力不再是壁垒，嵌入深度才是——会用AI的人和不会用AI的人，差距将在2026年急剧扩大。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>现在可以把「长文档分析」工作流从分块处理升级为整体处理——Anthropic百万Token取消溢价意味着成本不再是阻碍，不必再切割合同/代码/报告</p></div><div class="worker-tip"><div class="num">2</div><p>如果你在做需要记忆大量上下文的任务（如代码库重构、长期项目跟进），评估Claude Code是否比以往更值得投入，上下文从20万升到100万是质的变化</p></div><div class="worker-tip"><div class="num">3</div><p>不要只盯着能力榜单——GTC 2026的核心信号是「AI基础设施正在工业化」，意味着AI工具的稳定性和企业级可用性将大幅提升，现在是组织内推广AI工具的好时机</p></div><div class="worker-tip"><div class="num">4</div><p>关注「混合推理」模式（Claude 3.7 Sonnet）：对于既需要快速响应又偶尔需要深度推理的场景，单一模型能切换模式，意味着你可以精简工具栈，不必为不同任务准备不同模型</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
