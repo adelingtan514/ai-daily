@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年3月21日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">3月21日（周六）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-03-19</span>
+      </div>
+      <h3>小米「认领」全球热议神秘模型：Hunter Alpha 是 MiMo-V2-Pro，雷军宣布年投 AI 超 160 亿</h3>
+      <p>全网猜测一周的万亿参数「DeepSeek V4」谜底揭晓——正是小米自研旗舰基座模型 MiMo-V2-Pro 的早期测试版，全模态版本 MiMo-V2-Omni 对应 Healer Alpha。雷军表示小米 AI 进展比外界预期更快，2024 年 AI 研发和资本投入超 160 亿元。</p>
+      <div class="source">科技网</div>
+      <a class="read-more" href="https://m.techweb.com.cn/marticle/2026-03-19/2973206.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-03-19</span>
+      </div>
+      <h3>DeepSeek V4 延期至 4 月：万亿参数原生多模态，因技术优化推迟发布</h3>
+      <p>腾讯官方确认，DeepSeek V4 原计划 3 月发布，因技术优化推迟至 4 月。该模型搭载原生多模态技术，支持文本/图像/视频端到端融合，上下文窗口突破 100 万 Token，并优先适配华为昇腾、寒武纪等国产芯片。#DeepSeek V4 延期# 话题阅读量破 3 亿。</p>
+      <div class="source">百家号</div>
+      <a class="read-more" href="https://baijiahao.baidu.com/s?id=1860055155722013387" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-03-17</span>
+      </div>
+      <h3>英伟达 GTC 2026：黄仁勋宣布「2026是AI工业化元年」，Vera Rubin 平台预计订单超万亿美元</h3>
+      <p>英伟达发布由 7 大芯片+5 个机架系统构成的 Vera Rubin 全栈 AI 平台，同步成立 Nemotron Coalition 联盟，Cursor、Mistral、Perplexity 等加入共建开放前沿模型。黄仁勋向全球 CEO 发问：「你们的 AI Agent 战略是什么？」</p>
+      <div class="source">腾讯新闻</div>
+      <a class="read-more" href="https://news.qq.com/rain/a/20260317A05V6E00" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-03-13</span>
+      </div>
+      <h3>AWE 2026：「物理 AI」成年度主角，特斯拉 Optimus 亮相，家电厂商全面押注具身智能</h3>
+      <p>2026 年 AWE 上海，1000 余家展商以「物理 AI」为核心叙事：追觅展示叠衣机器人、特斯拉现场演示 Optimus、科沃斯发布仿生陪伴机器人毛团儿（3999 元）。AI 从屏幕走向实体，家电×机器人赛道全面融合。</p>
+      <div class="source">百家号</div>
+      <a class="read-more" href="https://baijiahao.baidu.com/s?id=1859499396774380190" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-03-14</span>
+      </div>
+      <h3>Anthropic 百万 Token 上下文正式 GA：取消溢价，Opus 4.6 长上下文检索碾压 GPT-5.4</h3>
+      <p>Claude Opus 4.6 和 Sonnet 4.6 的 100 万 Token 上下文窗口全面开放，彻底取消长上下文溢价。MRCR v2 测试中 Opus 4.6 以 78.3% 得分大幅领先 GPT-5.4 的 36.6%。Claude Code 用户上下文从 20 万升至 100 万。</p>
+      <div class="source">界面新闻</div>
+      <a class="read-more" href="https://www.jiemian.com/article/14112842.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-03-09</span>
+      </div>
+      <h3>两会 AI 热词：「人工智能+」写入政府工作报告，超大规模智算集群列入新基建</h3>
+      <p>十四届全国人大四次会议将「深化拓展人工智能+」列为重点任务，明确推动重点行业 AI 商业化规模化应用，支持开源社区建设，实施超大规模智算集群、算电协同等新基建工程。雷军等代表热议中国 AI 发展态势。</p>
+      <div class="source">复旦大学</div>
+      <a class="read-more" href="https://fddi.fudan.edu.cn/c6/29/c21253a771625/page.htm" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-03-20</span>
+      </div>
+      <h3>声动早咖啡最新期：三大航推出免费退票新规，「智谱」大模型涨价引热议</h3>
+      <p>声动早咖啡本期聚焦 AI 短剧正逐渐取代真人短剧、智谱大模型价格调整，以及亚马逊、Lululemon 等公司动态。AI 创作工具的规模化商业化正在改变内容产业格局。</p>
+      <div class="source">小宇宙·声动早咖啡</div>
+      <a class="read-more" href="https://www.xiaoyuzhoufm.com/podcast/60de7c003dd577b40d5a40f3" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-03-05</span>
+      </div>
+      <h3>越南《人工智能法》正式生效：东南亚首个 AI 专门立法国，全球 AI 治理加速</h3>
+      <p>2026 年 3 月 1 日，越南《人工智能法》正式生效，成为东南亚首个以专门立法方式建立完整 AI 监管框架的国家。两会同期通过《完善人工智能治理》议案，全球 AI 治理立法潮在 2026 年全面提速。</p>
+      <div class="source">百家号</div>
+      <a class="read-more" href="https://baijiahao.baidu.com/s?id=1858802452119312700" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>神秘模型「Hunter Alpha」背后的真相：小米 MiMo-V2 与中国大模型的「隐形军备竞赛」</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>3月18日，万亿参数匿名模型「Hunter Alpha」在 OpenRouter 引发全球开发者热议，截至周日已处理超 1600 亿 Token；3月19日谜底揭晓——正是小米旗舰基座模型 MiMo-V2-Pro 的早期测试版，雷军同日宣布小米 AI 年投入超 160 亿元</li><li>DeepSeek V4（万亿参数、原生多模态、100 万 Token 上下文）原计划 3 月发布，因技术优化延期至 4 月；此前 DeepSeek V3 的价格已是 GPT-5 的 1/20，V4 价格策略将继续对全球市场形成压力</li><li>2026 年 AWE 上，「物理 AI」成为产业关键词：特斯拉 Optimus 现场演示、追觅叠衣机器人亮相、科沃斯发布 3999 元仿生宠物机器人；英伟达 GTC 同期宣布 Vera Rubin 平台 2027 年订单预计超万亿美元，算力基础设施正在为「AI 走进实体」做最后一公里准备</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>小米认领 Hunter Alpha 这件事，比结果本身更值得琢磨的是「过程」：一家手机公司悄悄训练出万亿参数全模态大模型，以匿名方式投放开发者平台，让市场误以为是 DeepSeek。这说明中国 AI 的「隐形军备竞赛」已远超公众认知——不只有 DeepSeek、百度、阿里在比拼，小米、腾讯、字节等互联网巨头也在以低调方式积累自研底层能力。而 DeepSeek V4 的延期，恰好说明顶级模型已进入「差一口气」的精细调优阶段，而非「有没有」的阶段。2026 年的竞争，将从「谁能训练出大模型」演变为「谁的大模型最先稳定落地」。</p>
+      <div class="highlight">中国 AI 的真实进展远比公开信息密集——低调训练、匿名测试、静默迭代，才是 2026 年的主流节奏。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>关注国产模型的实测而非发布会——Hunter Alpha 事件说明，最好的国产模型可能正在匿名状态下被你免费使用，OpenRouter/HuggingFace 上的匿名模型值得多测试</p></div><div class="worker-tip"><div class="num">2</div><p>如果你在用 AI 做内容创作，留意「AI 短剧替代真人短剧」这个信号：声动早咖啡提及智谱大模型涨价背后，是 AI 内容生产已进入规模化商业变现阶段，AI 工具的议价权正在从用户转移到供应方</p></div><div class="worker-tip"><div class="num">3</div><p>DeepSeek V4 延期意味着：4 月将是国内大模型的「超级发布月」，建议现在就规划好评测和切换方案，不要等发布后才仓促测试</p></div><div class="worker-tip"><div class="num">4</div><p>「物理 AI」不是概念——AWE 上 3999 元的仿生宠物机器人已经量产，具身智能从工厂走向家庭的时间线比预期早。如果你所在行业与制造/零售/家居相关，现在是了解具身 AI 落地路径的好时机</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
