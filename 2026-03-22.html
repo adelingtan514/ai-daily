@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年3月22日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">3月22日（周日）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-03-22</span>
+      </div>
+      <h3>OpenAI 大扩招：年底员工规模将翻倍至 8000 人，日均新增约 12 名员工</h3>
+      <p>正筹备年底 IPO 的 OpenAI 宣布激进扩张计划，将从当前约 4500 人扩张至 8000 人，日均新增约 12 名员工。此举旨在缩小与 Anthropic 的差距，并支撑其打造「自主 AI 研究实习生」的宏大目标。OpenAI 计划 9 月前推出能独立承担特定研究任务的 AI 系统。</p>
+      <div class="source">财联社 AI Daily</div>
+      <a class="read-more" href="https://finance.sina.com.cn/7x24/2026-03-22/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-03-21</span>
+      </div>
+      <h3>OpenAI 与亚马逊 AWS 达成政府合同合作，向美国国防部供应 AI 服务</h3>
+      <p>OpenAI 与亚马逊 AWS 签署新协议，面向美国政府工作人员提供涵盖涉密与非涉密业务的 AI 服务。此前，美国国防部弃用 Anthropic 后迅速将合同转授 OpenAI。高规格政府合同被视为 OpenAI 赢得大型企业客户的信任背书。</p>
+      <div class="source">新浪财经</div>
+      <a class="read-more" href="http://finance.sina.com.cn/7x24/2026-03-21/doc-inhrukzp9597830.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-03-22</span>
+      </div>
+      <h3>AI 「龙虾」Agent 乱删文件、疯狂消耗 Token，学生「踩坑」警示 Agent 安全边界</h3>
+      <p>多名用户反映，某 AI Agent 工具「龙虾」在运行中擅自删除用户文件（课件、作业草稿），并大量消耗 Token 导致数百元账单。此案例引发对 AI Agent 权限设计、沙盒隔离及成本控制的广泛讨论——Agent 越强大，误操作的代价越高。</p>
+      <div class="source">新浪财经</div>
+      <a class="read-more" href="http://finance.sina.com.cn/wm/2026-03-22/doc-inhrvhex6485935.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-03-22</span>
+      </div>
+      <h3>杨立昆离开 Meta 后首战：AMI Labs 融资 10.3 亿美元押注「世界模型」</h3>
+      <p>图灵奖得主 Yann LeCun 出任执行主席的 AMI Labs 于 3 月 10 日宣布完成 10.3 亿美元融资，押注世界模型赛道。此前李飞飞的 World Labs 也融资 10 亿美元。世界模型已分化为六大技术流派，成为继大语言模型之后下一个百亿美元级别的竞技场。</p>
+      <div class="source">新浪财经</div>
+      <a class="read-more" href="http://finance.sina.com.cn/wm/2026-03-22/doc-inhrurim9481212.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-03-20</span>
+      </div>
+      <h3>42章经最新一期：OpenClaw Agent 为何这么火？创业者谈「3-6个月确定性」战略</h3>
+      <p>Sheet0 创始人文锋做客 42 章经，深度拆解 OpenClaw Agent 爆火逻辑：这波 Agent 热与去年 Manus 带起的那波的本质差异在于「工具到自主决策」的跃迁。他提出新判断：C 端用户未来会演变成「类 B 端角色」，创业者应放弃 5-10 年的宏大预判，聚焦 3-6 个月内确定性更高的事。</p>
+      <div class="source">小宇宙·42章经</div>
+      <a class="read-more" href="https://podcasts.apple.com/cn/podcast/ai-硬件的道-法-术-对谈三耳猫创始人谢羽佳/id1700299886" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-03-22</span>
+      </div>
+      <h3>内存条价格涨幅达三四倍：AI 算力需求激增，存储芯片产业链全面承压</h3>
+      <p>从 2025 年四季度至今，内存条价格涨幅高达三四倍，根源是 AI 算力需求增长、存储巨头产能策略调整及原材料上涨。电脑、手机下游行业纷纷调价，车企也面临成本压力。AI 基础设施的高速扩张正在向整个半导体产业链传导通胀压力。</p>
+      <div class="source">芝麻 AI 速递</div>
+      <a class="read-more" href="http://finance.sina.com.cn/headline/2026-03-22/doc-inhruzxf9281620.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-03-22</span>
+      </div>
+      <h3>新加坡成立「国家 AI 理事会」，总理亲任主席；42章经：AI 第一个三年周期结束</h3>
+      <p>新加坡总理黄循财宣布成立由其亲任主席的「国家人工智能理事会」，推出 AI 税收优惠和员工技能补贴计划。与此同时，42章经复盘：从 2023 年到 2026 年，中国 AI 第一个「三年小周期」完成——智谱、MiniMax 相继上市，AI 浪潮从信仰期进入收益期。</p>
+      <div class="source">小宇宙·42章经 / 光通信Pro</div>
+      <a class="read-more" href="https://www.xiaoyuzhoufm.com/podcast/648b0b641c48983391a63f98" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-med">🧠 科学</span>
+        <span class="news-date">2026-03-20</span>
+      </div>
+      <h3>凯文·凯利对话「图灵的猫」：AI 时代不会被替代的人，都是 AI 的「激发者与负责人」</h3>
+      <p>科技预言家 KK 在 3 月 13 日访谈中提出：AI 时代真正不可替代的能力是「提问力和负责任」——从 AI 的执行者转变为 AI 的激发者。他认为智能眼镜将成为下一代人机交互的核心载体，AI 的下一个瓶颈不在算力，而在与物理世界的连接。</p>
+      <div class="source">新浪 / 图灵的猫</div>
+      <a class="read-more" href="http://k.sina.com.cn/article_5952915720_162d2490806703j0r4.html" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>OpenClaw Agent 爆火的底层逻辑：当 AI 从「工具」变成「同事」，每个打工人都要想清楚一件事</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>42章经最新一期（3月20日）：Sheet0创始人文锋指出，OpenClaw Agent 这波热潮与去年 Manus 带起的那波有本质差异——前者是「工具增强」，后者是「自主决策」。Agent 不再只是帮你执行，而是开始代替你做判断。他还提出一个反常识的预判：C 端用户未来会演变成「类 B 端角色」，即个人用户将像企业一样管理和审批自己的 AI Agent</li><li>同期，OpenAI 宣布年底员工规模翻倍至 8000 人，核心目标是在 9 月前打造「自主 AI 研究实习生」——能独立处理研究问题的 Agent 系统；而 AI Agent「龙虾」乱删用户文件、疯狂消耗 Token 的事件在 3 月 22 日冲上热搜，揭示了 Agent 自主权越大、误操作代价越高的安全悖论</li><li>AI 第一个三年周期（2023-2026）已收尾：智谱、MiniMax 相继上市，中国 AI 从「信仰期」进入「收益期」；但杨立昆 AMI Labs 10.3 亿美元押注「世界模型」、李飞飞 World Labs 同规模融资，说明新一轮底层技术的军备竞赛已经开始——这次战场从语言模型转向「能理解物理世界」的模型</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>42章经里文锋说的那句话值得反复咀嚼：「现在创业，要不要做 OpenClaw 方向？」——这其实是每个打工人都要问自己的问题的变体：我要不要把自己的工作「Agent 化」？Agent 的爆火本质是一次权力转移：AI 从回答问题变成了做决策、执行动作、修改文件。「龙虾」删文件事件是一个警钟——不是说 Agent 不好用，而是说「给 AI 多大权限」这件事，正在从技术问题变成每个人的个人管理问题。AI 第一个三年周期结束，第二个周期的核心命题不是「AI 能不能做到」，而是「人类愿不愿意放手」以及「放手之后如何负责」。</p>
+      <div class="highlight">Agent 时代真正的门槛不是会不会用 AI，而是你愿不愿意、敢不敢把决策权交出去——并且知道交出去之后如何兜底。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>「给 AI 多大权限」是你现在就该想清楚的问题：参考「龙虾」事件，在给 AI Agent 访问文件、发送消息、操作账户的权限前，先建立「沙盒原则」——让 Agent 在隔离环境里先试跑，确认无误再授权操作真实数据</p></div><div class="worker-tip"><div class="num">2</div><p>42章经文锋的建议可以直接套用到个人职业规划：放弃对「5年后 AI 会如何」的宏大预判，聚焦「3-6个月内，有哪 1-2 件事可以用 AI 做出确定性更高的结果」，这才是当下有效的行动框架</p></div><div class="worker-tip"><div class="num">3</div><p>KK 说的「AI 激发者」值得认真对待：不要只是把 AI 当搜索引擎或文字处理器，试着用它来「提出你自己提不出来的问题」——把 AI 当作一面镜子，用它来检验你的思路漏洞，而不只是验证你已有的想法</p></div><div class="worker-tip"><div class="num">4</div><p>存储芯片涨价 3-4 倍是 AI 基础设施通胀的早期信号：如果你或你所在的公司有采购硬件或云资源的计划，建议在 Q2 内锁定报价，AI 算力需求还在加速，下半年成本大概率继续上涨</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
