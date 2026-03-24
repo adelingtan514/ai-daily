@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年3月24日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">3月24日（周二）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-03-24</span>
+      </div>
+      <h3>OpenAI 聘 Meta 广告高管，正式进军广告市场开辟新收入</h3>
+      <p>OpenAI 聘请 Meta 前广告业务高管戴夫·杜根出任全球广告解决方案副总裁，向 COO 莱特卡普汇报。这是 ChatGPT 走向广告变现的实质性一步，背后是 OpenAI 大规模 AI 项目带来的巨额资金压力。与此同时，OpenAI 计划年底员工总数从约 4500 人扩张至 8000 人，战略重心全面转向企业客户。</p>
+      <div class="source">虎嗅早报</div>
+      <a class="read-more" href="https://xiuxiu.huxiu.com/hxgpt_agent/morning_daily/2026-03-24.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-03-24</span>
+      </div>
+      <h3>阿里达摩院今日发布重磅芯片，直指 AI Agent 爆发的算力需求</h3>
+      <p>阿里巴巴达摩院 3 月 24 日在上海举办 2026 玄铁 RISC-V 生态大会，预计发布针对 AI Agent 算力场景的新款芯片。去年曾发布行业首款服务器级 RISC-V CPU，本次预计在边缘推理效率上进一步突破，正面回应当前 Agent 应用爆发带来的算力需求。</p>
+      <div class="source">虎嗅早报</div>
+      <a class="read-more" href="https://xiuxiu.huxiu.com/hxgpt_agent/morning_daily/2026-03-24.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-03-24</span>
+      </div>
+      <h3>阿里妈妈发布「AI 万相」多 Agent 协同引擎，电商营销全链路交给 AI 自主完成</h3>
+      <p>阿里妈妈正式发布超级经营智能体引擎「AI 万相」，四大 Agent（万相智识/智品/智造/智投）协同工作，覆盖意图识别→商品理解→素材生成→投放优化全链路。商家只需下一句指令，Agent 完成所有复杂环节。测试案例中点击率提升 25%、ROI 提升 35%。</p>
+      <div class="source">品玩</div>
+      <a class="read-more" href="https://www.pingwest.com/w/312366" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-03-24</span>
+      </div>
+      <h3>rabbit 创始人吕骋：软件护城河消失，AI 硬件才是 Agent 时代的真正话语权</h3>
+      <p>rabbit CEO 吕骋接受硅星人深度专访，披露 LAM 五代进化路径。他指出「软件没有护城河了——Claude Code 可以反向工程任何软件」，硬件是 Agent 时代掌握话语权的唯一路径。r1 已接入 OpenClaw 龙虾，退货率低于 5%，最新第五代 DLAM 正在研发。</p>
+      <div class="source">品玩 / 硅星人</div>
+      <a class="read-more" href="https://www.pingwest.com/a/312333" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-03-24</span>
+      </div>
+      <h3>Cursor 承认基于 Kimi K2.5 训练新模型，国产大模型悄然进入顶流编码工具供应链</h3>
+      <p>声动早咖啡最新播报：AI 编程工具 Cursor 承认基于 MiniMax Kimi K2.5 训练了新版本模型。这是继 DeepSeek 之后，又一国产大模型渗入全球顶流 AI 编码工具供应链的案例，折射出国产基础模型在性价比和特定任务上的真实竞争力正被国际同行认可。</p>
+      <div class="source">声动早咖啡</div>
+      <a class="read-more" href="https://www.xiaoyuzhoufm.com/podcast/60de7c003dd577b40d5a40f3" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-03-23</span>
+      </div>
+      <h3>AI 短剧正在取代真人短剧，内容生产 AI 化加速渗透大众娱乐</h3>
+      <p>声动早咖啡报道：AI 短剧制作成本已低于真人短剧，更新速度更快，正逐步占据真人短剧市场份额。与此同时，龙虾 Agent 推动大模型 API 使用量暴增，带动各大模型厂商上调定价。内容生产与算力消耗的双重 AI 化正在叠加发酵，行业格局正被重塑。</p>
+      <div class="source">声动早咖啡</div>
+      <a class="read-more" href="https://www.xiaoyuzhoufm.com/podcast/60de7c003dd577b40d5a40f3" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-03-23</span>
+      </div>
+      <h3>扎克伯格为自己打造 CEO 专属 AI 智能体，Meta 将 AI 使用率纳入员工绩效考核</h3>
+      <p>扎克伯格正在开发 CEO 专属智能体，可直接检索过去需层层对接人员才能获取的答案。同期 Meta 已将 AI 工具使用情况正式纳入员工绩效考核，「会不会用 AI」成为职场评价的正式维度。内部留言板满是员工分享 AI 应用新场景。</p>
+      <div class="source">虎嗅 / 华尔街日报</div>
+      <a class="read-more" href="https://xiuxiu.huxiu.com/hxgpt_agent/morning_daily/2026-03-23.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-03-23</span>
+      </div>
+      <h3>微信「ClawBot」正式上线，IM 成为自然语言时代新命令行</h3>
+      <p>微信正式推出「ClawBot」插件，支持接入 OpenClaw 龙虾 Agent；腾讯云端虾 Lighthouse、自研虾 workbuddy、本地虾 QClaw 均已适配。品玩评论：「IM 正在变成自然语言时代的命令行。」AI Agent 的入口已从独立 App 转移到每天打开次数最多的那个应用。</p>
+      <div class="source">品玩 / 腾讯公众号</div>
+      <a class="read-more" href="https://www.pingwest.com/a/312279" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>「AI 短剧取代真人短剧」只是开始：当 AI 学会生产内容，创作者的护城河究竟在哪里？</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>声动早咖啡 3 月 23 日播报：AI 短剧正在逐渐取代真人短剧，制作成本更低、更新速度更快；同期 Cursor 承认基于国产 Kimi K2.5 训练新模型——国产基础模型已渗入全球顶流 AI 编码工具供应链，内容生产与代码生产的 AI 化同步加速</li><li>阿里妈妈发布「AI 万相」多 Agent 协同引擎：商家只需一句经营指令，四个 Agent 完成从意图识别、商品理解、素材生成到投放优化的全链路；测试案例点击率提升 25%、ROI 提升 35%，「内容执行层」的工作已被 Agent 系统性接管</li><li>rabbit r1 创始人吕骋最新判断：「软件没有护城河了，Claude Code 可以反向工程任何软件」——在 AI Agent 时代，纯软件能力的壁垒正在消失；能控制「输入循环」（数据+硬件）才是下一代竞争优势，内容领域同理</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>今天三条新闻放在一起，有一个让人有些不安的方向：AI 不只是在帮人做事，它开始在「生产内容本身」这件事上替代人类。AI 短剧取代真人短剧，不是某个单一案例——它代表着一类规律：只要某种内容生产的模式足够标准化，AI 就能以更低成本、更高速度进入并占据市场。阿里妈妈的「AI 万相」更进一步：它不是在辅助营销人员，而是让营销人员只需「下达指令」，剩下的创意生产、人群匹配、素材投放全部由 Agent 自主完成。问题来了：吕骋说软件已经没有护城河，那内容呢？纯粹的「执行型内容创作者」——批量写文案、做短视频、跑 A/B 测试素材——这类工作的替代速度，可能比我们预期的更快。而真正有护城河的，是「判断力」：知道什么内容值得做、为什么做、对谁说——这才是 AI 短期内无法复制的部分。</p>
+      <div class="highlight">AI 短剧取代真人短剧，只是「内容执行层被替代」浪潮的开头；真正的护城河不是会生产内容，而是知道为什么生产这个内容——判断力比执行力贵得多。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>自查你的工作是否属于「执行型内容」：批量写文案、制作标准化素材、跑 AB 测试——这些正是 AI 最擅长的领域。如果你的日常 70% 都是这类工作，现在就要开始规划转型方向，而不是等到感受到压力</p></div><div class="worker-tip"><div class="num">2</div><p>把自己升级为「AI 内容导演」：与其跟 AI 竞争内容生产，不如成为那个定义「做什么内容、为什么做、效果好不好」的人。学会写清晰的创意 brief、设定验收标准、复盘 AI 输出——这是执行层到策略层的关键跨越</p></div><div class="worker-tip"><div class="num">3</div><p>关注阿里妈妈「AI 万相」这类多 Agent 工具：如果你在做电商运营或品牌营销，这类工具很快就会出现在你的日常工作流中。提前了解其逻辑（意图识别→商品理解→素材生成→投放优化），才能在工具到来时驾驭它而不是被它替代</p></div><div class="worker-tip"><div class="num">4</div><p>「Cursor 用 Kimi K2.5 训练模型」值得持续关注：国产基础模型正在进入全球顶流工具的供应链。如果你在做 AI 相关工作，现在就应该建立对主流国产模型能力的基本认知，不能只知道 GPT 和 Claude</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
