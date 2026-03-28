@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年3月28日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">3月28日（周六）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-03-24</span>
+      </div>
+      <h3>中国日均 Token 调用量突破 140 万亿，两年增长超千倍，连续三周全球第一</h3>
+      <p>国家数据局局长刘烈宏在中国发展高层论坛 2026 年年会上披露：截至 2026 年 3 月，中国日均词元（Token）调用量已超过 140 万亿，较 2024 年初的 1000 亿增长超千倍，仅今年前三个月又增长 40%。中国 AI 大模型周 Token 调用量连续三周超越美国，成为全球 AI 应用活跃度最高的国家。预计『十五五』末中国 AI 相关产业规模将突破 10 万亿元。</p>
+      <div class="source">新华社 / 国家数据局</div>
+      <a class="read-more" href="https://www.news.cn/tech/20260324/050774b26bc54f429fce2d21e284949a/c.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-03-24</span>
+      </div>
+      <h3>字节跳动开源 DeerFlow 2.0：超级智能体框架登顶 GitHub Trending，46k+ Star</h3>
+      <p>字节跳动开源的 DeerFlow 2.0 超级 Agent 框架在 3 月持续走红，GitHub Star 数已超过 46,000。该框架基于 LangGraph 1.0 重构，支持 Docker 沙箱代码执行、子代理并行调度、持久化记忆和 Markdown 技能扩展，定位为 OpenAI Deep Research 的开源替代方案。钉钉悟空 AI 同期正式上线「双击即用」，Agent 工具进入平民化普及阶段。</p>
+      <div class="source">字节跳动 / GitHub</div>
+      <a class="read-more" href="https://aitoolly.com/zh/articles/2026-03-24-bytedance-open-sours-deer-flow-a-super-agent-architecture-for-research-coding-and-creative-tasks" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-03-25</span>
+      </div>
+      <h3>GitHub Copilot 将于 4 月 24 日默认用用户代码训练 AI，引发开发者强烈抗议</h3>
+      <p>GitHub 于 3 月 25 日宣布，从 4 月 24 日起，Copilot Free、Pro 和 Pro+ 用户的交互数据（含代码输入输出和片段）将默认用于训练 AI 模型，需用户主动 opt-out。官方博文收到 184 个踩、仅 5 个赞，开发者社区强烈反弹，认为此举是将用户私有代码资产转为商业训练数据。Business/Enterprise/教育版用户不受影响。</p>
+      <div class="source">GitHub / The Register</div>
+      <a class="read-more" href="https://www.toolcenter.ai/zh/articles/github-copilot-4-24-ai" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-03-26</span>
+      </div>
+      <h3>蚂蚁集团发布 F2LLM-v2，横扫 MTEB 11 项榜单冠军</h3>
+      <p>蚂蚁集团 3 月 26 日发布文本嵌入大模型 F2LLM-v2，在权威语义检索评测基准 MTEB 上一举拿下 11 项冠军，超越此前所有开源和闭源模型。该模型在多语言、长文本检索等任务上表现突出，是国内大模型在底层能力层（Embedding）上取得的里程碑成果。谷歌 DeepMind 同日发布 AI 作曲模型 Lyria 3 Pro，支持完整长曲创作。</p>
+      <div class="source">新浪科技 / 蚂蚁集团</div>
+      <a class="read-more" href="https://k.sina.cn/article_7879848900_1d5acf3c401902mu2a.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-03-26</span>
+      </div>
+      <h3>Agentic AI 进入「深水区」：Anthropic 与五角大楼对决，ARM 发布首款 Agent 芯片</h3>
+      <p>3 月 26 日，Anthropic 与美国五角大楼就 AI 军事应用使用条款正式进入法律程序，打响 AI 伦理与国防采购博弈第一枪。同日，ARM 宣布发布首款专为 AI Agent 优化的推理芯片，标志着 Agentic AI 硬件生态开始成形。业界认为 AI 行业已正式进入「自主智能体规范化与商业化」的深水区阶段。</p>
+      <div class="source">工业智能算网 / 界面新闻</div>
+      <a class="read-more" href="https://www.gyznsw.cn/2026/03/26/2026-03-26-AI%E6%8A%80%E6%9C%AF%E6%AF%8F%E6%97%A5%E5%88%86%E6%9E%90-20260326/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-03-25</span>
+      </div>
+      <h3>2026 中关村论坛年会设「AI 主题日」，聚焦前沿技术与全球创新融合</h3>
+      <p>3 月 25 日，2026 中关村论坛年会「人工智能主题日」新闻发布会宣布以「交融·智享 AI 新范式下的全球创新与产业融合」为主题，打造「1+6」活动框架，贯穿论坛全程。配合国家 AI Token 调用量千倍级增长数据，标志着中国 AI 政策与产业叙事在 2026 年进入全面加速期。</p>
+      <div class="source">新华网</div>
+      <a class="read-more" href="https://www3.xinhuanet.com/tech/20260326/c94e0c98cb0b4580b1ff7921c5833fa5/c.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-03-06</span>
+      </div>
+      <h3>科技早知道 S10 聚焦「职场巨变生存指南」：AI 催生超级个体，HR 视角下的人才重构</h3>
+      <p>《What's Next｜科技早知道》第十季最新两期聚焦 AI 时代职场大变局。从硅谷视角看，AI 正在催生「超级个体」——一人借助 AI 工具可产出原本百人团队的工作量。HR 视角则揭示：岗位重构已在发生，能设计 AI 工作流的人才溢价正在快速拉大。播客同期提及英矽智能（AI 制药）加速商业化，AI 制药从「管线童话」走向真实 ROI 的拐点逻辑。</p>
+      <div class="source">科技早知道 S10（小宇宙）</div>
+      <a class="read-more" href="https://www.xiaoyuzhoufm.com/podcast/5e74b52c418a84a046ecaceb" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-03-20</span>
+      </div>
+      <h3>42章经最新：从 Agent Infra 到 AI+游戏社交，创业者如何在加速分化的世界里找到机会</h3>
+      <p>播客「42章经」近期两期分别聚焦 Agent 基础设施新机会（E2B、Browserbase 等 Agent Infra 赛道）以及「AI+游戏+社交」方向（对谈 Wanaka 创始人张阳），探讨 AI 加持下新产品形态的边界与打法。核心观点：Agent Infra 是当前最确定性的技术红利窗口，但真正的护城河来自深度垂直场景，而非通用工具。</p>
+      <div class="source">42章经（小宇宙）</div>
+      <a class="read-more" href="https://hubbub.top/podcast/55042" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>中国 AI 日均 Token 调用量两年增千倍：数字背后是一场正在发生的生产力革命</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>国家数据局官方数据：中国日均 Token 调用量从 2024 年初的 1000 亿，到 2025 年底的 100 万亿，再到 2026 年 3 月的 140 万亿——两年增长超千倍，仅今年前三个月再增 40%。中国 AI 大模型周调用量连续三周超越美国，全球调用量前三名均为中国模型（新华社/国家数据局，2026 年 3 月 24 日）</li><li>与此同时，应用侧正在爆发：字节 DeerFlow 2.0 超级 Agent 框架三周内获 46,000+ GitHub Star；钉钉悟空 AI「双击即用」完成办公 Agent 普及化布局；蚂蚁 F2LLM-v2 横扫 MTEB 11 项冠军——Token 调用量激增的背后，是开发者和企业正在大规模把 AI 嵌入真实工作流，而非停留在 chatbot 阶段</li><li>科技早知道播客「职场巨变生存指南」与 42章经「Agent Infra 新机会」两期节目指向同一判断：AI 对生产力的渗透已越过拐点。GitHub Copilot 宣布默认用用户代码训练 AI（引发 184 踩 vs 5 赞的强烈反弹）恰恰印证这一点——AI 公司迫切需要真实使用数据来提升模型，因为「真实工作场景」的 Token 比任何合成数据都更有价值</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>140 万亿这个数字，不只是一个里程碑，而是一个信号：AI 在中国已经从「可以用」变成「正在被大规模用」。两年前，Token 调用量还是技术圈的小众话题；今天它成了国家数据局局长在高层论坛上的核心发言数据——说明 AI 应用渗透已经足够深，足以作为经济层面的生产力指标来衡量。更值得关注的是增速结构：从 100 万亿到 140 万亿只用了三个月，说明增长仍在加速而非见顶。配合 DeerFlow 2.0 的爆炸性受欢迎程度、钉钉悟空的普及化布局，以及科技早知道聚焦「超级个体崛起」——这一切都在说同一件事：AI 的价值实现正在从「能力展示」转向「工作流嵌入」。对打工人而言，这意味着竞争维度已经改变——不是谁懂 AI，而是谁的工作流里已经有 AI 在替你干活。</p>
+      <div class="highlight">Token 调用量千倍增长，本质上是一张生产力账单：越来越多的「人类工时」正在被 AI 替代——问题不是这会不会发生，而是替代你的是 AI，还是用 AI 的别人。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>今天就去统计一下你每天有多少「重复性脑力动作」：查资料、整理邮件、写周报、格式转换……把这些任务列出来，然后一条一条去试 Agent 工具（DeerFlow / Claude / 钉钉悟空）能否接管。不需要全部成功，接管一件就是净收益</p></div><div class="worker-tip"><div class="num">2</div><p>GitHub Copilot 数据训练争议给所有人上了一课：你在 AI 工具里输入的内容，可能成为它下一代模型的训练数据。检查你常用 AI 工具的隐私设置，确认是否需要手动 opt-out——这是数字自我保护的基本动作</p></div><div class="worker-tip"><div class="num">3</div><p>42章经播客提到的「Agent Infra」是今年最确定的技术红利方向：如果你是开发者或产品经理，现在了解 E2B（代码沙箱）、Browserbase（浏览器 Agent）等基础设施产品，比等到赛道成熟再入场要早半年以上</p></div><div class="worker-tip"><div class="num">4</div><p>「超级个体」不是天才，是用 AI 杠杆的普通人：找一个你完全熟悉的工作场景，把它做成 AI 可以独立完成的标准化流程——这个过程本身就是在构建你最强的个人护城河</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
