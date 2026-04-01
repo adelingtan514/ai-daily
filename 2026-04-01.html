@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年4月1日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">4月1日（周三）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-03-31</span>
+      </div>
+      <h3>阿里发布 Qwen3.5-Omni：215 项测试 SOTA，全模态能力超越 Gemini-3.1 Pro</h3>
+      <p>3月31日，阿里千问正式发布新一代全模态大模型 Qwen3.5-Omni。该模型在 215 项第三方性能测试中取得 SOTA，在音视频理解、跨模态推理与实时交互等核心指标上超越 Google Gemini-3.1 Pro。新模型支持多语言及多种方言识别，可对音视频内容生成详细可控的结构化描述，是目前全球最强全模态大模型之一。</p>
+      <div class="source">网易科技 / 阿里千问官方</div>
+      <a class="read-more" href="https://www.163.com/dy/article/KPBFS5DJ0519D45U.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-03-31</span>
+      </div>
+      <h3>Claude Code 源码意外泄露：51.2 万行代码揭示第一梯队 AI Agent 工程实践</h3>
+      <p>3月31日，Anthropic 因 npm 打包流程失误，将 Claude Code（v2.1.88）的完整 TypeScript 前端与客户端源码暴露在公网，涉及 51.2 万行代码，数小时内被 GitHub 归档并获 600+ Stars。这是目前生产级 AI Agent 最完整的公开工程参考，揭示了 Anthropic 在上下文管理、工具编排、任务拆解层面的完整架构设计。</p>
+      <div class="source">腾讯新闻 / 知乎</div>
+      <a class="read-more" href="https://news.qq.com/rain/a/20260331A07EUY00" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-03-31</span>
+      </div>
+      <h3>微软 365 Copilot 推出「多模协作」：GPT 起草、Claude 审稿，两大 AI 并肩作战</h3>
+      <p>3月31日，微软宣布为 365 Copilot 研究代理（Research Agent）推出新功能「Critique」，允许用户在同一研究任务中同时调用 OpenAI GPT 和 Anthropic Claude——GPT 负责主笔，Claude 负责批判性审查，提升研究报告质量。微软股价当日涨近 2%。这是大模型巨头首次在主流办公产品中实现多模型协作闭环。</p>
+      <div class="source">36kr / 财联社</div>
+      <a class="read-more" href="https://www.36kr.com/p/3746797166428675" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-03-26</span>
+      </div>
+      <h3>中国 AI 日均 Token 调用量突破 140 万亿，连续三周全球第一，两年增长超千倍</h3>
+      <p>中国发展高层论坛 2026 年年会（3月23日）披露：今年 3 月，中国日均 Token 调用量突破 140 万亿，相比 2024 年初的 1000 亿两年增长超千倍。OpenRouter 数据显示 3 月 16-22 日，全球 AI 周调用量 20.4 万亿 Token，中国一国贡献 7.359 万亿（占 36%），连续三周超越美国，国产模型包揽全球前三。</p>
+      <div class="source">新华网 / 中国发展高层论坛</div>
+      <a class="read-more" href="https://www.xinhuanet.com/tech/20260326/8026bd54df3f489a8c79d4438cac96b3/c.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-03-25</span>
+      </div>
+      <h3>42章经：Agent Infra 创业窗口期仍在，「泡沫」讨论已转向「哪些场景先爆」</h3>
+      <p>42章经近期播客（对谈 Grasp 创始人雷磊）聚焦 AI Agent 基础设施机会，核心洞察：AI 行业讨论已从「是不是泡沫」转向「哪些应用场景率先爆发」；代码沙箱（E2B）和浏览器 Agent（Browserbase）是当前 Agent Infra 中最确定的技术红利，创业机会窗口仍然存在，但留给早期玩家的时间窗口正在收窄。</p>
+      <div class="source">42章经（小宇宙播客）</div>
+      <a class="read-more" href="https://www.xiaoyuzhoufm.com/podcast/648b0b641c48983391a63f98" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-03-22</span>
+      </div>
+      <h3>科技早知道 GTC 特辑：推理层是 AI 下一个核心战场，英伟达 200 亿收购 Groq 的战略逻辑</h3>
+      <p>《科技早知道》S10E04 于 GTC 2026 现场专访推理优化初创 Eigen AI 联合创始人，深度拆解：为何推理速度正成为最关键竞争力、GPU 与 LPU 在推理链路中的异构分工，以及英伟达以约 200 亿美元收购 Groq 是押注「推理效率决定 AI 规模化天花板」这一判断。Eigen AI 推理跑分已登上黄仁勋 Keynote 大屏。</p>
+      <div class="source">What's Next｜科技早知道 S10E04</div>
+      <a class="read-more" href="https://www.xiaoyuzhoufm.com/podcast/5e74b52c418a84a046ecaceb" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-03-28</span>
+      </div>
+      <h3>声动早咖啡：AI 驱动美图公司增长，内存价格出现回调，Anthropic 新动态</h3>
+      <p>声动早咖啡近期聚焦 AI 对消费科技的渗透：美图公司 AI 业务驱动营收显著增长；受 AI 算力需求拉动，全球内存价格此前高企后开始出现回调；Anthropic 方面有新动态发布。播客同期关注联合利华食品业务分拆、航空旅游、比亚迪等宏观商业议题。</p>
+      <div class="source">声动早咖啡（小宇宙播客）</div>
+      <a class="read-more" href="https://www.xiaoyuzhoufm.com/podcast/60de7c003dd577b40d5a40f3" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-03-28</span>
+      </div>
+      <h3>硅谷101：中国动力电池「弯道超车」启示录——AI 硬件国产替代的下一条路</h3>
+      <p>硅谷101 最新一期邀请材料学博士、TDK Ventures 投资人何倩然与《电车之心》作者，复盘中国动力电池逆袭路径，并延伸至 AI 硬件国产替代讨论：固态电池、钠离子电池等关键路线走到哪一步，以及下一阶段全球 AI 算力硬件竞争的核心变量。对理解 AI 供应链投资逻辑有重要参考价值。</p>
+      <div class="source">硅谷101（小宇宙播客）</div>
+      <a class="read-more" href="https://www.xiaoyuzhoufm.com/podcast/5e5c52c9418a84a04625e6cc" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>当 GPT 和 Claude 开始互相审稿——多模型协作时代，「单一 AI」已经过时了</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>2026年3月31日，微软 365 Copilot 正式推出「多模协作」功能（Critique）：GPT 主笔起草、Claude 批判性审稿，两大模型在同一工作流中协作——这是主流办公产品中首次实现多模型闭环协同，意味着「哪个 AI 最强」的竞争逻辑正在被「如何组合 AI」取代。</li><li>同日（3月31日），Claude Code 51.2 万行源码意外泄露，首次完整曝光生产级 AI Agent 的工程架构：上下文压缩、工具编排、多步任务拆解、错误恢复——这份「意外教科书」揭示了第一梯队 Agent 如何在复杂任务中协调多个能力模块，而非靠单一模型硬撑。</li><li>阿里 Qwen3.5-Omni（3月31日发布）在 215 项测试中达到 SOTA，超越 Gemini-3.1 Pro；中国 AI 日均 Token 调用量突破 140 万亿，两年增长千倍——全球 AI 竞争的焦点，已从「谁的模型最聪明」转移到「谁的系统组合最高效」。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>微软今天做的事情，表面上是一个产品功能更新，实质上是一个行业信号：单一 AI 模型的时代，正在悄悄结束。过去两年，我们习惯了「选边站」——用 ChatGPT 还是 Claude？用 Gemini 还是 Qwen？但微软用一个产品决策告诉我们：未来的工作流，不是「选最强的那一个」，而是「把各自擅长的组合起来」。GPT 语言流畅、结构好；Claude 批判严谨、逻辑强——与其争「谁赢」，不如让它们互补。这个逻辑，和 Claude Code 泄露源码里展示的 Agent 工程哲学是一致的：真正的生产级 AI 系统，从来不是一个超级大脑，而是多个专用模块的精密编排。对普通用户来说，这意味着：你不需要找到「最完美的 AI」，你需要学会「如何组织 AI 团队」。这是 2026 年最值得关注的能力转变——从「使用 AI」到「调度 AI」。</p>
+      <div class="highlight">未来的竞争力不是「你用哪个 AI」，而是「你怎么组织多个 AI 协同工作」——这是 2026 年最值得习得的元技能。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>现在就开始练习「多模型工作流」：同一个任务，用 GPT 起草、Claude 审稿、Qwen 做翻译——不要局限于单一工具。微软今天做的，你在个人工作中今天就可以复刻。</p></div><div class="worker-tip"><div class="num">2</div><p>Claude Code 源码是 2026 年最值得阅读的 AI 工程文档：51.2 万行代码揭示了生产级 Agent 的完整架构。即使你不写代码，理解「AI 如何拆解任务、处理错误、管理上下文」也会让你更会用 AI。</p></div><div class="worker-tip"><div class="num">3</div><p>全模态能力正在成为标配：Qwen3.5-Omni 支持音视频理解，你的工作场景中有哪些音视频内容可以被 AI 处理？会议录音、客户电话、产品视频——这些以前「AI 处理不了」的场景，现在值得重新评估。</p></div><div class="worker-tip"><div class="num">4</div><p>学会「调度 AI」比「选 AI」更重要：中国 AI 日均 Token 调用量已超 140 万亿，AI 工具普及战已结束。下一阶段的差距，来自你是否能像微软 Copilot 一样，把不同 AI 的优势串成一条高效的工作流水线。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
