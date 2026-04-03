@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年4月3日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">4月3日（周五）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-04-01</span>
+      </div>
+      <h3>OpenAI 完成硅谷史上最大融资：1220 亿美元，估值 8520 亿，IPO 倒计时</h3>
+      <p>3月31日，OpenAI 宣布完成总额 1220 亿美元的私募融资，投后估值达 8520 亿美元，刷新全球私募融资纪录。本轮由软银领投，亚马逊、英伟达、Andreessen Horowitz 等跟投。微软作为原始大股东此轮「退居二线」，权重被稀释。OpenAI 考虑最早年内向 SEC 提交 IPO 申请，市场预期上市估值将冲击万亿美元。</p>
+      <div class="source">澎湃新闻 / 腾讯新闻</div>
+      <a class="read-more" href="https://www.thepaper.cn/newsDetail_forward_32871126" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-04-02</span>
+      </div>
+      <h3>字节豆包日均 Token 突破 120 万亿，Seedance 2.0 API 正式对企业开放公测</h3>
+      <p>4月2日，火山引擎在武汉「Force Link AI 创新巡展」上披露：豆包大模型日均 Token 使用量已突破 120 万亿，三个月内增长翻倍，较 2024 年 5 月发布时增长 1000 倍。同日，Seedance 2.0（视频生成模型）API 面向企业用户开放公测，火山引擎上累计 Token 超过一万亿的企业已从 100 家增至 140 家。</p>
+      <div class="source">量子位 / 163科技</div>
+      <a class="read-more" href="https://www.qbitai.com/2026/04/394616.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-04-03</span>
+      </div>
+      <h3>Qwen3.6-Plus 发布，微软与谷歌同步加码 AI 基础设施投入</h3>
+      <p>过去 24 小时内（4月2-3日），阿里发布 Qwen3.6-Plus，国内 AI 新模型密集上线；海外方面，微软与谷歌双双宣布进一步加码 AI 与数据中心基础设施投资，产业「模型能力—工具链—基础设施—治理」四条线同步拉紧。AI 军备竞赛进入「基础设施决胜」新阶段。</p>
+      <div class="source">ToolNavs AI 快讯</div>
+      <a class="read-more" href="https://toolnavs.com/article/1275-2-4-xiao-shi-ai-hang-ye-kuai-xun-qwen-3-6-plus-fa-bu-wei-ruan-yu-gu-ge-tong-bu-j" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-04-01</span>
+      </div>
+      <h3>Claude Code 51.2 万行源码意外泄露，第一梯队 AI Agent 工程架构首次公开</h3>
+      <p>3月31日，Anthropic 因 npm 打包失误将 Claude Code（v2.1.88）完整前端源码暴露公网，涉及 51.2 万行代码，数小时内被 GitHub 归档并获 600+ Stars。这是目前生产级 AI Agent 最完整的工程参考，揭示了上下文管理、工具编排、多步任务拆解与错误恢复的完整架构——被称为「史上最贵的开源」。</p>
+      <div class="source">腾讯新闻 / 每经</div>
+      <a class="read-more" href="https://news.qq.com/rain/a/20260401A01MSF00" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-04-02</span>
+      </div>
+      <h3>中国信通院：AI 进入「智能体 L3 时代」，国内 Agent 服务商突破 300 家</h3>
+      <p>中国信通院最新报告显示，AI 已正式进入「智能体（L3）」时代，国内 AI Agent 相关服务商已突破 300 家，技术研发、场景落地与客户服务成为核心衡量维度。阿里巴巴宣布 3 年内投入约 3800 亿元（约 520 亿美元）用于 AI 和云基础设施，字节 2026 年 AI 芯片预算达 850 亿元人民币。</p>
+      <div class="source">腾讯云开发者社区 / 搜狐科技</div>
+      <a class="read-more" href="https://cloud.tencent.com/developer/article/2648138" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-03-22</span>
+      </div>
+      <h3>42章经：OpenClaw 爆火后，「未来 3-6 个月」才是真正需要想清楚的时间窗口</h3>
+      <p>42章经近期播客（3月22日）对谈 AI 创业者文锋，复盘 OpenClaw 引爆 Agent 新热潮，核心论点：这一波 Agent 热与去年 Manus 发布时最大区别在于「工具链已成熟」，但真正的创业机会在未来 3-6 个月的场景验证期；Agent Infra（E2B、Browserbase 等）窗口正在收窄，应用层才是下一个主战场。</p>
+      <div class="source">42章经（小宇宙播客）</div>
+      <a class="read-more" href="https://finance.sina.cn/tech/csj/2026-03-22/detail-inhrwpyi5947622.d.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-03-22</span>
+      </div>
+      <h3>科技早知道：推理层是 AI 下一个核心战场，英伟达约 200 亿美元收购 Groq 的战略逻辑</h3>
+      <p>《科技早知道》S10E04 GTC 特辑，专访推理优化初创 Eigen AI 联合创始人：推理速度正成为 AI 最关键竞争维度；英伟达约 200 亿美元收购 Groq 是押注「推理效率决定规模化天花板」；当前 AI 应用商业模式正面临系统性挑战——推理成本压缩是未来两年的核心命题。</p>
+      <div class="source">What's Next｜科技早知道 S10E04</div>
+      <a class="read-more" href="https://www.xiaoyuzhoufm.com/podcast/5e74b52c418a84a046ecaceb" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-03-26</span>
+      </div>
+      <h3>硅谷101 GTC 特辑：老黄抛出「1 万亿订单」大数，Vera Rubin 一次发 7 块芯片</h3>
+      <p>硅谷101 于 GTC 2026 大会现场特别录制，聚焦黄仁勋 Keynote 中的核心数字：1 万亿——预计 2027 年底 Blackwell + Vera Rubin 平台的订单总收入；7 块——本届 GTC 一次发布的 Vera Rubin 新芯片数量。播客深度分析英伟达如何从「芯片公司」转型为「AI 算力生态平台」。</p>
+      <div class="source">硅谷101（小宇宙播客）GTC 特辑</div>
+      <a class="read-more" href="https://www.xiaoyuzhoufm.com/podcast/5e5c52c9418a84a04625e6cc" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>豆包 120 万亿 Token 背后：当「用量」成为新护城河，AI 竞争正在进入第三阶段</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>4月2日，字节跳动披露：豆包大模型日均 Token 使用量突破 120 万亿，三个月内增长翻倍，较 2024 年 5 月发布时增长 1000 倍——这意味着每天有相当于全球每人读约 1500 本书的信息量流经豆包的模型。</li><li>同期，OpenAI 完成 1220 亿美元融资（估值 8520 亿），阿里宣布 3 年投入 3800 亿元 AI 基础设施，字节 AI 芯片预算 850 亿元人民币——2026 年，三家公司合计承诺的 AI 投入已超过 5000 亿元人民币，这一数字还在增长。</li><li>中国信通院报告指出，国内 AI Agent 服务商已突破 300 家，42章经播客判断「应用层才是下一个主战场」——而此刻用量数据（Token 调用规模）正成为大模型公司融资估值、产品定价权、生态吸引力的核心依据。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>豆包的「120 万亿 Token」，乍看是一个炫耀数字，但仔细想想，这背后是一场竞争逻辑的根本转变。AI 竞争经历了三个阶段：第一阶段（2023-2024）是「参数竞赛」——谁的模型更大更聪明；第二阶段（2025）是「价格战」——谁的推理更便宜；现在进入第三阶段：「用量即护城河」——谁的模型被用得越多，数据飞轮就转得越快，产品就越聪明，企业客户就越难迁移。120 万亿 Token 不只是流量数字，它是字节在告诉市场：豆包已经完成了从「一个 AI 产品」到「一条 AI 基础设施」的转变。这个逻辑，和英伟达靠算力生态构建护城河、OpenAI 靠融资扩大算力壁垒，本质上是同一件事：在 AI 时代，规模本身就是竞争力。对普通打工人来说，真正值得警惕的是：当这些「用量飞轮」越转越快，AI 能力的分化速度将超过所有人的预期。</p>
+      <div class="highlight">AI 竞争已进入第三阶段——「用量即护城河」：谁的模型被用得越多，飞轮就转得越快，壁垒就越高；这场竞争，普通人也在参与其中。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>把「用量」纳入你选 AI 工具的参考维度：用量大的模型迭代更快、反馈更及时、Bug 修复更迅速。豆包、通义、Kimi 的规模级用量，意味着它们正在以你感受不到的速度持续进化。</p></div><div class="worker-tip"><div class="num">2</div><p>Seedance 2.0 视频生成 API 对企业开放公测，是一个值得关注的信号：AI 视频工具正快速走向 B 端落地。如果你的工作涉及内容生产、营销、培训，现在是测试「AI 视频工作流」的最好时机。</p></div><div class="worker-tip"><div class="num">3</div><p>OpenAI 1220 亿融资背后是 IPO 倒计时：AI 公司从「创业公司」变成「上市公司」，将带来更强的合规要求和更激进的商业化压力。关注 GPT、Claude 等产品的定价和功能变化——它们即将对股东负责，而不只是对用户。</p></div><div class="worker-tip"><div class="num">4</div><p>现在学会「读 Token 账单」：Token 用量是衡量 AI 使用效率的核心指标。无论你是个人用户还是团队负责人，理解「我花了多少 Token、换来了多少价值」，是 AI 时代最基础的财务意识。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
