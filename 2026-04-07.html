@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年4月7日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">4月7日（周二）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-04-03</span>
+      </div>
+      <h3>48小时，四大巨头五款模型轰炸：阿里、谷歌、微软、智谱AI同台竞技</h3>
+      <p>4月1日至3日，阿里Qwen3.6-Plus、谷歌Gemma 4系列（两款）、微软Phi-4-Vision、智谱GLM-5-Air在48小时内密集发布，引发行业震动。分析师直言：「2026年的内卷速度已远超行业预判，大厂发布节奏从季度级压缩到了48小时。」这场「核爆周」背后，是头部厂商对Agent Coding赛道的全面卡位争夺。</p>
+      <div class="source">腾讯云开发者 / 量子位</div>
+      <a class="read-more" href="https://cloud.tencent.com.cn/developer/article/2650738" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-04-03</span>
+      </div>
+      <h3>Qwen3.6-Plus全球Code Arena第二：国产模型首超OpenAI、Google编程排名</h3>
+      <p>4月3日，LMArena旗下Code Arena榜单公布，阿里Qwen3.6-Plus跻身全球第二，超越OpenAI、Google、xAI等国际巨头，成为该榜单排名最高的中国模型。其编程评测超越2-3倍参数量的GLM-5和Kimi-K2.5，接近Claude系列。阿里官方称：100万token超长上下文+原生多模态+强Agentic Coding能力为核心亮点。</p>
+      <div class="source">量子位 / 中新网</div>
+      <a class="read-more" href="https://www.qbitai.com/2026/04/395206.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-04-02</span>
+      </div>
+      <h3>谷歌Gemma 4开源发布：31B参数跻身全球开源第三，Hugging Face下载量破4亿</h3>
+      <p>4月2日，Google DeepMind正式发布Gemma 4系列开源模型，与Gemini 3共享底层技术。31B版本在Arena AI榜单位列全球开源第三，26B位居第六。Gemma系列累计在Hugging Face下载超4亿次，衍生变体超10万个，成为开源生态最活跃的模型家族。谷歌称其在多项指标上超越自身规模20倍的闭源竞品。</p>
+      <div class="source">腾讯新闻 / Google DeepMind</div>
+      <a class="read-more" href="https://news.qq.com/rain/a/20260403A054TD00" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-04-01</span>
+      </div>
+      <h3>科技早知道：「推理层」成AI下一战场——英伟达200亿美元收购Groq背后的逻辑</h3>
+      <p>「What's Next｜科技早知道」最新一期S10E04聚焦GTC 2026。主持人Diane采访了推理优化初创Eigen AI联创，深度解析了为何推理层正在成为AI行业最重要的竞争战场：GPU与LPU各自角色、英伟达约200亿美元收购Groq的战略意图，以及AI应用商业模式正在面临的系统性挑战。核心论断：算法和参数的竞争正让位于「谁能让推理更快更便宜」。</p>
+      <div class="source">What's Next｜科技早知道 S10E04</div>
+      <a class="read-more" href="https://www.xiaoyuzhoufm.com/podcast/5e74b52c418a84a046ecaceb" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-04-04</span>
+      </div>
+      <h3>42章经播客：Agent Infra爆发，从E2B到Browserbase有哪些大机会</h3>
+      <p>42章经最新一期对谈Grasp创始人雷磊，深聊AI Agent基础设施（Infra）的新热点：E2B（代码沙箱即服务）、Browserbase（浏览器自动化）等方向正快速崛起。核心观点：Agent大规模落地的真正瓶颈不在模型能力，而在稳定的「执行环境」。谁能解决Agent在真实世界里稳定运行的问题，谁就掌握了下一波红利。</p>
+      <div class="source">42章经播客</div>
+      <a class="read-more" href="https://www.xiaoyuzhoufm.com/podcast/648b0b641c48983391a63f98" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-04-05</span>
+      </div>
+      <h3>OpenAI春季发布会预告：GPT-5或4月下旬亮相，Agent与多模态为核心升级方向</h3>
+      <p>OpenAI官方预告4月下旬举办春季更新发布会，外界普遍预期GPT-5将正式发布。据泄露信息，此次升级重点包括：原生多模态深度融合、企业级Agent自主执行能力，以及面向开发者的API大幅扩展。若属实，这将是OpenAI完成1220亿美元融资后的首个重磅产品动作，市场期待值极高。</p>
+      <div class="source">知乎 / 36氪</div>
+      <a class="read-more" href="https://zhuanlan.zhihu.com/p/2023718307925083267" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-04-05</span>
+      </div>
+      <h3>极客邦《2026中国企业AI应用场景报告》：千份案例显示落地卡点从「能力」转向「闭环执行」</h3>
+      <p>极客邦科技分析近千份AI落地成功案例，发布《2026年中国企业AI应用场景报告》。核心发现：企业AI需求已从「会不会」转向「稳不稳、能不能闭环」。三大落地卡点被明确为：长链路任务中断、异构系统集成困难、安全合规挑战。IDC数据预测：中国企业级Agent市场规模2028年将达270亿美元以上。</p>
+      <div class="source">极客邦 / 网易 / IDC</div>
+      <a class="read-more" href="https://www.163.com/dy/article/KPEHNGOA05566ZHB.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-04-02</span>
+      </div>
+      <h3>优必选开出最高1.24亿元年薪招募具身智能首席科学家，人形机器人年产能将达万台</h3>
+      <p>港股上市人形机器人龙头优必选宣布面向全球招募具身智能首席科学家，年薪1500万元起步，最高1.24亿元，与OpenAI、Meta顶级科学家薪酬看齐。核心职责：定义技术路线图、主导视觉-语言-动作（VLA）模型研发。优必选表示2026年人形机器人产能将达万台级别，具身AI正从实验室走向量产。</p>
+      <div class="source">澎湃新闻</div>
+      <a class="read-more" href="https://m.thepaper.cn/newsDetail_forward_32884439" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>AI推理层的军备竞赛：当英伟达200亿美元买下Groq，「更快更便宜的推理」才是2026年的真正战场</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>英伟达约200亿美元收购Groq（LPU推理芯片先驱），此举被科技早知道S10E04解读为：底层推理效率的争夺，正在超越模型参数和算法创新，成为AI产业链的新核心竞争力——英伟达需要Groq来守住推理端的生态护城河。</li><li>在推理层竞速的背景下，「48小时五款模型」盛况折射出另一面：Qwen3.6-Plus、Gemma 4等新模型的核心卖点，均聚焦于「更高参数效率、更低推理成本」——Gemma 4的31B版本在部分指标上超越规模20倍的闭源竞品，本质是推理效率的胜利。</li><li>42章经播客最新一期明确指出：Agent大规模落地的瓶颈已不在模型能力，而在「执行环境的稳定性」——E2B、Browserbase等Agent Infra方向快速崛起，本质是在为AI推理结果「落地执行」搭建可靠的基础设施。IDC预测中国企业级Agent市场2028年达270亿美元。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>2026年AI行业的竞争重心，正在悄悄从「谁的模型更聪明」转移到「谁的推理更快更便宜」。英伟达200亿美元买下Groq不是偶然——它清楚地看到了：大模型的「脑子」已经足够好，现在卡住规模化落地的，是「运行这个脑子」的成本和速度。当Eigen AI能以极低成本跑出推理速度的世界纪录，当Gemma 4用31B参数干翻600B量级的竞品，当42章经的嘉宾说「Agent落地最大问题是执行环境不稳定」——这些信号都指向同一个方向：AI基础设施层正在成为2026年最值得关注的投资和技术赛道。对打工人来说，这意味着什么？意味着同样的大模型能力，在更便宜、更快的推理环境下，将以指数级速度渗透进每一个工作场景。不是「AI会不会取代你」，而是「你用的AI工具，推理成本在6个月后会降到几分之几」。</p>
+      <div class="highlight">模型能力的竞争已接近天花板，推理效率的军备竞赛才刚刚开始——谁能让AI跑得更快更便宜，谁就定义了下一波应用爆发的时间表。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>重新评估你现在依赖的AI工具的推理成本。过去6个月，主流大模型API价格已下降30%-60%；未来6个月这一趋势会加速。如果你的团队因「AI调用成本太高」而限制使用，现在是重新测算ROI、推动扩大使用的好时机。</p></div><div class="worker-tip"><div class="num">2</div><p>关注Agent Infra新工具：E2B（代码沙箱）、Browserbase（浏览器自动化）等基础设施正在让AI Agent在真实环境中稳定运行变得唾手可及。如果你在做AI自动化工作流，这些工具能大幅降低「Agent执行失败」的概率，值得本周花1小时调研。</p></div><div class="worker-tip"><div class="num">3</div><p>向上汇报时，把「AI能力」和「AI基础设施成本」分开讲。领导层往往只看到「AI能做什么」，却忽视了「跑AI需要多少钱/多快」。现在给决策者呈现推理成本下降趋势，更容易推动AI预算增加和更大规模应用落地。</p></div><div class="worker-tip"><div class="num">4</div><p>留意OpenAI春季发布会（4月下旬）和GPT-5。如果GPT-5的多模态+Agent能力如传言所说大幅升级，现有的提示词工程和工作流设计可能需要整体迭代。提前预留2-3天时间做评测和适配，避免发布后被动跟跑。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
