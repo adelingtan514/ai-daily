@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年4月16日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">4月16日（周四）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">7 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-04-16</span>
+      </div>
+      <h3>GPT-6正式发布！耗时18个月、AGI完成度70-80%</h3>
+      <p>2026年4月14日，OpenAI正式发布代号「Spud」的GPT-6，支持200万Token上下文，性能较GPT-4o暴涨40%，耗资20亿美元、动用10万张H100 GPU训练，官方宣称AGI完成度已达70%-80%。</p>
+      <div class="source">钛媒体/知乎</div>
+      <a class="read-more" href="https://zhuanlan.zhihu.com/p/2027407706776971197" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-04-16</span>
+      </div>
+      <h3>阿里一周连推三款大模型，千问登顶全球调用榜</h3>
+      <p>4月上旬，阿里在一周内密集发布三款重磅模型，覆盖通用推理、多模态轻量化和长文档处理场景，API调用价格大幅下调，阿里千问登顶全球调用榜，国产大模型在性价比赛道持续发力。</p>
+      <div class="source">爱范儿/CSDN</div>
+      <a class="read-more" href="https://blog.csdn.net/weixin_45526015/article/details/160103208" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-04-16</span>
+      </div>
+      <h3>字节跳动上线全双工语音大模型，实现实时对话交互</h3>
+      <p>字节跳动推出全双工语音大模型，支持说话时同步聆听、实时打断与响应，实现真正意义上的自然语音交互，标志着语音AI从单轮问答迈向实时共话新阶段。</p>
+      <div class="source">爱范儿</div>
+      <a class="read-more" href="https://www.iheima.com/article-396057.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-04-16</span>
+      </div>
+      <h3>OpenAI完成1220亿美元融资，刷新商业史纪录</h3>
+      <p>2026年3月31日，OpenAI宣布完成史上最大单笔融资1220亿美元，估值突破3万亿美元。资金将主要用于推进星门计划超算基础设施建设及GPT-6后续研发。</p>
+      <div class="source">雪球</div>
+      <a class="read-more" href="https://xueqiu.com/4092447343/383054216" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-04-16</span>
+      </div>
+      <h3>中国十部门联合印发AI伦理审查办法，含72小时应急机制</h3>
+      <p>《人工智能科技伦理审查与服务办法》正式印发，这是中国首部覆盖AI研发与应用全周期的专门性伦理审查制度，设立6大审查重点及72小时应急审查机制。</p>
+      <div class="source">人人都是产品经理</div>
+      <a class="read-more" href="https://www.woshipm.com/ai/6376638.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-04-16</span>
+      </div>
+      <h3>Gemma 4开源霸榜，谷歌轻量级模型挑战闭源巨头</h3>
+      <p>谷歌开源模型Gemma 4在多项权威评测中登顶榜首，以极低参数量实现接近GPT-4级别性能，开发者社区反响热烈，进一步推动AI民主化进程。</p>
+      <div class="source">CSDN</div>
+      <a class="read-more" href="https://blog.csdn.net/lyy_kao/article/details/160027453" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-04-16</span>
+      </div>
+      <h3>全球AI市场年增长13.11%，创造就业超1160万</h3>
+      <p>《2026年人工智能趋势报告》显示，全球AI市场年增长13.11%，超17.1万家公司推动技术创新，全球AI相关就业岗位逾1160万，新增120万，AI黄金时代已全面开启。</p>
+      <div class="source">北京智源人工智能研究院</div>
+      <a class="read-more" href="https://hub.baai.ac.cn/view/51452" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>GPT-6横空出世，AI军备竞赛进入AGI冲刺阶段</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>GPT-6（代号Spud）于4月14日正式发布，支持200万Token上下文，性能较GPT-4o提升40%，官方声称AGI完成度达70-80%</li><li>OpenAI完成1220亿美元史上最大融资，国内阿里、字节、腾讯同步密集发布新模型，全球AI竞争烈度创历史峰值</li><li>中国十部门联合出台AI伦理审查办法，首次将AI全生命周期纳入监管，监管与创新并行成为新常态</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>本周AI领域的核心叙事是：以GPT-6发布为标志，大模型竞赛已从能力追赶升级为AGI冲刺。OpenAI用1220亿美元的弹药与20亿美元的研发投入，向市场传递出清晰信号：AGI不再是遥远愿景，而是可量化、可验证的工程目标。与此同时，国产大模型（阿里千问登顶调用榜、字节全双工语音）正在性价比与特定场景上形成差异化优势，而非单纯跟跑。政策层面，中国率先推出全周期AI伦理审查制度，72小时应急机制彰显监管决心，这将倒逼企业更早将合规能力内化为竞争壁垒。对于普通从业者而言：工具正在以肉眼可见的速度变强，能快速将新能力转化为生产力的人，将在这场变革中持续受益。</p>
+      <div class="highlight">AGI不是科幻，是工程。GPT-6的发布，让每个人都离那个节点近了一步。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>立即体验GPT-6：重点测试200万Token长文档处理能力，对比自己的常用任务场景，找到最适合的切入点</p></div><div class="worker-tip"><div class="num">2</div><p>关注字节全双工语音模型：如果你的工作涉及客服、会议记录、语音助手，这项技术值得优先调研和试用</p></div><div class="worker-tip"><div class="num">3</div><p>了解AI伦理审查新规：企业AI产品负责人需尽快梳理自身产品的合规风险点，提前布局72小时应急响应机制</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
