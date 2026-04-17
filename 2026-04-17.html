@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年4月17日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">4月17日（周五）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">7 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-04-13</span>
+      </div>
+      <h3>斯坦福《2026年AI指数报告》发布：中美AI差距仅剩2.7%，全球双极格局成型</h3>
+      <p>4月13日，斯坦福大学HAI发布长达423页的年度《2026人工智能指数报告》，核心结论震动业界：中国在顶级AI模型性能上已彻底抹平与美国的差距，两国竞争正式从美国领跑进入并驾齐驱阶段。中国在论文发表、被引频次、专利总量和工业机器人安装量等多项指标已超美国。报告还指出生成式AI三年内实现约53%全民普及率，速度超越PC和互联网。</p>
+      <div class="source">斯坦福HAI / 央视网 / 电子工程专辑</div>
+      <a class="read-more" href="https://www.eet-china.com/news/202604142516.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-04-17</span>
+      </div>
+      <h3>智元机器人今日召开2026合作伙伴大会：4款本体新品+4个AI大模型重磅亮相</h3>
+      <p>4月17日，智元机器人在上海举办2026合作伙伴大会，2500位来自34个国家和地区的合作伙伴参会，为历届规模最大。大会发布4款全新机器人本体、4个自研AI大模型、7套垂直行业解决方案及开放数据集。具身智能从概念进入实际落地加速期，多国合作伙伴入局标志着中国机器人产业全球化进入新阶段。</p>
+      <div class="source">IT之家 / 每经 / 新浪</div>
+      <a class="read-more" href="https://m.ithome.com/html/938317.htm" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-04-12</span>
+      </div>
+      <h3>MiniMax正式开源M2.7大模型，华为昇腾等六大芯片平台首日完成适配</h3>
+      <p>4月12日，MiniMax全球开源M2.7大模型，华为昇腾、摩尔线程、沐曦、昆仑芯、平头哥、NVIDIA等国内外主流芯片厂商首日完成适配，Together AI、Fireworks、Ollama等推理平台同步上线。M2.7支持全模态及Thinking模式，开源即实现六芯落地，标志着国产大模型的多芯生态日趋成熟。</p>
+      <div class="source">腾讯新闻 / 每经网 / SegmentFault</div>
+      <a class="read-more" href="https://news.qq.com/rain/a/20260413A03M3G00" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-04-13</span>
+      </div>
+      <h3>美团即将发布AI健康助手：问病问药+体检解读+家庭健康档案</h3>
+      <p>据蓝鲸科技报道，继问小团之后，美团即将发布新款AI产品，聚焦医药健康领域。小团健康管家功能覆盖健康咨询、问病问药、体检报告解读及家庭健康档案建立，定位为家庭级AI健康管理助手。大厂AI产品从效率工具向健康等垂直刚需场景深入，C端落地进入新阶段。</p>
+      <div class="source">蓝鲸科技 / AI早报</div>
+      <a class="read-more" href="https://baijiahao.baidu.com/s?id=1862312300044264487" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-04-12</span>
+      </div>
+      <h3>人形机器人半马完成全要素测试，荣耀自研机器人4月19日亮相亦庄赛道</h3>
+      <p>4月11日夜间，北京亦庄组织2026人形机器人半程马拉松全流程测试，70余支队伍含4支国际赛队同场夜测，模拟赛道通行、流程调度、应急保障等核心场景。荣耀自研机器人闪电与元气仔将参加4月19日正式比赛，成为全球首个由终端厂商派出的机器人马拉松选手，具身智能进入全民可感知的体育场景。</p>
+      <div class="source">央视新闻 / 荣耀官方</div>
+      <a class="read-more" href="https://baijiahao.baidu.com/s?id=1862312300044264487" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-04-17</span>
+      </div>
+      <h3>AMD创历史新高：CPU需求爆发驱动，AI芯片赛道双巨头格局加速成型</h3>
+      <p>4月16日美股，AMD收涨7.80%创历史新高，成交175.78亿美元，市场认为其是CPU需求爆发的最大受益者。同日英伟达成交263.93亿美元但微跌0.26%，连涨11日后首次回调，还发布了量子计算新开源模型。AI芯片赛道正式从英伟达独大走向双巨头竞跑，算力供给格局正在重塑。</p>
+      <div class="source">新浪财经 / 百家号</div>
+      <a class="read-more" href="https://baijiahao.baidu.com/s?id=1862669633658473179" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-med">🧠 科学</span>
+        <span class="news-date">2026-04-13</span>
+      </div>
+      <h3>苹果AI眼镜定型方案曝光：2027年初上市，无屏轻量化+visionOS深度协同</h3>
+      <p>据多方消息，苹果AI眼镜设计方案已定型，采用四款镜框加竖向椭圆镜头的无屏轻量化设计，搭载visionOS并深度协同iPhone与Mac。预计2027年初上市，瞄准日常佩戴的消费级AI可穿戴市场。这是苹果在Vision Pro高端路线之外的另一条平民化AI硬件赛道，有望重新定义AI眼镜品类。</p>
+      <div class="source">微博科技 / 多方爆料</div>
+      <a class="read-more" href="https://weibo.com/1639225703/QAArd14nK" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>中美AI竞争进入并驾齐驱新纪元——从论文到芯片到机器人，全产业链同步发力</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>斯坦福2026 AI指数报告核心数据：美国顶级模型仅领先中国2.7%，差距已从代际级缩小到统计误差级别。同时中国在论文数量、引用频次、专利总量和工业机器人安装量四项指标全面超越美国，AI竞争格局正式进入双极时代。</li><li>本周三条产业新闻形成完整闭环：MiniMax M2.7开源实现六芯落地（算法层）、AMD创历史新高与芯片格局重塑（算力层）、智元机器人发布4款本体+4个大模型（应用层），中国AI全产业链正在同步加速。</li><li>生成式AI三年内实现53%全民普及率，速度超过PC和互联网的普及曲线。美团和荣耀分别从健康管理和机器人马拉松两个方向将AI推入大众生活场景，AI正式从开发者工具变成国民基础设施。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>如果说过去两年AI竞争的核心叙事是美国引领中国追赶，那么斯坦福这份报告正式宣告了一个新时代的到来：中美AI并驾齐驱。2.7%的差距意味着什么？意味着在实际应用中几乎可以忽略不计。而更值得关注的是追赶发生在全产业链——不仅是模型层MiniMax M2.7六芯适配，还有芯片层AMD挑战英伟达、国产芯片多平台首日落地，以及应用层智元机器人34国合作伙伴、美团AI健康助手进入千家万户。本周新闻放在一起看，中国AI已经不是在某个单点追赶，而是在整条价值链上同步发力。53%的生成式AI普及率更是一个标志性数字：当超过一半的人口已经在使用AI，讨论焦点不再是要不要用AI，而是如何用得更好、用得更安全。</p>
+      <div class="highlight">中美AI差距2.7%——这不是终点，而是全球AI竞争从一超多强进入双极并驾的起跑线。真正的较量，现在才刚刚开始。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>斯坦福报告的实操启示：生成式AI普及率已达53%，你的同事和客户大概率已经在用AI。如果还在观望，差距正在加速拉大。本周找一个重复性工作流（周报整理、数据汇总、邮件回复），用AI工具跑一遍，亲自感受效率差。</p></div><div class="worker-tip"><div class="num">2</div><p>MiniMax M2.7开源+六芯适配意味着企业部署AI的硬件门槛和成本在快速下降。如果你的团队在评估自建AI能力，现在是重新做选型评估的好时机——半年前的成本测算可能已经过时了。</p></div><div class="worker-tip"><div class="num">3</div><p>今天智元机器人大会值得追踪：4款新本体+4个大模型+7套行业方案。如果你所在行业涉及制造、物流、仓储或服务，关注具体行业解决方案，评估具身智能对你业务的适用性——机器人从展会概念到实际部署的转折点可能比想象的更近。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
