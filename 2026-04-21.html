@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年4月21日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">4月21日（周二）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-04-21</span>
+      </div>
+      <h3>MIT今日首发《10件当下最重要的AI事》：AI伴侣、生成式编程、超大规模数据中心入选</h3>
+      <p>4月21日，麻省理工学院在EmTech AI大会上首发年度清单《10件当下最重要的AI事》。不同于以往的'十项突破技术'，新清单专注AI本身，涵盖AI伴侣、生成式编程、超大规模数据中心、基础模型治理与开源生态、多模态实时感知、AI安全与红队研究、边缘AI与个人数据主权、医疗与生物AI产业化等十大方向，覆盖技术、政策、治理与社会影响。</p>
+      <div class="source">MIT Technology Review / 搜狐</div>
+      <a class="read-more" href="https://roll.sohu.com/a/1009504000_122413768" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-04-20</span>
+      </div>
+      <h3>AI行业冰火两重天：OpenAI高管离职、Sora关停，具身智能百日吸金345亿</h3>
+      <p>本周AI行业格局分化加剧：一边是OpenAI高管离职、Sora项目关停，Meta万人裁员由AI驱动，字节跳动2025年净利润同比暴跌超70%；另一边，具身智能赛道百日吸金345亿元，它石智航创下单笔融资纪录，资本正在加速从大模型概念向硬件落地转移。</p>
+      <div class="source">软盟资讯 / 快科技</div>
+      <a class="read-more" href="https://news.softunis.com/ai" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-04-14</span>
+      </div>
+      <h3>GPT-6发布一周：5万亿参数+200万Token，Symphony全模态架构重新定义AI能力边界</h3>
+      <p>4月14日发布的GPT-6（代号Spud）已运行满一周。5-6万亿参数、200万Token上下文窗口、Symphony全模态架构——综合性能较GPT-5.4提升40%。首周用户反馈显示，长文档处理、复杂推理和跨模态任务体验有质的飞跃，ChatGPT Plus和API开发者均已可上手使用。</p>
+      <div class="source">OpenAI / 腾讯新闻</div>
+      <a class="read-more" href="https://apisitlee.com/gpt-6-official-release-5-changes-impact-2026/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-04-15</span>
+      </div>
+      <h3>斯坦福《2026年AI指数报告》：中国AI模型性能差距缩至2.7%，六巨头挤进同一分档</h3>
+      <p>斯坦福HAI发布243页年度报告，核心结论：AI扩张速度已超过所有配套系统的适应能力。中美顶尖模型差距缩至2.7%（Anthropic 1503、xAI 1495、Google 1494、OpenAI 1481、阿里1449、DeepSeek 1424），竞争从性能转向成本与可靠性。美国私人AI投资2859亿美元是中国的23倍，但中国论文、引用和工业机器人装机量全面领先。</p>
+      <div class="source">斯坦福大学HAI / 人民日报</div>
+      <a class="read-more" href="https://paper.people.com.cn/rmrb/pc/content/202604/15/content_30151310.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-04-20</span>
+      </div>
+      <h3>工信部部署国家高新区AI产业，智元机器人发布大模型平台打造具身智能开放生态</h3>
+      <p>上周末两件事标志具身智能进入新阶段：工信部正式部署国家高新区提升AI产业发展能级，从政策层面加速'人工智能+'基础设施建设；智元机器人召开全球合作伙伴大会，发布AI大模型平台与开放生态战略，宣告具身智能从实验室走向规模化产业合作。</p>
+      <div class="source">CSDN / AI早报</div>
+      <a class="read-more" href="https://www.aoyii.com/ai-morning-20260420" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-04-08</span>
+      </div>
+      <h3>阿里Qwen3.6-Plus日调用量破1.4万亿Token登顶OpenRouter，国产模型全球化提速</h3>
+      <p>阿里一周连发三款模型（Qwen3.5-Omni全模态、Wan2.7-Image图像生成、Qwen3.6-Plus旗舰语言模型）后，Qwen3.6-Plus在OpenRouter调用量激增711%，单日突破1.4万亿Token，创平台历史纪录。这标志着中国AI模型在工程化与规模化应用方面取得实质突破。</p>
+      <div class="source">CSDN / IT之家</div>
+      <a class="read-more" href="https://blog.csdn.net/weixin_41908519/article/details/159963116" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-04-11</span>
+      </div>
+      <h3>谷歌Gemma 4全面开源Apache 2.0：端侧部署门槛骤降，24小时GitHub星标破5万</h3>
+      <p>谷歌DeepMind零预热发布Gemma 4系列，采用Apache 2.0许可证彻底放开商用。发布24小时内GitHub星标突破5万，端侧部署门槛骤降——这意味着开发者可以在手机和边缘设备上运行高质量大模型，AI普惠化进入新阶段。</p>
+      <div class="source">技术栈 / CSDN</div>
+      <a class="read-more" href="https://jishuzhan.net/article/2043203527510654978" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-med">🧠 科学</span>
+        <span class="news-date">2026-04-21</span>
+      </div>
+      <h3>AI应用深水区：企业投入不小产出不稳，AI原生思路成破局关键</h3>
+      <p>产业观察文章指出AI应用正进入深水区：企业普遍认可AI价值但落地困难重重——数据分散、标准不一、投入产出滞后、局部试点难以全局复制。业内共识是以AI原生思路破局：不是在既有系统上加智能功能，而是以AI为核心重构产品、流程与组织架构，让智能从助手走向可自主执行的生产力单元。</p>
+      <div class="source">行业观察</div>
+      <a class="read-more" href="http://m.xdjasp.cn/weary/453363_5153.htm" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>当AI速度超过一切配套系统：斯坦福报告的核心警示，正在MIT清单和产业现实中得到验证</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>斯坦福《2026年AI指数报告》一句话总结全局：AI扩张的速度，已超过了围绕它建立的所有系统——治理框架、评估方法、教育体系和数据基础设施的适应能力，无一跟上了技术本身的步伐。这不是危言耸听，而是243页数据支撑的结论。</li><li>MIT今天发布的年度清单恰好印证了这一判断——入选的十大方向中，至少一半（基础模型治理、AI安全与红队、边缘AI与数据主权、医疗AI产业化）本质上都是在回答同一个问题：配套系统如何追上AI的速度？</li><li>产业端的冰火两重天则是这一断裂的直接体现：OpenAI高管离职、Sora关停、字节净利暴跌70%说明有模型不等于有利润；具身智能百日吸金345亿则说明资本正在从概念层向能落地、能算账的硬件和场景转移。速度不等于价值，AI行业正在经历一次残酷但健康的价值筛选。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>本周最值得深想的不是GPT-6有多强——它确实很强，5万亿参数、200万Token上下文——而是斯坦福报告里那句冷静到刺骨的判断：所有配套系统都没跟上。这句话解释了为什么OpenAI一边发布最强模型一边高管离职，为什么字节净利暴跌70%却仍在疯狂投入AI，为什么具身智能明明还在早期就已经吸金345亿。答案是：模型能力的提升是指数级的，但治理、教育、评估、商业化这些配套系统的演进是线性的。当指数曲线和线性曲线之间的剪刀差越来越大，行业就会出现今天这种冰火两重天——能力爆炸但价值兑现困难。MIT今天发布的清单实际上是在给这个配套缺口画地图：AI伴侣背后是伦理框架缺失，生成式编程背后是代码安全瓶颈，超大规模数据中心背后是能耗和社区冲突。对打工人来说，这意味着一个反直觉的机会：当前最稀缺的不是会用AI的人，而是能帮AI安全落地的人——懂治理、懂评估、懂把AI能力转化为可算账的商业价值的人。</p>
+      <div class="highlight">模型能力的提升是指数级的，配套系统的演进是线性的——这条剪刀差，才是理解当下AI行业冰火两重天的核心密码。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>读一读斯坦福报告的核心发现摘要（中译本已有下载）。243页不用全读，但中美差距缩至2.7%、六巨头同档竞争这个结论值得内化——它意味着未来一年，模型选型的决策逻辑将从谁最强转向谁最稳、谁最便宜、谁在我的场景里最好用。</p></div><div class="worker-tip"><div class="num">2</div><p>今天MIT清单的核心逻辑适用于你的工作：列出你负责领域中AI已经能做但配套没跟上的事——可能是数据标准、审批流程、安全规范、或团队技能。这些配套缺口就是你接下来最大的价值增长点。</p></div><div class="worker-tip"><div class="num">3</div><p>GPT-6已发布一周，如果你还没测试，本周是最佳窗口。重点测试两个场景：200万Token长文档处理（把你最长的分析报告/会议记录/代码库喂进去），和跨模态任务（文本+图片+表格的综合理解）。这两个能力是GPT-6相比前代最大的实用跃升。</p></div><div class="worker-tip"><div class="num">4</div><p>关注具身智能赛道的信号：345亿资金涌入、智元机器人发布开放生态。即使你不在机器人行业，AI+硬件落地的趋势也会影响到你——未来的办公自动化、仓储物流、制造业升级都会从中受益。现在开始了解这个赛道，为下一波机会做准备。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
