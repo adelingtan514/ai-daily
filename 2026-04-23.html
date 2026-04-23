@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年4月23日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">4月23日（周四）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-04-23</span>
+      </div>
+      <h3>GPT-6震撼发布：5-6万亿参数、200万Token上下文窗口</h3>
+      <p>OpenAI于4月14日正式发布GPT-6（内部代号Spud/土豆），参数量达5-6万亿，原生多模态统一架构，支持文本、图像、音频、视频，上下文窗口200万Token，是GPT-5.4的两倍。训练耗资超20亿美元，在得克萨斯州Stargate数据中心完成。</p>
+      <div class="source">人人都是产品经理</div>
+      <a class="read-more" href="https://www.woshipm.com/ai/6376638.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-04-23</span>
+      </div>
+      <h3>斯坦福2026年AI指数报告：中国多项指标反超美国</h3>
+      <p>斯坦福大学HAI发布第九版AI指数年度报告，美国在顶级AI模型产出数量及高影响力专利仍领先，但中国在论文发表数量、论文被引频次、专利产出总量以及工业机器人安装量等多项关键指标上已占据优势，中美AI竞争格局深刻演变。</p>
+      <div class="source">央视网</div>
+      <a class="read-more" href="https://news.cctv.com/2026/04/15/ARTIigfeEmTEIzE50U21Z5OL260415.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-04-23</span>
+      </div>
+      <h3>福布斯AI 50榜单：OpenAI和Anthropic累计融资逾1.66万亿元</h3>
+      <p>福布斯发布2026年全球最具潜力非上市AI企业50强榜单，共有20家新企业上榜。OpenAI与Anthropic两家巨头累计融资2426亿美元（约1.66万亿元人民币），约占榜单企业总融资额的绝大部分，资本高度集中于头部AI公司。</p>
+      <div class="source">IT之家/福布斯</div>
+      <a class="read-more" href="https://www.msn.cn/zh-cn/news/other/ar-AA21nKQr" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-04-23</span>
+      </div>
+      <h3>单月超10款大模型集中发布，AI竞争进入深水区</h3>
+      <p>2026年4月，全球AI进入史上密度最高的模型发布期。OpenAI、Anthropic、Google、DeepSeek、阿里、字节跳动等厂商齐发新模型，竞争从参数竞赛转向推理能力+智能体+场景闭环的深水区较量。国产大模型集体崛起，阿里千问登顶全球调用榜。</p>
+      <div class="source">知乎/搜狐</div>
+      <a class="read-more" href="https://zhuanlan.zhihu.com/p/2029888482148124575" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-04-23</span>
+      </div>
+      <h3>谷歌发布开源大模型Gemma 4，AI换脸合成禁令同步出台</h3>
+      <p>谷歌推出新一代开源模型Gemma 4，进一步加码开源生态布局。与此同时，行业组织发布AI换脸合成禁令，标志着AI内容监管从倡议走向规则落地，全球AI治理框架加速协同构建。</p>
+      <div class="source">博客园</div>
+      <a class="read-more" href="https://www.cnblogs.com/terrorpig/p/19879338" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-04-23</span>
+      </div>
+      <h3>十五五开局：中国全面推进人工智能+赋能千行百业</h3>
+      <p>2026年是十五五开局之年，国家明确将AI融入产业发展、文化建设、民生保障、社会治理，全面推进人工智能+行动。Gartner发布2026年十大战略技术趋势，AI被列为最核心颠覆性力量。</p>
+      <div class="source">清华大学</div>
+      <a class="read-more" href="https://www.tsinghua.edu.cn/info/1182/124190.htm" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-04-23</span>
+      </div>
+      <h3>全球AI市场年增13.11%，就业岗位突破1160万</h3>
+      <p>2026年人工智能趋势报告显示，全球AI市场年增长率达13.11%，超17.1万家公司和4.62万家初创企业推动技术创新，行业就业岗位逾1160万，新增120万。报告基于对900多万初创企业的追踪分析。</p>
+      <div class="source">北京人工智能学院</div>
+      <a class="read-more" href="https://hub.baai.ac.cn/view/51452" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-04-23</span>
+      </div>
+      <h3>具身智能百亿融资涌入，AI智能体应用层全面爆发</h3>
+      <p>2026年4月，具身智能赛道迎来百亿级融资潮，AI智能体从技术演示迈向规模化商业落地。AI芯片算力实现新突破，全球AI基础设施投资持续加码，人工智能+产业化进程全面提速。</p>
+      <div class="source">搜狐科技</div>
+      <a class="read-more" href="https://www.sohu.com/a/1010838825_122523043" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>GPT-6发布与中美AI竞争格局重塑</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>GPT-6（代号土豆）于4月14日发布，参数量5-6万亿，训练耗资超20亿美元，开创原生多模态统一架构新范式</li><li>斯坦福2026年AI指数报告：中国在论文量、引用量、专利总量、工业机器人安装量上全面反超美国</li><li>4月单月超10款主流大模型集中发布，竞争焦点从参数军备竞赛转向推理能力、智能体落地与场景闭环</li><li>福布斯AI 50强榜单：OpenAI+Anthropic累计融资1.66万亿元，资本高度向头部集中</li><li>全球AI市场年增13.11%，就业岗位突破1160万，具身智能单月吸引百亿级融资</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>2026年4月是AI史上里程碑式的一个月。GPT-6的发布标志着大模型从能力扩展迈入架构重构阶段——原生多模态不是拼接，而是让AI从感知底层就实现统一表征。与此同时，中美AI竞争格局正在悄然重塑：美国仍把持顶级模型产出，但中国在知识积累（论文、专利）与工业应用（机器人）的全面反超，意味着这场竞争已从实验室赛跑演变为产业化角力。对每位从业者而言，现在最重要的问题不是AI能做什么，而是我的工作流里AI替换了哪一环。</p>
+      <div class="highlight">能力越大，代号越土——GPT-6叫土豆，但它正在重新定义智能的边界。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>实操：立即体验GPT-6的200万Token长上下文能力，尝试将整个项目文档/代码库一次性投喂分析，寻找你的场景突破口</p></div><div class="worker-tip"><div class="num">2</div><p>洞察：关注推理能力+Agent+场景闭环三角模型——这是2026年下半年AI落地的核心评估框架，也是选工具、选合作伙伴的核心维度</p></div><div class="worker-tip"><div class="num">3</div><p>视野：中国AI在论文和专利上的反超，意味着国产模型技术天花板快速抬升，建议持续关注DeepSeek、千问等国产模型最新版本</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
