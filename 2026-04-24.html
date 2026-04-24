@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年4月24日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">4月24日（周五）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-04-14</span>
+      </div>
+      <h3>GPT-6「土豆」正式发布：5-6万亿参数、200万Token，OpenAI宣告AGI完成70%-80%</h3>
+      <p>2026年4月14日，OpenAI正式发布代号「Spud（土豆）」的GPT-6，耗时18个月、投入20亿美元、调用10万张H100 GPU。核心亮点：5-6万亿参数、200万Token上下文窗口、综合性能较GPT-5.4提升约40%，代码/推理/Agent能力全面超越前代。奥特曼宣布AGI已完成70%-80%，公司核心部门重组为「AGI部署部」，标志着AI正式迈向通用智能前夜。</p>
+      <div class="source">OpenAI官方 / 知乎 / 澎湃新闻</div>
+      <a class="read-more" href="https://zhuanlan.zhihu.com/p/2027407706776971197" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-04-15</span>
+      </div>
+      <h3>Anthropic年化收入4个月飙涨至300亿美元，反超OpenAI，IPO最快10月落地</h3>
+      <p>据腾讯AI快讯，Anthropic年化收入仅用4个月便从90亿美元激增至300亿美元，核心驱动力是Claude Code在企业编程市场的爆发式增长——SWE-bench代码能力以80.8%领跑全行业。公司已锁定3.5吉瓦TPU算力，IPO计划最快今年10月落地，估值预计冲击千亿美元级别。</p>
+      <div class="source">腾讯AI互联 / 今日头条</div>
+      <a class="read-more" href="https://pd.qq.com/g/pd26279654/post/B_0b4edf695d340f001441152192226551400X60" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-04-14</span>
+      </div>
+      <h3>DeepSeek V4月底发布：全面转向华为昇腾芯片，国产算力自主闭环正式形成</h3>
+      <p>据多方信源，DeepSeek V4将于4月底正式发布，首发完整适配华为昇腾芯片，彻底告别英伟达依赖。DeepSeek团队过去数月与华为深度合作，对底层推理程序进行重写和验证。此举被行业视为国产AI「算法+算力」双自主的历史性节点，也是在美国芯片出口管制加剧背景下中国AI产业的战略级突围。</p>
+      <div class="source">今日头条 / 快科技</div>
+      <a class="read-more" href="https://www.toutiao.com/article/7628467839682347556/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-med">🧠 科学</span>
+        <span class="news-date">2026-04-15</span>
+      </div>
+      <h3>斯坦福《2026 AI指数报告》：中美模型性能差距缩至2.7%，中国论文引用量全球第一</h3>
+      <p>2026年4月13日，斯坦福大学HAI发布第九版《AI Index Report》。报告揭示：美国虽仍领跑顶级模型数量和高影响力专利，但中美大模型综合性能差距已收窄至2.7%。中国在论文发表数量、被引频次、专利总量和工业机器人安装量均已超越美国。报告同时指出：AI训练成本两年内下降95%，已有30%的企业代码由AI生成。</p>
+      <div class="source">央视网 / 腾讯新闻 / 斯坦福HAI</div>
+      <a class="read-more" href="https://news.cctv.com/2026/04/15/ARTIigfeEmTEIzE50U21Z5OL260415.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-04-15</span>
+      </div>
+      <h3>具身智能产线规模化：智元精灵G2在龙旗科技工厂完成全球首个量产部署</h3>
+      <p>据AI日报，智元精灵G2已在龙旗科技工厂实现全球首个具身智能产线规模化落地，标志着机器人从实验室原型正式进入工厂量产部署阶段。2026年4月，具身智能赛道同步迎来百亿融资潮，产业链开始从「整机竞争」向「感知-执行-调度」三层分工的成熟生态演进。</p>
+      <div class="source">AI日报 / 腾讯AI互联</div>
+      <a class="read-more" href="https://blog.my321.cn/ai-daily-20260415/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-04-20</span>
+      </div>
+      <h3>英伟达AI加速芯片设计：10名工程师10个月的工作，AI一晚搞定</h3>
+      <p>英伟达宣布，其AI系统已能完成「标准单元库移植」这一复杂芯片设计任务——传统需8名工程师耗时约10个月，AI仅用一晚即可完成，且错误率大幅低于人工。这意味着AI正在以惊人速度渗透到工程设计最核心的环节，芯片制造周期将被系统性压缩，英伟达的技术护城河将因此进一步加深。</p>
+      <div class="source">技术栈 / jishuzhan.net</div>
+      <a class="read-more" href="https://jishuzhan.net/article/2045871296593068034" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-04-09</span>
+      </div>
+      <h3>OpenAI完成人类商业史最大单轮融资：1220亿美元，估值8520亿</h3>
+      <p>2026年4月，OpenAI完成迄今为止人类商业史上规模最大的单轮私募融资——1220亿美元，公司估值升至8520亿美元。资金将主要用于Stargate超级算力集群扩建和AGI研发冲刺。与此同时，奥特曼在斯坦福演讲中表示：「我们正在训练世界上最好的模型，AGI近在眼前。」</p>
+      <div class="source">澎湃新闻 / 搜狐科技</div>
+      <a class="read-more" href="https://www.thepaper.cn/newsDetail_forward_32923894" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-04-15</span>
+      </div>
+      <h3>AI编程工具进入「自主Agent时代」：Claude Code领跑，Cursor用户破千万</h3>
+      <p>2026年4月，AI编程赛道迎来质变：Anthropic的Claude Code凭借80.8%的SWE-bench评分成为企业编程首选，直接驱动Anthropic收入4个月暴增3倍。Cursor宣布月活用户突破千万，AI代码生成占比在头部科技公司内部已超过40%。行业共识正在形成：AI编程工具已从「辅助补全」升级为「自主任务执行」的Agent范式。</p>
+      <div class="source">腾讯AI互联 / AI日报</div>
+      <a class="read-more" href="https://blog.my321.cn/ai-daily-20260415/" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>GPT-6发布、Anthropic收入暴涨、DeepSeek换芯——2026年4月，AI军备竞赛进入「有史以来最密集的爆发期」</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>GPT-6于4月14日正式发布：5-6万亿参数、200万Token上下文、性能较上代提升40%，奥特曼宣称「AGI已完成70-80%」，OpenAI同步完成1220亿美元融资，估值8520亿美元，创人类商业史单轮融资纪录。</li><li>Anthropic 4个月内年化收入从90亿飙至300亿美元，Claude Code凭借80.8% SWE-bench评分成为企业编程第一选择，IPO最快10月落地；与此同时，DeepSeek V4宣布月底发布并首发适配华为昇腾芯片，国产AI算力自主闭环正式形成。</li><li>斯坦福《2026 AI指数报告》揭示：AI训练成本两年内下降95%，中美模型性能差距收窄至2.7%，30%的企业代码已由AI生成；具身智能产线规模化落地（智元G2进驻龙旗工厂），英伟达AI将芯片设计周期从10个月压缩至1晚。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>这一周的AI新闻，如果用一句话总结，就是：「所有人同时踩下了油门。」GPT-6发布、Anthropic收入暴涨、DeepSeek换芯国产算力、具身智能进厂量产、芯片设计AI化——这些不是分散在一年里的事件，而是同时发生在4月中旬的同一两周内。斯坦福报告里有一个数字值得反复咀嚼：AI训练成本两年内下降了95%。这意味着两年前需要1亿美元才能训练的模型，今天只需要500万美元。成本曲线的崩塌，正在把「只有巨头才能做的事」变成「中等团队也能做的事」。而当Anthropic凭借一个Claude Code产品在4个月内把收入翻了3倍，它证明的不仅仅是「AI编程工具有市场」——它证明的是：在AI的应用层，谁先把能力落地成「能用的工具」，谁就能拿到指数级的增长红利。这场竞争的终局不是「谁的模型参数最多」，而是「谁的产品最先成为用户离不开的基础设施」。</p>
+      <div class="highlight">「AI训练成本2年下降95%」——不是技术参数，是一个改变竞争格局的经济学事件：它正在把AI能力从大公司的特权，变成每个团队都买得起的生产力工具。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>本周最值得行动的一件事：测试 Claude Code 或 Cursor。Anthropic 4个月收入从90亿到300亿，核心就靠这一个产品。如果你的日常工作涉及任何代码、脚本、SQL、数据处理，花30分钟上手感受一下「自主Agent级别的编程助手」是什么体验——这不是升级版自动补全，是另一个维度的工具。</p></div><div class="worker-tip"><div class="num">2</div><p>关注 GPT-6 的 200万Token 上下文：这个参数对大多数人意味着什么？意味着你可以把整个项目文档、代码仓库、历史记录一次性丢给AI，让它基于完整上下文做分析和建议。建议你整理一个「最希望AI完整理解的场景」，GPT-6开放后优先去验证。</p></div><div class="worker-tip"><div class="num">3</div><p>DeepSeek V4 月底发布，关注定价策略：过去DeepSeek以极低价格冲击市场。如果V4在华为昇腾上跑通，意味着国内企业使用国产大模型的合规性和成本都会进一步优化。对在国企/金融/政务场景工作的你，这可能是推动AI落地的重要窗口期。</p></div><div class="worker-tip"><div class="num">4</div><p>斯坦福报告说「30%的企业代码已由AI生成」——这是全球平均数。你所在的团队是高于还是低于这个数字？如果远低于，这是一个战略性的效率洼地；如果高于，恭喜你，但要思考：AI生成的代码，你们的review流程是否跟上了？</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
