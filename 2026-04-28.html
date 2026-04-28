@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年4月28日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">4月28日（周二）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">7 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-04-28</span>
+      </div>
+      <h3>GPT-5.5 与 DeepSeek V4 同日发布，AI 大模型竞争白热化</h3>
+      <p>2026年4月24日，OpenAI 发布 GPT-5.5，定位「面向 Agent 的新一代智能」，强调自主规划执行；DeepSeek 同日推出 1.6T 参数开源 MoE 模型 DeepSeek-V4，支持 1M 上下文、Apache 2.0 开源，Codeforces 评分 3206 超越 GPT-5.4，同台对决引发全球关注。</p>
+      <div class="source">知乎 / ofox.ai</div>
+      <a class="read-more" href="https://zhuanlan.zhihu.com/p/2031122209146679933" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-04-28</span>
+      </div>
+      <h3>DeepSeek V4 深度解析：百万 Token 时代的效率革命</h3>
+      <p>DeepSeek-V4 系列包含 Pro（1.6T 参数）和 Flash（284B）两版，均采用 MoE 架构，支持百万级超长上下文、全球实时知识储备。API 接口兼容 OpenAI 与 Anthropic 双标准，价格大幅低于闭源竞品，开发者迁移成本极低。</p>
+      <div class="source">腾讯新闻 / DeepSeek 官方</div>
+      <a class="read-more" href="https://news.qq.com/rain/a/20260427A01ICN00" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-04-28</span>
+      </div>
+      <h3>四大旗舰模型横评：Kimi K2.6 / Claude Opus 4.7 / GPT-5.5 / DeepSeek V4</h3>
+      <p>4月第三周，四款旗舰模型同周亮相。价格差距高达 200 倍（$0.14 ~ $30/M tokens），上下文从 200K 到 1M 不等，开源与闭源两极分化。DeepSeek V4 在价格和中文能力上领先，Claude Opus 4.7 在推理深度上表现突出。</p>
+      <div class="source">博客园</div>
+      <a class="read-more" href="https://www.cnblogs.com/qiniushanghai/p/19925673" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-04-28</span>
+      </div>
+      <h3>阿里云 Qwen3.6-Max-Preview 六大编码基准夺冠</h3>
+      <p>阿里云预览最强模型 Qwen3.6-Max-Preview，在 SWE-Bench Pro、Terminal-Bench 2.0 等六大编码基准测试中取得第一，高级推理与中文理解分别较上一代提升 2.3% 和 5.3%，国产大模型在全球竞争中持续领跑。</p>
+      <div class="source">腾讯云开发者社区</div>
+      <a class="read-more" href="https://cloud.tencent.com/developer/article/2658851" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-04-28</span>
+      </div>
+      <h3>斯坦福《2026 年 AI 指数报告》：全球投资创新高，监管全面收紧</h3>
+      <p>斯坦福大学 HAI 发布 423 页《2026 AI 指数报告》，指出全球 AI 市场年增 13.11%，超 17.1 万家公司参与竞争。欧盟 AI 法案正式生效，中国相关标准同步出台，AI 发展告别野蛮生长阶段，合规化成为新门槛。</p>
+      <div class="source">新华网 / 斯坦福 HAI</div>
+      <a class="read-more" href="https://www.xinhuanet.com/liangzi/20260417/1d935fe6f2f04c9cb07afe3a38e76db1/c.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-04-28</span>
+      </div>
+      <h3>上交大安泰发布《2026年"AI+"行业发展蓝皮书》</h3>
+      <p>蓝皮书显示，AI+ 正从单点技术突破转向「模型-算力-应用-资本-治理」五维协同演进。具身智能成为资本新风口，4月模型发布密集达「每周一旗舰」频率，AI 产业进入系统性变革新阶段。</p>
+      <div class="source">光明网</div>
+      <a class="read-more" href="https://difang.gmw.cn/sh/2026-04/24/content_38728423.htm" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-04-28</span>
+      </div>
+      <h3>Meta 与 AWS 签署数十亿美元协议，押注具身智能 CPU 算力</h3>
+      <p>Meta 与亚马逊 AWS 签署多年期合作，在 AWS 数据中心部署数千万个 Graviton5 ARM CPU 核心，专为具身智能 AI 工作负载（实时推理、代码生成、多步骤任务编排）设计，Meta 由此成为全球最大 Graviton 客户。</p>
+      <div class="source">aibars.net</div>
+      <a class="read-more" href="https://www.aibars.net/zh/library/ai-news/list" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>开源 vs 闭源的终极对决：DeepSeek V4 与 GPT-5.5 同日登场意味着什么？</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>2026年4月24日，OpenAI GPT-5.5、Anthropic Claude Opus 4.7、DeepSeek V4 在同一周内相继发布，模型迭代密度创历史新高</li><li>DeepSeek V4 以 Apache 2.0 全开源、1.6T MoE 参数、1M 超长上下文，价格仅为闭源竞品的 1/200，直接挑战 OpenAI 的商业模式</li><li>斯坦福《2026 AI 指数报告》确认：全球 AI 投资创历史新高，欧盟 AI 法案生效，中国 AI 标准同步落地，监管时代全面开启</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>这一周的模型混战，本质上是两条路线的系统性对撞：OpenAI 用 GPT-5.5 押注 Agent 自主化，把 AI 从「回答问题」推向「解决问题」；DeepSeek 则用极致的开源与性价比，把顶尖模型能力下沉给全球开发者。对普通用户而言，最直接的红利是：同等智能水平的 AI，使用成本正在以数量级速度下降。而对企业而言，「选哪家」的问题正在变成「怎么用」——合规、安全、落地才是真正的护城河。</p>
+      <div class="highlight">「AI 的竞争，已经从少数巨头的垄断，变成了所有人都能参与的游戏。」——中国电子信息产业发展研究院</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>🤖 试用 DeepSeek V4 API：兼容 OpenAI 接口，只需改一行 model 参数，可低成本替换现有 AI 工作流</p></div><div class="worker-tip"><div class="num">2</div><p>📊 关注斯坦福 AI 指数报告：423 页深度分析覆盖能力、投资、监管三大维度，是了解全球 AI 格局的最佳年度参考</p></div><div class="worker-tip"><div class="num">3</div><p>⚖️ 提前学习 AI 合规知识：欧盟 AI 法案已生效，国内标准同步落地，涉及 AI 产品的团队需尽早排查合规风险</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
