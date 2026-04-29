@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年4月29日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">4月29日（周三）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-04-29</span>
+      </div>
+      <h3>GPT-6官宣发布，AI大模型竞争进入深水区</h3>
+      <p>2026年4月，OpenAI正式官宣GPT-6发布，配合斯坦福AI指数报告出炉与国产大模型集体爆发，AI产业全景图基本成型。一个月内超10个主流大模型集中发布，创AI历史纪录。</p>
+      <div class="source">CSDN</div>
+      <a class="read-more" href="https://blog.csdn.net/m0_74961596/article/details/160313577" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-04-29</span>
+      </div>
+      <h3>阿里Qwen3.6-Plus登顶国产编程榜，一个半月完成迭代</h3>
+      <p>阿里巴巴4月2日发布Qwen3.6-Plus，在SWE-bench编程评测中超越2至3倍参数量的GLM-5、Kimi-K2.5等模型。千问从3.5到3.6仅用一个半月，迭代速度前所未有。4月15日进一步开源了Qwen3.6-35B-A3B。</p>
+      <div class="source">搜狐</div>
+      <a class="read-more" href="https://www.sohu.com/a/1010838825_122523043" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-04-29</span>
+      </div>
+      <h3>斯坦福发布2026年AI指数报告：AI扩张速度超越一切监管框架</h3>
+      <p>斯坦福HAI第九版AI Index Report 2026核心结论：AI扩张速度已超过所有治理框架、评估方法、教育体系和数据基础设施的适应能力，无一跟上技术本身的步伐。</p>
+      <div class="source">腾讯新闻</div>
+      <a class="read-more" href="https://news.qq.com/rain/a/20260416A067T200" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-04-29</span>
+      </div>
+      <h3>全球AI市场年增13.11%，就业岗位突破1160万</h3>
+      <p>2026年人工智能趋势报告显示，超17.1万家公司和4.62万家初创企业推动技术创新，AI相关就业岗位逾1160万，新增120万。报告基于对900多万初创企业的追踪分析。</p>
+      <div class="source">北京智源人工智能研究院</div>
+      <a class="read-more" href="https://hub.baai.ac.cn/view/51452" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-04-29</span>
+      </div>
+      <h3>英特尔股价飙升24%：AI推理需求重塑CPU与GPU格局</h3>
+      <p>英特尔Q1营收达135.8亿美元，连续第六次超出预期。受AI推理和智能体工作负载驱动，至强6服务器CPU需求爆炸性增长，CPU与GPU比例从1:8收紧至1:1，供应紧张并重塑半导体经济。</p>
+      <div class="source">AI Bars</div>
+      <a class="read-more" href="https://www.aibars.net/zh/library/ai-news/list" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-04-29</span>
+      </div>
+      <h3>四大模型横评：Kimi K2.6 vs Claude Opus 4.7，2026年4月最强之争</h3>
+      <p>2026年4月最新横评显示，四大主流模型在编程、推理、创作等维度各有侧重。研究者建议根据预算和具体场景选择模型，没有一款模型在所有维度全面领先。</p>
+      <div class="source">博客园</div>
+      <a class="read-more" href="https://www.cnblogs.com/qiniushanghai/p/19925673" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-04-29</span>
+      </div>
+      <h3>AI从工具向智能体演进，2026年成分水岭之年</h3>
+      <p>业内分析指出，2026年AI工具市场最显著趋势是从工具向智能体演进——AI不再只是执行指令的工具，而是能自主理解需求、规划任务、执行操作的智能伙伴，全面渗透编程、创作、分析等核心工作场景。</p>
+      <div class="source">AI Product Hub</div>
+      <a class="read-more" href="https://aiproducthub.cn/wpnote/ai-breaking-news-april-2026/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-04-29</span>
+      </div>
+      <h3>交大安泰发布AI+行业发展蓝皮书，探讨产业变革路径</h3>
+      <p>上海交通大学安泰经济与管理学院4月19日发布2026年人工智能+行业发展蓝皮书，众多行业专家共同探讨人工智能驱动下的技术重构、产业变革与发展路径。</p>
+      <div class="source">交大新闻网</div>
+      <a class="read-more" href="https://news.sjtu.edu.cn/jdyw/20260428/222210.html" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>大模型竞争白热化：GPT-6登场，国产模型全面突围</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>2026年4月单月超10个主流大模型集中发布，创AI历史纪录，OpenAI GPT-6正式官宣</li><li>阿里Qwen3.6-Plus编程能力登顶国产榜，从3.5到3.6仅耗时一个半月，迭代速度刷新认知</li><li>斯坦福2026年AI指数报告警告：AI扩张已超越所有监管、评估和教育体系的适应速度</li><li>英特尔受AI推理需求爆发单季营收135.8亿美元，CPU与GPU配比从1:8骤降至1:1</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>2026年4月堪称AI史上信息密度最高的一个月：GPT-6问世、国产大模型集体爆发、资本疯狂涌入——这不是一场技术竞赛，而是一场关于谁来定义下一代AI基础设施的战略卡位。斯坦福报告的警告值得深思：当技术以周为单位迭代，而监管以年为单位响应，留给人类社会想清楚再做的窗口正在急剧收窄。对普通从业者而言，真正的挑战不是用不用AI，而是能否赶上AI能力跃升的节拍——每隔六周，你熟悉的那个最强模型就会被取代。</p>
+      <div class="highlight">当技术以周为单位迭代，人类真正的竞争力在于：学习速度 > 模型升级速度。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>编程场景：阿里Qwen3.6-Plus刚登顶国产编程榜，可优先试用于代码生成与调试</p></div><div class="worker-tip"><div class="num">2</div><p>跟踪模型动态：4月超10款新模型发布，建议每两周做一次自用模型横评切换评估</p></div><div class="worker-tip"><div class="num">3</div><p>活用智能体：2026年主流AI正从问答工具升级为自主执行智能体，尝试让AI接管完整任务流而非单步操作</p></div><div class="worker-tip"><div class="num">4</div><p>关注硬件信号：CPU/GPU比从1:8到1:1意味着AI推理成本将持续下降，现在上手AI工具的门槛越来越低</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
