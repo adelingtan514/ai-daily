@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年5月6日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">5月6日（周三）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">7 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-05-06</span>
+      </div>
+      <h3>斯坦福发布《2026年AI指数报告》：美企仍领跑，中国追赶加速</h3>
+      <p>斯坦福大学HAI研究院发布400+页报告，从基准测试、投资规模、公众认知等维度全面解读AI现状。报告显示美国企业在顶尖模型开发上保持领先，但中国在开源领域快速崛起，亚太地区凭借制造业基础与政策红利成为全球AI创新新高地。</p>
+      <div class="source">斯坦福HAI / 世界科学</div>
+      <a class="read-more" href="https://worldscience.cn/c/2026-04-27/666648.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-05-06</span>
+      </div>
+      <h3>美国防部与OpenAI等8大科技巨头签约，将顶级AI部署至最高机密网络</h3>
+      <p>美国国防部宣布与亚马逊云科技、谷歌、微软、英伟达、OpenAI、甲骨文、Reflection AI和SpaceX达成协议，在IL6/IL7最高机密网络上部署前沿AI，加速数据合成、态势感知和军事决策支持。</p>
+      <div class="source">aibars.net</div>
+      <a class="read-more" href="https://www.aibars.net/zh/library/ai-news/list" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-05-06</span>
+      </div>
+      <h3>48小时5款大模型齐发：阿里、谷歌、微软、智谱AI同台竞技</h3>
+      <p>AI大模型竞争白热化，48小时内多家科技巨头相继发布重磅模型，包括Wan2.7-Image、Gemma4、GLM-5V-Turbo等。技术趋势呈现三大方向：MoE架构普及、端侧部署成熟、多模态成为标配，行业从规模竞争转向场景落地精细化。</p>
+      <div class="source">腾讯云开发者</div>
+      <a class="read-more" href="https://cloud.tencent.cn/developer/article/2650738" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-05-06</span>
+      </div>
+      <h3>OpenAI × 高通联手研发AI手机芯片，2028年量产手机端百亿参数模型</h3>
+      <p>OpenAI与高通宣布战略合作，联合研发AI手机芯片，目标是2028年实现手机端本地运行百亿参数大模型，低功耗高推理，脱离云端依赖。高通负责芯片设计与功耗优化，OpenAI负责模型压缩与端侧微调，端侧AI时代加速到来。</p>
+      <div class="source">CSDN</div>
+      <a class="read-more" href="https://blog.csdn.net/2401_84289488/article/details/160737064" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-05-06</span>
+      </div>
+      <h3>2026全球AI市场规模预计突破9000亿美元，亚太区高速增长</h3>
+      <p>2025年全球AI市场规模达7575.8亿美元，同比增长18.7%，预计2026年将突破9000亿美元。北美凭借技术先发优势占据高端市场，欧洲聚焦伦理监管标准制定，亚太地区依托制造业基础与政策红利，成为全球增长最快区域。</p>
+      <div class="source">中国科技网</div>
+      <a class="read-more" href="https://www.ciste.org.cn/gjkjwj/zkgd/art/2026/art_f444db3a24824de6bcccd323691224f0.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-05-06</span>
+      </div>
+      <h3>DeepSeek上下文升至1M、国产大模型密集迭代，开源生态持续繁荣</h3>
+      <p>DeepSeek新版本上下文窗口从128K扩展至100万tokens，可容纳《三体》全三部曲；与此同时，月之暗面K2.5、智谱GLM-5、MiniMax M2.5、豆包2.0、阿里Qwen3.5密集发布，国产大模型展开多维度激烈竞争，开源大旗愈举愈高。</p>
+      <div class="source">搜狐科技</div>
+      <a class="read-more" href="https://www.sohu.com/a/992815972_122457270" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-05-06</span>
+      </div>
+      <h3>《2026年AI趋势报告》：全球AI市场年增13%，创造就业超1160万</h3>
+      <p>基于对900余万家初创企业的追踪，分析15416家AI企业的年度报告显示：全球AI市场年增长13.11%，超17.1万家公司和4.62万家初创企业推动技术创新，全行业已创造就业岗位逾1160万，新增120万，AI正从替代就业转向创造就业。</p>
+      <div class="source">北京智源研究院</div>
+      <a class="read-more" href="https://hub.baai.ac.cn/view/51452" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>端侧AI崛起 × 军事AI布局：2026年AI竞争进入全新战场</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>斯坦福HAI《2026 AI指数报告》证实：AI在数学、编程等基准测试中已超越人类平均水平，但可解释性与鲁棒性仍是核心挑战</li><li>OpenAI联手高通布局端侧AI芯片（2028量产），美国防部同步引入8大AI巨头部署最高机密网络，'AI军备竞赛'从云端延伸至端侧与军事领域</li><li>国产大模型进入密集迭代期：DeepSeek上下文扩展至1M，阿里Qwen3.5、豆包2.0、GLM-5相继亮相，MoE架构与多模态成为技术标配</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>2026年的AI竞争已不再只是模型参数的军备竞赛，而是全面延伸至三个新战场：其一，端侧部署——OpenAI×高通的合作预示着AI将脱离云端、嵌入每一台手机；其二，军事与安全领域——美国防部与科技巨头的深度绑定，让AI成为国家战略基础设施；其三，开源生态——中国大模型以开源为旗，在全球AI格局中争夺话语权。对从业者而言，单纯追求模型规模已不够，能在端侧、专业场景和合规框架下快速落地，才是下一阶段的核心竞争力。</p>
+      <div class="highlight">AI正在从'工具'升级为'基础设施'——端侧、军事、开源三线同时开战，站在哪个战场，决定你的未来。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>🔍 关注端侧AI动向：端侧大模型即将进入手机，提前了解模型压缩与本地部署技术（量化、蒸馏），将成为移动端开发者的核心竞争力</p></div><div class="worker-tip"><div class="num">2</div><p>📊 善用斯坦福HAI报告：《2026 AI指数报告》是年度最权威AI全景文档，建议精读'基准测试'与'投资趋势'两章，快速获取行业叙事框架</p></div><div class="worker-tip"><div class="num">3</div><p>🤝 跟踪开源模型更新：Qwen3.5、GLM-5、DeepSeek新版均已开源，可直接本地部署用于业务验证，降低API成本同时保护数据隐私</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
