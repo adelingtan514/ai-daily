@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年5月9日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">5月9日（周六）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-05-09</span>
+      </div>
+      <h3>Google I/O 2026大会预告：Gemini 3与AI眼镜将成核心看点</h3>
+      <p>谷歌宣布Google I/O 2026将于5月19-20日举行，大会聚焦Gemini 3模型展示、AI与Android 17深度整合，以及智能AI眼镜发布，被视为对Meta AI眼镜市场的正面回应。</p>
+      <div class="source">澎湃新闻</div>
+      <a class="read-more" href="https://m.thepaper.cn/newsDetail_forward_33072365" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-05-09</span>
+      </div>
+      <h3>48小时连发5款大模型：阿里、谷歌、微软、智谱AI同台竞技</h3>
+      <p>大模型竞争白热化，48小时内多家科技巨头相继发布Wan2.7-Image、Gemma4、GLM-5V-Turbo等5款重磅模型，技术呈现三大趋势：MoE架构普及、端侧部署成熟、多模态成标配。</p>
+      <div class="source">腾讯云开发者</div>
+      <a class="read-more" href="https://cloud.tencent.cn/developer/article/2650738" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-05-09</span>
+      </div>
+      <h3>OpenAI × 高通：联合研发AI手机芯片，2028年量产目标</h3>
+      <p>OpenAI与高通宣布合作联合研发AI手机芯片，目标是让手机端本地运行百亿参数大模型，实现低功耗、高推理、脱离云端依赖。高通负责芯片设计与端侧推理引擎，OpenAI负责模型适配压缩。</p>
+      <div class="source">CSDN</div>
+      <a class="read-more" href="https://blog.csdn.net/2401_84289488/article/details/160737064" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-05-09</span>
+      </div>
+      <h3>混元Hy3两周Token调用量增至10倍，登顶OpenRouter排行榜</h3>
+      <p>腾讯混元Hy3preview模型发布两周内Token调用量增至10倍，成功登顶OpenRouter平台排行榜。前OpenAI科学家加盟后，混元在复杂推理与代码能力上实现重大升级。</p>
+      <div class="source">AI资讯</div>
+      <a class="read-more" href="https://www.aitop100.cn/ai-daily-2026-05-07" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-05-09</span>
+      </div>
+      <h3>豆包Seed-2.0-lite全模态模型发布：支持音画同步推理</h3>
+      <p>字节跳动发布豆包Seed-2.0-lite全模态模型，支持音画同步推理能力。与此同时，谷歌Gemma4推理速度较上代提升3倍，千问PC端语音输入法全面对外开放。</p>
+      <div class="source">AITOP100</div>
+      <a class="read-more" href="https://www.aitop100.cn/ai-daily-2026-05-07" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-05-09</span>
+      </div>
+      <h3>全国首部具身智能机器人地方法规在杭州正式施行</h3>
+      <p>杭州出台全国首部具身智能机器人地方性法规，明确技术创新与安全管理界限，标志着具身智能产业正式步入有法可依的规范化发展阶段，为行业规模化商用铺平道路。</p>
+      <div class="source">雪球</div>
+      <a class="read-more" href="https://xueqiu.com/7395283544/386944785" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-05-09</span>
+      </div>
+      <h3>斯坦福《2026年AI指数报告》：AI市场规模将突破9000亿美元</h3>
+      <p>斯坦福大学HAI发布《2026年AI指数报告》，显示2025年全球AI市场规模达7575.8亿美元，同比增长18.7%，预计2026年将突破9000亿美元关口，AI产业已进入爆发式增长期。</p>
+      <div class="source">复旦大学</div>
+      <a class="read-more" href="https://fddi.fudan.edu.cn/d9/1b/c18965a776475/page.htm" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-05-09</span>
+      </div>
+      <h3>开源大模型追平闭源：GLM-5.1、Qwen3.6编程推理能力对标GPT-5.5</h3>
+      <p>2026年5月大模型排行显示，开源阵营GLM-5.1、Qwen3.6和Kimi K2.6在编程和推理任务上已追平闭源模型。技术焦点从参数竞赛转向智能体能力和成本效益，4月出现9个模型密集发布盛况。</p>
+      <div class="source">CSDN</div>
+      <a class="read-more" href="https://blog.csdn.net/xyghehehehe/article/details/160787432" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>AI进入'多极争霸'时代：开源闭源同台竞技，端侧落地成新战场</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>2026年5月，全球大模型竞争进入白热化阶段，48小时内多家巨头连发5款模型，创下历史密度新高</li><li>开源模型（GLM-5.1、Qwen3.6）在编程推理上已追平GPT-5.5等闭源旗舰，"开源≠落后"成行业共识</li><li>Google I/O 2026（5月19-20日）、OpenAI×高通端侧芯片合作等重磅事件预示AI将深度嵌入日常设备</li><li>具身智能完成从政策、资本到法规的三重覆盖，杭州首部机器人地方法规正式施行</li><li>斯坦福报告预测2026年全球AI市场规模将突破9000亿美元，增速持续高位</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>当前AI竞争已从"谁的模型最强"演进为"谁能更快落地"。端侧部署（OpenAI×高通）、具身智能（杭州立法）、多模态交互（豆包Seed-2.0-lite）三条赛道同步提速，标志着AI正从云端算力游戏走向全场景渗透。对普通用户而言，AI不再是远在数据中心的服务，而是即将运行在手机、眼镜、机器人上的本地智能。这场竞赛的胜负，将由"谁的AI离用户最近"来决定。</p>
+      <div class="highlight">「开源追平闭源」的时刻已经到来——这不是终点，而是AI民主化的起点。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>📱 关注Google I/O 2026（5月19日）直播，Gemini 3与AI眼镜发布将为应用开发带来新机遇</p></div><div class="worker-tip"><div class="num">2</div><p>🤖 具身智能赛道已进入"量产落地年"，关注宇树、智元等国产机器人企业的商业化进展</p></div><div class="worker-tip"><div class="num">3</div><p>🛠️ 开源大模型GLM-5.1、Qwen3.6已可免费使用并媲美GPT-5.5，可尝试替换日常工作流中的闭源模型</p></div><div class="worker-tip"><div class="num">4</div><p>📊 AI市场规模将突破9000亿美元，相关产业链ETF值得持续关注</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
