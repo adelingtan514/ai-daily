@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年5月12日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">5月12日（周二）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-05-12</span>
+      </div>
+      <h3>阿里率先打通AI购物全链路，千问与淘宝全面融合</h3>
+      <p>5月11日，阿里千问大模型与淘宝全面打通，实现AI购物从商品推荐到下单、履约、售后的全流程闭环。这是全球超大规模电商平台与顶级大模型的首次深度融合，标志着AI电商新里程碑。</p>
+      <div class="source">央广网</div>
+      <a class="read-more" href="https://tech.cnr.cn/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-05-12</span>
+      </div>
+      <h3>Anthropic推出Claude Mythos Preview，AI网络安全攻防进入新阶段</h3>
+      <p>Anthropic最新AI模型Claude Mythos Preview具备空前漏洞识别能力，既能助力企业安全防护，也可能被黑客利用。公司高管坦言该模型将对现有网络安全体系带来颠覆性冲击。</p>
+      <div class="source">央视网</div>
+      <a class="read-more" href="https://5gai.cctv.com/AI/index.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-05-12</span>
+      </div>
+      <h3>工信部等十部门联合发布AI伦理审查办法</h3>
+      <p>工业和信息化部等十部门联合印发《人工智能科技伦理审查与服务办法（试行）》，为我国AI科技伦理审查与服务工作提供明确指引，AI治理进入规范化新阶段。</p>
+      <div class="source">央视网</div>
+      <a class="read-more" href="https://5gai.cctv.com/AI/index.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-05-12</span>
+      </div>
+      <h3>中国出台措施保护就业岗位免受人工智能冲击</h3>
+      <p>面对AI对劳动力市场的冲击，中国正采取措施保护就业岗位。这一政策动向反映出AI时代人机协作与就业保障之间的深层矛盾，引发全球广泛关注。</p>
+      <div class="source">俄罗斯卫星通讯社</div>
+      <a class="read-more" href="https://sputniknews.cn/keyword_rengongzhineng/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-05-12</span>
+      </div>
+      <h3>OpenAI进军AI手机赛道，软硬一体引发全球竞争新风口</h3>
+      <p>OpenAI宣布入局AI手机赛道，将软件与硬件深度整合，催生全球科技竞争新格局。此举被视为继大模型之后，科技巨头争夺终端入口的重大战略布局。</p>
+      <div class="source">环球网</div>
+      <a class="read-more" href="https://tech.huanqiu.com/original/?agt=1456" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-05-12</span>
+      </div>
+      <h3>无问芯穹完成超7亿元融资，首提AI生产力公式</h3>
+      <p>AI算力公司无问芯穹宣布完成超7亿元融资，并首次提出AI生产力公式概念，致力于打造异构算力调度平台，推动AI计算资源高效利用。</p>
+      <div class="source">环球网</div>
+      <a class="read-more" href="https://tech.huanqiu.com/original/?agt=1456" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-05-12</span>
+      </div>
+      <h3>四部门联合发文推动AI与能源双向赋能</h3>
+      <p>四部门联合印发行动方案，推动AI与能源产业深度融合，探索AI优化能源调度、节能降耗等应用场景，同时以清洁能源支撑AI算力基础设施建设。</p>
+      <div class="source">澎湃新闻</div>
+      <a class="read-more" href="https://www.thepaper.cn/tag/49" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-05-12</span>
+      </div>
+      <h3>中国移动发布Token运营生态体系，Token经济时代正式开启</h3>
+      <p>2026移动云大会上，中国移动发布Token运营生态体系，将AI推理的最小计量单位Token纳入运营管理。Token经济正从技术概念走向产业实践，重塑AI商业模式。</p>
+      <div class="source">环球网</div>
+      <a class="read-more" href="https://tech.huanqiu.com/original/?agt=1456" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>AI全面融入产业：从购物、能源到手机，落地加速</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>阿里千问×淘宝打通AI购物全链路，AI电商进入闭环落地阶段</li><li>OpenAI入局AI手机，软硬一体竞争格局成科技新战场</li><li>四部门联合发文推动AI×能源双向赋能，政策护航产业融合</li><li>中国移动推出Token运营生态，AI计量经济学走向商业化</li><li>无问芯穹7亿+融资：算力调度成AI基础设施核心竞争力</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>本周AI领域最显著的趋势是大模型从能力展示全面转向场景落地。阿里打通购物全链路、OpenAI布局AI手机、政策推动AI与能源融合——三条线同时发力，标志着AI产业化进入深水区。与此同时，中国AI治理也在提速：伦理审查办法出台、就业保护政策跟进，监管与创新的平衡正成为各方关注焦点。Token经济的兴起则预示着AI基础设施的计量方式即将重构，谁掌握算力调度，谁就掌握AI时代的电网。</p>
+      <div class="highlight">AI不再只是工具，而是正在重写每个行业的底层逻辑——从你买东西、用电，到整个国家的能源调度。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>关注AI电商落地：阿里千问×淘宝的全链路闭环值得研究，AI推荐到售后一体化将重塑消费体验，做电商/零售方向的同学可重点跟进</p></div><div class="worker-tip"><div class="num">2</div><p>提升AI安全意识：在工作中使用AI工具时需关注数据安全与模型输出的可信度验证，避免将敏感信息输入公开AI服务</p></div><div class="worker-tip"><div class="num">3</div><p>了解Token经济：Token正成为AI时代的计量货币，理解Token逻辑有助于更精准评估AI使用成本，为团队做好AI预算规划</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
