@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年5月14日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">5月14日（周四）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-05-14</span>
+      </div>
+      <h3>百度Create2026大会开幕：李彦宏首提「日活智能体数（DAA）」新度量衡</h3>
+      <p>5月13-14日，Create2026百度AI开发者大会在北京举办，主题'万物一体'。百度创始人李彦宏开幕式提出AI时代新度量衡——日活智能体数（DAA），认为DAA比Token更能衡量AI产出与价值，并发布多项全栈AI成果，涵盖芯-云-模-体全栈布局及智能体生态新进展。</p>
+      <div class="source">百度 / 中国日报网</div>
+      <a class="read-more" href="https://create.baidu.com/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-05-14</span>
+      </div>
+      <h3>阿里AI模型服务ARR破百亿，吴泳铭预测年底突破300亿</h3>
+      <p>阿里巴巴2026财年Q4财报电话会上，CEO吴泳铭表示，包含百炼MaaS平台在内的AI模型与应用服务年化经常性收入（ARR）已突破100亿元，并预计6月季度进一步增长，年底有望突破300亿元，AI正成为阿里全新收入引擎。</p>
+      <div class="source">阿里巴巴 / Readhub</div>
+      <a class="read-more" href="https://www.alibabagroup.com/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-05-14</span>
+      </div>
+      <h3>生成式AI备案达868款，3-4月新增72款国内服务通过审核</h3>
+      <p>据网信中国消息，截至4月30日，国内生成式人工智能服务累计完成备案868款，2026年3-4月新增72款完成国家网信办备案，另有49款地方级应用完成登记，AI合规落地提速，国内监管体系趋于成熟。</p>
+      <div class="source">网信中国 / 财联社</div>
+      <a class="read-more" href="https://www.cls.cn/subject/1321" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-05-14</span>
+      </div>
+      <h3>Thinking Machines Lab推"微轮次"实时交互架构，终结AI"回合制"时代</h3>
+      <p>AI内参5月14日报道，Thinking Machines Lab推出原生"交互模型"，通过"微轮次"机制将人机对话从离散的回合制升级为连续协作模式，多模态感知与推理原生融合，标志着AI交互范式向实时协作迁移。</p>
+      <div class="source">AI内参</div>
+      <a class="read-more" href="https://www.aicj.net/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-05-14</span>
+      </div>
+      <h3>字节跳动提出视觉生成第三种路线，秒哒3.0让8岁小学生也能造应用</h3>
+      <p>5月14日AI早报显示，字节跳动在视觉内容生成领域提出区别于扩散模型与自回归的第三条技术路线；同期，国内低代码平台秒哒3.0发布，一名8岁小学生利用该平台将创意想法直接变成可运行的AI应用，大幅降低AI创作门槛。</p>
+      <div class="source">AI早报 / 秒哒</div>
+      <a class="read-more" href="https://www.miaoda.com/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-05-12</span>
+      </div>
+      <h3>OpenAI成立「部署公司」，初始投资超40亿美元押注企业AI</h3>
+      <p>OpenAI宣布成立OpenAI Deployment Company，初始资金超过40亿美元，专注于为企业客户提供AI部署与定制化服务，标志着OpenAI从模型研发向企业级商业化全面转型，市场竞争从技术转向落地交付能力。</p>
+      <div class="source">快科技 / AI日报</div>
+      <a class="read-more" href="https://www.ithome.com/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-04-15</span>
+      </div>
+      <h3>斯坦福AI指数2026：中美模型差距缩至2.7%，AI进入落地竞争新阶段</h3>
+      <p>斯坦福大学HAI发布第九版AI指数报告，显示截至2026年3月，Anthropic、xAI、Google、OpenAI四大模型评分分布在1481-1503之间，差距仅2.7%。报告指出竞争焦点从模型能力转向成本、可靠性与特定领域优化，"强者俱乐部"格局已经形成。</p>
+      <div class="source">斯坦福HAI / 36kr</div>
+      <a class="read-more" href="https://www.36kr.com/p/3767247629796100" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-med">🧠 科学</span>
+        <span class="news-date">2026-05-01</span>
+      </div>
+      <h3>DeepSeek新模型押注国产芯片，性能追平国际旗舰差距缩至3-6个月</h3>
+      <p>DeepSeek最新模型训练与推理全面转向国产芯片，据报道其性能与Anthropic Claude Opus、OpenAI GPT-5.4、谷歌Gemini 3.1等国际旗舰差距已缩短至3-6个月，而成本优势拉开量级鸿沟，国产AI"不对称竞争"战略初见成效。</p>
+      <div class="source">36kr / DeepSeek</div>
+      <a class="read-more" href="https://www.deepseek.com/" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>AI从「技术竞速」转向「落地价值」——度量衡之战、商业化破局与智能体新时代</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>百度Create2026大会提出「日活智能体数（DAA）」替代Token，成为AI时代新度量衡，标志行业从技术军备转向用户价值竞争</li><li>阿里AI模型服务ARR突破100亿人民币，年底目标300亿，国内大厂AI商业化正式进入爆发阶段</li><li>斯坦福2026 AI指数显示全球顶级模型差距缩至2.7%，竞争焦点从「谁更聪明」转向「谁更便宜、更可靠」</li><li>国内生成式AI备案累计868款，监管体系走向成熟，AI应用合规落地提速</li><li>DeepSeek押注国产芯片，成本颠覆性优势叠加性能快速追赶，国际AI「不对称竞争」格局形成</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>2026年5月，AI行业正在经历一次深刻的范式切换：技术层面的「模型竞争」已告一段落，头部玩家性能差距收窄至个位数百分比；真正的战场转移到了商业化、场景落地与用户心智的争夺。百度用DAA重新定义AI价值度量，阿里用百亿ARR证明商业化可行，字节、秒哒在产品侧持续降低创作门槛——一场围绕「谁能让AI真正为用户创造价值」的新竞争已经开始。对普通人而言，AI工具正变得越来越触手可及，但如何高效使用、沉淀个人AI工作流，将成为个体竞争力的新分水岭。</p>
+      <div class="highlight">Token衡量投入，DAA衡量产出——李彦宏一句话道破AI商业化的本质</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>关注各厂商智能体（Agent）平台动态，尝试将自己的重复性工作流搭建成Agent，抢先积累「AI杠杆」经验</p></div><div class="worker-tip"><div class="num">2</div><p>国内AI应用备案加速，关注领域内合规产品动态，优先选择已备案的工具，降低使用合规风险</p></div><div class="worker-tip"><div class="num">3</div><p>AI交互正从「提问-等待-回答」的回合制，进化为实时协作模式，建议提前适应新型人机协作工具与工作习惯</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
