@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年5月19日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">5月19日（周二）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-05-19</span>
+      </div>
+      <h3>Google I/O 2026今日开幕：Gemini 4.0、Android XR眼镜、AI原生系统三箭齐发</h3>
+      <p>谷歌I/O 2026开发者大会今日（5月19-20日）在加州山景城Shoreline Amphitheatre开幕。预期重磅发布：Gemini 4.0大模型（直逼GPT-5.5）、Android XR智能眼镜（对标Apple Vision Pro）、Gemini Intelligence跨应用AI自动化（长按电源键即可全程自动完成比价、下单、支付）、Aluminum OS操作系统大整合。今年I/O的主题词是「AI-Native」，Android将彻底重构为以Gemini为底层智能的新体系。</p>
+      <div class="source">谷歌官方 / CSDN / AIbase</div>
+      <a class="read-more" href="https://blog.csdn.net/xyghehehehe/article/details/160987397" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-05-19</span>
+      </div>
+      <h3>通义千问宣布5月20日阿里云峰会亮相：「重量级大模型」今明两天揭晓</h3>
+      <p>阿里云通义千问正式预告，将于明日（5月20日）阿里云峰会上推出全新升级版本，官方称在「全能性、模型能力、深度广度」三方面实现全面突破。与谷歌I/O形成中美双峰对决格局。当前中国主要大模型周调用量已连续三周超美国——截至5月10日当周，中国主要大模型周调用量达7.94万亿Token，是美国模型3.76万亿Token的两倍以上。</p>
+      <div class="source">AIbase / AITOP100 / CCTV</div>
+      <a class="read-more" href="https://news.aibase.com/zh/news" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-05-18</span>
+      </div>
+      <h3>1.5万亿参数Grok训练完成，马斯克放话「王炸硬刚Claude」：3-4周内发布</h3>
+      <p>xAI创始人马斯克宣布，代号「Grok第9版」的新模型基础参数规模达1.5万亿，已完成训练，预计3-4周内正式发布。马斯克声称将直接狙击Anthropic的Claude，并通过大量抓取代码编辑器Cursor用户数据来强化编码能力——这一做法引发数据伦理争议。业界普遍关注：1.5万亿参数能否兑现马斯克的颠覆承诺？</p>
+      <div class="source">AIbase / AITOP100 2026-05-18</div>
+      <a class="read-more" href="https://news.aibase.com/zh/news/28045" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-05-18</span>
+      </div>
+      <h3>腾讯发布AI设计智能体Ardot + 「吐司」平台：从设计到App一键生成</h3>
+      <p>腾讯双线出击：AI设计智能体Ardot支持UI/UX全流程自动设计；「吐司」AI应用生成平台上线，用户一句话即可生成完整App，支持灵感共创与快速迭代。腾讯正在将AI能力从核心产品向开发者平台全面延伸，试图在「AI生成软件」赛道占据先机。</p>
+      <div class="source">AITOP100 2026-05-18</div>
+      <a class="read-more" href="https://www.aitop100.cn/ai-daily-2026-05-18" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-05-19</span>
+      </div>
+      <h3>谷歌推Gemini Intelligence：长按电源键，AI自动完成购物全链路</h3>
+      <p>谷歌在I/O前夕抢先发布Gemini Intelligence高级AI套件，整合跨应用自动化、系统级调度与隐私保护。核心能力：用户长按手机电源键，AI可自主完成比价、下单、支付、物流跟踪等全流程操作，无需切换App。Android将被重新定位为「Intelligence System（智能系统）」，底层智能层由Gemini全面接管。</p>
+      <div class="source">AIbase / 搜狐 / MSN</div>
+      <a class="read-more" href="https://www.msn.cn/zh-cn/news/other/2026%E8%B0%B7%E6%AD%8Cio%E5%A4%A7%E4%BC%9A%E5%89%8D%E7%9E%BB-gemini%E6%96%B0%E6%A8%A1%E5%9E%8B%E4%B8%8Eandroid-xr%E7%9C%BC%E9%95%9C%E5%85%B1%E5%90%AFai%E6%96%B0%E7%AF%87%E7%AB%A0/ar-AA23suH6" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-05-17</span>
+      </div>
+      <h3>国产大模型周调用量连续三周超美国两倍：中国AI生态系统全球爆发</h3>
+      <p>最新数据：截至5月10日当周，中国主要大模型在海外开发者平台OpenRouter上的周调用量达7.94万亿Token，对比美国模型3.76万亿Token，超出美国两倍以上——这一数据已连续三周领先。以DeepSeek、Qwen、混元为代表的国产模型正在吸引全球开发者，「中国算法+全球生态」的格局初步成型。</p>
+      <div class="source">CCTV / AITOP100</div>
+      <a class="read-more" href="https://news.cctv.com/2026/05/17/ARTIUUekaDVugGawlh5fLIjH260517.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-04-21</span>
+      </div>
+      <h3>斯坦福《2026年AI指数报告》：AI性能逼近人类基线，全球企业AI投资达5817亿美元</h3>
+      <p>斯坦福大学HAI发布《2026年AI指数报告》（423页）核心结论：2025年AI模型性能在多项基准中已逼近甚至超越人类基线；全球企业AI投资飙升至5817亿美元；但负责任的AI治理严重滞后、安全事件激增、公众焦虑与乐观并行上升。这是迄今最权威的AI年度全景图，为企业决策者和政策制定者提供关键参考。</p>
+      <div class="source">斯坦福HAI / 搜狐 / 复旦大学FDDI</div>
+      <a class="read-more" href="https://www.sohu.com/a/1012392483_121124344" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-05-07</span>
+      </div>
+      <h3>GPT-5.5专注「真实工作」与Agent能力：OpenAI押注企业级应用落地</h3>
+      <p>OpenAI于4月23日发布GPT-5.5，定位不在于刷新基准榜单，而是聚焦「真实工作场景」与Agent自主能力。2026年5月AI行业主线已从「参数军备竞赛」转向Agentic AI智能体实战落地、开源高效模型与资本融资双爆发。Kimi即将完成20亿美元融资、人形机器人产业加速落地成为5月最亮的副线。</p>
+      <div class="source">今日头条 / 掘金 / 博客园</div>
+      <a class="read-more" href="https://www.toutiao.com/article/7637026178804564499/" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>Google I/O 2026今日开幕 + 通义千问明日亮相：史上最密集的「AI发布日」来了</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>今天（5月19日）是Google I/O 2026开幕日，谷歌将在山景城现场发布Gemini 4.0、Android XR眼镜、Gemini Intelligence跨应用AI自动化系统——这是谷歌一次性推进最多AI产品线的年度盛会，被外界称为「谷歌all-in AI的宣言」。</li><li>明天（5月20日）阿里云峰会上通义千问将发布「重量级大模型」，与谷歌I/O形成中美同周双峰对决格局；与此同时，中国大模型在OpenRouter上的周调用量已连续三周是美国的两倍，国产AI的全球生态布局正在实质性成型。</li><li>本周最大的「野心宣言」来自马斯克：1.5万亿参数的Grok新版本已完成训练，3-4周内将发布并宣称直接挑战Claude。腾讯则用Ardot设计智能体+「吐司」App生成平台，宣示在「AI生成软件」赛道的野心。一周之内，全球主要AI玩家同时出手，密度堪称史上之最。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>如果你只能记住2026年AI史上的一天，很可能就是这一周——5月19日Google I/O开幕，5月20日阿里云峰会，中美最强大模型在同一时间窗口内同台亮相。这不是巧合，而是整个行业「决战节点」意识的集体觉醒。谷歌这次I/O的核心信号是：AI不再是手机里的一个应用，而是整个操作系统的「大脑」。Gemini Intelligence可以长按电源键自动购物，Android被重新定义为Intelligence System——这意味着下一代手机竞争的焦点，将是「谁的AI大脑更聪明」而不是「谁的摄像头更好」。国内方向也在同步发力：中国大模型调用量已是美国两倍，通义千问即将在明日峰会亮相。站在今天这个节点回望，2026年5月是AI从「技术演示」进入「系统级基础设施」的真正拐点。对普通人来说，这个变化意味着：手机、电脑很快将变成真正能「帮你办事」的AI终端，而不只是更智能的搜索框。</p>
+      <div class="highlight">「Gemini已经成为Android的大脑」——今天Google I/O的核心宣言，正在把智能手机变成AI智能体的物理终端。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>今天追Google I/O直播值得花时间：重点看Gemini 4.0的能力边界（尤其是Agent任务执行能力）和Android新的跨App自动化API——后者可能直接影响你日常用手机处理工作的方式，比任何一款新App都更底层。</p></div><div class="worker-tip"><div class="num">2</div><p>如果你的工作涉及UI/UX、产品设计或App开发：腾讯的Ardot设计智能体和「吐司」平台值得关注。AI已经在「从0到1生成App」这个方向快速成熟，明年你的岗位描述可能会多出一条「能用AI快速生成并迭代原型」。</p></div><div class="worker-tip"><div class="num">3</div><p>关注通义千问明日发布：阿里云峰会上的新模型如果在推理和多模态上有突破，可以直接替换你目前用的某些昂贵API。中国模型的性价比优势（Open Router调用量是美国两倍的背后）正在吸引越来越多的企业切换。</p></div><div class="worker-tip"><div class="num">4</div><p>Grok 1.5万亿参数「疯狂抓取Cursor用户代码数据」这件事值得程序员注意：你在AI编程工具里写的代码，可能正在训练下一代竞争模型。检查一下你使用的编程AI工具的数据条款，并决定是否需要启用「不用于训练」选项。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
