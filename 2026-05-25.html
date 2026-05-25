@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年5月25日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">5月25日（周一）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-05-25</span>
+      </div>
+      <h3>国家发改委：指导国产大模型加大力度适配国产算力芯片</h3>
+      <p>5月22日，国家发改委新闻发布会明确表示，将系统布局、分业施策，指导国产大模型加大适配国产算力芯片力度，推动AI核心技术与应用需求快速协同增长。</p>
+      <div class="source">央视网</div>
+      <a class="read-more" href="https://news.cctv.com/2026/05/22/ARTIiKSPqed4uN72WVHtwt0W260522.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-05-25</span>
+      </div>
+      <h3>AI投资热潮涌动：国产大模型斩获大额融资，具身智能备受资本青睐</h3>
+      <p>本月多家国产大模型企业相继完成大额融资，Kimi预计完成20亿美元融资。具身智能与算力相关企业持续受到资本追捧，创业板改革后迎来新一批AI企业上市。</p>
+      <div class="source">央视财经</div>
+      <a class="read-more" href="https://news.cctv.cn/2026/05/24/ARTIvvEirVDfhuhgFhWqf5bs260524.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-05-25</span>
+      </div>
+      <h3>谷歌I/O 2026：Gemini 3.5 Flash发布，AI智能体全面嵌入搜索与Android</h3>
+      <p>谷歌I/O 2026大会发布Gemini 3.5 Flash，定价$0.25/M tokens，延迟低于200ms。Gemini正从对话助手进化为可跨应用持续执行任务的AI代理，全面整合进搜索、Chrome、Android及智能眼镜。</p>
+      <div class="source">腾讯新闻</div>
+      <a class="read-more" href="https://news.qq.com/rain/a/20260520A01YS800" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-05-25</span>
+      </div>
+      <h3>中国大模型周调用量连续三周超越美国，腾讯Hy3登顶全球榜首</h3>
+      <p>腾讯Hy3 preview周调用量达2.66万亿Token，环比上涨210%，连续位居全球调用量榜首。DeepSeek-V4-Flash、DeepSeek-V3.2也跻身前三，中国AI实力持续突破。</p>
+      <div class="source">新浪财经</div>
+      <a class="read-more" href="https://finance.sina.com.cn/roll/2026-05-18/doc-inhyhpys0877053.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-05-25</span>
+      </div>
+      <h3>2026中国AI应用全景图谱报告：9亿次点击揭示真实用户需求</h3>
+      <p>最新发布的《2026中国AI应用全景图谱报告》通过9亿次点击数据，深度解析中国AI应用市场的真实竞争格局，揭示用户行为从探索性使用转向深度生产力工具的关键拐点。</p>
+      <div class="source">封面新闻</div>
+      <a class="read-more" href="https://finance.sina.com.cn/tech/roll/2026-05-20/doc-inhypxkf1619784.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-05-25</span>
+      </div>
+      <h3>大模型进入价值验证年：效率竞赛取代参数军备，商业化成新主战场</h3>
+      <p>2026年5月，大模型竞争逻辑发生根本转变——成本效率正取代参数规模成为核心指标。字节跳动年度资本开支预计突破2000亿元，阿里AI相关支出将超3800亿元，商业化落地能力成决定胜负的关键。</p>
+      <div class="source">网易财经</div>
+      <a class="read-more" href="https://m.163.com/dy/article/KTA5D4D30556MKQ5.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-05-25</span>
+      </div>
+      <h3>字节与高校联合发布GenLIP：让视觉AI开口说话，多模态理解再突破</h3>
+      <p>字节跳动联合北京交大、南洋理工大学发布GenLIP（生成式语言-图像预训练），通过让视觉AI生成语言描述实现更深层次的多模态理解，在图文检索与视觉推理任务上达到新的技术标杆。</p>
+      <div class="source">技术栈</div>
+      <a class="read-more" href="https://jishuzhan.net/article/2054782146866941953" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-05-25</span>
+      </div>
+      <h3>具身智能提速：智元第10000台通用机器人下线，15个月量产十倍跨越</h3>
+      <p>智元机器人第10000台通用具身机器人远征A3正式下线，实现15个月内量产规模十倍级跨越。智元同期启动AI发布周，连续发布物理AI大模型、多模态感知系统、全身运动控制等全栈核心技术。</p>
+      <div class="source">CSDN博客</div>
+      <a class="read-more" href="https://blog.csdn.net/weixin_56622231/article/details/160501725" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>AI竞争重心转移：从参数军备到效率与商业化决战</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>中国大模型周调用量连续三周超越美国，腾讯Hy3 preview单周调用量达2.66万亿Token，环比暴涨210%</li><li>谷歌I/O 2026发布Gemini 3.5 Flash，编码性能达GPT-5.5的92%但成本仅为其1/20，效率竞争白热化</li><li>国家发改委明确政策导向：指导国产大模型加大国产算力芯片适配，AI国产化替代进入政策加速通道</li><li>字节跳动、阿里年度AI资本开支分别预计突破2000亿元和3800亿元，商业化投入规模持续攀升</li><li>具身智能产业加速落地，智元机器人15个月内量产规模实现十倍跨越，人形机器人进入规模化拐点</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>2026年5月，全球AI竞争正经历一场深刻的范式转变。过去两年以参数规模为核心的'军备竞赛'已进入尾声，竞争焦点迅速切换到三个新维度：一是成本效率（谷歌Gemini的定价策略），二是商业化落地能力（国内巨头千亿级资本投入），三是政策与产业协同（发改委明确支持方向）。值得关注的是，中国模型调用量已连续三周超越美国，这不仅是算力与技术的胜利，更是规模化应用生态的胜利。对从业者而言，'能用'比'更强'更重要的时代已经到来。</p>
+      <div class="highlight">模型够用已不是门槛，让用户真正用起来，才是2026年AI的核心战场。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>🔧 工具推荐：尝试Gemini 3.5 Flash作为日常编码辅助，性价比极高（GPT-5.5级别性能，成本仅1/20），适合高频调用场景</p></div><div class="worker-tip"><div class="num">2</div><p>📊 趋势预判：具身智能与AI Agent正进入商业化爆发期，关注智元、宇树等机器人企业及相关供应链机会</p></div><div class="worker-tip"><div class="num">3</div><p>🇨🇳 政策红利：发改委明确支持国产算力适配，国产GPU（寒武纪、华为昇腾）相关AI应用值得重点关注</p></div><div class="worker-tip"><div class="num">4</div><p>💼 职场建议：将AI工具深度嵌入日常工作流，而非停留在偶尔尝鲜阶段，效率差距将在年底前显著拉开</p></div><div class="worker-tip"><div class="num">5</div><p>🌐 竞争格局：中美AI差距已缩窄至2.7%，关注本土化场景深耕，本地化AI服务将获得更多政策与资本加持</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
