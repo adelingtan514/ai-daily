@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年5月29日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">5月29日（周五）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">7 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-05-29</span>
+      </div>
+      <h3>谷歌I/O 2026：Gemini Spark全天候AI代理正式发布</h3>
+      <p>谷歌在5月19-20日的I/O 2026大会上发布Gemini Spark——一款可持续运行的全天候AI代理，同步推出Gemini 3.5 Flash和Omni多模态模型、具备自主AI能力的Android 17，以及25年来最大规模的谷歌搜索重新设计。英伟达也开始向Anthropic、OpenAI等交付首款自研维拉CPU。</p>
+      <div class="source">aibars.net</div>
+      <a class="read-more" href="https://www.aibars.net/zh/library/ai-news/list" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-05-29</span>
+      </div>
+      <h3>国产大模型全面追赶：5月格局重塑，推理范式革命</h3>
+      <p>2026年5月，AI大模型格局正经历历史性重塑。国产模型全面追赶甚至超越OpenAI；推理时计算成为新的能力提升路径；多模态模型开始走向视频、音频深度融合。DeepSeek、阿里、百度等厂商在推理成本和场景适配上持续突破。</p>
+      <div class="source">CSDN</div>
+      <a class="read-more" href="https://blog.csdn.net/yonggeit/article/details/160727420" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-05-29</span>
+      </div>
+      <h3>2026AI蓝皮书：AI正从"聊天"进化到"干活"，Agent时代到来</h3>
+      <p>《2026"人工智能+"行业发展蓝皮书》指出，新一代AI Agent已从"建议者"进化为"执行者"。OpenAI的Operator可自主浏览网页填写表单，Anthropic的Claude Code可独立完成代码工程任务。企业数字化正从全面应用AI转向深度融合AI。</p>
+      <div class="source">腾讯新闻</div>
+      <a class="read-more" href="https://news.qq.com/rain/a/20260524A08LGN00" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-med">🧠 科学</span>
+        <span class="news-date">2026-05-29</span>
+      </div>
+      <h3>斯坦福AI指数2026：中美模型差距缩至2.7%，AI进入落地元年</h3>
+      <p>斯坦福大学HAI发布第九版《人工智能指数报告》（423页），显示中美AI模型性能差距已缩至2.7%。报告覆盖研发、技术性能、经济、政策治理等九大领域，指出AI已进入大规模落地阶段，全球AI投资和应用规模持续创新高。</p>
+      <div class="source">北京智源研究院</div>
+      <a class="read-more" href="https://hub.baai.ac.cn/view/53971" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-05-29</span>
+      </div>
+      <h3>联想发布百应AI 3.0，阿里云展示AI生态全布局</h3>
+      <p>联想集团正式发布百应AI 3.0，从底层技术、业务场景、生态创新三大维度完成体系性革新，构建软硬服一体化的原生AI平台。阿里巴巴集团旗下阿里云、千问AI眼镜等生态企业同期集体亮相，展示AI、云计算、数字生活与金融科技领域的最新成果。</p>
+      <div class="source">51CTO</div>
+      <a class="read-more" href="https://www.51cto.com/ai" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-05-29</span>
+      </div>
+      <h3>清华团队开源Agent神器：Token成本狂降70%</h3>
+      <p>清华大学团队连夜开源新型Agent优化框架，通过类似深度学习训练的机制——带学习率、带验证集、带动量——迭代优化Prompt文件，在六个benchmark、七个目标模型、三种执行环境共52个评测格子上全部取得最佳成绩，Token使用成本降低高达70%。</p>
+      <div class="source">51CTO</div>
+      <a class="read-more" href="https://www.51cto.com/ai" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-05-29</span>
+      </div>
+      <h3>大模型价格战持续，API成本大幅下降，AI加速成为基础设施</h3>
+      <p>2026年全球大模型进入万亿参数时代，GPT-5、Claude 4、Gemini 3、DeepSeek-R1、Llama 4等旗舰模型性能全面升级。API定价持续走低，AI正从高端工具演变为普惠基础设施。Llama 4开源生态爆发，中国AI力量在全球格局中持续崛起。</p>
+      <div class="source">腾讯云开发者</div>
+      <a class="read-more" href="https://cloud.tencent.cn/developer/article/2658639" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>AI Agent元年：从对话工具到自主执行的范式跃迁</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>谷歌I/O 2026发布全天候AI代理Gemini Spark，可持续自主运行处理复杂任务</li><li>斯坦福AI指数报告显示中美大模型性能差距已缩小至2.7%，国产模型全面追赶</li><li>清华团队开源Agent优化框架，Token成本降低70%，推动AI应用普惠化加速</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>2026年正在成为真正意义上的AI Agent元年。大模型已从'能回答问题'进化为'能完成任务'——这一跃迁的背后，是推理时计算能力的突破、多模态融合的成熟，以及工具调用链路的完善。谷歌的Gemini Spark、OpenAI的Operator、Anthropic的Claude Code，都在指向同一个方向：AI不再是对话框里的顾问，而是真正能执行、能迭代、能自主完成复杂任务的数字员工。与此同时，国产AI的崛起也让这场竞赛更加白热化——中美差距缩至2.7%，意味着技术护城河正在消失，接下来的竞争将更多取决于场景深度和生态建设。</p>
+      <div class="highlight">AI不缺聪明，缺的是'能干活'——2026年，Agent让这个缺口加速填平。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>🤖 尝试把你的重复性工作流程描述给AI Agent，让它自动化执行，而非一步步指导</p></div><div class="worker-tip"><div class="num">2</div><p>📊 关注大模型API价格下降趋势，现在是以低成本接入企业级AI能力的最佳时机</p></div><div class="worker-tip"><div class="num">3</div><p>🧠 学习Prompt优化技术（如清华开源框架的思路），让AI输出质量提升的同时降低成本</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
