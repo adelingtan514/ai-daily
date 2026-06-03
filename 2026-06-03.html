@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年6月3日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">6月3日（周三）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-06-03</span>
+      </div>
+      <h3>孙正义：AI才刚起步，体量有望达互联网热潮50倍</h3>
+      <p>软银掌门人孙正义公开表示，人工智能浪潮才刚刚开始，其规模可能是20多年前互联网热潮的50倍。他认为AI将从根本上重塑全球经济格局，当前仅仅是起点。</p>
+      <div class="source">快科技</div>
+      <a class="read-more" href="https://news.mydrivers.com/tag/ai.htm" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-06-03</span>
+      </div>
+      <h3>OpenAI演示无APP手机：所有界面实时AI生成</h3>
+      <p>在OpenAI Voice Hack Night活动上，团队现场展示了一款为手机打造的Agentic操作系统原型，所有界面均为即时生成，无需预装任何APP，标志着AI原生交互新范式诞生。</p>
+      <div class="source">快科技</div>
+      <a class="read-more" href="https://news.mydrivers.com/tag/ai.htm" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-06-03</span>
+      </div>
+      <h3>黄仁勋GTC Taipei：AI减少就业岗位是胡说八道</h3>
+      <p>英伟达CEO黄仁勋在GTC Taipei 2026大会表示，有用的AI时代已到来，token是利润单位，AI是GDP生成器，他直言AI减少工作岗位的担忧完全是胡说八道。</p>
+      <div class="source">快科技</div>
+      <a class="read-more" href="https://news.mydrivers.com/tag/ai.htm" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-06-03</span>
+      </div>
+      <h3>阶跃Step 3.7 Flash发布：400 tokens/秒，Agent成本打到Claude零头</h3>
+      <p>阶跃星辰推出Step 3.7 Flash多模态大模型，实现400 TPS超高吞吐，大幅降低Agent运行成本，以高性价比打破全球大模型价格壁垒，引发开发者广泛关注。</p>
+      <div class="source">智源社区</div>
+      <a class="read-more" href="https://hub.baai.ac.cn/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-06-03</span>
+      </div>
+      <h3>中国AI核心产业规模突破1.2万亿，预计十五五末超10万亿</h3>
+      <p>工信部数据显示，2025年我国人工智能核心产业规模超过1.2万亿元，企业超6200家。2026年政府工作报告首次提出打造智能经济新形态，标志经济从数字化迈向智能化。</p>
+      <div class="source">中国经营报</div>
+      <a class="read-more" href="https://baijiahao.baidu.com/s?id=1866604546902879605" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-06-03</span>
+      </div>
+      <h3>《2026全球AI算力发展研究报告》发布，十大趋势揭示算力未来</h3>
+      <p>天津世界智能产业博览会期间，2026全球AI算力发展研究报告重磅发布，十大趋势涵盖算力架构升级、绿色智算、多智能体推理算力等，全球算力中心加速向220GW绿色智算升级。</p>
+      <div class="source">百家号</div>
+      <a class="read-more" href="https://baijiahao.baidu.com/s?id=1866511089219679248" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-06-03</span>
+      </div>
+      <h3>美国NIST将AI安全研究所联盟更名AI联盟，强化国家AI战略</h3>
+      <p>美国NIST宣布重组人工智能安全研究所联盟，更名为NIST人工智能联盟，调整工作重心并扩大社会成员招募，凸显特朗普政府推进AI国家战略的战略升级与加速落地。</p>
+      <div class="source">智源社区</div>
+      <a class="read-more" href="https://hub.baai.ac.cn/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-06-03</span>
+      </div>
+      <h3>2026年AI十大趋势：智能体全面走进场景，2030年普及率超90%</h3>
+      <p>央视联合工信部等机构发布2026年人工智能十大趋势，AI智能体将在企业研发、客服、办公自动化等核心业务实现规模化部署，国务院目标2030年智能体应用普及率超90%。</p>
+      <div class="source">新浪新闻</div>
+      <a class="read-more" href="http://k.sina.com.cn/article_7857201856_1d45362c0019059g2s.html" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>AI智能体时代全面开启：从技术革命走向产业深水区</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>中国AI核心产业规模已超1.2万亿，预计十五五末突破10万亿，AI正从边缘工具成为经济核心要素</li><li>OpenAI演示无APP手机原型，阶跃Step 3.7 Flash实现400 TPS，智能体运行成本大幅下降加速落地</li><li>孙正义、黄仁勋等顶级掌舵者密集发声，一致判断AI浪潮远未触顶，产业竞争进入白热化阶段</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>2026年是AI从概念期迈入深水区的关键拐点。一方面，国内外顶级科技领袖纷纷强调AI才刚起步；另一方面，具体的产品突破（无APP手机、超高性价比大模型）和政策目标（2030年智能体普及率90%）已经落地成型。对于普通人而言，真正的变化不是更好的聊天机器人，而是AI开始悄悄接管企业的核心业务流程——这才是这轮浪潮最值得关注的信号。</p>
+      <div class="highlight">Token是新的利润单位，AI是新的GDP生成器。——黄仁勋，GTC Taipei 2026</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>智能体正在接管企业核心流程：研发、客服、办公自动化是最先落地的三个场景，提前学习Agent工具使用是2026年的必修课</p></div><div class="worker-tip"><div class="num">2</div><p>成本壁垒正在崩塌：阶跃、MiniMax等国产模型性价比已接近或超越国际一线，在工作中用AI的门槛越来越低</p></div><div class="worker-tip"><div class="num">3</div><p>AI治理是下一个大议题：美国加强AI联盟管控，中国推进全球AI合作组织，理解AI政策走向有助于提前布局</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
