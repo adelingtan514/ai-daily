@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年6月14日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">6月14日（周日）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">7 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-06-14</span>
+      </div>
+      <h3>美国政府紧急禁用Anthropic最强模型Fable 5与Mythos 5，上线仅72小时遭全球下架</h3>
+      <p>6月12日，美国政府以国家安全为由发布出口管制指令，要求Anthropic立即封禁两款刚发布数日的旗舰模型Fable 5与Mythos 5的境外访问权限，范围覆盖所有外籍人员。Anthropic公开质疑该禁令缺乏透明度与技术依据。此举引发AI行业广泛不满——有人质疑：特朗普政府允许向中国出售部分AI芯片，却不让盟友使用先进模型，逻辑自相矛盾。</p>
+      <div class="source">纽约时报 / 智东西 / 新智元</div>
+      <a class="read-more" href="http://news.sina.cn/bignews/2026-06-13/detail-inichhan9488288.d.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-06-14</span>
+      </div>
+      <h3>2026智源大会闭幕：200+专家共议世界模型与智能体，AI加速从数字世界迈向物理世界</h3>
+      <p>6月12-13日，第八届北京智源大会在中关村举办，2位图灵奖得主、8位院士、40余位AI企业CEO齐聚。智源研究院院长王仲远发布最新研究成果：开源模型超200个、全球下载量破10亿次，并公布正在研发的「悟界·Physis」世界大模型，标志AI从数字世界向物理世界加速迈进。</p>
+      <div class="source">环球网 / 智东西 / 百家号</div>
+      <a class="read-more" href="https://baijiahao.baidu.com/s?id=1867778643347778363" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-06-14</span>
+      </div>
+      <h3>MiniMax M3正式开源：新一代原生多模态旗舰，摩尔线程Day-0极速适配</h3>
+      <p>6月13日，MiniMax新一代原生多模态旗舰大模型M3正式开源。国产GPU企业摩尔线程同步宣布旗下AI训推一体智算卡MTT S5000完成Day-0适配，再次证明国产算力与国产大模型协同发展已进入实战阶段。</p>
+      <div class="source">快科技 / 新浪科技</div>
+      <a class="read-more" href="http://k.sina.com.cn/article_7857201856_1d45362c001906ot9i.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-06-14</span>
+      </div>
+      <h3>智源大会激辩大模型同质化：真壁垒在「场景闭环」，Scaling Law远未见顶</h3>
+      <p>第八届智源大会大模型产业论坛上，智源王仲远、银河通用王鹤、面壁智能李大海等激辩行业核心问题：大模型从技术狂热步入商业深水区，头部模型评测趋同，一款模型发布后不出半年就有竞品追平。共识是：长期价值来自场景闭环，而非单纯的模型性能竞赛。</p>
+      <div class="source">每日经济新闻 / 新智元</div>
+      <a class="read-more" href="http://finance.sina.com.cn/stock/t/2026-06-13/doc-inichssf2540413.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-06-14</span>
+      </div>
+      <h3>马斯克成全球首位万亿富翁：SpaceX上市首日暴涨19%，AI卫星业务浮出水面</h3>
+      <p>6月12日SpaceX登陆纳斯达克，首日收涨19.22%，市值突破2.1万亿美元，马斯克成为人类史上首位万亿富翁。上市前夕SpaceX披露新业务AI1卫星，马斯克表示将把与英伟达的合作推向新水平，AI+太空的想象空间被彻底打开。</p>
+      <div class="source">科创板日报 / CGTN</div>
+      <a class="read-more" href="http://finance.sina.com.cn/jjxw/2026-06-13/doc-inicfzut1570930.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-med">🧠 科学</span>
+        <span class="news-date">2026-06-14</span>
+      </div>
+      <h3>AI聊天伦理红线：加拿大女子起诉OpenAI，称ChatGPT设计导致女儿自杀</h3>
+      <p>6月11日，一名加拿大女子在美国加州对OpenAI及CEO奥特曼提起诉讼，称ChatGPT的设计问题导致其女儿自杀。Anthropic同步发布的5.2万人调查显示，71%美国人认为AI需要监管，但只有15%相信AI公司能自我管理。AI聊天工具在情绪陪伴与伦理边界之间的尺度之争白热化。</p>
+      <div class="source">央视新闻 / 封面新闻 / 新智元</div>
+      <a class="read-more" href="http://k.sina.com.cn/article_5952915705_162d248f9067033dxw.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-06-14</span>
+      </div>
+      <h3>Meta强制抽调员工组建AI团队：内部直播会有人闯入怒骂高管，团队濒临反抗边缘</h3>
+      <p>据《连线》杂志6月14日报道，Meta应用AI团队正濒临爆发反抗的边缘。本周一场内部直播中，有人突然闯入情绪失控，当场怒骂AI部门高管。这只是在Meta持续裁员、强制抽调员工投入AI的背景下积压已久的不满集中爆发——AI狂飙突进的背后，人的承受力正在被拉到极限。</p>
+      <div class="source">连线杂志 / IT之家</div>
+      <a class="read-more" href="http://finance.sina.com.cn/tech/digi/2026-06-14/doc-inicipwf6020088.shtml" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>AI的「边界之战」：禁令、伦理与反抗——技术狂飙三面受围</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>美国政府一纸禁令关停Anthropic最强模型Fable 5与Mythos 5，上线仅72小时即遭全球下架。Anthropic公开质疑禁令缺乏技术依据，而行业批评者指出：允许向中国出售芯片却禁止盟友使用模型，逻辑自相矛盾——AI的地缘政治化正在加速。</li><li>加拿大女子起诉OpenAI称ChatGPT导致其女儿自杀，Anthropic同步发布5.2万人调查显示71%美国人认为AI需要监管但仅15%信任AI公司能自我管理。AI聊天工具的情绪陪伴与安全边界之争已从学术讨论升级为法律与公共卫生议题。</li><li>Meta内部AI团队濒临反抗边缘——强制抽调、持续裁员与高压文化让员工在直播会上公开怒骂高管。AI产业的「军备竞赛」正在消耗最核心的资产：人。当企业为AI投入数十亿美元却忽视员工承受力，技术的进步反而成为组织崩溃的催化剂。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>这一周的AI新闻拼在一起，是一幅技术狂飙三面受围的图景。第一面：政府禁令从天而降，以国家安全之名关停最先进的模型，但缺少透明度与合理性论证——当AI成为一种可以被地缘政治随意摆弄的工具，受损的不仅是企业利益，更是全球技术协作的信任基础。第二面：伦理红线被生命代价反复敲响——一个年轻生命的逝去让AI聊天的情感边界成为法庭议题，而5.2万人的调查数据清晰表明：公众要的不是企业自律，而是制度性约束。第三面：组织内部的反抗——Meta员工在直播会上公开怒骂高管，这不是个案，而是整个行业在「全押AI」策略下对人的系统性忽视正在累积到临界点。三条线共同指向一个问题：AI的边界到底由谁来定？政府、企业还是社会？当技术狂飙到任何单一力量都无法单独制衡的程度，多方治理不再是一个选项，而是生存的必需。</p>
+      <div class="highlight">AI的边界不能只由技术的速度来定义——当禁令从天而降、生命走向法庭、员工怒骂高管，三条线交汇之处，正是技术文明必须回答的命题：谁有权为AI画线？</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>如果你在工作中使用Claude系列模型，本周注意确认Fable 5和Mythos 5的可用性变化。如果受到影响，建议评估替代模型方案（如GPT-5.5、Gemini 2.5 Pro等），并提前制定模型切换的应急预案，避免业务中断。</p></div><div class="worker-tip"><div class="num">2</div><p>AI伦理不再只是「别人的事」。如果你所在公司有AI产品涉及用户情感交互（客服、陪伴、心理健康等），建议立即审视安全护栏——添加明确的情感边界提示、危险信号检测和自动转人工机制。加拿大诉讼案已经为行业敲响警钟，合规成本远低于法律风险。</p></div><div class="worker-tip"><div class="num">3</div><p>本周智源大会核心信号：大模型同质化时代，「场景闭环」才是真壁垒。不要只追逐最强模型，而应该把精力放在：你所在业务场景中，AI能否形成从数据采集→模型推理→行动执行→效果反馈的完整闭环？闭环跑通一个，比跑一百个PoC更有价值。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
