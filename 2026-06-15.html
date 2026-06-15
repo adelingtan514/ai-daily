@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年6月15日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">6月15日（周一）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-06-15</span>
+      </div>
+      <h3>美国政府以国家安全为由暂停Claude Fable 5和Mythos 5全球访问，Anthropic公开反驳</h3>
+      <p>美国商务部下达出口管制指令，要求Anthropic立即中止所有外国公民对Fable 5和Mythos 5的访问权限，包括外籍员工。Fable 5刚发布72小时即遭封杀。Anthropic发布长篇声明和《安全态势更新》，首次公开反驳政府的安全评估结论，在AI行业前所未有。</p>
+      <div class="source">路透社/华尔街日报</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_1956a2e120365352" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-06-15</span>
+      </div>
+      <h3>Anthropic秘密申请上市估值9650亿美元，AI公司资本竞赛白热化</h3>
+      <p>Anthropic已秘密向SEC提交IPO注册声明草案，估值9650亿美元。此前5月Anthropic完成650亿美元H轮融资，在美国企业级市场占有率首次超越OpenAI。同月OpenAI也秘密递交IPO相关S-1注册草案，估值瞄准2000-3000亿美元。AI头部公司正从私募阶段进入公开市场检验。</p>
+      <div class="source">CSDN/金融时报</div>
+      <a class="read-more" href="https://blog.csdn.net/qq_37699336/article/details/161818042" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-06-15</span>
+      </div>
+      <h3>OpenAI遭美国多州检察长联合调查，'模型谄媚性'首次被列入司法调查项目</h3>
+      <p>纽约州总检察长签发传票，联合多个州对OpenAI展开调查。传票覆盖范围极广，包括广告业务、用户留存、消费者与健康数据处理、未成年人与老年人保护、深度学习模型、模型谄媚性以及公司政策。值得注意的是'模型谄媚性'首次被列入司法调查项目。</p>
+      <div class="source">华尔街日报/凤凰网科技</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_8706a2cbeea52552" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-06-15</span>
+      </div>
+      <h3>MiniMax开源M3模型，编程能力超越GPT-5.5</h3>
+      <p>国内AI公司MiniMax开源M3模型，在编程基准测试中超越OpenAI的GPT-5.5。开源模型在编码能力上的持续突破，正在缩小与闭源顶级模型的差距，为开发者社区提供了更多选择。</p>
+      <div class="source">AI日报</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_8706a2cbeea52552" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-06-15</span>
+      </div>
+      <h3>蚂蚁集团秘密测试AI版支付宝，一键切入原生AI界面</h3>
+      <p>据科创板日报独家获悉，蚂蚁集团正秘密测试AI版支付宝，新版本颠覆原有用户交互，可一键切入原生AI界面，实现从服务到资金管理的智能化。新版本上线时间未定，蚂蚁集团拒绝评论。</p>
+      <div class="source">科创板日报</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_9696a2f38e709352" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-med">🧠 科学</span>
+        <span class="news-date">2026-06-15</span>
+      </div>
+      <h3>香港大学研发类脑芯片：近绝对零度运行，或将变革量子计算</h3>
+      <p>香港大学科学家成功创建了一种新型类脑芯片，能在接近绝对零度的极端环境下运行，有望与量子计算系统深度融合。该芯片采用事件驱动和存算一体架构，能耗降低90%以上，为AI算力瓶颈提供全新解题思路。</p>
+      <div class="source">ScienceDaily</div>
+      <a class="read-more" href="https://www.sciencedaily.com/news/computers_math/artificial_intelligence/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-med">🧠 科学</span>
+        <span class="news-date">2026-06-15</span>
+      </div>
+      <h3>经典注意力测试暴露AI最大弱点：任务越长表现越差</h3>
+      <p>研究人员让顶级AI模型接受经典心理学注意力测试，发现重大缺陷。虽然模型能在短列表中正确命名颜色，但随着任务变长和更复杂，性能急剧下降。这一发现揭示了当前大模型在持续注意力方面的根本性局限。</p>
+      <div class="source">ScienceDaily</div>
+      <a class="read-more" href="https://www.sciencedaily.com/news/computers_math/artificial_intelligence/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-06-15</span>
+      </div>
+      <h3>Meta撤销20亿美元收购Manus交易，AI并购市场风向生变</h3>
+      <p>Meta撤销了对AI Agent公司Manus的20亿美元收购交易。此前Meta曾在AI领域大举收购扩张，此次交易撤销或反映监管压力增大及AI公司估值泡沫风险。AI行业的并购整合正在进入更审慎的阶段。</p>
+      <div class="source">AI日报</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_1956a2e120365352" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>AI监管与资本化并行：当模型成为地缘博弈新战场</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>美国商务部以国家安全为由暂停Anthropic最新模型Fable 5和Mythos 5的全球访问，AI模型首次成为出口管制核心对象</li><li>OpenAI同日遭多州联合调查，'模型谄媚性'首次被列入司法调查项目，AI产品安全与透明度监管升级</li><li>Anthropic估值9650亿美元秘密申请IPO，OpenAI此前也递交S-1草案，AI头部公司集体走向公开市场</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>本周AI行业出现了一个前所未有的三重叠加：监管、资本化与地缘政治同时作用于同一批公司。美国政府对Anthropic模型的出口管制，标志着AI模型已经从技术产品升级为战略资源——与半导体、核技术并列的国家安全关注对象。而多州对OpenAI的联合调查，则释放出另一个信号：AI产品的消费者保护框架正在加速成型，'模型谄媚性'入案意味着监管者开始关注AI行为本身，而不仅是数据隐私。与此同时，Anthropic和OpenAI争相IPO，AI头部公司正从'烧钱换增长'的私募阶段转入接受公开市场检验。三条线索交织的结论是：AI行业的'野蛮生长'时代正在结束，取而代之的是一个监管更严、资本更理性、地缘博弈更激烈的'新常态'。</p>
+      <div class="highlight">当模型被当作武器管控、产品被当作金融审查、公司被当作国家博弈筹码——AI已不再只是技术问题。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>关注AI监管动态：模型出口管制和消费者保护调查将持续加码，涉及AI产品的团队需提前建立合规文档和审计追踪</p></div><div class="worker-tip"><div class="num">2</div><p>AI公司IPO窗口开启意味着更多透明度要求：如果你在使用OpenAI/Anthropic服务，关注其财报披露中的定价策略变化</p></div><div class="worker-tip"><div class="num">3</div><p>开源模型竞争力持续提升（MiniMax M3编程超GPT-5.5），评估技术选型时不要只盯着闭源模型，开源方案成本优势明显</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
