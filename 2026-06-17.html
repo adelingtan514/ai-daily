@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年6月17日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">6月17日（周三）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-06-17</span>
+      </div>
+      <h3>华为HDC 2026：余承东宣布HarmonyOS 7发布，鸿蒙全面迈向Agent智能体时代</h3>
+      <p>6月12-14日华为开发者大会召开，余承东宣布HarmonyOS 7开发者测试版发布，鸿蒙智能向Agent架构全面演进，标志着鸿蒙生态正式进入AI时代新阶段。</p>
+      <div class="source">百家号</div>
+      <a class="read-more" href="https://baijiahao.baidu.com/s?id=1868110286078423707" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-06-17</span>
+      </div>
+      <h3>苹果WWDC 2026聚焦AI：Apple Intelligence大幅升级，Siri补齐短板</h3>
+      <p>苹果WWDC26大会以AI为核心，详细发布Apple Intelligence与Siri AI新能力，大幅补齐AI短板，但资本市场反应相对冷淡，苹果AI关键一跃仍待检验。</p>
+      <div class="source">百家号</div>
+      <a class="read-more" href="https://baijiahao.baidu.com/s?id=1867615618817653633" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-06-17</span>
+      </div>
+      <h3>2026北京智源大会：AI从预测Token迈向触达物理世界，范式革命进行时</h3>
+      <p>第八届智源大会以从悟道到悟界为主题，探讨AI从预测词元到预测物理状态的范式革命，多位图灵奖得主与中国大模型第一梯队集结，共绘AI进化蓝图。</p>
+      <div class="source">北京商报</div>
+      <a class="read-more" href="https://baijiahao.baidu.com/s?id=1867868627472438550" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-06-17</span>
+      </div>
+      <h3>OpenAI秘密递交IPO申请，正从模型公司向AI平台加硬件生态升级</h3>
+      <p>市场消息显示OpenAI已秘密提交IPO申请，成为2026年全球科技资本市场最受关注的上市计划。随着GPT-5.5扩大企业市场份额，OpenAI正向AI平台与硬件生态双轨并行升级。</p>
+      <div class="source">163每日AI资讯</div>
+      <a class="read-more" href="https://www.163.com/dy/article/KV7CBK7A0518E4C8.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-06-17</span>
+      </div>
+      <h3>科大讯飞27周年：星火医疗、具身智能、AI加量子领域发布最新进展</h3>
+      <p>6月9日科大讯飞27周年司庆，董事长刘庆峰发布星火高考成绩及医疗、具身智能、量子AI等多领域进展，提出以国产算力大模型为核心的AI新阶段战略。</p>
+      <div class="source">人民网安徽频道</div>
+      <a class="read-more" href="http://ah.people.com.cn/n2/2026/0610/c227767-41606278.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-06-17</span>
+      </div>
+      <h3>人与AI共同进化十大趋势报告发布：AI进入全社会普及应用新阶段</h3>
+      <p>中央广播电视总台研究院在第五届全球媒体创新论坛发布近1.9万字趋势报告，聚焦人工智能如何从颠覆性技术走向全社会普及性应用，深刻重塑人与技术的关系。</p>
+      <div class="source">中央广播电视总台研究院</div>
+      <a class="read-more" href="https://mp.weixin.qq.com/s?__biz=MjM5MTExMTMwOQ==&mid=2705995878&idx=1&sn=c2eeb92f1ddd0264f85c7bdc116396cc" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-06-17</span>
+      </div>
+      <h3>AI芯片需求持续爆发，电子特气一天一个价成半导体血液抢手货</h3>
+      <p>随着AI产业景气度攀升，AI芯片与高端存储芯片需求旺盛，上游电子特种气体市场多款核心产品持续涨价，半导体原材料供应链面临新一轮压力。</p>
+      <div class="source">新浪AI热点</div>
+      <a class="read-more" href="http://k.sina.com.cn/article_7857201856_1d45362c001906v3ta.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-06-17</span>
+      </div>
+      <h3>2026未来汽车AI技术展重庆启幕：大模型加自动驾驶加具身智能重构汽车全产业链</h3>
+      <p>2026未来汽车AI技术展在重庆国际博览中心开幕，聚焦AI加汽车创新生态，展示大模型、高阶自动驾驶、具身智能等前沿技术在汽车全产业链中的最新应用成果。</p>
+      <div class="source">百家号环球网</div>
+      <a class="read-more" href="https://baijiahao.baidu.com/s?id=1867937769374982196" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>AI触达物理世界：从语言智能到具身智能的范式大跃迁</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>2026智源大会提出AI正从预测下一个词元转向预测下一个物理状态，世界模型与具身智能成为下一代AI核心方向</li><li>华为HarmonyOS 7全面转向Agent架构，苹果WWDC26以AI为主角升级Siri，科技巨头纷纷将智能体能力下沉到操作系统层</li><li>OpenAI秘密递交IPO文件，同步推进AI平台加AI硬件双轨战略，AI产业从单点模型竞争进入生态化平台竞争新阶段</li><li>中央广播电视总台发布AI十大趋势报告：AI正从颠覆性技术走向全社会普及性应用，人与AI进入共同进化新关系</li><li>AI芯片需求爆发带动上游半导体材料持续涨价，AI产业对实体供应链的拉动效应持续扩大</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>AI领域最核心的信号是：智能的边界正在从虚拟语言世界向物理实体世界延伸。无论是智源大会提出的预测物理状态范式，还是华为将Agent架构下沉至操作系统、车企AI展聚焦具身智能，都指向同一方向——AI正在走出屏幕，走进现实。与此同时，苹果、OpenAI加速平台化竞争，从单一模型能力转向软硬件一体的AI生态布局。对普通用户来说，AI工具可用性正在快速提升；对产业来说，这是新一轮基础设施建设周期的开始。</p>
+      <div class="highlight">AI下一站不是更聪明的聊天机器人，而是能感知、行动于物理世界的智能体。——2026智源大会核心判断</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>关注Agent工具链：HarmonyOS 7、iOS新版Siri均向Agent架构演进，提前熟悉AI Agent在手机端的使用场景，找到适合自己工作流的入口</p></div><div class="worker-tip"><div class="num">2</div><p>用AI辅助趋势判断：面对每日海量AI资讯，可以让AI帮你做信息过滤，只关注与自己行业直接相关的技术方向，避免信息焦虑</p></div><div class="worker-tip"><div class="num">3</div><p>具身智能是新风口：如果你在制造、物流、汽车等实体行业，今年是了解AI加机器人、AI加自动驾驶落地方案的好时机，可以关注相关行业峰会动态</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
