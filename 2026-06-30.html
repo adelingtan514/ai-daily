@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年6月30日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">6月30日（周二）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-06-29</span>
+      </div>
+      <h3>国常会最新部署：加力推进人工智能创新突破，加快超大规模智算集群建设</h3>
+      <p>6月29日国务院常务会议指出，要深刻把握人工智能演进趋势，完善支持政策和治理体系。要加力推进AI创新突破，加快关键技术攻关和超大规模智算集群建设，强化高质量数据供给，深入实施「人工智能+」行动，促进智能产品和服务加快规模化商业应用。</p>
+      <div class="source">央视财经 / 澎湃新闻</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_3156a4313a221452" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-06-29</span>
+      </div>
+      <h3>韩国押注争夺AI产业主导权：三星+SK总计投入4755万亿韩元，规模达史上最大</h3>
+      <p>6月29日，韩国政府联手三星、SK两大半导体巨头公布「三大超级项目」，以半导体、物理AI、AI数据中心为核心。三星计划投资2655万亿韩元，SK集团同步跟进，两家巨头未来在AI相关领域总计投入约4755万亿韩元（约合20.92万亿元人民币），规模达韩国史上最大量级。</p>
+      <div class="source">每日经济新闻 / 钛媒体</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_6516a42ffbe87552" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-06-23</span>
+      </div>
+      <h3>SpaceX签下63亿美元AI计算大单，与Reflection AI合作推进太空算力</h3>
+      <p>SpaceX与开源AI实验室Reflection AI签署价值63亿美元的计算能力协议，进一步巩固其向AI算力领域进军的战略。此前SpaceX已宣布计划建设太空AI数据中心，利用轨道设施的太阳能和地球散热优势，为AI推理提供全天候清洁能源。</p>
+      <div class="source">AI News Go / ainewsgo.com</div>
+      <a class="read-more" href="https://ainewsgo.com/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-06-23</span>
+      </div>
+      <h3>Google DeepMind与A24达成7500万美元AI电影制作合作，进军好莱坞</h3>
+      <p>Google DeepMind宣布向知名独立电影工作室A24投资7500万美元，用于AI辅助电影制作。这是科技巨头与好莱坞深度合作的标志性里程碑，项目将探索AI在剧本分析、视觉效果预览和后期制作中的实际应用，被称为「科技-Hollywood协作」的新范式。</p>
+      <div class="source">AI News Go / 洛杉矶</div>
+      <a class="read-more" href="https://ainewsgo.com/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-06-23</span>
+      </div>
+      <h3>Krea开源12B参数Krea 2图像模型，支持超高速渲染</h3>
+      <p>创意AI创业公司Krea正式发布开源前沿图像模型Krea 2 Raw和Krea 2，参数规模达120亿。新模型在保持高质量生成的同时实现了超快速渲染，标志着开源权重图像生成领域迎来新竞争者，直接挑战Midjourney和Stable Diffusion生态。</p>
+      <div class="source">AI News Go</div>
+      <a class="read-more" href="https://ainewsgo.com/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-med">🧠 科学</span>
+        <span class="news-date">2026-06-24</span>
+      </div>
+      <h3>Stripe联合Anthropic、OpenAI基金会和比尔·盖茨推出5亿美元Intercept项目，AI攻克普通感冒</h3>
+      <p>全球支付巨头Stripe宣布联合Anthropic、OpenAI基金会、Flu Lab、比尔·盖茨等推出Intercept项目，预算5亿美元。项目旨在攻克普通感冒和流感等呼吸道感染，两大路径：开发可预防超75%有症状感染的广谱预防药物（BSPs），以及推动空气净化和杀菌技术（ACTs）普及。</p>
+      <div class="source">科创要闻 / 腾讯新闻</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_4996a42b3bc95052" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-06-30</span>
+      </div>
+      <h3>AI算力驱动半导体革新，2026慕尼黑上海电子展7月1日开幕释放新动能</h3>
+      <p>人工智能飞速迭代与算力需求持续爆发正重塑半导体产业生态。AI产业高速发展推动数据量增长，对高速互联解决方案、高精度时钟芯片、高效电源管理芯片及全链路信号链产品需求全面激增。2026慕尼黑上海电子展将于7月1-3日举行，聚焦AI硬件新动能。</p>
+      <div class="source">21IC电子网</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_2986a43085142352" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-med">🧠 科学</span>
+        <span class="news-date">2026-06-29</span>
+      </div>
+      <h3>新AI框架助力天文学：分析超新星图像精确测量宇宙膨胀速度</h3>
+      <p>科学家开发出一套AI驱动的新框架，通过分析Ia型超新星图像并以前所未有的细节建模其环境，帮助天文学家更精确地估算宇宙距离和膨胀速度。这标志着AI在基础科学研究中的渗透已从材料、生物领域延伸至宇宙学前沿。</p>
+      <div class="source">ScienceDaily</div>
+      <a class="read-more" href="https://www.sciencedaily.com/news/computers_math/artificial_intelligence/" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>国常会定调+韩国万亿豪赌：全球AI基建竞赛进入「国家总动员」时代</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>6月29日中国国常会明确要求「加力推进人工智能创新突破，加快超大规模智算集群建设」，这是国务院层面首次将智算集群建设提升到「加力推进」级别，标志着AI基础设施正式成为国家级战略优先级。</li><li>同一天，韩国公布「三大超级项目」，三星+SK合计投入4755万亿韩元（约20.92万亿元人民币）——这不是单一企业的商业决策，而是政府与财阀的「国家总动员」模式，与美国的Stargate、中国的东数西算形成三足鼎立的全球算力竞赛格局。</li><li>SpaceX签下63亿美元AI计算合约、Google DeepMind投资A24 7500万美元拍电影、Stripe联合OpenAI基金会砸5亿美元用AI攻克感冒——这些看似不相关的商业事件，共享同一个底层逻辑：AI已从「实验室玩具」变成「重新定义行业规则的基础设施」，任何领域不被AI改造就意味着被淘汰。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>这一周最值得关注的事件不是某款新模型的发布，而是两条看似独立的新闻在同一个星期出现：中国国常会把AI创新突破定为「加力推进」级别，韩国则以4755万亿韩元的历史最大投资押注AI主导权。这意味着全球AI竞争已经从「企业赛道」升级为「国家赛道」。过去我们讨论AI竞争时，焦点通常是OpenAI vs DeepSeek vs Google；现在，焦点变成了「国家算力基础设施」的对决。超大规模智算集群、国产芯片自主可控、半导体全产业链——这些词汇的权重正在迅速超过「模型参数」。原因很简单：当AI应用真正进入规模化商业阶段，算力就是石油，芯片就是炼油厂，谁能掌握低成本、高稳定性的算力供应链，谁就掌握了下一轮产业革命的钥匙。韩国模式的启示尤其值得注意：政府+财阀的「全国总动员」能在短期内集中资源形成规模效应，但也意味着AI产业的竞争门槛被急剧抬高。对于中小团队和个人开发者来说，这既是挑战（自建算力成本越来越高），也是机遇（云端API和开源生态让「算力民主化」仍在推进）。这一周，全球AI的权力结构正在发生根本性的转移。</p>
+      <div class="highlight">AI竞争已从「企业赛道」升级为「国家赛道」——超大规模智算集群就是新时代的石油，而芯片就是炼油厂。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>关注7月1日开幕的慕尼黑上海电子展，AI算力硬件趋势将直接影响未来半年内你能获得什么算力、以什么成本获得。如果你正在规划AI基础设施采购，展会上释放的信号是重要参考。</p></div><div class="worker-tip"><div class="num">2</div><p>国常会「加力推进」AI创新突破是一个明确的政策信号：国内AI应用的合规门槛和扶持力度可能会同步提升。建议梳理你所在团队正在进行的AI项目，看看是否有政策红利窗口可以对接申请。</p></div><div class="worker-tip"><div class="num">3</div><p>韩国4755万亿韩元投资意味着全球AI算力供给将在2-3年内大幅增加，但短期内先进制程芯片（尤其是HBM和高性能GPU）的供应紧张局面可能持续。如果你依赖云算力，建议提前锁定长期合约或探索国产替代方案。</p></div><div class="worker-tip"><div class="num">4</div><p>Stripe 5亿美元Intercept项目提示了一个新方向：AI在生命科学和医药研发中的应用正在加速。如果你所在的行业与医疗、生物、健康相关，现在是用AI工具重新评估研发流程和成本结构的最佳时机。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
