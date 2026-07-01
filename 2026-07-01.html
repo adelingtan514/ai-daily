@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年7月1日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">7月1日（周三）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">7 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-06-30</span>
+      </div>
+      <h3>美团开源万亿参数大模型LongCat-2.0，国产算力集群全流程训练</h3>
+      <p>6月30日，美团正式发布新一代万亿参数大模型LongCat-2.0，并将对外开源。作为在五万卡国产算力集群上完成全流程训练与推理的万亿参数模型（总参数1.6T，平均激活约48B），预训练数据规模超过30T tokens，覆盖中文、英文、多语言和代码等多类数据，原生支持1M超长上下文。</p>
+      <div class="source">腾讯新闻 / 环球市场播报</div>
+      <a class="read-more" href="https://www.toutiao.com/article/7491169530333364772/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-07-01</span>
+      </div>
+      <h3>Anthropic推出Claude Science AI科研工作台，用Agent重构科学研究</h3>
+      <p>AI实验室Anthropic正式发布Claude Science，专为科研人员打造的AI工作台。该工具支持实验设计、数据分析和文献综述，标志着AI Agent从「辅助搜索」正式升级为「科研核心执行者」，科学研究范式正在被AI改写。</p>
+      <div class="source">环球市场播报</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_2066a443cc783952" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-07-01</span>
+      </div>
+      <h3>谷歌发布全新AI创作工具，多模态内容生成能力全面升级</h3>
+      <p>谷歌近日推出全新AI创作工具，进一步强化生成式AI在创意内容生产方面的能力。该工具整合文本、图像和视频多模态生成能力，面向创作者和营销人员提供端到端内容生成服务，与现有Google Workspace生态深度打通。</p>
+      <div class="source">环球市场播报</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_2066a443cc783952" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-06-30</span>
+      </div>
+      <h3>英伟达机器人团队在京沪深密集招聘，人形机器人全球布局提速</h3>
+      <p>英伟达机器人团队近期在中国北京、上海、深圳三地同步开启大规模招聘，涵盖具身智能算法、机械控制和硬件工程等核心岗位。业界普遍认为这是英伟达加速人形机器人全球落地的前兆，具身智能赛道热度持续攀升。</p>
+      <div class="source">腾讯新闻</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_4696a445dc655252" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-07-01</span>
+      </div>
+      <h3>2026年AI研发管理平台已成企业标配，效率基础设施全面普及</h3>
+      <p>随着AI技术在研发管理领域的深入应用，2026年AI研发管理平台已成为企业提升效率、优化创新流程的重要工具。从需求管理到代码生成，AI正在全面重塑企业研发流程，成为企业数字化转型的标配基础设施。</p>
+      <div class="source">行业分析报告</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_1666a44626617652" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-07-01</span>
+      </div>
+      <h3>闪迪上半年涨超850%，AI存储需求引爆资本市场</h3>
+      <p>2026年上半年，闪迪股价累计涨幅超过850%，成为AI产业链中最受益于数据存储需求爆发的标的之一。大模型训练和推理对海量存储的持续需求，正在从基础设施层向资本市场全面传导，AI存储赛道持续升温。</p>
+      <div class="source">环球市场播报</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_2066a443cc783952" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-07-01</span>
+      </div>
+      <h3>AI电子秤市场2026年持续爆发，零售餐饮智能化渗透加速</h3>
+      <p>2026年，AI电子秤在零售、餐饮等多个行业的应用日益广泛。随着商业智能化的不断推进，AI电子秤已从简单的称重工具进化为集数据分析、库存管理和智能推荐于一体的终端设备，成为中小商户数字化转型的低成本入口。</p>
+      <div class="source">行业分析</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_1636a44679380052" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>开源大模型与AI科研工具齐飞：中国AI基础设施闭环加速，全球AI正从软件向硬件和科研纵深</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>美团发布1.6T参数LongCat-2.0并正式开源，基于五万卡国产算力集群完成全流程训练与推理，原生支持1M超长上下文。这标志着中国大模型在规模、自主可控和开源生态上三线并进，国产AI算力+算法闭环正式成型。</li><li>Anthropic推出Claude Science AI科研工作台，让AI Agent从「辅助搜索」升级为「科研核心执行者」。实验设计、数据分析和文献综述等核心科研环节正在被AI重构，科学研究的效率天花板正在被打破。</li><li>英伟达机器人团队在中国京沪深三地密集招聘，叠加AI存储龙头闪迪半年涨幅超850%，AI投资热情正从算力层向硬件、存储和机器人等实体环节全面延伸，产业链纵深明显加速。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>AI行业正在经历两个并行的结构性转变。一方面，中国大模型从「可用」到「自主可控+开源」——美团LongCat-2.0在国产算力上完成万亿参数训练并开源，意味着中国AI生态首次在模型规模、算力自主和开源社区三个维度上同时取得突破。另一方面，全球AI从「软件层」向「科研和硬件层」纵深——Anthropic的Claude Science让AI进入实验室核心工作流，英伟达的机器人招聘和闪迪的股价爆发则表明，AI正在从云端模型走向物理世界的机器人和存储基础设施。对于从业者而言，最大的机会不是追逐新模型，而是找到AI与自身业务场景的结合点，并快速部署。2026年AI的竞争焦点已不再是模型本身，而是谁能让AI真正进入工作流——无论是代码、科研还是生产线。</p>
+      <div class="highlight">2026年AI的竞争焦点已不再是模型本身，而是谁能让AI真正进入工作流——无论是代码、科研还是生产线。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>本周关注并申请体验美团LongCat-2.0。作为基于国产算力训练并开源的万亿参数模型，其成本优势和支持1M超长上下文的能力，在中文、代码和多语言场景中已具备与海外闭源方案竞争的实力。</p></div><div class="worker-tip"><div class="num">2</div><p>如果你是科研人员、分析师或产品经理，尝试把AI科研工具（如Claude Science）纳入你的工作流。从文献综述到数据清洗，AI Agent正在接管重复性科研劳动，让你把精力集中在真正需要人类判断的环节。</p></div><div class="worker-tip"><div class="num">3</div><p>关注英伟达机器人招聘方向，具身智能是2026年最确定的增量赛道之一。无论你是算法工程师还是硬件从业者，具身智能对跨学科人才的需求正在爆发，提前了解技能需求布局自己的技术栈。</p></div><div class="worker-tip"><div class="num">4</div><p>AI存储和硬件层的爆发（如闪迪半年涨850%）提醒我们：AI红利不仅存在于模型层，更存在于基础设施层。如果你的业务涉及数据存储、边缘计算或硬件集成，现在正是重新评估供应链和合作机会的窗口期。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
