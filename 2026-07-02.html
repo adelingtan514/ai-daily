@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年7月2日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">7月2日（周四）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">7 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-07-02</span>
+      </div>
+      <h3>韩国押上十年国运：总统向三星/SK海力士90度鞠躬，投资金额达2倍GDP</h3>
+      <p>面对人工智能竞争，韩国总统李在明在青瓦台向三星李在镕和SK海力士崔泰源90度深鞠躬，称两人为'国民英雄'。三星+SK联手政府投资以半导体、AI数据中心为核心的超级项目，金额达2倍韩国GDP。SK集团未来十年将投资约2200万亿韩元（约9.68万亿人民币）用于半导体扩产能和AI数据中心建设。</p>
+      <div class="source">燕财局 / 新浪</div>
+      <a class="read-more" href="https://k.sina.com.cn/article_5953190046_162d6789e06703eup4.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-07-02</span>
+      </div>
+      <h3>Anthropic推出AI药物研发项目，正式进军医疗健康市场</h3>
+      <p>人工智能公司Anthropic启动内部药物发现项目，正式进军医疗健康市场。该项目将重点针对传统生物制药企业认为不具备吸引力的'被忽视疾病'开展疗法研发，与其新推出的'克劳德科学'产品形成协同，服务于生命科学领域客户。</p>
+      <div class="source">新浪 / 新浪财经</div>
+      <a class="read-more" href="https://finance.sina.com.cn/stock/usstock/summary/2026-07-01/doc-iniffumn3160661.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-07-02</span>
+      </div>
+      <h3>中国信通院发布首个智算运维智能体评测基准，覆盖5款主流国产芯片</h3>
+      <p>6月29日，中国信通院正式发布AISHPerf人工智能软硬件基准体系3.0版本，包含智算运维智能体评测基准和算子生成智能体评测基准。两大基准由国内顶尖AI原生基础设施服务商无问芯穹及清华大学团队作为重点技术支持方参与建设，覆盖5款主流国产芯片。</p>
+      <div class="source">雷峰网 / 上观新闻</div>
+      <a class="read-more" href="https://finance.sina.com.cn/jjxw/2026-06-30/doc-inifenrs4866392.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-07-02</span>
+      </div>
+      <h3>全球数据中心79%负载容量面临气候灾害威胁，AI热潮遭遇极端天气挑战</h3>
+      <p>气候风险分析机构First Street研究数据显示，全球数据中心高达79%的负载容量面临各种气候灾害威胁。正当欧洲民众在破纪录热浪中避暑时，大型科技公司面临严峻挑战：如何确保AI数据中心内高性能芯片持续稳定运行。气候风险已从'是否会发生'变成'如何应对'。</p>
+      <div class="source">环球时报 / CNBC</div>
+      <a class="read-more" href="https://finance.sina.com.cn/roll/2026-07-01/doc-iniffysy4323765.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-07-02</span>
+      </div>
+      <h3>诺顿Genie接入Claude，为日常对话带来AI诈骗检测功能</h3>
+      <p>Gen集团旗下网络安全品牌诺顿宣布，将AI诈骗检测工具诺顿精灵接入Claude平台。该功能已上线ChatGPT及诺顿360，支持Claude全版本服务。用户可直接在Claude内核查可疑消息、链接、邮件、图片，获取风险判定结果及应对指引。</p>
+      <div class="source">新浪财经</div>
+      <a class="read-more" href="https://finance.sina.com.cn/stock/usstock/summary/2026-06-30/doc-iniffcps6541879.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-07-02</span>
+      </div>
+      <h3>中国宇树机器人登陆美国达人秀，8台G1人形机器人完成同步后空翻</h3>
+      <p>当地时间6月2日，第21季《美国达人秀》首播舞台上，26岁四川舞者吴宇飞带着8台宇树科技G1人形机器人完成3分钟人机共舞。机器人踩着音乐节拍同步摆臂、踏步、侧身旋转，全程多次关节联动零卡顿，最终四位评委全票通过晋级。表演片段上线24小时内在海外社交平台引发热议。</p>
+      <div class="source">人民日报海外版</div>
+      <a class="read-more" href="https://finance.sina.com.cn/jjxw/2026-06-30/doc-inifenru1647283.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-07-02</span>
+      </div>
+      <h3>OpenAI首席经济学家：AI不会取代人类劳动者，'某项任务引入AI≠取代人工'</h3>
+      <p>OpenAI首席经济学家Ronnie Chatterji在欧洲央行年度活动上表示，AI的兴起不会使人类劳动者变得多余。'仅仅因为某项任务引入了AI，并不意味着它就能取代人工'。我们需要更深入思考什么是工作、它们将如何演变，而不是盲目乐观或悲观。</p>
+      <div class="source">新浪财经</div>
+      <a class="read-more" href="https://finance.sina.com.cn/stock/usstock/c/2026-07-01/doc-iniffivs3272718.shtml" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>AI从'工具'到'基础设施'：当一国押上国运、气候威胁数据中心、Agent评测标准落地</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>韩国以'国民英雄'礼遇对待半导体/AI投资企业家，投资金额达2倍GDP，这是国家级战略竞争白热化的最直观信号——AI不再只是企业竞争，而是国运之争。</li><li>全球数据中心79%负载容量面临气候灾害威胁，与韩国加速建设核电站以支撑AI用电形成鲜明对照：AI的物理瓶颈正在从'算力够不够'转向'能源和环境撑不撑得住'。</li><li>中国信通院发布首个智算运维智能体评测基准，覆盖5款国产芯片，意味着国产AI生态正从'能用'走向'有标准可依'，这是产业成熟度的重要里程碑。</li><li>OpenAI首席经济学家在央行论坛上强调'AI不取代人'，Anthropic却同时进军药物研发——这两个信号共同说明：AI的替代叙事正在分化，低端重复性任务被替代，高价值创造性领域被增强。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>这一周的新闻拼出了一幅完整的AI产业图景：韩国押上国运投资、气候威胁数据中心、信通院发布评测标准、OpenAI首席经济学家谈就业、Anthropic进军医药。最值得关注的是'基础设施焦虑'的显性化——韩国用2倍GDP投资、中国用标准评测体系打底、全球用气候风险数据敲警钟。这说明AI竞争已从'模型参数谁更大'的单一维度，扩展到'算力-能源-标准-人才'的全产业链竞争。Anthropic做药物研发、诺顿做AI诈骗检测、宇树机器人上美国达人秀——应用层正在多点开花，但真正决定胜负的，是底层基础设施谁能跑得更稳。</p>
+      <div class="highlight">AI竞赛的下半场不是比谁的模型更聪明，而是比谁的基础设施更稳、能源更足、标准更完善——这是从'炫技'到'扎根'的必然转折。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>关注你所在公司的AI基础设施安全：气候风险对数据中心的威胁不是未来问题，而是现在。建议了解你们云服务的数据中心分布和灾备策略，极端天气下的业务连续性预案值得重新审视。</p></div><div class="worker-tip"><div class="num">2</div><p>学习'AI评测标准'思维：信通院发布智算运维智能体评测基准，意味着Agent选型将有标准可依。如果你正在评估AI工具或Agent产品，尝试用'标准化评测'视角对比——不要只看Demo效果，要看稳定性、可观测性、安全护栏等基础设施指标。</p></div><div class="worker-tip"><div class="num">3</div><p>本周做一件事：区分'AI会取代我什么'和'AI会增强我什么'。OpenAI首席经济学家的观点值得认真对待——不是盲目乐观或悲观，而是理性评估你工作中哪些环节是重复性可替代、哪些是高价值创造性。把精力放在后者，用AI放大你的专业壁垒。</p></div><div class="worker-tip"><div class="num">4</div><p>如果关注AI+医药/法律/安全等垂直领域，这周是观察窗口：Anthropic做药物研发、诺顿做AI反诈骗、Hexaware做推理运维。这些信号说明'AI垂直应用'正从概念验证进入真实商业闭环。如果你在这些领域工作，现在是用AI重构工作流的最佳时机。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
