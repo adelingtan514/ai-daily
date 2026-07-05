@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年7月5日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">7月5日（周日）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-07-05</span>
+      </div>
+      <h3>Claude Fable 5回归GitHub Copilot：Anthropic最强编程AI解禁上线</h3>
+      <p>美东时间7月1日, Anthropic宣布Claude Fable 5正式回归并全面接入GitHub Copilot。该模型是Mythos系列首款公开产品, 专精长周期自主编程, Stripe实测单日完成5000万行代码Ruby迁移。此前因网络安全能力过强被美国政府短暂封禁, 经历“四日惊魂”后重新开放。</p>
+      <div class="source">搜狐科技 / 机器之心</div>
+      <a class="read-more" href="https://www.sohu.com/a/1044526480_121956422" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-07-05</span>
+      </div>
+      <h3>优必选发布99万元超仿生人形机器人U1系列, 预售订单突破1.3万台</h3>
+      <p>6月30日, 优必选发布消费级品牌“优世界”全尺寸超仿生人形机器人U1系列, 分Lite(11.98万)、Pro(16.98万)、Ultra(男99万/女88万)三档。全身88个自由度, 搭载情感大模型可识别20余种情绪, 首发订单已超1.3万台, 力争今年交付。</p>
+      <div class="source">雷递智驾 / 界面新闻</div>
+      <a class="read-more" href="https://baijiahao.baidu.com/s?id=1869540544750274492" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-07-05</span>
+      </div>
+      <h3>2026世界人工智能大会7月17日上海开幕, 超300款AI产品全球首发</h3>
+      <p>2026 WAIC定档7月17-20日上海, 主题为“智能伙伴, 共创未来”。由10个国家部委与上海市政府联合主办, 展览面积超10万㎡, 1100余家企业参展, 3000余项产品亮相, 超300款AI产品全球首发。首次自主举办国际学术会议WAIC-Academic, 图灵奖得主姚期智任主席。</p>
+      <div class="source">央视新闻 / 百家号</div>
+      <a class="read-more" href="https://baijiahao.baidu.com/s?id=1868303744524403152" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-07-05</span>
+      </div>
+      <h3>Anthropic估值飙至9650亿美元, Fable 5成IPO核心筹码</h3>
+      <p>Anthropic提交IPO申请, 估值高达9650亿美元。Claude Fable 5定价每百万输入token 10美元、输出50美元, 搭载100万token上下文窗口。市场预测Claude年末成为顶级AI模型的概率为69.3%。看多观点认为其可将数周工程工作压缩至数小时。</p>
+      <div class="source">新浪财经</div>
+      <a class="read-more" href="https://finance.sina.cn/2026-07-01/detail-inifhmhw1056545.d.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-07-05</span>
+      </div>
+      <h3>智谱GLM-5.2正面硬刚Fable 5: 24小时回应出口管制, 成本仅1/10</h3>
+      <p>6月12日美国商务部对Fable 5实施出口管制后仅24小时, 智谱AI发布GLM-5.2, 在BridgeBench推理榜拿下全球第一(42.8分), 速度300 tokens/秒, 成本为美国前沿模型的1/10, 全权重开源。技术博主分析中国AI与美国前沿代差约7个月。</p>
+      <div class="source">百家号</div>
+      <a class="read-more" href="https://baijiahao.baidu.com/s?id=1868602092976314128" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-med">🧠 科学</span>
+        <span class="news-date">2026-07-05</span>
+      </div>
+      <h3>林毅夫谈AI: 要发掘人之为人的特殊禀赋, 新增就业会多于被替代岗位</h3>
+      <p>北京大学教授林毅夫接受《中国经济周刊》专访指出, AI与以往技术革命显著不同——大规模替代高端脑力劳动而非仅体力劳动。但他认为新增就业机会会多于被替代岗位, 关键在于税收再分配、社会保障、教育公平和终身学习。</p>
+      <div class="source">New Economist / 百家号</div>
+      <a class="read-more" href="https://baijiahao.baidu.com/s?id=1869548072405363491" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-07-05</span>
+      </div>
+      <h3>诺奖科学家John Jumper跳槽Anthropic, 谷歌DeepMind连失两大王牌</h3>
+      <p>2024年诺贝尔化学奖得主、AlphaFold核心功臣John Jumper离开工作9年的Google DeepMind, 加入Anthropic。此前Transformer奠基人Noam Shazeer也已离职。DeepMind内部弥漫沮丧情绪, 员工认为实验室已从全球第一滑落到第三、第四名。</p>
+      <div class="source">百家号</div>
+      <a class="read-more" href="https://baijiahao.baidu.com/s?id=1868493137687756022" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-07-05</span>
+      </div>
+      <h3>联合国秘书长呼吁各国加强AI治理: 不要等待, 应立即行动</h3>
+      <p>7月1日, 联合国秘书长古特雷斯在纽约表示, AI在缺乏共同规则的情况下发展越快, 各国政府和人民对其结果的影响力就越小。他呼吁各国政府不要等待, 应加强人工智能治理。联合国已成立由40位杰出人士组成的“人工智能独立国际科学小组”。</p>
+      <div class="source">央视新闻客户端</div>
+      <a class="read-more" href="https://finance.sina.com.cn/roll/2026-07-02/doc-inifkcsh5979331.shtml" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>当AI从“工具”变成“伙伴”: Fable 5解禁、99万机器人预售过万, 人机共生的iPhone时刻来了吗?</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>Anthropic Claude Fable 5在经历美国政府“四日惊魂”式封禁后正式回归GitHub Copilot, 标志着最强编程AI从“安全争议”走向“商业化落地”。Stripe实测其单日完成5000万行代码迁移, 能力已从“辅助编程”跃升至“自主工程”。</li><li>优必选U1系列超仿生人形机器人以11.98万-99万元定价, 预售即破1.3万台——这是2025年其工业人形机器人销量的10倍。创始人周剑宣布未来50%精力将投入陪伴机器人, 从“打螺丝”到“谈恋爱”, 人形机器人正式进入消费级赛道。</li><li>林毅夫与联合国秘书长在同一周对AI发出“结构性”呼吁: 一个强调“发掘人之为人的特殊禀赋”、一个呼吁“立即加强全球治理”。当模型能力突破安全边界、机器人走进家庭, AI治理不再是遥远的政策议题, 而是每个企业、每个人必须面对的现实。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>这周AI行业的关键词是“跨越边界”——技术边界、安全边界、场景边界, 全在被重新定义。Anthropic Fable 5从发布到被封禁再到回归, 只用了不到一个月。这个戏剧性转折揭示了一个深层趋势: 当AI能力足够强大时, “安全”与“开放”的张力会成为每一家前沿公司的核心挑战。Fable 5不是第一个被封的模型, 但它是第一个在几天内就被迫下线、又快速恢复公开访问的——这说明监管者和企业都在摸索新规则, 而这个摸索过程本身就是2026年AI产业的主旋律。与此同时, 优必选U1的1.3万台预售订单说明另一件事: 消费者对“AI伙伴”的付费意愿, 比行业预期更强烈。11.98万的Lite版不是玩具, 是正经的消费电子产品定价。当AI从屏幕里走出来、变成可以拥抱的实体, 人机关系的本质正在改变。林毅夫说的“人之为人的特殊禀赋”——情感、创意、复杂决策——恰恰是这些机器人短期内最难复制的。这意味着未来10年的职场竞争, 不是“人与机器比谁更快”, 而是“人能否在机器擅长的领域之外, 找到自己的不可替代性”。</p>
+      <div class="highlight">“当AI能写代码、能走路、能陪你聊天, 人类最后的护城河不是技能, 而是‘想做什么’的选择权。”——这正是林毅夫所说的“人之为人的特殊禀赋”。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>这周做一件事: 试用Fable 5(或GitHub Copilot中对应的编程Agent)。它不再是“代码补全”, 而是能自主规划多步骤工程任务的“AI工程师”。如果你做技术工作, 建议把最烦人的重构任务丢给它, 观察它能独立完成到什么程度。</p></div><div class="worker-tip"><div class="num">2</div><p>关注7月17日的世界人工智能大会(WAIC)。300+全球首发产品、1400+国际嘉宾, 是下半年AI产业风向标的集中释放。如果你做AI产品或投资, 建议提前研究SAIL奖TOP30名单, 这些项目代表了当前最前沿的技术落地方向。</p></div><div class="worker-tip"><div class="num">3</div><p>思考“情感劳动”的不可替代性。优必选U1可以识别20种情绪、有300种微表情, 但“真正理解”和“机械模拟”之间的鸿沟, 正是人类工作者的长期护城河。无论你在哪个行业, 找到工作中需要“共情、判断、创造”的部分, 并放大它。</p></div><div class="worker-tip"><div class="num">4</div><p>关注AI治理的动态。联合国秘书长呼吁“不要等待”, Fable 5的封禁与解禁是监管不确定性的缩影。如果你所在企业正在部署AI自动化, 建议现在就开始制定内部AI使用规范——明确AI能自主做什么、需要人类确认什么, 在规则落地前把护栏建好。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
