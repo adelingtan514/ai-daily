@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年7月6日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">7月6日（周一）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-07-06</span>
+      </div>
+      <h3>OpenAI计划7月7日发布GPT-5.6，精准卡位Claude Fable 5限额失效日</h3>
+      <p>据华尔街见闻报道，OpenAI计划于7月7日发布GPT-5.6，时间点恰好卡在美国政府对Anthropic Claude Fable 5限额方案失效日。此前美国政府因安全审查要求Anthropic将最强模型仅限通过白宫审核的客户使用，引发市场担忧。</p>
+      <div class="source">华尔街见闻 / 百家号</div>
+      <a class="read-more" href="https://baijiahao.baidu.com/s?id=1869917705593675549&wfr=spider&for=pc" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-07-01</span>
+      </div>
+      <h3>Anthropic Claude Sonnet 5发布：智能体能力最强Sonnet，定价仅为旗舰模型四成</h3>
+      <p>Anthropic正式发布Claude Sonnet 5，定位「迄今智能体能力最强的Sonnet模型」，能完成网页浏览、编写代码、多步骤办公等复杂任务。限时优惠期定价仅为旗舰Opus 4.8的四成，目标成为企业部署AI智能体最具性价比的选择。</p>
+      <div class="source">财联社 / 百家号</div>
+      <a class="read-more" href="https://baijiahao.baidu.com/s?id=1869448656563750629&wfr=spider&for=pc" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-07-04</span>
+      </div>
+      <h3>突发！豆包、千问同日宣布下线智能体功能，数据保留至10月15日</h3>
+      <p>7月4日，字节跳动豆包与阿里通义千问几乎同时宣布智能体功能将下线。豆包将于7月15日起停用，用户将无法新建和调用智能体，已保存数据保留至10月15日。两大头部平台同一天对同一核心功能「亮红灯」，在AI行业尚属首次。</p>
+      <div class="source">环球Tech / 新浪财经</div>
+      <a class="read-more" href="http://finance.sina.com.cn/wm/2026-07-04/doc-inifrnzw2237564.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-07-06</span>
+      </div>
+      <h3>具身智能被定为「十五五」优先方向，上海国际具身智能产业博览会发布产业报告</h3>
+      <p>上海国际具身智能产业博览会于7月2-4日举行，会上发布《中国具身智能产业发展报告》。中国政府已将具身智能定为「十五五」（2026-2030）期间经济发展优先方向。上海明确提出推动集成电路、具身智能等产业加快发展。</p>
+      <div class="source">新浪财经 / 财联社</div>
+      <a class="read-more" href="http://finance.sina.com.cn/jjxw/2026-07-06/doc-inifvkkf8814190.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-07-05</span>
+      </div>
+      <h3>2026全球数字经济大会闭幕：80余项创新成果发布，机器人与AI智能体成主角</h3>
+      <p>7月4日，2026全球数字经济大会闭幕。60余家企业发布80余项创新成果，机器人和AI智能体成为最受关注的两条主线。消费级人形机器人「布米」、高德「途途」导盲机器狗、APUS Claw智能体、跨境贸易AI智能体「跨境DA」等重磅产品亮相。</p>
+      <div class="source">新浪财经 / 中国经营报</div>
+      <a class="read-more" href="http://finance.sina.com.cn/jjxw/2026-07-05/doc-inifuper9132289.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-07-04</span>
+      </div>
+      <h3>宇树科技陈立：具身智能「ChatGPT时刻」需达成两个80%，2030年引领消费浪潮</h3>
+      <p>宇树科技联合创始人陈立在亚布力论坛表示，智能机器人行业将在未来2-5年迎来突破。具身智能「GPT时刻」的核心标志是「两个80%」：在80%陌生场景中，通过语音或文字指令机器人能完成约80%任务。2030年具身智能机器人将引领全新消费浪潮。</p>
+      <div class="source">新浪财经 / 财联社</div>
+      <a class="read-more" href="http://finance.sina.com.cn/jjxw/2026-07-05/doc-inifuper9132289.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-07-03</span>
+      </div>
+      <h3>特斯拉严控AI成本：员工每周AI工具使用额度上限设为200美元</h3>
+      <p>据内部备忘录，特斯拉从7月6日起将员工每周AI工具使用额度上限设定为200美元，超出需审批。知情人士透露，此前工程师每周消耗的AI算力代币成本常高达数千美元。即便是AI原生企业，也不得不开始精打细算。</p>
+      <div class="source">新浪AI热点小时报</div>
+      <a class="read-more" href="http://k.sina.com.cn/article_7857201856_1d45362c001907oj2a.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-07-04</span>
+      </div>
+      <h3>《全球大语言模型安全防范能力测评报告(2026)》发布：复合攻击下安全边界承压</h3>
+      <p>在2026全球数字经济大会云智算安全论坛上，中国科研团队发布《全球大语言模型安全防范能力测评报告》。报告显示，多数模型具备基础拒答能力，但在复合攻击场景下，部分模型的安全边界明显承压。</p>
+      <div class="source">中新网 / 新浪财经</div>
+      <a class="read-more" href="http://finance.sina.com.cn/roll/2026-07-04/doc-inifrnzw2227440.shtml" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>AI智能体「冰火两重天」：Anthropic/OpenAI竞速升级，豆包/千问同日「拆灶」</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>同一周内，Anthropic发布Claude Sonnet 5（迄今智能体能力最强Sonnet，定价仅为旗舰四成），OpenAI宣布7月7日发布GPT-5.6精准卡位；但豆包和千问却在7月4日同日宣布下线智能体功能——全球AI智能体赛道呈现冰火两重天。</li><li>特斯拉从7月6日起将员工每周AI工具额度上限设为200美元（此前工程师常消耗数千美元），连最AI-native的公司都开始严控成本。这与Anthropic Sonnet 5打「性价比」牌、OpenAI卡点发布形成呼应：2026年AI竞争的核心已从「模型智商」转向「完成真实工作的成本」。</li><li>具身智能被正式纳入「十五五」优先方向，宇树科技陈立给出「两个80%」的ChatGPT时刻标准，全球数字经济大会80余项成果中机器人与AI智能体成为绝对主角。政策+产业+资本三线齐发，具身智能正在从实验室走向工厂和家庭。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>这一周AI行业最戏剧性的画面，是Anthropic和OpenAI在智能体赛道加速狂奔，而豆包和千问却在同一天「拆灶」——下线智能体功能。这不是巧合，而是同一个行业拐点的两面：海外市场验证Agent能完成真实工作时（Claude Sonnet 5专门优化网页浏览、代码编写、多步骤办公），国内平台却仍在为智能体功能的用户价值和运营成本算账。特斯拉的AI成本管控更值得玩味：一家靠AI定义未来的公司，竟要给工程师的AI工具设200美元/周上限。这恰恰说明，2026年AI赛道的真正竞争维度不是「谁更聪明」，而是「谁能以更低成本完成真实工作」。Anthropic Sonnet 5的定价策略（限时仅为旗舰四成）和OpenAI的卡位发布，本质上都是围绕「企业AI自动化成本」做文章。与此同时，具身智能被纳入「十五五」优先方向，标志着中国产业政策正在从「大模型竞赛」转向「实体经济融合」。宇树陈立的「两个80%」标准——80%陌生场景完成80%任务——如果实现，机器人将从专用工具变成通用劳动力，这才是真正的生产力革命。</p>
+      <div class="highlight">当特斯拉都开始给AI工具设消费限额，企业采购AI的第一性原理已经变了：不是「够不够聪明」，而是「花多少钱能干多少活」。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>本周评估你团队在用的AI工具ROI：把每个AI订阅/工具按「产出价值÷成本」排序，像特斯拉一样给低效工具设限额或淘汰，这是2026年AI团队管理的新常态。</p></div><div class="worker-tip"><div class="num">2</div><p>关注Anthropic Sonnet 5的Agent能力：如果你的工作流涉及网页浏览、代码编写、多步骤办公，趁优惠期（8月31日前）测试它是否能替代你现有的工作流组合，成本可能只有旗舰模型的四成。</p></div><div class="worker-tip"><div class="num">3</div><p>如果你或你的公司正在规划AI智能体产品，豆包和千问的下线是重要信号：国内智能体赛道尚未跑通商业模式，除非有明确差异化价值，否则谨慎All in。</p></div><div class="worker-tip"><div class="num">4</div><p>具身智能被纳入「十五五」优先方向，如果你是硬件/制造业从业者，关注南京（7月10-12日）和上海（已结束）的产业展会，政策红利+供应链成熟正在加速赛道爆发。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
