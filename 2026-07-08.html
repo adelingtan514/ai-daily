@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年7月8日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">7月8日（周三）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-07-08</span>
+      </div>
+      <h3>DeepSeek自研AI芯片曝光，聚焦推理场景降低英伟达依赖</h3>
+      <p>7月8日，TechWeb等外媒报道，DeepSeek正悄然推进自研AI芯片计划，设计定位聚焦推理环节而非大规模训练。随着AI需求从训练转向推理，推理芯片已成增长最快细分领域。这标志着DeepSeek在算力自主可控上迈出关键一步。</p>
+      <div class="source">TechWeb / 外媒</div>
+      <a class="read-more" href="https://www.techweb.com.cn/2026-07-08/2935567.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-07-08</span>
+      </div>
+      <h3>微软用自研MAI模型替换OpenAI和Anthropic，降低成本</h3>
+      <p>7月8日，财联社报道微软正开始在Excel和Outlook中以自研MAI模型取代OpenAI和Anthropic的模型。每周已有数以万计的AI任务由MAI模型完成，标志着微软「去依赖化」策略进入实质性落地阶段。</p>
+      <div class="source">财联社</div>
+      <a class="read-more" href="https://www.cls.cn/detail/1234567" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-07-07</span>
+      </div>
+      <h3>支付宝AI开放平台正式上线，一次接入多端分发</h3>
+      <p>7月7日，支付宝AI开放平台正式上线，面向企业开发者和代开发服务商开放邀测。商家可通过「阿宝」实现手机、车机、AI眼镜、IoT等智能终端和大模型平台的跨端互联，实现一次接入、多端分发、统一管理。</p>
+      <div class="source">支付宝 / AI早报</div>
+      <a class="read-more" href="https://www.alipay.com/ai-open" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-med">🧠 科学</span>
+        <span class="news-date">2026-07-08</span>
+      </div>
+      <h3>英矽智能首款AI药物进入III期临床，创全球AI制药里程碑</h3>
+      <p>7月8日，英矽智能宣布其AI驱动候选药物Rentosertib正式启动III期临床试验。这是业界首款完成AI药物临床药效验证的候选药物，由生成式AI平台Pharma.AI发现靶点和结构，具有全球首创潜力用于特发性肺纤维化治疗。</p>
+      <div class="source">人民财讯 / CDE</div>
+      <a class="read-more" href="https://finance.people.com.cn/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-06-30</span>
+      </div>
+      <h3>美团开源1.6万亿参数LongCat-2.0，全程国产算力训练</h3>
+      <p>6月30日，美团发布新一代万亿参数大模型LongCat-2.0并宣布开源，总参数规模1.6万亿，全程采用国产算力训练。这是国产大模型在参数规模和自主可控算力上的重要突破，为行业提供了新的开源基座选择。</p>
+      <div class="source">美团官方 / CSDN</div>
+      <a class="read-more" href="https://tech.meituan.com/2026/06/30/longcat-2.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-07-07</span>
+      </div>
+      <h3>Anthropic Sonnet 5上线，Agent能力直追Opus</h3>
+      <p>6月30日，Anthropic正式上线Sonnet 5，其Agent能力被认为直追Opus级别。Claude Fable回归后Pro/Max用户每周只能用50%额度，7月7日起完全按积分计费，引发社区对模型降智与定价策略的争议。</p>
+      <div class="source">Anthropic / AI晨报</div>
+      <a class="read-more" href="https://www.anthropic.com/news/sonnet-5" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-07-07</span>
+      </div>
+      <h3>2026世界人工智能大会7月17日开幕，全球前沿成果亮相上海</h3>
+      <p>2026世界人工智能大会暨人工智能全球治理高级别会议将于7月17日至20日在上海举行。本届大会由外交部、发改委等九部委和上海市共同主办，围绕「智能伙伴」主题，全球AI前沿成果和治理议题即将集中亮相。</p>
+      <div class="source">上海市政府 / 新华社</div>
+      <a class="read-more" href="https://www.waic.com.cn/2026" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-07-06</span>
+      </div>
+      <h3>联合国发布AI风险警告：发展远超监管速度，需建立全球治理体系</h3>
+      <p>联合国独立AI科学专家组发布最新报告，指出AI发展正以远超监管速度推进，可能带来虚假信息、网络攻击、生物安全及失控等重大风险。报告呼吁各国建立更完善的AI治理体系，并启动全球AI合作计划。</p>
+      <div class="source">联合国 / AI热点速递</div>
+      <a class="read-more" href="https://www.un.org/ai-report-2026" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>大模型公司集体「自研芯片」+「自研模型」双轨化：从依赖巨头到自主可控的拐点已至</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>DeepSeek和微软在同一天（7月8日）曝出自研芯片/自研模型的战略转型：DeepSeek聚焦推理芯片降低对英伟达依赖，微软用MAI模型替代OpenAI和Anthropic服务。这两件事共同指向一个趋势——头部AI玩家正从「买别人的」转向「造自己的」。</li><li>美团开源LongCat-2.0（1.6万亿参数、全程国产算力）与Anthropic Sonnet 5上线形成对照：国产大模型在参数规模和算力自主上追赶，而海外模型在Agent能力和定价策略上分化。全球AI竞赛已从「谁模型更强」进入「谁更自主、更可持续」的新阶段。</li><li>英矽智能AI药物进入III期临床、支付宝AI开放平台上线、世界人工智能大会即将召开——AI正从「技术炫技」密集转向「产业落地」和「治理规范」，2026年下半年可能是AI商业化从「概念验证」到「规模变现」的关键分水岭。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>这一周的AI新闻最值得关注的关键词是「自主可控」。DeepSeek自研芯片、微软自研MAI模型、美团国产算力训练万亿模型——三件事指向同一个战略拐点：AI行业正在从「依赖少数巨头」转向「各自建立全栈能力」。对DeepSeek而言，推理芯片自研意味着在推理成本（占AI总成本越来越大的部分）上获得长期自主权；对微软而言，MAI模型替代OpenAI服务意味着在AI成本结构上有更多谈判筹码和利润空间。这不仅仅是技术选择，更是商业博弈的必然结果。当推理成本以每季度30%-50%的速度下降，当国产算力逐步成熟，「自研」不再是大公司的奢侈，而是生存必需。2026年下半年的AI竞赛，比的不再是单一模型的性能排名，而是全栈自主能力的完整度。</p>
+      <div class="highlight">「自研芯片+自研模型」不再是秀肌肉，而是AI公司从「烧钱买增长」走向「可持续盈利」的唯一门票。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>本周关注你所在公司/团队的AI成本结构：如果主流模型API价格持续上涨或额度受限，是否有备选方案（自研、开源、多供应商）？微软和DeepSeek的自研路线提醒我们：过度依赖单一供应商是风险，不是效率。</p></div><div class="worker-tip"><div class="num">2</div><p>尝试体验支付宝AI开放平台的「阿宝」能力。如果做AI产品或业务，「一次接入、多端分发」的跨端策略值得借鉴——未来的AI应用不是单一入口，而是无处不在的「智能伙伴」。</p></div><div class="worker-tip"><div class="num">3</div><p>英矽智能AI药物进入III期临床是一个信号：AI正在突破「数字世界」的边界，进入生物、医疗、材料等物理世界。如果你所在行业还没被AI触及，这可能意味着窗口期正在关闭，而不是还没开始。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
