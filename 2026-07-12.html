@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年7月12日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">7月12日（周日）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-07-12</span>
+      </div>
+      <h3>GPT-5.6全量开放：三档定价碾压竞品，AI开发进入「性价比」新阶段</h3>
+      <p>OpenAI正式向全球全量开放GPT-5.6系列模型，推出旗舰版Sol、均衡版Terra和性价比版Luna三款产品，覆盖ChatGPT、Codex和API。三档定价分别为5/30美元、2.5/15美元和1/6美元（每百万Token输入/输出），特朗普政府已解除此前对该模型的出口与部署限制。</p>
+      <div class="source">OpenAI / 智东西 / 证券时报</div>
+      <a class="read-more" href="https://www.163264.com/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-07-12</span>
+      </div>
+      <h3>腾讯拟20亿美元从Meta手中回购Manus，成为中国AI资产「大逆转」</h3>
+      <p>据《金融时报》报道，腾讯正牵头中方资本组团，以约20亿美元估值从Meta手中回购通用AI Agent公司Manus的全部股权。若交易达成，腾讯将成为Manus最大单一股东，但Manus将继续以新加坡独立公司身份运营，不会并入腾讯体系。</p>
+      <div class="source">金融时报 / 腾讯新闻</div>
+      <a class="read-more" href="https://new.qq.com/rain/a/20260710A07N7900" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-07-12</span>
+      </div>
+      <h3>DeepSeek被曝自研AI推理芯片：摆脱英伟达依赖，梁文锋三年前已战略布局</h3>
+      <p>据路透社7月7日报道，DeepSeek已秘密启动自研AI推理芯片项目，约一年前启动，目前处于早期阶段，已与芯片设计公司、代工厂和存储厂商接洽。DeepSeek正进行首次外部融资，计划募资70亿美元，估值达520-590亿美元。</p>
+      <div class="source">路透社 / 智东西 / TechWeb</div>
+      <a class="read-more" href="https://baijiahao.baidu.com/s?id=1870131499870689597" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-07-12</span>
+      </div>
+      <h3>三星开发4nm AI PC专用芯片「GAIA」，已向联想、惠普供样测试</h3>
+      <p>三星电子旗下系统LSI事业部正在开发代号为「GAIA」的生成式AI加速芯片，采用4纳米制程工艺，定位为「存储中心型AI加速器」，核心设计思路是将计算功能尽可能靠近内存部署。目前已向联想、惠普等全球头部PC制造商提供原型样品进行性能验证，最快2027年启动量产。</p>
+      <div class="source">钛媒体 / IT之家 / TrendForce</div>
+      <a class="read-more" href="https://new.qq.com/rain/a/20260710A06UTG00" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-07-12</span>
+      </div>
+      <h3>AI造福人类全球峰会在日内瓦落幕：逾万名代表聚焦AI实际应用与落地</h3>
+      <p>2026年人工智能(AI)造福人类全球峰会10日在瑞士日内瓦落下帷幕。峰会聚焦AI实际应用与落地解决方案，展示AI在医疗保健、教育、食品安全、减灾等领域的应用。本届峰会主题为「释放AI服务人类的潜力」，来自全球各地逾万名代表参会。</p>
+      <div class="source">新华社 / 新浪财经</div>
+      <a class="read-more" href="https://k.sina.com.cn/article_7857201856_1d45362c00190835pk.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-07-12</span>
+      </div>
+      <h3>外媒观察：中国AI产业生态成熟，成全球人工智能发展新选择</h3>
+      <p>《纽约时报》《法兰克福汇报》等外媒指出，中国AI模型走出独特发展道路，全球下载量已超越美国同类模型。波士顿咨询公司报告指出，中国已搭建起独立、完整的人工智能产业生态，对全球南方国家极具吸引力，欧洲也在寻求与中国AI技术合作以降低对美国技术的依赖。</p>
+      <div class="source">中国网 / 波士顿咨询公司</div>
+      <a class="read-more" href="https://baijiahao.baidu.com/s?id=1870348758877550996" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-07-12</span>
+      </div>
+      <h3>OpenAI发布全双工语音模型GPT-Live-1，ChatGPT迈入实时对话时代</h3>
+      <p>7月9日，OpenAI正式推出基于全双工架构的语音模型GPT-Live-1及轻量版GPT-Live-1 mini，让ChatGPT实现真正「边听边说」的人机对话。与此同时，SpaceX AI联合Cursor发布Grok 4.5，1.5万亿参数V9基础模型瞄准法律、金融与复杂软件工程场景。</p>
+      <div class="source">华尔街见闻 / CSDN</div>
+      <a class="read-more" href="https://blog.csdn.net/haohaizi_liu/article/details/162730911" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-07-12</span>
+      </div>
+      <h3>WAIC 2026官宣：140场论坛+300款全球首发，展览面积首破10万平米</h3>
+      <p>2026世界人工智能大会将于7月17日-20日在上海举办，外交部、发改委、工信部等十部委联合主办，「三地四馆」布局。展览面积首次突破10万平方米，1100家企业参展，超300款产品全球首发，主题叫「智能伙伴 共创未来」，具身智能和人形机器人是重点展示方向。</p>
+      <div class="source">AI行业晨报 / 澎湃新闻</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_1566a4dffe894952" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>「全栈自主」与「全球回流」：中国AI正在从「算法突围」走向「生态闭环」</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>DeepSeek自研AI推理芯片的消息本周刷屏，但这并非孤立事件。从GPT-5.6的「Sol/Terra/Luna」三档分层定价到三星GAIA的4nm PC芯片，全球AI产业正从「拼模型参数」进入「拼算力效率」和「拼供应链自主」的新阶段。</li><li>腾讯20亿美元回购Manus，标志着中国AI资产经历「出走新加坡→被Meta收购→监管叫停→回流中方资本」的完整循环。这不仅是资本层面的博弈，更反映了全球AI地缘政治的深刻重塑——当美国对华技术管制收紧，中国资本正在用市场化手段重建AI Agent生态的自主权。</li><li>OpenAI GPT-5.6全量开放与Anthropic Fable 5解禁几乎同步发生，美国政府对前沿AI模型的「审批-放行」节奏正在加速。这背后是特朗普政府「美国AI领先」战略的执行——通过可控的开放维持技术霸权，同时压制竞争对手的追赶窗口。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>这一周AI产业的叙事主线非常清晰：全球AI竞争已经从「模型性能」单一维度，扩展为「模型+芯片+资本+地缘」的四维博弈。DeepSeek造芯、三星GAIA、OpenAI Jalapeño——头部玩家全部下场自研芯片，不是因为想取代英伟达，而是因为「算力自主」已经成为AI公司的生存底线。更值得关注的是资本层面的「回流」信号：腾讯回购Manus、DeepSeek 70亿美元融资、中国开源模型全球下载量超越美国——这些事实共同指向一个判断：中国AI产业正在从「算法突围」走向「生态闭环」。对于普通从业者而言，这意味着两件事：第一，技术选型的维度需要扩展——不要只盯着模型benchmark，要看背后的算力供应链和资本结构；第二，AI Agent和端侧智能（AI PC、AI手机）将是下半年最确定的增量赛道，WAIC 2026的300款首发产品已经提前剧透了这一点。</p>
+      <div class="highlight">当DeepSeek开始造芯片、腾讯开始回购AI资产、中国开源模型全球下载量超越美国——AI竞争的下半场，比的不再是谁模型更强，而是谁的生态更闭环、谁的供应链更自主。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>这周去体验一下GPT-5.6的「速度拨盘」功能——在同一个对话里实时切换Sol/Terra/Luna三档。这不仅仅是用户体验优化，背后是OpenAI对「算力经济学」的精细化运营。理解这种分层逻辑，有助于你在自己的AI产品设计中做类似的成本-性能权衡。</p></div><div class="worker-tip"><div class="num">2</div><p>如果你在豆包、千问或元宝上有智能体对话数据，务必在7月15日前导出备份。AI拟人互动新规即将生效，10月15日后数据将全清。这是一次合规驱动的「应用层洗牌」，也是观察中国AI监管边界的绝佳窗口。</p></div><div class="worker-tip"><div class="num">3</div><p>关注7月17日-20日的WAIC 2026大会。300款全球首发产品中，具身智能和人形机器人是重点方向。如果你在做AI应用或投资，这周的展会是下半年最重要的风向标——提前锁定几家参展公司的产品发布节奏，比事后读新闻更有价值。</p></div><div class="worker-tip"><div class="num">4</div><p>思考「AI同事」的配置方式：给你的AI工具「赋予角色」而非「下达指令」。不是「帮我写报告」，而是「你是我们的数据分析同事，每天早9点总结昨日核心指标」。角色化让Agent的输出质量和一致性大幅提升——这是从「工具使用者」到「AI管理者」的关键跃迁。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
