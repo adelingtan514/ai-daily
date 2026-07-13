@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年7月13日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">7月13日（周一）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-07-13</span>
+      </div>
+      <h3>AI巨头集体打价格战：GPT-5.6、Grok 4.5、Meta Muse Spark 1.1拼成本效率</h3>
+      <p>OpenAI、马斯克旗下SpaceXAI、Meta Platforms相继发布新一代AI模型，共同卖点并非功能多强大，而是收费多低廉。三大巨头不约而同将「成本效率」作为核心叙事，标志着AI大模型从「能力竞赛」转向「普及竞赛」。</p>
+      <div class="source">腾讯新闻</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_1066a542f5235052" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-07-12</span>
+      </div>
+      <h3>GPT-5.6 Sol Ultra 1小时证明50年数学猜想，64个并行子智能体协同作战</h3>
+      <p>OpenAI于7月10日宣布，GPT-5.6 Sol Ultra模型在不到1小时内成功生成图论领域悬而未决50多年的「循环双覆盖猜想」完整证明。该模型同时调用64个并行子智能体，并安排专门的「对抗智能体」负责寻找漏洞。不过证明尚未经过正式同行评审。</p>
+      <div class="source">IT之家 / 快讯</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_4806a53684098052" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-07-13</span>
+      </div>
+      <h3>全球首款AI智能体手机将亮相WAIC：中兴努比亚×字节豆包，50万台首发</h3>
+      <p>中兴努比亚联合字节跳动豆包团队打造的全球首款AI智能体手机，将在7月17日2026世界人工智能大会（WAIC）开幕时首发首秀，首批总量达50万台。该手机AI智能体可实现「听得懂、能干活、记得住、够安全」四大标准，通过自然语言指令即可跨应用自动完成比价、订餐、订票等复杂长链任务。</p>
+      <div class="source">腾讯新闻</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_1706a5435d561152" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-07-13</span>
+      </div>
+      <h3>2026世界人工智能大会本周开幕：智慧、硬核、体验、年轻、治理</h3>
+      <p>7月17日至20日，2026世界人工智能大会暨人工智能全球治理高级别会议（WAIC）将在上海世博、张江、西岸「三地四馆」启幕。由外交部、国家发改委、工信部等多部委与上海市人民政府共同主办，将以超高规格与全新规模，全面展示我国人工智能发展成效。</p>
+      <div class="source">腾讯新闻</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_2956a542c4894352" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-med">🧠 科学</span>
+        <span class="news-date">2026-07-13</span>
+      </div>
+      <h3>斯坦福发布通用生物医学AI智能体Biomni：可自主执行从数据分析到实验设计的全流程</h3>
+      <p>美国斯坦福研究团队在《科学》杂志上报告了一种名为Biomni的通用生物医学AI智能体，能够自主执行从数据分析到实验设计的多种研究任务。多项任务表现接近人类专家，意味着AI智能体可与人类研究人员协作，加速生物医学从基础研究迈向应用转化。</p>
+      <div class="source">财联社 / 科学杂志</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_5186a541c3d07952" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-07-13</span>
+      </div>
+      <h3>AI代理加剧能耗危机：被OpenAI、谷歌、微软视为下一代突破口的代理逻辑催生能耗鸿沟</h3>
+      <p>传统AI聊天机器人核心功能是针对用户指令生成单一文本回复，模型调用流程简单。而被各大巨头视为下一代技术突破口的AI代理，运作逻辑存在本质区别——需要多步推理、工具调用、长链任务执行，运算量和能耗呈指数级增长。</p>
+      <div class="source">腾讯新闻</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_9956a54283323952" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-07-13</span>
+      </div>
+      <h3>AI火热需求蔓延至成熟制程，台积电掀新一波涨价潮</h3>
+      <p>台积电先进制程接单爆满，持续调高3纳米等先进制程报价之际，涨价潮蔓延至成熟制程。多家IC设计业者透露陆续收到台积电通知，拟调高成熟制程价格。调涨幅度依各家厂商与产品线不一，预计明年1月生效。</p>
+      <div class="source">科创板日报 / 台湾经济日报</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_9276a54372e83852" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-07-13</span>
+      </div>
+      <h3>AI造福人类全球峰会在日内瓦闭幕：聚焦AI实际应用与落地解决方案</h3>
+      <p>2026年AI造福人类全球峰会10日在瑞士日内瓦落下帷幕，峰会聚焦AI实际应用与落地解决方案，展示AI在医疗保健、教育、食品安全、减灾等领域的应用。来自全球逾万名代表参会，主题涵盖城市治理、AI内容真实性、量子技术、青年领导力等。</p>
+      <div class="source">腾讯新闻</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_8936a5439e298652" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>AI智能体从「能力竞赛」到「成本竞赛」：当GPT证明50年猜想、手机搭载AI智能体，AI正从实验室走向每个人的口袋</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>GPT-5.6 Sol Ultra在1小时内证明悬而未决50多年的数学猜想，通过64个并行子智能体+对抗智能体协同验证，这不仅是AI推理能力的里程碑，更标志着「AI集群协作」模式的成熟——单个模型不再能解决问题，而是模型网络在解决问题。</li><li>AI巨头本周罕见地将核心叙事从「功能更强」转向「成本更低」：GPT-5.6、Grok 4.5、Meta Muse Spark 1.1同步主打低价策略。这意味着大模型行业进入「普及竞赛」阶段，推理成本持续下降是Agent大规模落地的经济前提。</li><li>全球首款AI智能体手机（中兴努比亚×字节豆包）和斯坦福通用生物医学AI智能体Biomni的发布，代表了AI Agent从软件走向硬件、从通用场景走向专业场景的两条路径。前者让Agent成为日常消费的标配，后者让Agent成为科研人员的「同事」。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>这周AI新闻的密度之高，让人很难用一条线把它们串起来。但如果硬要找一个底层叙事，那就是：「AI智能体」从概念变成了产品，从实验室走进了现实。GPT-5.6在1小时内证明了一个50年的数学猜想——这让人想到AlphaGo和AlphaFold，但区别在于：这次的模型不是「孤军奋战」，而是64个子智能体+1个对抗智能体协同工作。这不是单纯的算力胜利，而是「AI协作网络」的胜利。这种模式很快会复制到更多领域：代码审查、药物研发、金融分析……多个AI角色互相验证、纠错、迭代，效果远超单模型。与此同时，AI巨头集体打价格战，推理成本以肉眼可见的速度下降。这绝非偶然——因为Agent时代需要大量推理调用，没有足够低的成本，AI智能体手机、AI科研同事都只会是富人的玩具。成本下降+Agent硬件化+Agent专业化，这三条线正在交汇。AI造福人类峰会和WAIC的密集举办，也暗示产业界已经感知到了这个拐点。</p>
+      <div class="highlight">当GPT用64个AI子智能体证明50年猜想时，它证明的不只是数学——而是「AI团队协作」这一全新范式已经到来。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>关注WAIC（7月17-20日）：这是今年AI行业最重要的展会之一。全球首款AI智能体手机、多家大模型新品都会首发。如果你在做AI产品或关注AI硬件趋势，建议实时追踪展会动态。</p></div><div class="worker-tip"><div class="num">2</div><p>这周测试一下你现有的AI Agent工作流：如果推理成本再降30%，你能否让Agent承担更多原本由人类执行的「长链任务」？现在梳理出你团队中最依赖人工的3个流程，为Agent深度渗透做准备。</p></div><div class="worker-tip"><div class="num">3</div><p>AI代理能耗问题正在浮出水面。如果你的团队在使用AI自动化工具（如自动化脚本、爬虫、多步Agent流程），建议评估一下能耗和算力成本，避免「Agent用得起，电费付不起」的尴尬。</p></div><div class="worker-tip"><div class="num">4</div><p>GPT-5.6的数学证明能力是一个信号：复杂领域知识壁垒正在被AI快速瓦解。如果你所在行业依赖高度专业化的知识（法律、医学、科研、金融），思考「AI+人类协作」的工作模式，比思考「AI会不会取代我」更有价值。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
