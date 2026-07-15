@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年7月15日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">7月15日（周三）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-07-15</span>
+      </div>
+      <h3>中国AI拟人化交互新规今日生效，千问、豆包下线人格化功能</h3>
+      <p>中国网信办等五部门发布的《人工智能拟人化交互服务管理暂行办法》于7月15日正式生效。法规要求AI每次交互开始时披露AI身份，禁止模拟自然人性格特征的持续情感交互。字节豆包和阿里通义千问已确认下线人格化Agent、用户自定义人设及关系框架功能。这与西方市场形成鲜明对比——Anthropic将Claude性格设计为产品特性，OpenAI持久记忆和GPT人设在欧美无任何限制。</p>
+      <div class="source">潮新闻 / 新华社</div>
+      <a class="read-more" href="https://www.toutiao.com/article/7491169530333364772/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-07-14</span>
+      </div>
+      <h3>DeepSeek梁文锋身价飙升至360亿美元，成为全球AI公司新首富</h3>
+      <p>根据彭博亿万富豪指数（截至7月14日），DeepSeek创始人梁文锋身价飙升193亿美元至360亿美元（约2443亿元人民币），全球富豪榜排名第63位，超越Anthropic联合创始人达里奥·阿莫代伊和OpenAI联合创始人格雷格·布罗克曼，成为全球AI公司领域的新首富。</p>
+      <div class="source">36氪 / IT之家 / 彭博</div>
+      <a class="read-more" href="https://36kr.com/p/3754726863012361" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-07-15</span>
+      </div>
+      <h3>高盛：云巨头五年AI资本开支或达5.8万亿美元，融资瓶颈浮现</h3>
+      <p>高盛预计微软、亚马逊、Meta、谷歌和甲骨文五家超大规模云厂商在2025至2030财年间的AI资本开支合计将达5.8万亿美元。高盛警示，单一美元投资级债券市场难以满足如此庞大的融资需求，未来需要公共债券、贷款、私募资本及项目融资等多渠道共同提供资金。若AI商业化回报低于预期，巨额折旧与利息支出将考验巨头财务韧性。</p>
+      <div class="source">每日经济新闻 / 高盛</div>
+      <a class="read-more" href="https://www.nbd.com.cn" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-07-15</span>
+      </div>
+      <h3>美企转用中国AI模型，DeepSeek等使用占比飙升至46%</h3>
+      <p>CNBC报道，随着中国AI模型在性能上缩小与美国差距且使用成本明显更低，愈来愈多美国公司开始采用中国AI模型。通过OpenRouter平台，美国企业在中国AI模型上使用的词元占比最高时达46%，而过去12个月平均仅为11%。AI初创公司Lindy已将全部流量从Anthropic的Claude转向DeepSeek，CEO称此举将在数月内节省数百万美元。</p>
+      <div class="source">CNBC / 科技创造生活</div>
+      <a class="read-more" href="https://www.cnbc.com" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-07-15</span>
+      </div>
+      <h3>阶跃星辰将发布全球首款智能体手机，荣耀与阿里联手Agentic OS</h3>
+      <p>阶跃星辰宣布即将推出全球首款智能体手机。与此同时，荣耀与阿里巴巴将在2026世界人工智能大会官宣重磅合作，方向极有可能是下一代终端操作系统Agentic OS的落地实践。两大事件叠加，标志着「从工具到伙伴」的Agentic OS趋势正在从概念走向终端消费级产品。</p>
+      <div class="source">36氪 / 财联社</div>
+      <a class="read-more" href="https://36kr.com" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-07-15</span>
+      </div>
+      <h3>SK海力士加速为英伟达量产HBM4，性能供应链关键节点落地</h3>
+      <p>SK海力士已正式启动面向英伟达的12层HBM4量产出货，产品进入产能爬坡阶段。这是HBM4首次以完成所有质量认证的最终规格面向英伟达下一代AI平台「Vera Rubin」出货。9月起将正式扩大出货规模。英特尔同时斥资50亿欧元扩建爱尔兰工厂，押注AI驱动芯片需求。</p>
+      <div class="source">每日经济新闻 / 财联社</div>
+      <a class="read-more" href="https://www.nbd.com.cn" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-07-15</span>
+      </div>
+      <h3>欧盟《云与AI发展法案》今日刊宪，全球首个云主权四级框架落地</h3>
+      <p>欧盟于7月15日正式刊宪《云与AI发展法案》（CADA），这是全球首个针对云服务和AI基础设施的系统性主权立法。法案首创四级云主权评估框架，公共部门和关键基础设施运营商必须按框架采购云服务，目标在2029年前将欧盟数据中心容量扩大三倍。违规罚款可达全球年营业额一定比例。</p>
+      <div class="source">潮新闻 / 欧盟官方公报</div>
+      <a class="read-more" href="https://eur-lex.europa.eu" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-07-14</span>
+      </div>
+      <h3>小米机器人首次实现汽车工厂柔性工件长时作业，成功率达98%</h3>
+      <p>小米披露旗下人形机器人在汽车工厂「实习」最新进展：经过4个月迭代，自攻螺母上件工站双侧作业成功率从90.2%提升至98%，距离人工作业合格率仅差1个百分点。同时解锁中控台侧盖板排序和料箱折叠回收两项全新岗位，成功率均达90%。其中柔性工件长时连续作业为汽车工厂首次实现。</p>
+      <div class="source">36氪</div>
+      <a class="read-more" href="https://36kr.com" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>监管与扩张的并行悖论：当中国给AI「去人格化」时，全球正在用5.8万亿美元为AI「建肉身」</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>中国AI拟人化交互新规今日（7月15日）正式生效，千问、豆包下线人格化功能——这是全球首个针对「AI人格化」的专项监管，与西方市场Anthropic将性格设计为产品特性、OpenAI无限制推广GPT人设形成鲜明对比。</li><li>同一天，高盛发布报告：五大云巨头五年AI资本开支将达5.8万亿美元；欧盟《云与AI发展法案》正式刊宪；软银孙正义称AI基础设施每年需要5万亿美元投资。全球监管与资本扩张正在以相同的速度同步推进。</li><li>DeepSeek梁文锋以360亿美元身价登顶全球AI公司首富，美企使用中国AI模型占比飙升至46%——这些事实表明，中国AI模型在性能追赶与成本优势上的双重突破，正在改写全球AI产业的权力格局。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>7月15日这一天，AI世界发生了两件看似矛盾但实则同根的事：中国给AI「摘面具」——拟人化交互新规生效，千问和豆包的人格化功能下线；全球给AI「建肉身」——高盛说五年要砸5.8万亿美元，欧盟立法保护云主权，软银孙正义说每年5万亿美元才够。这并不矛盾。监管与扩张从来都是技术革命的双螺旋。当AI的能力从「聊天工具」升级为「劳动力替代者」，社会必须同时回答两个问题：它安全吗？它足够强吗？中国选择了先回答第一个问题——在Agent大规模进入生产生活之前，先把「AI人格化」的边界划清楚。西方选择了先回答第二个问题——用天量资本堆砌算力基础设施，让AI尽可能快地变强。DeepSeek梁文锋登顶AI首富、美企46%的Token跑在中国模型上，这些数字告诉我们：中国AI没有因为「监管前置」而掉队，反而因为成本效率和工程能力，正在成为全球AI基础设施的「默认选项」。2026年7月15日，可能是AI产业从「 wild west 」走向「规则与规模并重」的分水岭。</p>
+      <div class="highlight">监管不是扩张的反面，而是扩张的护栏——当5.8万亿美元砸向AI基建时，谁先建好规则，谁就能在规模化落地中掌握定义权。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>今天生效的AI拟人化交互新规直接影响所有使用国内大模型API的产品团队。如果你正在用千问或豆包做客服、陪伴、教育类应用，立即检查产品交互流程：是否在对话开始时明确披露了AI身份？是否涉及模拟人格的持续情感交互？建议本周内完成合规自检。</p></div><div class="worker-tip"><div class="num">2</div><p>DeepSeek等中国模型在美企使用率飙升至46%，背后是「断崖式」成本下降。建议重新评估你正在使用的模型供应商——如果成本敏感且场景不涉及前沿推理，中国模型（DeepSeek、Qwen、智谱）的性价比优势可能已远超预期。做一次A/B测试，用实际数据对比。</p></div><div class="worker-tip"><div class="num">3</div><p>高盛5.8万亿美元和孙正义每年5万亿美元的预测，意味着AI算力需求仍处超级周期早期。如果你所在公司正在做AI基础设施相关（云计算、数据中心、芯片、光模块），中长期需求确定性极高。短期股价波动是噪音，产业趋势是信号。</p></div><div class="worker-tip"><div class="num">4</div><p>阶跃星辰的「智能体手机」和荣耀×阿里的Agentic OS合作，标志着AI Agent正在从「云端应用」走向「终端操作系统」。如果你做消费级产品，现在开始思考「Agent原生」的产品设计范式——不是App+AI功能，而是AI作为系统级能力重新定义交互逻辑。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
