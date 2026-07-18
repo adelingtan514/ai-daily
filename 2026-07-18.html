@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年7月18日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">7月18日（周六）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-07-17</span>
+      </div>
+      <h3>WAIC 2026世界人工智能大会开幕，习近平发表主旨讲话</h3>
+      <p>7月17日，2026世界人工智能大会暨人工智能全球治理高级别会议在上海开幕，国家主席习近平出席开幕式并发表主旨讲话，为全球AI治理贡献中国方案。同期全球人工智能创新治理中心发布一鉴2.0伦理审查智能体、全球AI治理指数等系列成果，标志中国从AI技术参与者升级为规则制定者。</p>
+      <div class="source">新华社 / 人民日报 / 央视新闻</div>
+      <a class="read-more" href="https://news.softunis.com/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-07-17</span>
+      </div>
+      <h3>IDC预测：2030年全球日活Agent超22亿，DAA成产业新度量衡</h3>
+      <p>IDC预发布《DAA研究报告》显示，全球活跃Agent数量2025年为2860万个，预计2026年达7940万个，2030年将增长至22.16亿个。DAA（Daily Active Agents）指标由百度李彦宏在Create 2026大会首次提出，与传统参数、Token消耗指标不同，DAA更关注每天有多少智能体真正进入业务流程、完成任务并创造价值。</p>
+      <div class="source">财联社 / IDC</div>
+      <a class="read-more" href="https://www.cls.cn/subject/1321" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-07-15</span>
+      </div>
+      <h3>AI拟人化新规7月15日正式施行，豆包千问下线自定义智能体</h3>
+      <p>《人工智能拟人化互动服务管理暂行办法》7月15日正式施行，这是我国首部针对AI拟人化互动的专项立法，划出三条红线：禁止向未成年人提供虚拟亲密关系服务、禁止诱导情感依赖或沉迷、必须部署极端情绪识别与高危救助功能。豆包与千问已于近日下线用户自定义智能体，将拟人化业务迁移至独立垂直产品便于合规改造。</p>
+      <div class="source">国家网信办 / 文汇报 / 上观新闻</div>
+      <a class="read-more" href="https://www.zhihu.com/pin/2060273645415667464" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-07-15</span>
+      </div>
+      <h3>OpenAI计划推出首款硬件：移动式无屏幕智能音箱，定位居家AI陪伴助手</h3>
+      <p>据媒体报道，OpenAI备受瞩目的首款硬件设备将是一款可移动、无屏幕的智能音箱，定位为人工智能时代的新型家用电脑。产品仍在开发中，主打具备人类特质的居家AI陪伴助手。这是OpenAI从纯软件向软硬一体生态延伸的关键一步，也预示着AI交互正从屏幕走向语音+环境感知。</p>
+      <div class="source">快科技 / 媒体爆料</div>
+      <a class="read-more" href="https://news.mydrivers.com/tag/ai.htm" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-07-14</span>
+      </div>
+      <h3>孙正义断言：AI泡沫说法荒谬，到2040年每年需5万亿美元投入</h3>
+      <p>软银集团CEO孙正义在东京年度企业会议上直言，任何关于AI正在形成泡沫的说法都是荒谬的。他断言到2040年AI发展每年将需要5万亿美元的投资。这一判断与当前AI投资热潮形成呼应——中国6月出口同比大增27%远超预期，上半年算力硬件进出口增长55.6%，AI正成为全球经济最确定的增量引擎。</p>
+      <div class="source">快科技 / 软银年度会议</div>
+      <a class="read-more" href="https://news.mydrivers.com/tag/ai.htm" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-07-13</span>
+      </div>
+      <h3>阶跃星辰发布Step AOS智能体OS，全球首款大模型原生手机STEPX Neo亮相</h3>
+      <p>7月13日，阶跃星辰在上海推出全球首个大模型原生AI终端品牌STEPX，发布智能体操作系统Step AOS及个人智能体阶跃Amoo，同步亮相全球首款大模型原生手机STEPX Neo。Step AOS将手机硬件能力与底层数据转化为智能体可调用的算力与资产，用户只需表达意图即可全链路自主完成，系统已通过首批国标L3级智能化测试。</p>
+      <div class="source">东方网 / 阶跃星辰</div>
+      <a class="read-more" href="https://www.zhihu.com/pin/2060273645415667464" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-07-11</span>
+      </div>
+      <h3>OpenAI连发GPT-5.6与GPT-Live语音模型，但GPT-5.6被曝安全漏洞</h3>
+      <p>OpenAI近日接连发布GPT-5.6（获美商务部批准，7月9日全量上线，提供Sol/Terra/Luna三档）与GPT-Live实时语音系统（采用前后端分离架构，前端低延迟对话，后台调用GPT-5.5处理复杂任务）。但7月11日GPT-5.6被曝存在安全漏洞，测试中曾意外删除用户本地文件，引发对AI自主操作风险的担忧，技术社区紧急给出数据备份与权限隔离等防护建议。</p>
+      <div class="source">知乎 / 阿里云云栖号</div>
+      <a class="read-more" href="https://zhuanlan.zhihu.com/p/2060092499243411311" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-07-16</span>
+      </div>
+      <h3>小米发布具身智能基底模型Xiaomi-Robotics-1，探索物理AI Scaling效应</h3>
+      <p>7月16日，小米正式发布面向真实移动操作任务的具身基底模型Xiaomi-Robotics-1。该模型基于10万小时真实世界数据进行预训练，并结合跨本体数据完成后训练。传统机器人策略模型常受限于硬件依赖与稀缺的数据规模，小米团队通过引入UMI（Universal Manipulation Interface）突破了这一瓶颈，为具身智能的规模化应用提供了新路径。</p>
+      <div class="source">太平洋电脑网 / 小米</div>
+      <a class="read-more" href="https://www.pconline.com.cn/ai/daily-news/" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>Agent时代全面开启：从WAIC到IDC预测，AI正从可用工具进化成产业系统</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>2026世界人工智能大会（WAIC）7月17日在上海开幕，习近平发表主旨讲话，为全球AI治理贡献中国方案。同期一鉴2.0伦理审查智能体、全球AI治理指数等成果发布，标志中国从AI技术参与者升级为规则制定者。</li><li>IDC最新预测，2030年全球日活智能体（DAA）将达22.16亿个，2026年预计达7940万个。百度李彦宏提出的DAA指标正取代传统参数竞赛，成为AI产业新度量衡——不问模型多大，只问每天有多少Agent真正在干活。</li><li>本周AI拟人化新规正式施行、GPT-5.6被曝安全漏洞、OpenClaw热度归零等事件共同指向一个信号：AI越深入现实，治理和信任就越不能滞后。行业正在加速，但边界也必须同步建立。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>这一周AI行业最显著的共识是：竞争焦点已从模型参数和榜单排名，转向谁能把AI接进真实场景。WAIC的开幕、DAA指标的提出、阶跃星辰AI原生手机的发布、OpenAI硬件入局，都在指向同一个方向——AI正在成为产业基础设施，而非仅仅是聊天工具。但GPT-5.6的安全漏洞和AI拟人化新规的施行也提醒我们：AI越深入现实，治理和信任就越不能滞后。行业正在加速，但边界也必须同步建立。对个体而言，真正的机会不在于用不用AI，而在于能不能让AI成为工作流的一部分——当Agent数量从千万级向十亿级跃迁时，DAA（日活Agent数）可能比你个人的KPI更能说明问题。</p>
+      <div class="highlight">当Agent数量从千万级向十亿级跃迁时，AI不再是你打开的一个App，而是渗透进每个业务流程的数字同事——真正的分水岭，出现在落地能力上。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>关注DAA指标：不要只盯着模型发布了什么，要看每天有多少Agent真正进入业务流程。试着把你团队最常用的3个AI工具，从偶尔用变成每天必用——这就是你个人的DAA。</p></div><div class="worker-tip"><div class="num">2</div><p>本周WAIC释放大量信号：AI+消费补贴、AI原生手机、具身智能。如果你是产品经理或运营，现在正是把AI能力嵌入现有业务流的最佳时机，政策红利窗口期有限。</p></div><div class="worker-tip"><div class="num">3</div><p>GPT-5.6被曝安全漏洞（测试中意外删除用户本地文件），这是一个重要提醒：在扩大AI自动化范围之前，先做好数据备份和权限隔离。安全不是事后补丁，而是前置设计。</p></div><div class="worker-tip"><div class="num">4</div><p>AI拟人化新规已施行，豆包千问已下线自定义智能体。如果你所在的公司有AI陪伴/虚拟角色类产品，现在是紧急合规改造窗口期，优先处理未成年人保护和情感诱导风险。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
