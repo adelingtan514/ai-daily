@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年7月20日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">7月20日（周一）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-07-19</span>
+      </div>
+      <h3>WAIC 2026第三天：多份AI安全治理成果集中发布，构筑安全管理体系</h3>
+      <p>2026世界人工智能大会进入第三天，复旦大学全球人工智能创新治理中心发布「一鉴」2.0伦理审查智能体系统、《全球人工智能治理指数（2026）——全球南方视角与能力建设》等系列成果。中心作为中方机构代表首批加入联合国全球人工智能能力发展网络，标志着中国AI治理方案正式走向国际制度化协作。</p>
+      <div class="source">央视新闻 / 复旦大学</div>
+      <a class="read-more" href="https://www.toutiao.com/article/7491169530333364772/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-07-19</span>
+      </div>
+      <h3>华为Pura X Max、小米17 Max获国标AI L3首证，AI终端进入标准化时代</h3>
+      <p>在2026 WAIC人工智能终端产业演进与协同发展论坛上，《人工智能终端智能化分级》系列国家标准首批测试结果发布。华为Pura X Max（手机）、MateBook Pro（电脑）、智慧屏S7 Pro及小米17 Max均获得AI国标L3等级认证，成为行业首批通过国家级智能化测试的终端产品。</p>
+      <div class="source">快科技 / 2026 WAIC</div>
+      <a class="read-more" href="https://news.mydrivers.com/tag/rengongzhineng.htm" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-07-13</span>
+      </div>
+      <h3>阶跃星辰发布Step AOS智能体OS，首款AI原生手机STEPX Neo亮相</h3>
+      <p>7月13日，阶跃星辰推出全球首个大模型原生AI终端品牌STEPX，发布智能体操作系统Step AOS及个人智能体「阶跃Amoo」，同步亮相全球首款大模型原生手机STEPX Neo。Step AOS将手机硬件能力转化为智能体可调用的算力与资产，用户只需表达意图即可全链路自主完成，已通过首批国标L3级智能化测试。</p>
+      <div class="source">东方网 / 阶跃星辰</div>
+      <a class="read-more" href="https://zhuanlan.zhihu.com/p/2060092499243411311" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-07-15</span>
+      </div>
+      <h3>AI拟人化新规7月15日落地，豆包千问下线自定义智能体</h3>
+      <p>《人工智能拟人化互动服务管理暂行办法》7月15日正式施行，这是我国首部针对AI拟人化互动的专项立法。新规划出三条红线：禁止向未成年人提供虚拟亲密关系服务，禁止诱导情感依赖或沉迷，必须部署极端情绪识别与高危救助功能。豆包与千问已于近日下线用户自定义智能体，将拟人化业务迁移至独立垂直产品。</p>
+      <div class="source">文汇报 / 上观新闻</div>
+      <a class="read-more" href="https://zhuanlan.zhihu.com/p/2060092499243411311" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-07-14</span>
+      </div>
+      <h3>八部门推AI+消费以旧换新，AI手机/AIPC/机器人纳入补贴范围</h3>
+      <p>八部门联合发文推动人工智能+消费扩容，首次将AI手机、AIPC、人形机器人纳入以旧换新补贴范围。政策明确加快AI终端普及，降低消费者换机门槛，同步推动智能家电、可穿戴设备等品类AI化升级，意在从需求侧拉动AI产业链，将技术红利转化为消费动力。</p>
+      <div class="source">知乎 / 政策解读</div>
+      <a class="read-more" href="https://zhuanlan.zhihu.com/p/2060092499243411311" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-07-18</span>
+      </div>
+      <h3>华为昇腾950超节点真机获行业重磅大奖，1024卡集群性能夯爆</h3>
+      <p>在2026世界人工智能大会上首次公开亮相的华为昇腾950超节点真机，登场即拿下行业重磅大奖。该产品采用1024卡集群架构，是华为当前最强AI算力方案，直接对标英伟达最新GPU集群，在国产AI算力自主可控路径上迈出关键一步。</p>
+      <div class="source">快科技 / 华为中国</div>
+      <a class="read-more" href="https://news.mydrivers.com/tag/rengongzhineng.htm" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-07-19</span>
+      </div>
+      <h3>均胜电子发布「灵犀」灵巧手等机器人核心部件，商业化量产加速</h3>
+      <p>7月19日WAIC大会上，均胜电子发布灵巧手、固液混合电池、第三代AI头部总成、电子皮肤和具身智能体大脑等多个核心部件总成方案。首款自研「灵犀」灵巧手（TeleHand）系列解决方案中，专业版为业内独创的「掌+指」架构，标志着具身智能核心零部件从实验室走向规模化量产。</p>
+      <div class="source">太平洋科技 / 均胜电子</div>
+      <a class="read-more" href="https://www.pconline.com.cn/ai/daily-news/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-07-15</span>
+      </div>
+      <h3>国行iPhone可用苹果AI了！网信办发布7款手机端AI备案</h3>
+      <p>国家网信办7月15日正式发布7款面向手机端侧的生成式人工智能服务备案信息，七家头部手机厂商的相关功能全部通过官方合规审核。国行iPhone用户即将可以使用苹果AI功能，标志着端侧AI在中国的合规落地取得实质性突破。</p>
+      <div class="source">快科技 / 网信办</div>
+      <a class="read-more" href="https://news.mydrivers.com/tag/rengongzhineng.htm" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>WAIC 2026之后：AI终端国标认证与AI拟人化治理双线并进</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>华为Pura X Max、小米17 Max、阶跃STEPX Neo等首批通过AI国标L3认证，标志着中国智能终端的AI能力从「差异化卖点」正式进入「基础设施标准化」阶段——消费者未来买手机，AI能力会像摄像头像素一样成为基础参数。</li><li>《人工智能拟人化互动服务管理暂行办法》7月15日落地，豆包与千问同日下线用户自定义智能体。这是国内首部AI拟人化专项立法，划出三条红线：禁止未成年人虚拟亲密关系、禁止诱导情感沉迷、必须部署极端情绪识别。AI伦理治理从「事后讨论」变成「事前规则」。</li><li>八部门首次将AI手机、AIPC、人形机器人纳入以旧换新补贴，与L3国标认证形成政策组合拳：标准定门槛、补贴促普及。这背后是「AI终端」被正式确认为消费拉动的新引擎，而不仅是科技产业的概念包装。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>这一周的关键词是「标准」与「边界」。WAIC 2026上，华为和小米拿下AI国标L3首证，阶跃星辰发布AI原生手机Step AOS——这些信号指向同一个判断：AI终端正在从「炫技」走向「标配」。当AI能力被写进国家标准、成为消费者换机的默认考量，它就不再是厂商的营销话术，而是基础设施。与此同时，AI拟人化新规的落地则划出了另一条线：能力可以无限扩展，但伦理必须有边界。豆包和千问同日下线自定义智能体，不是因为技术不行，而是因为规则先行。这两个方向——标准化认证和伦理治理——看似一攻一守，实则是一体两面：标准化让AI「可预期」，治理让AI「可信任」。只有当消费者既知道AI手机能做到什么（L3标准），又知道它不会做什么（拟人化红线），AI才能真正从极客玩具变成大众日常。WAIC 2026的意义，或许不在于发布了多少模型，而在于它同时证明了：中国的AI产业，正在同步解决「能做什么」和「不能做什么」两个问题。</p>
+      <div class="highlight">AI的成熟标志不是它多聪明，而是我们敢不敢放心用它——标准给能力画底线，治理给信任筑护栏。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>如果你正在选购或评估AI终端产品，优先关注是否通过国标L3认证。这不仅是合规信号，更是厂商在AI能力、隐私安全、系统稳定性上投入的真实背书。首批通过的产品（华为、小米、阶跃）已经给出了参照系。</p></div><div class="worker-tip"><div class="num">2</div><p>AI拟人化新规对产品经理和创业者是一个明确信号：任何涉及情感陪伴、虚拟角色、长期对话的AI产品设计，都必须内置极端情绪识别和高危救助功能。建议在需求文档中前置「伦理合规」章节，而非事后补救。</p></div><div class="worker-tip"><div class="num">3</div><p>八部门补贴政策的直接影响：AI手机、AIPC、人形机器人将迎来一波换机潮。如果你是相关行业的从业者，现在就是规划「以旧换新」营销活动和服务承接能力的最佳窗口期。</p></div><div class="worker-tip"><div class="num">4</div><p>阶跃Step AOS的「意图驱动」交互模式值得关注——用户不再操作App，而是表达意图让系统自主完成。如果你是UX设计师或产品经理，建议本周体验STEPX Neo或类似AI原生终端，思考「意图优先」如何重构你负责产品的交互流程。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
