@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年7月21日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">7月21日（周二）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">6 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-07-21</span>
+      </div>
+      <h3>2026世界人工智能大会暨人工智能全球治理高级别会议在沪闭幕</h3>
+      <p>为期4天的2026WAIC今日在上海闭幕，是中国首次在人工智能领域举办的高规格主场外交活动。102个国家和国际组织官方代表出席，现场观众超40万人次，177个采购团组预计达成意向采购金额203.6亿元，同比增长25%。习近平主席从发展、安全、文明和治理4方面阐述中国方案，为全球AI治理指明方向。</p>
+      <div class="source">新华社 / 中新社</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_1096a5e4cc121952" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-07-21</span>
+      </div>
+      <h3>荣耀发布全球首台“机器人手机”Robot Phone，跨应用连续任务执行</h3>
+      <p>2026WAIC上，荣耀CEO李健发布全球首台“机器人手机”Robot Phone。该手机能听懂复杂指令，自动完成跨应用连续任务；还能识别动作，转动云台互动回应、随音而舞。这标志着AI手机从“语音助手”时代迈向“具身智能”时代。</p>
+      <div class="source">央广网 / 光明网</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_4686a5e7f3148652" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-07-21</span>
+      </div>
+      <h3>AI软件开发平台Emergent完成1.3亿美元C轮融资，估值15亿美元</h3>
+      <p>7月20日，AI软件开发平台Emergent宣布完成1.3亿美元C轮融资，估值达15亿美元。由Creaegis领投，Khosla Ventures、SoftBank Vision Fund 2、Lightspeed和Y Combinator参与投资。这是AI Coding赛道持续升温的又一重磅信号。</p>
+      <div class="source">AI早报 / 腾讯新闻</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_6476a5ebbcd24352" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-07-21</span>
+      </div>
+      <h3>理想汽车亮相WAIC，展示具身智能全栈技术体系</h3>
+      <p>理想汽车集中展示从自研芯片、操作系统、基座模型到底盘技术的具身智能全栈技术体系，以及L9 Livis、L8 Livis、AI眼镜 Livis等产品。理想汽车同时出席“物理AI重塑智能制造”分论坛，分享AI与制造融合的实践探索。</p>
+      <div class="source">理想汽车 / 新浪财经</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_0466a5ec36786352" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-07-21</span>
+      </div>
+      <h3>WAIC政务智能创新论坛举办，发布政务智能体发展研究报告</h3>
+      <p>7月20日，2026WAIC政务智能创新论坛发布系列成果：上海奇绩智峰推出“政务智能驾驶舱”；中国信通院发布《政务智能体发展研究报告（2026年）》；中国互联网协会联合8家机构启动“可信政务智能体共性技术服务平台”。</p>
+      <div class="source">中国信通院 / 上海发布</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_9016a5ec0a453152" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-07-21</span>
+      </div>
+      <h3>中央企业全面展示AI工业级应用“能力矩阵”，超300款AI产品全球首发</h3>
+      <p>2026WAIC上，1100余家企业参展，超300款AI产品全球首发。中央企业集中展示AI在工业制造、能源、交通等领域的工业级应用能力矩阵。本届大会是全球AI领域规模最大、影响力最广的国际盛会之一。</p>
+      <div class="source">国资委 / 中国新闻网</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_5316a5eb26b94852" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>WAIC 2026：当AI从「展示」走向「治理」——全球AI进入工业级落地与规则博弈并行的新阶段</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>2026世界人工智能大会不只是科技展会，而是中国首次AI高规格主场外交：102个国家和国际组织代表出席，习近平主席从发展、安全、文明、治理四个维度提出中国方案，标志AI议题正式进入全球治理议程。</li><li>意向采购金额203.6亿元（同比+25%）、40万现场观众、300+全球首发产品——这组数字背后，是AI从概念展示到工业级应用的质变。荣耀Robot Phone、理想具身智能全栈、央企工业级能力矩阵，都是「能动」变「有用」的具象化。</li><li>「AI全球治理」和「AI智能鸿沟」成为高频关键词。当发展中国家在算力和数据上持续落后，AI带来的不平等可能比互联网时代更剧烈。WAIC提出的弥合南北智能鸿沟、建立公正治理体系，正是对这一结构性风险的回应。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>WAIC 2026的落幕，标志着一个重要转折点：AI不再是硅谷的独角戏，而是全球产业、治理与安全的共同议题。203.6亿的意向采购说明市场用脚投票——AI在工业、政务、消费领域的落地速度远超预期。但更深层的信号是「治理」：当中国把AI治理提升到主场外交层级，当102个国家共议规则，AI的竞争维度已经从「谁的模型更强」扩展到「谁的标准更被接受」。对从业者而言，这意味着未来的产品不仅要「好用」，还要「合规、可信、可解释」——政务智能体、可信AI平台、AI治理框架的密集发布，都在为这一趋势铺路。荣耀Robot Phone和理想具身智能的亮相则提醒我们：端侧AI和物理AI的融合，正在打开下一个十倍增长的市场空间。</p>
+      <div class="highlight">当AI全球治理遇上203.6亿的工业级采购，2026年的AI不再是「未来已来」，而是「规则与落地并行」的硬 reality。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>关注AI合规与可信方向：政务智能体、可信AI平台、数据安全治理等赛道正在爆发。如果你从事AI产品或数据工作，建议提前了解《政务智能体发展研究报告》和国内AI治理框架，这将是未来18个月的核心合规门槛。</p></div><div class="worker-tip"><div class="num">2</div><p>「AI+物理世界」的窗口期已到：理想汽车的具身智能全栈、荣耀Robot Phone的端侧智能，说明AI正从纯软件走向硬件融合。如果你在做产品或创业，思考「AI如何让物理设备更聪明」会比纯软件工具更有壁垒。</p></div><div class="worker-tip"><div class="num">3</div><p>WAIC 300+首发产品中，央企工业级AI应用和政务智能体是最值得跟踪的落地案例。这些场景的需求真实、付费能力强、决策链清晰——如果你在做B端AI销售或解决方案，建议把政府和大型制造业作为优先级最高的客户群。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
