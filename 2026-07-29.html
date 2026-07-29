@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年7月29日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">7月29日（周三）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">7 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-07-29</span>
+      </div>
+      <h3>Kimi K3完整权重开源即爆火：头部基准逼近GPT-5.6 Sol，黄仁勋力挺中国AI团队</h3>
+      <p>7月27日深夜，Kimi K3完整权重挂上Hugging Face。十天前发布时中文圈讨论停在跑分，如今被评价为「开源追平闭源」的标志性事件——头部基准逼近GPT-5.6 Sol和Claude Fable 5。黄仁勋罕见发声力挺梁文锋、杨植麟，认为中国被高墙逼出的技术路线正在改写全球算力与存储账单。</p>
+      <div class="source">第一财经 / 新浪财经</div>
+      <a class="read-more" href="https://finance.sina.com.cn/roll/2026-07-28/doc-inikknsf6258141.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-07-29</span>
+      </div>
+      <h3>全国产10万卡超集群曙光8000正式投用：我国算力基础设施迈入10万卡级</h3>
+      <p>我国首个全国产10万卡人工智能超集群曙光8000正式落成投用，同步接入国家超算互联网郑州核心节点。投用首周即满载运行，日均处理作业突破15万个，单日峰值超50万个，覆盖大模型训练、高通量推理、科学计算等多场景。</p>
+      <div class="source">人民日报 / 新浪财经</div>
+      <a class="read-more" href="https://finance.sina.com.cn/jjxw/2026-07-28/doc-inikkaaa9226483.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-07-29</span>
+      </div>
+      <h3>特斯拉Optimus年底量产在即：弗里蒙特产线启动，远期目标年产能1000万台</h3>
+      <p>特斯拉高管发布视频解读财报要点：Optimus人形机器人弗里蒙特产线将于2026年底启动生产，远期规划年产能100万台；得州第二条产线长期目标总年产能1000万台。人形机器人供应链本地化配套需求渐行渐近。</p>
+      <div class="source">百家号 / 华尔街见闻</div>
+      <a class="read-more" href="https://baijiahao.baidu.com/s?id=1871918594020779262" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-07-29</span>
+      </div>
+      <h3>英伟达推进新一轮AI基础设施交易，潜在规模超7500亿美元</h3>
+      <p>英伟达正在推进新一轮人工智能基础设施交易，潜在规模超过7500亿美元。上周公布的与SK海力士合作的AI倡议价值已超5000亿美元。质疑者警告这类交易可能人为推高行业需求和估值，存储芯片概念股周二全线重挫。</p>
+      <div class="source">百家号 / 新浪财经</div>
+      <a class="read-more" href="https://baijiahao.baidu.com/s?id=1871918594020779262" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-07-29</span>
+      </div>
+      <h3>中国商务部斥美方AI蒸馏调查为「霸权主义」：蒸馏是全球通行做法</h3>
+      <p>针对美国部分政客炒作中国AI企业「蒸馏」美前沿模型并威胁制裁，中国商务部新闻发言人7月27日直指其本质为「典型的人工智能霸权主义行径」。业内指出，蒸馏是全球AI通行做法，马斯克训练Grok、谷歌推出模型蒸馏服务都在使用。</p>
+      <div class="source">新浪财经</div>
+      <a class="read-more" href="https://finance.sina.com.cn/roll/2026-07-28/doc-inikkaaa9241052.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-07-29</span>
+      </div>
+      <h3>AI电力消耗飙升引全球警惕：数据中心能耗或破1000太瓦时，电力成产业扩张瓶颈</h3>
+      <p>Gartner预测2026年全球数据中心电力消耗达565太瓦时（同比+26%），IEA更预测可能超1000太瓦时（同比近翻倍）。两家机构共同指向一个挑战：电力供应或将成为制约全球AI产业扩张的最大瓶颈。</p>
+      <div class="source">新浪财经</div>
+      <a class="read-more" href="https://finance.sina.com.cn/jjxw/2026-07-29/doc-inikmivr0056928.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-07-29</span>
+      </div>
+      <h3>从表演到打工：人形机器人落地进入场景攻坚期</h3>
+      <p>世界机器人大会、世界人形机器人运动会等活动正成为北京推动人形机器人应用推广的关键平台。专家指出，技术突破、场景适配与产业推广之间的转化闭环尚未完全打通，让机器人不仅能「动起来」而且能「派上用场」，成为业内核心愿景。</p>
+      <div class="source">新浪网</div>
+      <a class="read-more" href="https://k.sina.com.cn/article_7857201856_1d45362c001908h9qi.html" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>开源 vs 封锁：Kimi K3开源引爆全球，中国AI正用「被围墙逼出的路线」改写规则</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>Kimi K3完整权重开源后迅速爆火，头部基准逼近GPT-5.6 Sol和Claude Fable 5，被评价为「开源追平闭源」的标志性事件。黄仁勋罕见发声力挺中国团队，认为高端GPU断供逼出的技术路线正在反过来改写全球算力与存储账单。</li><li>同一周内，美国政客以「蒸馏窃取知识产权」为由威胁制裁中国AI企业，中国商务部强硬回击为「霸权主义」——而蒸馏本是全球通行做法，谷歌、马斯克都在用。技术竞争与政治博弈的交织从未如此紧密。</li><li>AI电力消耗正成为真正的「硬约束」：IEA预测2026年全球数据中心耗电或超1000太瓦时，同比增长近100%。当算力扩张撞上能源天花板，「绿色算力」和「算电协同」将从概念变成生死线。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>这一周AI行业的核心叙事，可以用一句话概括：封锁没能挡住中国AI，反而逼出了更强的开源力量。Kimi K3的开源爆火不是孤立事件——它背后是一条被高墙逼出的技术路线，在注意力机制、残差连接、优化器等关键零件上做了逐一重造。黄仁勋的表态值得关注：他不是在「同情」中国AI，而是在承认一个事实——这条路线正在改写全球算力成本结构。与此同时，美国以「蒸馏」为由的威胁恰恰暴露了焦虑：当技术差距在缩小，政治工具就会被祭出。但真正决定未来格局的，可能是那个更少被讨论的问题——电。IEA预测的1000太瓦时不是数字游戏，它意味着AI产业正在触碰到物理世界的真实边界。谁能同时解决「算法效率」和「能源效率」两个方程，谁才能赢得下一阶段的门票。从这个角度看，曙光8000的全国产10万卡集群、常州落地的首个城市级绿色Token工厂，以及中国IPv6大模型专项行动，都在指向同一个方向：中国正在构建一条从网络底座到算力集群、从能源协同到模型算法的完整自主链路。</p>
+      <div class="highlight">封锁逼出了更强的开源，但真正的终局较量不在代码而在电网——AI的下一个瓶颈不是算力，是电力。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>关注Kimi K3的开源生态进展。如果头部基准持续逼近闭源模型，企业选型逻辑将发生根本变化——「开源够用」意味着闭源模型的溢价空间被压缩，这是推动内部AI成本下降的最佳谈判筹码。</p></div><div class="worker-tip"><div class="num">2</div><p>如果你是技术负责人，本周该做一件事：盘点你们AI基础设施的能耗账单。IEA的预测不是危言耸听，电力成本正在快速侵蚀AI ROI。提前布局绿色算力或云厂商的碳中和方案，是降本增效的隐藏杠杆。</p></div><div class="worker-tip"><div class="num">3</div><p>中美AI博弈进入「规则战」阶段。关注出口管制、数据跨境、模型蒸馏等议题的政策动态——这些看似遥远的地缘政治变量，正在快速传导为企业供应链风险和合规成本。建议提前建立技术备份方案。</p></div><div class="worker-tip"><div class="num">4</div><p>人形机器人从「表演」到「打工」的转折值得关注。特斯拉Optimus年底量产、世界机器人大会成为推广平台，意味着这个赛道正在从概念验证进入商业化前夜。如果你在制造业或物流领域，现在是评估机器人替代方案的时间窗口。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
