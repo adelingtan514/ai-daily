@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年7月31日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">7月31日（周五）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-07-31</span>
+      </div>
+      <h3>OpenAI大幅下调GPT-5.6系列价格，Luna模型暴跌80%</h3>
+      <p>OpenAI今日宣布GPT-5.6系列全面大降价：入门级Luna模型输入价格降至0.20美元/百万token，降幅高达80%；中端Terra降价20%；旗舰Sol则新增2.5倍速Fast模式。OpenAI表示「真正无限使用且极其廉价的AI时代正在加速到来」，Token价格战全面升温。</p>
+      <div class="source">财联社 / IT之家 / 华尔街见闻</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_1656a6bf31973252" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-07-27</span>
+      </div>
+      <h3>月之暗面Kimi K3全量开源：2.8万亿参数刷新全球纪录，融资35亿美元</h3>
+      <p>7月27日，月之暗面正式开源旗舰模型Kimi K3完整权重与技术报告，总参数达2.8万亿、激活参数1040亿，成为全球首个迈入3万亿级别的开源模型。随后被曝完成超预期35亿美元融资，估值达350亿美元。</p>
+      <div class="source">AI行业热点新闻</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_1656a6bf31973252" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-07-30</span>
+      </div>
+      <h3>月之暗面变更为股份有限公司，杨植麟升任董事长兼经理</h3>
+      <p>7月30日，天眼查显示月之暗面已完成工商变更登记，市场主体类型变更为股份有限公司。杨植麟身份从董事升任董事长兼经理，原经理周昕宇变更为董事，高管新增董事张予彤和财务负责人宋思嘉。</p>
+      <div class="source">天眼查 / AI早报</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_1386a6bead662752" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-07-28</span>
+      </div>
+      <h3>英伟达50亿美元投资Ilya创立的SSI，芯片巨头「循环融资」引市场警觉</h3>
+      <p>英伟达7月28日宣布向「安全超级智能」(SSI)投资约50亿美元并提供下一代Vera Rubin算力平台，但SSI至今零产品、零公开研究。同期AMD亦宣布向Anthropic投资至多50亿美元，芯片厂商与大模型公司间的「循环融资」依赖网络引发信用市场警觉。</p>
+      <div class="source">第一财经 / 凤凰网</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_1656a6bf31973252" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-07-31</span>
+      </div>
+      <h3>Meta借助AI大幅缩短应用开发周期，「氛围编程」应用批量上线</h3>
+      <p>Meta CEO扎克伯格在Q2财报电话会议上透露，多款新应用正在筹备中。近期已推出面向Marketplace卖家的应用、Facebook群组应用、通过「氛围编程」打造的游戏应用、Instagram照片应用，以及AI睡前故事实验。AI正在重塑Meta的产品迭代速度。</p>
+      <div class="source">TechCrunch / IT之家</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_5826a6be54904552" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-07-31</span>
+      </div>
+      <h3>字节跳动启动AI业务组织架构调整：飞书与豆包火山团队整合</h3>
+      <p>7月31日消息，字节跳动正启动针对AI业务的组织架构调整，飞书与豆包火山团队进行整合。这一动作被视为字节在AI赛道加速布局、统一AI产品矩阵的战略信号，豆包作为字节AI核心产品或将获得更强资源协同。</p>
+      <div class="source">每日经济新闻 / 未来商业早参</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_5816a6bd9af20952" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-07-30</span>
+      </div>
+      <h3>谷歌AI工具一个月修复1072个Chrome漏洞，超过去两年总和</h3>
+      <p>谷歌宣布6月推出的Chrome 149和150共修复1072个安全漏洞，得益于内部AI工具，仅用一个月便为Chrome修复了超过过去两年总和的安全漏洞。这是AI在软件工程安全领域应用的里程碑式进展。</p>
+      <div class="source">快科技</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_8846a6beff454352" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-07-30</span>
+      </div>
+      <h3>微软财报超预期暴涨15%，创华尔街史上最大单日市值增幅</h3>
+      <p>微软超预期财报重塑AI投资信心，股价暴涨逾15%，创下华尔街史上单股单日最大市值增幅，也是该股18年来最大单日涨幅。费城半导体暴涨8%，纳指100涨3.4%创年内第三大涨幅，存储板块全面爆发。</p>
+      <div class="source">华尔街见闻</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_0296a6be2f811352" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>AI价格战全面爆发：OpenAI降价80% vs 月之暗面开源3万亿参数模型，「廉价AI时代」正式到来</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>OpenAI今日将GPT-5.6 Luna模型价格下调80%，输入token降至0.20美元/百万，这是OpenAI有史以来最大幅度的价格调整，标志着AI API从「按量计费」走向「无限使用」的分水岭。</li><li>月之暗面在7月27日开源了2.8万亿参数的Kimi K3，同时完成35亿美元融资，估值350亿美元——开源+巨额融资的组合，正在重新定义中国AI大模型的竞争格局。</li><li>微软财报超预期带动股价暴涨15%，创下华尔街史上最大单日市值增幅，费城半导体涨8%——资本市场对AI的信心正在从「概念炒作」转向「业绩验证」阶段。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>这一周（7月27日-31日）的AI行业，三件事同时发生，指向同一个趋势：AI正在从「奢侈品」变成「日用品」。OpenAI把Luna的价格砍了80%，这不是简单的促销，而是一个战略信号——当推理成本降到足够低，AI应用的增长曲线将从线性变成指数。与此同时，月之暗面开源了2.8万亿参数的Kimi K3，这是中国大模型公司第一次在全球开源社区树立「参数天花板」。开源+降价的组合拳，正在把AI的护城河从「模型能力」推向「生态构建」。资本市场的反应也印证了这一点：微软暴涨15%、费城半导体涨8%，说明投资者已经意识到——AI不是泡沫，而是正在产生真金白银业绩的基础设施。对普通开发者和企业来说，这意味着什么？意味着你现在可以用1/5的成本调用和一年前同样质量的AI能力，而且开源模型的选择比以往任何时候都多。廉价AI时代不是「即将到来」，而是「已经到来」。</p>
+      <div class="highlight">当OpenAI把价格砍掉80%、月之暗面把模型开源到3万亿参数、微软用业绩证明AI是真金白银的生意——廉价AI时代已经不是趋势预测，而是正在发生的现实。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>立刻评估你现有AI工作流的成本：如果你的团队还在用一年前的API价格做预算，现在同样的任务成本可能已经降到1/5。重新算一笔账，把省下来的预算投入到更多AI应用场景的探索中。</p></div><div class="worker-tip"><div class="num">2</div><p>关注Kimi K3开源模型：2.8万亿参数、1040亿激活参数，这是目前开源社区最大的模型之一。如果你在做需要长文本理解或复杂推理的产品，花1-2小时在本地或云端部署测试一下，开源模型的「天花板」正在快速抬升。</p></div><div class="worker-tip"><div class="num">3</div><p>这波价格战对创业者是重大利好，但警惕「循环融资」风险：英伟达投SSI、AMD投Anthropic，芯片厂和大模型厂互相持股的现象值得警惕。选择AI infra供应商时，多留一个备份方案。</p></div><div class="worker-tip"><div class="num">4</div><p>微软暴涨15%的背后是Azure AI业务的强劲增长。如果你的公司正在考虑AI采购，现在可能是谈判价格的最好时机——供应商们都在用降价和优惠争夺客户。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
