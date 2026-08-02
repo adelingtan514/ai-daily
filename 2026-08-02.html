@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年8月2日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">8月2日（周日）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-08-02</span>
+      </div>
+      <h3>DeepSeek V4-Flash正式版公测，OpenAI吓到降价80%</h3>
+      <p>深夜，DeepSeek通过API文档更新日志官宣V4-Flash正式版公测，连发布会都没开。同一天，OpenAI紧急宣布GPT-5.6 Luna降价80%。也是同一天，智谱GLM Coding Plan订阅回归，Pro档涨了261%。一个悄悄放大招，一个被吓得连夜砍价，一个逆势涨价还上了热搜。</p>
+      <div class="source">快科技 / 36氪</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_7716a6e444981552" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-08-02</span>
+      </div>
+      <h3>OpenAI下一代AI攻克10项菲尔兹奖级难题</h3>
+      <p>OpenAI最新一代AI模型在数学领域取得重大突破，成功攻克10项菲尔兹奖级别的数学难题，引发学术界和AI行业高度关注。这一进展标志着AI在纯科学研究领域的深度推理能力迈入新阶段。</p>
+      <div class="source">新智元</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_8306a6e8ddd71052" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-08-02</span>
+      </div>
+      <h3>中方在联合国举行2026世界人工智能大会暨AI全球治理高级别会议吹风会</h3>
+      <p>中国常驻联合国代表团7月31日在联合国总部举行2026世界人工智能大会暨人工智能全球治理高级别会议吹风会。7月16日，来自亚洲、非洲、拉美和欧洲的29个国家签署《关于成立世界人工智能合作组织的协定》，成为创始成员国。这标志着中方倡导推动成立世界AI合作组织取得重要阶段性进展。</p>
+      <div class="source">人民日报 / IT之家</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_6816a6e731f97852" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-08-02</span>
+      </div>
+      <h3>欧盟扩大实施人工智能法，深度伪造内容8月2日起强制标AI</h3>
+      <p>欧盟委员会宣布自8月2日起扩大《人工智能法》适用范围，开始执行透明度规则。聊天机器人等交互式AI系统必须告知用户正在与AI互动，利用AI生成或修改的图像、视频和音频等深度伪造内容必须作出标识，且须带有机器可读标记以便识别。</p>
+      <div class="source">欧盟委员会 / 快科技</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_4396a6dfe7016752" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-08-02</span>
+      </div>
+      <h3>MiniMax发布全模态生成模型H3</h3>
+      <p>MiniMax正式发布通用全模态生成模型H3。该模型支持对文本、图像、视频、声音的统一理解，可输出原生双声道音视频，最高支持15秒2K分辨率视频生成。这标志着国产多模态大模型进入全模态统一生成的新阶段。</p>
+      <div class="source">MiniMax / 快科技</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_4396a6dfe7016752" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-08-02</span>
+      </div>
+      <h3>智谱落地1GW级国产AI算力数据中心，全部采用国产AI芯片</h3>
+      <p>智谱宣布随着基础设施持续扩容，GLM Coding Plan开放订阅。此前因AI Coding需求爆发阶段性限制名额。另据了解，智谱已落地1GW级国产AI算力数据中心建设，全部采用国产AI芯片，持续投入算力基础设施建设。</p>
+      <div class="source">智谱 / 快科技</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_4396a6dfe7016752" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-08-02</span>
+      </div>
+      <h3>山东实施「人工智能农业」行动，2026智慧农业市场规模将破1340亿</h3>
+      <p>2026年中央一号文件明确提出因地制宜发展农业新质生产力，促进人工智能与农业发展相结合。多家行业机构预测，2026年中国智慧农业市场规模将突破1340亿元，年复合增长率保持在15%以上，AI正从单点应用升级为贯穿农业全产业链的战略引擎。</p>
+      <div class="source">央广网 / 人民日报</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_9146a6e884575652" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-08-02</span>
+      </div>
+      <h3>政策与市场双轮驱动，万亿级AI消费新蓝海加速形成</h3>
+      <p>AI正在重构从获客、种草到下单、复购的消费全链路。供需匹配与营销转化环节正在被AI深度改造，政策扶持与市场需求双轮驱动下，万亿级AI消费新蓝海正在加速形成，为企业和创业者带来巨大机遇。</p>
+      <div class="source">财联社 / 证券之星</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_4396a6e843104152" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>AI价格战与全球治理并行：模型层内卷加剧，监管框架加速落地</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>DeepSeek V4-Flash无发布会直接公测，同一天OpenAI GPT-5.6 Luna降价80%、智谱GLM Coding Plan涨价261%——三家头部厂商在同一天做出截然相反的定价策略，标志着AI模型层竞争已进入「各自押注」的白热化阶段。</li><li>欧盟《人工智能法》8月2日正式扩大适用范围，深度伪造内容强制标识；中国推动成立世界人工智能合作组织，29国已签署创始协定——全球AI治理正从「各自为政」走向「规则互认」，监管与创新的赛跑同时提速。</li><li>智谱落地1GW级国产AI算力中心、MiniMax发布全模态H3、山东AI农业市场规模将破1340亿——国产AI正从「模型单点突破」向「算力自主+场景落地」的全产业链纵深推进。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>这一周的AI新闻，最醒目的画面是三家公司在同一天做出了三种完全不同的定价选择：DeepSeek默默发布V4-Flash直接公测，OpenAI被吓到连夜降价80%，智谱反而逆势涨价261%还上了热搜。这不是巧合，而是模型层竞争进入新阶段的信号——当技术差距逐渐缩小，厂商开始用完全不同的商业策略寻找自己的生态位。与此同时，欧盟AI法案正式落地、中国推动29国成立世界AI合作组织，全球治理框架正在快速成型。一个值得关注的趋势是：监管不是在限制创新，而是在为创新划定安全的跑道。对从业者来说，这意味着既要盯着技术迭代的速度，也要关注规则演变的方向——能在合规框架内把AI落地到真实场景的团队，才是下一轮竞争的真正赢家。</p>
+      <div class="highlight">当OpenAI被DeepSeek逼到降价80%，当欧盟开始强制标注AI内容，当国产算力自主率突破50%——2026年夏天的AI行业，正在经历从「技术竞赛」到「商业+治理双赛道」的历史性转折。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>关注8月2日欧盟AI法案生效的影响：如果你的业务涉及生成式AI内容（尤其是图像/视频/音频），务必检查内容输出是否符合「强制标识」要求。合规成本可能成为中小企业的新门槛，提前准备比被动应对更划算。</p></div><div class="worker-tip"><div class="num">2</div><p>DeepSeek V4-Flash公测+OpenAI降价80%，模型调用成本正在快速下降。建议本周重新评估你团队正在使用的AI工具成本结构，对比不同厂商的性价比，这可能是优化年度AI预算的最佳时机。</p></div><div class="worker-tip"><div class="num">3</div><p>国产AI芯片和算力基础设施正在快速成熟，智谱1GW级国产数据中心是标志性事件。如果你的公司有算力采购需求，不妨把国产方案纳入评估范围——自主可控+成本优势可能带来意想不到的收益。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
