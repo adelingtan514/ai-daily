@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年8月4日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">8月4日（周二）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-08-04</span>
+      </div>
+      <h3>OpenAI正式发布GPT-Live语音系统：全双工实时对话，告别停顿与回合切换</h3>
+      <p>8月4日消息，OpenAI发布经过全面重构的语音交互系统GPT-Live，采用全双工架构支持AI同时监听与说话，用户可随时打断而不中断连接。复杂查询后台由GPT-5.5处理，前台持续对话。免费版为GPT-Live-1 mini，付费用户可用完整版。</p>
+      <div class="source">CNMO科技 / 腾讯新闻</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_7916a712f7d10352" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-08-04</span>
+      </div>
+      <h3>阿里Qwen3.8正式发布：2.4万亿参数旗舰，同步推出企业Agent「千问办公」</h3>
+      <p>8月3日，阿里巴巴发布新一代基座大模型Qwen3.8，总参数量2.4万亿，编程与专业办公能力大幅提升。API已上线千问AI平台，Qwen3.8-Max预计下周开源。同日，企业级Agent产品「千问办公」(QwenWork)开启公测，整合QoderWork、MuleRun、悟空三款产品，打通钉钉IM。</p>
+      <div class="source">智东西 / 快科技</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_7626a7005b566452" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-08-04</span>
+      </div>
+      <h3>欧盟《人工智能法案》8月2日正式生效：AI生成内容强制标注，最高罚1500万欧元</h3>
+      <p>全球首部全面监管AI的法律进入强制执行阶段。所有聊天机器人等交互式AI必须明确告知用户其AI身份；AI生成的图片、视频、音频等「深度伪造」内容必须进行醒目标注并嵌入机器可读标记。违规企业最高可处全球年营业额3%或1500万欧元罚款。</p>
+      <div class="source">新华社 / 法新社</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_5266a70c13281852" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-08-04</span>
+      </div>
+      <h3>白宫启动AI安全审查，OpenAI、Google、Anthropic被点名参会</h3>
+      <p>白宫官员向CNBC证实，本周二将召集人工智能企业讨论一份刚完成的网络安全审查框架，用于审查业内最先进模型的网络安全能力。Anthropic、OpenAI、谷歌预计参会。该框架源自特朗普6月2日签署的行政令，要求联邦机构判定在研模型是否属于「受涵盖前沿模型」。</p>
+      <div class="source">CNBC / 腾讯新闻</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_7116a712ae375752" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-08-04</span>
+      </div>
+      <h3>AI消费电子全面爆发：荣耀机器人手机预约破20万、华为鸿蒙折叠电脑定档8月5日</h3>
+      <p>从手机到PC、从可穿戴到智能眼镜，一场以AI为核心引擎的产业变革正在消费电子领域全面铺开。荣耀首款机器人手机Robot Phone预约量突破20万台；OPPO「小布Next计划」开启多机型内测；华为新款鸿蒙折叠电脑定档8月5日发布；苹果首款折叠屏手机今秋亮相，Apple智能已完成国内备案。</p>
+      <div class="source">人民财讯</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_8096a7128fe70952" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-08-04</span>
+      </div>
+      <h3>AI热潮持续：新兴市场ETF单周吸金45亿美元，创2月以来新高</h3>
+      <p>围绕亚洲人工智能概念股的投资热潮未见降温迹象。截至7月31日当周，在美国上市的新兴市场ETF资金流入总额约为45亿美元，高于前一周逾20亿美元的流入规模，创下2月27日以来最大单周资金流入。AI正在从「关键变量」变为经济高质量发展的「强劲增量」。</p>
+      <div class="source">财联社</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_6826a70d4a918352" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-08-04</span>
+      </div>
+      <h3>京东外卖推出AI智能头盔：搭载语音助手+一键SOS，首批免费配发全职骑手</h3>
+      <p>8月3日，京东外卖宣布全新推出AI智能头盔，搭载AI语音助手、「单王带路」、一键SOS求助、商户环境核验四项科技功能。该款AI智能头盔将于近期陆续「上岗」，首批将免费发放给京东全职骑手，后续逐步向全体骑手开放。</p>
+      <div class="source">未来商业早参</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_6756a711f1326552" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-08-04</span>
+      </div>
+      <h3>中央政治局会议部署「人工智能+」行动：2025年中国AI核心产业规模超1.2万亿元</h3>
+      <p>日前召开的中共中央政治局会议提出，深入实施「人工智能+」行动，发展智能经济新形态，完善人工智能治理体系。据测算，2025年我国人工智能核心产业规模超过1.2万亿元，大模型、智能体、人工智能芯片加速迭代，今年人形机器人全年整机产量有望突破10万台。</p>
+      <div class="source">新华社</div>
+      <a class="read-more" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_1996a7117d769152" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>从GPT-Live到千问办公：AI交互从「对话」升级为「协作」，Agent正式进入企业办公主战场</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>OpenAI GPT-Live发布意味着AI语音交互从「回合制」正式进入「全双工实时对话」时代——AI能同时听和说、用户可随时打断，这不仅是体验升级，更是人机交互范式的根本转变。</li><li>阿里在同一天发布Qwen3.8大模型和「千问办公」Agent平台，不是巧合，而是「模型+应用」组合拳的集中发力。千问办公整合三款产品、打通钉钉IM，标志着中国大厂正在把Agent从实验品变成企业办公基础设施。</li><li>欧盟AI法案8月2日生效与白宫本周二启动AI安全审查形成「欧美监管双响炮」，表明AI产业正从「野蛮生长」进入「合规竞争」阶段。中国AI核心产业规模超1.2万亿，人形机器人产量有望破10万台，监管与发展的平衡将成为下一阶段的核心议题。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>这一周AI产业最值得关注的是两件事的「共振」：OpenAI让AI「更会说话」，阿里让AI「更会干活」。GPT-Live解决的是AI「能不能像人一样交流」的问题——全双工架构让用户可以随时打断、AI能同时听和说，这看似只是语音体验的优化，实际上降低了用户使用AI的认知门槛。与此同时，千问办公瞄准的是「AI能不能像人一样工作」——不只是生成文案，而是自主拆解任务、调用工具、交付可交付的文档和数据分析，并深度嵌入钉钉这个中国最大企业协作平台。这两件事背后有一个共同的信号：2026年下半年，AI产品竞争正在从「模型能力」转向「落地闭环」。谁的AI能让用户「用起来顺手、用起来有用」，谁就能在这个节点上占据先机。加上欧盟AI法案生效和白宫安全审查，监管框架的成型也在倒逼行业从「炫技」走向「合规交付」。对中国从业者来说，1.2万亿核心产业规模+10万台人形机器人产量目标，意味着「AI+实体」正在加速落地。</p>
+      <div class="highlight">GPT-Live让AI「更会说话」，千问办公让AI「更会干活」——2026年下半年，AI的竞争从「模型能力」正式进入「落地闭环」阶段。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>这周试试GPT-Live的实时对话体验。如果你在工作中经常使用语音交互（开车、走路、做饭时查资料），全双工的「随时打断」和「自然语气」会显著提升效率。优先测试你最高频的5个语音使用场景，看看GPT-Live是否真的能替代Siri/小爱。</p></div><div class="worker-tip"><div class="num">2</div><p>关注千问办公的公测动态。如果你是钉钉用户，这是国内第一个深度打通IM的企业级Agent平台。建议本周内注册体验，重点测试「自然语言下达指令→AI自主拆解→生成可交付文件」的完整链路。对比你当前使用的AI工具，看看任务闭环能力是否有质的提升。</p></div><div class="worker-tip"><div class="num">3</div><p>如果你所在的公司有出海业务或在欧盟有用户，本周是梳理AI合规策略的关键窗口。欧盟AI法案已生效，AI生成内容必须标注、聊天机器人必须告知AI身份。建议与法务/合规团队同步，评估产品中AI相关功能的合规风险，避免触达1500万欧元级别的罚款红线。</p></div><div class="worker-tip"><div class="num">4</div><p>观察AI消费电子的投资逻辑：荣耀机器人手机预约破20万、华为鸿蒙折叠电脑定档、苹果折叠屏今秋亮相——AI正在成为消费电子换机周期的核心驱动力。如果你关注相关产业链，8-9月将是密集发布期，提前锁定供应链信息。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
