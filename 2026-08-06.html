@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年8月6日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">8月6日（周四）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-08-06</span>
+      </div>
+      <h3>IBM报告：AI驱动攻击已占恶意数据泄露1/4，损失成本高出均值20%</h3>
+      <p>IBM于7月29日发布的调查显示，AI驱动的攻击已占到整体恶意数据泄露事件的25%，比例同比激增56%。这类攻击平均每起造成600万美元损失，比整体数据泄露事件平均成本高出20%。62%的AI驱动型网络攻击瞄准了关键基础设施，其中金融服务和能源机构遭受的攻击最为集中。</p>
+      <div class="source">IBM / 太平洋电脑网</div>
+      <a class="read-more" href="https://www.pconline.com.cn/ai/daily-news/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-08-06</span>
+      </div>
+      <h3>DeepSeek V4-Flash正式版上线：参数未变，代码与智能体能力突变式跃升</h3>
+      <p>7月31日，DeepSeek在API文档更新日志中低调发布V4-Flash正式版。开发者社区发现，该版本在总参数和激活参数上未在预览版基础上做任何改变，但其代码能力和智能体能力竟「突变式」地达到了全球顶尖模型水平。DeepSeek再次打破「更大算力=更强能力」的逻辑惯性。</p>
+      <div class="source">21世纪经济报道 / 新浪</div>
+      <a class="read-more" href="https://finance.sina.com.cn/roll/2026-08-02/doc-inikxmti6789898.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-08-06</span>
+      </div>
+      <h3>Liquid AI推出端侧智能体模型LFM2.5：26亿参数，手机即可本地运行</h3>
+      <p>8月5日，AI初创公司Liquid AI发布专为智能体工作流设计的端侧模型LFM2.5-2.6B，拥有26亿参数，无需依赖云端API即可在智能手机等终端设备上完全本地运行。模型基于约34万亿词元进行预训练，词表扩展至128K，后训练流程整合了监督微调、多领域在策略蒸馏及智能体强化学习。</p>
+      <div class="source">Liquid AI / 太平洋电脑网</div>
+      <a class="read-more" href="https://www.pconline.com.cn/ai/daily-news/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-08-06</span>
+      </div>
+      <h3>即梦AI接入Seedance 2.5并上线Maya/Blender插件，字节打通AI视频专业创作全链路</h3>
+      <p>字节跳动旗下内容创作平台即梦AI正式接入Seedance 2.5模型，并同步上线Maya与Blender插件及智能编辑模式。Seedance 2.5将单次视频生成时长从15秒提升至30秒，通过与专业软件深度适配，将AI视频创作从「形态创新」推向「生产力工具」新阶段。</p>
+      <div class="source">字节跳动 / 太平洋电脑网</div>
+      <a class="read-more" href="https://www.pconline.com.cn/ai/daily-news/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-08-06</span>
+      </div>
+      <h3>政治局会议首提「新兴支柱产业」，AI相关行业上半年保持30%以上高增长</h3>
+      <p>中共中央政治局会议在部署下半年经济工作时首次提出「着力打造新兴支柱产业」。数据显示，今年上半年人工智能相关行业保持30%以上的高增长，规模以上工业企业集成电路产量同比增长23.1%，集成电路出口额同比增长88.7%。AI等新兴产业在经济结构中的定位正从增长点升级为支柱。</p>
+      <div class="source">央视新闻 / 新浪财经</div>
+      <a class="read-more" href="https://finance.sina.com.cn/jjxw/2026-08-02/doc-inikxrzc5079714.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-08-06</span>
+      </div>
+      <h3>世界银行喊话新兴经济体：别跟富裕国拼大模型，本地化小工具才是正道</h3>
+      <p>世界银行在最新报告中建议发展中经济体将人工智能用于政府治理和企业经营，并根据本地需求改造现成工具，而非与富裕国家比拼大型数据中心和大语言模型。报告指出，推广经过本地化调整的小型低成本AI工具更可能改善医疗和教育质量。</p>
+      <div class="source">世界银行 / 太平洋电脑网</div>
+      <a class="read-more" href="https://www.pconline.com.cn/ai/daily-news/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-08-06</span>
+      </div>
+      <h3>欧盟《人工智能法》透明度新规8月2日正式生效：AI必须自报家门</h3>
+      <p>欧盟委员会宣布，自8月2日起与各成员国主管部门共同执行《人工智能法》相关规定，新的人工智能透明度要求同步生效。这意味着AI系统必须明确告知用户其人工智能属性，违规企业将面临高额罚款。全球AI监管框架正在从「建议性」走向「强制性」。</p>
+      <div class="source">欧盟委员会 / 快科技</div>
+      <a class="read-more" href="https://news.mydrivers.com/tag/rengongzhineng.htm" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-08-06</span>
+      </div>
+      <h3>中国AI包揽OpenRouter调用量前五，国产大模型全球市场份额持续攀升</h3>
+      <p>全球多模型聚合平台OpenRouter发布最新一周（7月20日至7月26日）AI大模型调用量榜单，排名前五的产品全部由中国企业研发。从DeepSeek到Qwen、Kimi，国产大模型在开发者生态中的渗透速度持续加快，中国已成为全球唯一在AI产业链各层次都具备显著竞争力的国家。</p>
+      <div class="source">OpenRouter / 新浪</div>
+      <a class="read-more" href="https://k.sina.com.cn/article_7857201856_1d45362c001908hy00.html" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>AI进入「安全与增长」并行的新周期：能力越强大，风险越真实</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>IBM最新报告显示，AI驱动的网络攻击已占恶意数据泄露事件的25%，同比激增56%，每起平均造成600万美元损失。这与DeepSeek V4-Flash「突变式」能力提升、字节Seedance 2.5打通专业创作链路形成鲜明对照——AI的能力边界和安全风险正在同步指数级扩张。</li><li>政策层面出现「双向收紧」：中国政治局会议首提「新兴支柱产业」将AI定位从增长点升级为支柱；欧盟《人工智能法》透明度新规8月2日强制生效，AI必须「自报家门」。全球主要经济体对AI的态度从「鼓励创新」转向「发展与安全并重」。</li><li>Liquid AI推出26亿参数端侧模型、中国AI包揽OpenRouter调用量前五，说明AI正在从「云端垄断」走向「端侧普及」和「国产替代」两条并行路径。世界银行建议新兴经济体聚焦本地化小工具，也印证了「小而美」的AI应用正成为新主流。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>这一周的新闻最值得关注不是某个单一模型有多强，而是AI领域出现了清晰的「能力-风险」剪刀差：一边是DeepSeek V4-Flash在参数不变的情况下实现能力突变、字节打通AI视频专业创作全链路、中国AI包揽全球调用量前五——能力在加速；另一边是IBM报告揭示AI驱动攻击暴增56%、欧盟强制AI自报身份、北京首例破坏AI模型刑事案件宣判——风险在同步放大。这意味着AI行业正在从「能力竞赛」进入「安全竞赛」的新阶段。过去两年大家拼的是谁的模型更聪明，接下来两年拼的将是「谁的AI既聪明又可控」。对普通企业和开发者而言，这不是坏消息——安全需求本身就是巨大的市场机会。当AI能力越强大，围绕AI的合规、安全、审计、溯源服务就越有价值。2026年下半年，「AI安全」可能会成为继「AI应用」之后的下一个创业和投资热点。</p>
+      <div class="highlight">当AI能力指数级增长时，安全不是可选项，而是决定AI能否规模化的唯一门票。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>本周关注「AI安全」赛道：IBM报告显示AI攻击激增56%，欧盟强制透明度新规生效，国内首例破坏AI模型刑事案件宣判。如果你的工作涉及AI应用，建议立即梳理公司AI系统的权限边界和审计机制——合规窗口正在快速收窄，先行者将获得信任红利。</p></div><div class="worker-tip"><div class="num">2</div><p>跟踪「端侧AI」机会：Liquid AI的26亿参数模型能在手机上本地运行，意味着端侧智能体正在从概念走向产品。如果你是移动端开发者或硬件从业者，现在正是研究端侧模型部署和优化的最佳时机，这比云端大模型的竞争壁垒更低。</p></div><div class="worker-tip"><div class="num">3</div><p>验证你的AI工作流是否依赖单一模型：DeepSeek V4-Flash「突变式」升级再次证明模型能力迭代极快。建议把核心工作流设计成「模型可替换」架构，避免过度绑定某一特定模型，这样在新模型发布时可以快速切换获取性能提升。</p></div><div class="worker-tip"><div class="num">4</div><p>关注政策风向：政治局会议把AI定位为「新兴支柱产业」，这意味着接下来半年很可能有配套的产业扶持政策出台。如果你是AI创业者或投资人，密切跟踪各地AI产业园、算力补贴、数据开放等政策动态，窗口期往往只有3-6个月。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
