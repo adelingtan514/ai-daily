@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年8月26日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">8月26日（周三）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-08-26</span>
+      </div>
+      <h3>OpenAI自研Jalapeno推理芯片曝光：性能测试全面反超GB300</h3>
+      <p>OpenAI首款自研AI推理芯片「墨西哥辣椒」正式公开实测成绩，在多项推理测试中性能全面超过英伟达最新旗舰GB300。Sam Altman亲自确认芯片存在，标志着OpenAI从算法公司向芯片-算法一体化公司的关键跨越。</p>
+      <div class="source">新智元 / 机器之心</div>
+      <a class="read-more" href="https://36kr.com/p/3955555203447945" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-08-26</span>
+      </div>
+      <h3>OpenAI首颗「辣椒」芯片压倒英伟达，GPT-6干崩CUDA护城河</h3>
+      <p>OpenAI自研芯片不仅性能胜出，更被解读为对英伟达CUDA生态护城河的直接挑战。GPT-6的推理架构将不再依赖CUDA，AI芯片格局面临重塑。英伟达在AI推理市场的垄断地位首次遭遇系统性威胁。</p>
+      <div class="source">36氪 / 新智元</div>
+      <a class="read-more" href="https://36kr.com/p/3955585236057474" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-08-26</span>
+      </div>
+      <h3>Anthropic冲击全球最大IPO：画30万亿美元市场蓝图，估值锚定2万亿</h3>
+      <p>Anthropic被曝正筹备全球最大规模IPO，估值目标直指2万亿美元，声称潜在市场空间高达30万亿美元。Claude系列近期推出空间推理新模型，算力压榨到极致，成为OpenAI之外最有想象力的AI公司。</p>
+      <div class="source">AIbase</div>
+      <a class="read-more" href="https://www.aibase.com/news/30611" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-08-26</span>
+      </div>
+      <h3>字节发布AI办公智能体「豆包工作」，打通飞书生态重构企业生产力</h3>
+      <p>字节跳动正式推出「豆包工作」AI办公智能体，深度集成飞书生态。Agent的下半场，比的是谁能真正提升组织生产力。这标志着大厂Agent混战从工具层进入组织生产力层，飞书+豆包的组合拳剑指企业级AI入口。</p>
+      <div class="source">AIbase / 36氪</div>
+      <a class="read-more" href="https://www.aibase.com/news/30596" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-08-26</span>
+      </div>
+      <h3>Ilya新模型要来了？黄仁勋砸50亿押注SSI，首个模型疑本周发布</h3>
+      <p>SSI（Safe Superintelligence）即将发布首个测试时训练新模型，或颠覆预训练时代。英伟达CEO黄仁勋已投资50亿美元押注Ilya的这家新公司。沉默两年的Ilya终于交卷，业内普遍预期这是2026年最重要的模型发布之一。</p>
+      <div class="source">新智元 / 机器之心</div>
+      <a class="read-more" href="https://36kr.com/p/3954850431302786" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-08-26</span>
+      </div>
+      <h3>马斯克把Grok语音系统搬上星链：日均处理1.5万通电话、周成交3000笔订单</h3>
+      <p>Grok语音系统正式接入星链卫星网络，实现全球范围内的AI语音服务。实测数据显示日均处理1.5万通电话、每周促成3000笔订单。AI+卫星通信的跨界落地，让「地球上任何角落都能打AI电话」成为现实。</p>
+      <div class="source">AIbase</div>
+      <a class="read-more" href="https://www.aibase.com/news/30609" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-08-26</span>
+      </div>
+      <h3>Meta数周内推出Hatch AI智能体，Watermelon模型10月亮相</h3>
+      <p>Meta计划数周内发布Hatch AI智能体产品，主打社交和日常任务自动化。内部代号Watermelon的下一代大模型定于10月亮相，被外界视为Meta在Agent赛道追赶OpenAI和字节的关键一役。</p>
+      <div class="source">AIbase</div>
+      <a class="read-more" href="https://www.aibase.com/news/30607" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-08-26</span>
+      </div>
+      <h3>高盛合伙人警钟：华尔街把推理外包给AI，或养出「不会思考」的一代</h3>
+      <p>高盛合伙人公开警告，金融行业过度依赖AI进行推理分析，可能导致年轻一代分析师丧失独立思考能力。这一观点在AI全面渗透专业服务的背景下引发广泛讨论：效率提升的代价，是否正在悄然侵蚀人类的核心竞争力？</p>
+      <div class="source">AIbase / 雷科技</div>
+      <a class="read-more" href="https://www.aibase.com/news/30597" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>自研芯片+Agent生态：2026年AI产业进入「硬软一体」决胜局</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>OpenAI自研Jalapeno芯片性能反超英伟达GB300，Sam Altman亲自确认，标志着AI巨头从算法公司向芯片-算法一体化跨越，CUDA护城河首次遭遇系统性威胁。</li><li>字节「豆包工作」智能体、Meta Hatch智能体、Ilya SSI模型即将发布，大厂在Agent赛道的竞争从工具层全面升级为组织生产力层。</li><li>马斯克将Grok语音搬上星链，Anthropic冲击2万亿美元估值——AI正在从「软件革命」扩展为「基础设施革命」，覆盖芯片、通信、办公、金融等全产业。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>这一周的AI新闻传递出一个非常明确的信号：2026年的AI竞争已经进入「硬软一体」的决胜阶段。OpenAI造芯片不是炫技，而是对英伟达CUDA生态的正面突围——当算法公司开始自研芯片，说明模型厂商不再满足于做英伟达的「租客」，而是要当「房东」。与此同时，字节、Meta、Ilya在Agent端的密集动作，说明Agent已经从「好玩的新玩具」变成了「必争的新入口」。豆包工作打通飞书、Meta Hatch瞄准社交场景、SSI模型或颠覆预训练范式——三条路径，同一个目标：谁先让AI真正嵌入组织生产和日常生活，谁就能拿下下一个十年的定义权。而马斯克把Grok语音搬上星链、Anthropic冲击2万亿估值，则在提醒我们：AI的边界正在以月为单位快速外扩，从软件到硬件、从地面到太空、从工具到基础设施。对普通人来说，最重要的不是追每一个热点，而是看清主线：AI正在从「帮你做事」变成「替你存在」——这个转变的速度，比大多数人想象的更快。</p>
+      <div class="highlight">OpenAI造芯片、字节推Agent、马斯克上星链——AI正在从软件革命升级为基础设施革命，赢家通吃的窗口期正在快速收窄。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>关注你所在行业的「AI基础设施化」进程。OpenAI造芯片、字节做Agent办公、马斯克把AI搬上卫星——这些不是遥远的新闻，而是你所在行业即将被重塑的前兆。试着列出你工作中可能被AI替代的3个环节，提前布局。</p></div><div class="worker-tip"><div class="num">2</div><p>本周重点体验字节「豆包工作」或你常用的Agent工具。Agent竞争已从「有没有」进入「好不好用」阶段，越早建立AI工作流习惯，越能在组织AI化转型中占据主动。</p></div><div class="worker-tip"><div class="num">3</div><p>保持对「AI依赖陷阱」的警觉。高盛合伙人的警告不是危言耸听——AI越强大，人类越要主动保留「不用AI也能想清楚」的能力。每周至少留1-2个核心任务完全靠自己完成，这是长期竞争力的保险。</p></div><div class="worker-tip"><div class="num">4</div><p>如果关注投资或职业方向，重点跟踪Anthropic IPO和SSI模型发布。这两件事可能分别定义「AI商业化的天花板」和「AI安全的新基准」，其影响不会局限于技术圈。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
