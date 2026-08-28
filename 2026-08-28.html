@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年8月28日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">8月28日（周五）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-08-27</span>
+      </div>
+      <h3>OpenAI披露Jalapeño自研ASIC与AGI路线图：16个月完成芯片设计，剑指2026年底内部AGI系统</h3>
+      <p>OpenAI CEO Sam Altman在接受TIME专访时透露，公司正全力冲刺内部AGI系统，目标2026年底落地。同步公开的Jalapeño推理ASIC由内部AI模型深度参与硬件设计，仅用16个月完成，推理吞吐达700-1400 tokens/秒。这标志着OpenAI从纯软件公司向「算法+芯片」垂直整合迈出关键一步。</p>
+      <div class="source">TIME / Communeify</div>
+      <a class="read-more" href="https://www.communeify.com/en/blog/ai-daily-latest/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-08-27</span>
+      </div>
+      <h3>Amazon三倍加码NVIDIA订单：一次性采购200万颗GPU，2027-2028年交付</h3>
+      <p>亚马逊将NVIDIA GPU订单增至200万颗，创下史上最大单一AI芯片采购纪录。与此同时，NVIDIA指引Q3营收达1080亿美元，有望成为半导体行业首个单季破千亿美元的公司。两大信号叠加，表明云厂商对AI算力需求的押注仍在加速，基础设施军备竞赛进入白热化阶段。</p>
+      <div class="source">BrightRay.ai / AI Daily</div>
+      <a class="read-more" href="https://brightray.ai/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-08-26</span>
+      </div>
+      <h3>MiniMax H3开源登顶Hugging Face：多模态生成全球第一，成本仅为竞品1/3</h3>
+      <p>MiniMax正式开源新一代通用多模态生成模型H3，发布24小时内即冲上Hugging Face热度榜首，多项权威评测位居全球第一。该模型支持文本、图像、视频统一生成，官方强调其推理成本仅为同类竞品的三分之一，为中国开源AI在多模态领域的硬核实力写下有力注脚。</p>
+      <div class="source">ReadAITime / Hugging Face</div>
+      <a class="read-more" href="https://www.readaitime.com/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-08-17</span>
+      </div>
+      <h3>DeepSeek API引入峰谷定价：高峰时段价格翻倍，V4-Pro最高涨幅1100%</h3>
+      <p>DeepSeek正式调整API定价策略，引入峰谷机制：北京时间9-12点、14-18点为高峰时段，价格翻倍。其中V4-Pro高峰输出价达27元/百万Tokens，较此前最高涨幅达1100%。业内分析，这既反映出算力资源日趋紧张，也标志着国产大模型从「价格战」转向「价值竞争」的新阶段。</p>
+      <div class="source">ReadAITime</div>
+      <a class="read-more" href="https://www.readaitime.com/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-med">🧠 科学</span>
+        <span class="news-date">2026-08-19</span>
+      </div>
+      <h3>智谱唐杰重估Scaling Law：万亿参数是弯路，后训练才是下一战场</h3>
+      <p>智谱AI创始人唐杰在X平台发表「控制变量实验」——GLM-5.3与GLM-5.2共用相同753B基座和架构，仅增加一个月后训练，AA评测得分从53跃升至60。他直言「万亿参数路线是行业共同走过的弯路」，认为数据规模、算力分配与推理部署的重要性被严重低估，下一步关键竞争在后训练阶段。</p>
+      <div class="source">ReadAITime / X平台</div>
+      <a class="read-more" href="https://www.readaitime.com/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-08-27</span>
+      </div>
+      <h3>NVIDIA NemoClaw曝高危漏洞：恶意网页可静默毒化本地Ollama模型</h3>
+      <p>Oasis Security披露CVE-2026-65105漏洞：NVIDIA NemoClaw工具默认将Ollama绑定至0.0.0.0:11434且无需认证，攻击者可通过DNS重绑定攻击远程改写模型聊天模板，将恶意文本注入每条系统消息并持久化。NemoClaw v0.0.35已修复macOS和Linux，Windows/WSL仍受影响。</p>
+      <div class="source">The Hacker News / AI Weekly</div>
+      <a class="read-more" href="https://aiweekly.co/ai-news-today?ref=digioneer.pro" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-08-17</span>
+      </div>
+      <h3>宇树科技科创板上市：开盘暴涨629%，单签收益超47万元，总市值突破4400亿</h3>
+      <p>人形机器人公司宇树科技正式登陆科创板，开盘股价较发行价大涨629.44%，报1100元/股，单签收益超47万元，总市值突破4400亿元。作为中国「具身智能」赛道的标杆企业，宇树的资本表现印证了市场对物理AI和机器人长期前景的强烈信心。</p>
+      <div class="source">ReadAITime</div>
+      <a class="read-more" href="https://www.readaitime.com/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-08-17</span>
+      </div>
+      <h3>支付宝发布国内首个智能体商业底座：「阿宝」接入万余项服务，联合20余家企业共建生态</h3>
+      <p>支付宝在杭州召开首个AI生态大会，披露超级服务智能体「阿宝」已完成万余项服务AI化接入，跨端支持5大手机品牌、16家主流车企。同时发布全栈智能体商业底座及AHA多智能体跨端互联协议，联合千问、华为、OPPO、比亚迪等20余家企业共建生态，标志智能体商业从概念验证走向规模化落地。</p>
+      <div class="source">新浪财经 / 海外网</div>
+      <a class="read-more" href="https://k.sina.com.cn/article_7857201856_1d45362c001908jtoc.html" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>AI基础设施竞速与自主可控：从自研芯片到峰谷定价，行业正经历深层重构</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>OpenAI 16个月完成Jalapeño自研ASIC、Amazon一次性采购200万颗NVIDIA GPU、NVIDIA即将成为首个单季营收破千亿美元的半导体公司——这三件事在同一周发生，说明AI算力基础设施的军备竞赛已从「谁有更多卡」升级到「谁能掌控全栈」。</li><li>DeepSeek API峰谷定价最高涨幅1100%、智谱唐杰宣告「万亿参数是弯路」——国产大模型正在集体从「规模崇拜」转向「效率优先」。价格战让位于价值竞争，后训练、推理优化、算力调度成为新的核心战场。</li><li>MiniMax H3以1/3成本登顶开源多模态榜首、宇树科技上市暴涨629%、支付宝「阿宝」智能体接入万余项服务——中国AI力量在模型开源、物理AI、智能体商业三条战线同时发力，自主可控不再是口号，而是正在发生的产业现实。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>这一周的AI新闻，如果只看单条，像是各自独立的事件：OpenAI做芯片、Amazon买GPU、DeepSeek涨价、MiniMax开源。但把它们放在一起，会发现一个清晰的底层叙事——AI行业正在从「大力出奇迹」的粗放扩张期，进入「精打细算」的效率竞争期。OpenAI做Jalapeño、智谱喊「万亿参数是弯路」，本质上是在说同一件事：堆参数的红利已经吃完，接下来比的是谁能用更少的资源做更多的事。DeepSeek的峰谷定价是一个更现实的信号：算力不再是无限供应的免费午餐，推理成本的精细化运营将成为所有AI公司的基本功。而MiniMax H3以1/3成本做到全球第一、宇树科技在资本市场的大涨，则证明中国AI力量在这轮效率竞赛中并不落后，甚至在某些维度已经领先。对普通开发者和企业用户来说，这意味着什么？意味着「用得起AI」的门槛在持续下降，但「用好AI」的专业门槛在上升。未来半年，谁能把自己的AI工作流从「调用API」进化到「成本优化+场景深耕」，谁就能在下一轮洗牌中占据主动。</p>
+      <div class="highlight">算力军备竞赛的终局不是谁有更多卡，而是谁能让每一张卡产生更多价值——效率，才是AI下半场的真正护城河。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>关注API成本结构：DeepSeek的峰谷定价是一个信号，建议梳理你团队当前使用的AI API支出，评估是否可以通过错峰调用、模型降级、缓存策略等方式降低成本。对于高并发场景，成本优化10%可能就是数万元的节省。</p></div><div class="worker-tip"><div class="num">2</div><p>测试MiniMax H3的多模态能力：它以1/3成本达到SOTA水平，如果你的业务涉及图文/视频生成，值得投入1-2天做对比测试。开源模型+低成本组合拳，可能是替代闭源商业方案的最佳时机窗口。</p></div><div class="worker-tip"><div class="num">3</div><p>审视Agent安全边界：NVIDIA NemoClaw漏洞提醒我们，本地部署的大模型并非绝对安全。如果你或你的团队在使用Ollama等本地推理方案，立即检查网络绑定配置（是否为127.0.0.1），并关注NemoClaw的Windows补丁进展。</p></div><div class="worker-tip"><div class="num">4</div><p>跟踪「后训练」趋势：智谱唐杰的实验表明，后训练（Post-training）的投入产出比可能远超预训练。如果你在做模型微调或RAG应用，建议把更多资源从「换更大模型」转向「优化数据质量、微调策略和推理链路」。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
