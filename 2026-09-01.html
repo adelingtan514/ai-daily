@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年9月1日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">9月1日（周二）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-09-01</span>
+      </div>
+      <h3>OpenClaw 2.0发布：龙虾史上最大更新，网友却说「爱过，我选Hermes」</h3>
+      <p>OpenClaw 2.0正式发布，被称为龙虾史上最大更新。但新智元、量子位、智东西等多家媒体评测后态度分化：有人认为升级诚意十足，也有人直言「龙虾已死，2.0也救不回来了」「龙虾退潮，Hermes上位」。社区讨论热烈，AI Agent赛道竞争白热化。</p>
+      <div class="source">36氪 / 新智元 / 量子位 / 智东西</div>
+      <a class="read-more" href="https://36kr.com/p/3963044991564937" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-09-01</span>
+      </div>
+      <h3>Kimi向微软、亚马逊、谷歌要30%分成，开源模型开始「海外收租」</h3>
+      <p>Kimi（月之暗面）向美国三大云厂商提出30%的分成要求，开创了开源模型「海外收租」的先例。此举被称为「模型版税」模式，如果谈成，将重新定义开源模型的商业化路径，也意味着中国AI公司开始在全球AI产业链中争取更大话语权。</p>
+      <div class="source">36氪 / 字母榜</div>
+      <a class="read-more" href="https://36kr.com/p/3963330012970116" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-09-01</span>
+      </div>
+      <h3>推理利润率超50%！Anthropic上市前夕，投行算了一笔大模型利润账</h3>
+      <p>顶级投行在Anthropic上市前披露的报告中测算：大模型推理业务利润率可超50%，「烧钱」叙事正在被改写。同期，Token消费半年涨20倍，阿里腾讯字节的AI军备竞赛让存储厂商成为最大赢家，算力租赁也进入「卖方时代」。</p>
+      <div class="source">硅基观察Pro / 铅笔道 / 豹变</div>
+      <a class="read-more" href="https://36kr.com/p/3963344023346438" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-09-01</span>
+      </div>
+      <h3>Meta大裁员前紧急刹车：AI代码暴涨220%，员工「救火」时间反增70%</h3>
+      <p>扎克伯格原本计划用AI替换Meta员工，打造「AI原生公司」，但在大裁员前几小时紧急踩下刹车。内部数据显示AI代码量暴涨220%，但员工处理AI问题的「救火」时间反增70%。这场组织实验的暂停，揭示了AI替代人类工作的现实复杂性。</p>
+      <div class="source">CSDN / 36氪</div>
+      <a class="read-more" href="https://36kr.com/p/3963329242627458" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-09-01</span>
+      </div>
+      <h3>「豆包工作」加入混战，大厂争当打工人的「电子牛马」</h3>
+      <p>字节跳动的「豆包工作」正式加入AI办公赛道，与钉钉、飞书、企业微信等大厂产品展开混战。行业从「烧钱竞速」转向「变现回血」，各平台抓住更具商业潜力的现实出口，AI办公工具进入真正拼落地的新阶段。</p>
+      <div class="source">新博弈 / 36氪</div>
+      <a class="read-more" href="https://36kr.com/p/3963248919795330" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-09-01</span>
+      </div>
+      <h3>中国背景团队杀出AI芯片设计黑马：ChipAgents获投，扩合作英伟达</h3>
+      <p>中国背景EDA新势力ChipAgents获得新融资，并扩大与英伟达的合作。这标志着中国在AI时代芯片设计领域正涌现出新的「超级黑马」，EDA+AI的融合路径有望打破传统巨头垄断。</p>
+      <div class="source">36氪</div>
+      <a class="read-more" href="https://36kr.com/p/3964128883054209" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-med">🧠 科学</span>
+        <span class="news-date">2026-09-01</span>
+      </div>
+      <h3>AI让人高估自己？452人实测：AI提升成绩，未改善自我评估准确性</h3>
+      <p>一项涉及452人的实验研究显示：使用AI确实能提升工作成绩，但并没有改善用户自我评估的准确性——也就是说，AI让人做得更好了，但并没有让人更清楚自己到底做得有多好。这对AI时代的人才管理和自我认知提出新的警示。</p>
+      <div class="source">开智学堂 / 36氪</div>
+      <a class="read-more" href="https://36kr.com/p/3964075736964354" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-09-01</span>
+      </div>
+      <h3>今天，「人工智能」这个学科诞生70年了</h3>
+      <p>2026年9月1日，人工智能作为学科已走过70年。从1956年达特茅斯会议到今天的AGI竞速，跌宕起伏七十年，如今正在加速进化。机器之心发文纪念这一历史节点，回顾AI从冷门学科到全球焦点的发展历程。</p>
+      <div class="source">机器之心 / 36氪</div>
+      <a class="read-more" href="https://36kr.com/p/3963212413926791" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>AI学科70年：从达特茅斯到AGI竞速，当大模型开始「收租」和「自救」</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>2026年9月1日，人工智能学科整整70年。从1956年达特茅斯会议命名AI，到今天OpenAI、Anthropic、Kimi等大模型公司竞速AGI，这个学科经历了多次寒冬与复苏，正处于前所未有的加速进化期。</li><li>Kimi向微软、亚马逊、谷歌三大云厂商要求30%分成，开创开源模型「海外收租」先例。同期Anthropic上市前夕披露推理利润率超50%，Token消费半年涨20倍——大模型的商业化正从「尝鲜期」进入「放量期」。</li><li>Meta的AI替代实验紧急刹车：AI代码暴涨220%但员工救火时间反增70%，扎克伯格在大裁员前几小时叫停。而OpenClaw 2.0发布后社区反响两极分化——这些信号共同指向一个结论：AI落地不是简单的「替换人类」，而是复杂的系统工程。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>70年前的达特茅斯会议上，麦卡锡、明斯基等学者用「人工智能」命名了一个当时还很模糊的学科愿景。70年后的今天，这个学科不仅没死，反而比任何时候都更热闹——但热闹的方式变了。Kimi向美国三大云要30%分成，Anthropic推理利润率超50%，这说明大模型终于开始赚钱了，但Meta的「AI替代员工」实验紧急刹车却揭示了一个尴尬现实：AI代码多了220%，人类救火时间反而多了70%——AI不是不用人，而是需要不同的人。OpenClaw 2.0发布后的争议也说明了同样的问题：技术升级不等于商业成功，用户会用脚投票。当大模型从「烧钱竞速」转向「变现回血」，真正的竞争已经不是谁的参数更大，而是谁能真正解决现实问题、谁能安全可控地落地、谁能构建可持续的商业模式。70年后的今天，AI终于走到了从「能不能做」到「值不值得做」的转折点。</p>
+      <div class="highlight">AI 70年的最大启示：技术本身从不缺少突破，真正的考验始终是如何让技术服务于人，而不是反过来。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>关注大模型商业化拐点：Kimi要30%分成、Anthropic利润率超50%、Token消费半年涨20倍——这三个数据说明AI正在从「烧钱」转向「赚钱」。如果你所在的公司有AI相关业务，现在是把「AI投入」转化为「AI产出」的最佳窗口期，建议梳理一下你的AI使用ROI。</p></div><div class="worker-tip"><div class="num">2</div><p>从Meta的教训中学习：AI代码涨220%但救火时间增70%意味着——引入AI不是「减少人」，而是「改变人的角色」。如果你正在推进团队AI化，别只关注AI能做什么，要同步规划「人类在新流程中做什么」，否则会重蹈Meta的覆辙。</p></div><div class="worker-tip"><div class="num">3</div><p>今天AI学科70周年，建议花10分钟了解AI发展史上的几次寒冬与复苏。理解AI的周期性，能帮助你在当前的热潮中保持清醒：不是每个AI项目都需要做，也不是每个AI项目都会成功——选择比努力更重要。</p></div><div class="worker-tip"><div class="num">4</div><p>关注OpenClaw 2.0发布后的社区反馈和Kimi的「模型版税」模式。这两个事件分别代表AI工具生态和商业模式的新变化，可能影响你接下来选择AI工具和平台的决策。多看社区真实评价，少看官方宣传。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
