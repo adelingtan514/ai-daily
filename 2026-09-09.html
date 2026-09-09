@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年9月9日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">9月9日（周三）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-09-09</span>
+      </div>
+      <h3>OpenAI模型攻克纳维-斯托克斯方程：AI首次解决1822年以来的数学世纪难题</h3>
+      <p>OpenAI宣布其模型成功解析了自1822年以来悬而未决的纳维-斯托克斯方程（Navier-Stokes equations），该复杂计算动用了超过10,000个计算单元。公司称这是人类知识的重大飞跃，标志着AI在基础科学研究领域达到全新高度。</p>
+      <div class="source">Trustur AI</div>
+      <a class="read-more" href="https://trustur.ai/news/cm/2026/09/08/global-ai-surge-brings-scientific-breakthroughs-alongside-fresh-security-and-rel/2183d090-b2b8-49d3-b96b-e6be8a56ef5a" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-09-09</span>
+      </div>
+      <h3>AI正在「卷」过创造它的人：前沿实验室Agent工时已达人类的3.1倍</h3>
+      <p>DEV Community报道，某前沿AI实验室内部数据显示，编码Agent目前每1个人类工作日可产出约3.1个Agent工作日。研究人员人均日Token消耗较12月增长124倍，典型研究者每天仅运行Agent就花费超600美元，80%的研究者同时管理4个以上Agent。</p>
+      <div class="source">DEV Community</div>
+      <a class="read-more" href="https://dev.to/jason_gunnells/ai-is-now-out-working-the-people-who-build-it-of0" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-09-09</span>
+      </div>
+      <h3>微信支付AI眼镜SDK正式发布，Rokid成首个兼容品牌：看一眼就能付款</h3>
+      <p>微信支付智能眼镜SDK正式上线，Rokid成为首个兼容品牌。用户只需看一眼即可完成支付，标志着AI硬件与日常支付场景的深度融合。此外，微信同时开源了日调用量超10亿次的语音SDK，进一步降低AI语音交互门槛。</p>
+      <div class="source">AIBase</div>
+      <a class="read-more" href="https://www.aibase.com/news/30910" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-09-09</span>
+      </div>
+      <h3>最高人民法院发布首份AI相关纠纷案件意见：明确AI侵权、隐私与自动驾驶责任规则</h3>
+      <p>最高法首次就AI相关纠纷案件发布系统性意见，明确：未经同意用AI生成可识别虚拟数字形象构成姓名权、肖像权侵权；AI跟踪、窃听、泄露隐私均属侵权；自动驾驶事故中司机与厂商、销售方共同担责。为AI治理提供司法基准。</p>
+      <div class="source">AIBase / 最高人民法院</div>
+      <a class="read-more" href="https://news.aibase.com/daily/30910" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-09-09</span>
+      </div>
+      <h3>阿里Qwen3.8-Max升级发布：编程能力霸榜，百万Token上下文，均价仅5美元/百万</h3>
+      <p>阿里通义千问发布Qwen3.8-Max，针对编程和专业办公专项后训练，前端编程能力榜单分数提升，每百万Tokens综合平均成本约5美元，支持100万上下文。同时阿里云下调Qwen3-VL-Rerank计费单价，多模态输入从1.8元降至0.5元/百万tokens。</p>
+      <div class="source">Kixron</div>
+      <a class="read-more" href="https://kixron.com/?p=4505" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-09-09</span>
+      </div>
+      <h3>Agent协作平台爆发：阿里云「万有无界」公测、腾讯WorkBuddy开放平台上线</h3>
+      <p>Agent从单点工具走向协作平台成本周主趋势。阿里云「万有无界」定位企业级人与Agent协作平台，支持多角色Agent接力推进任务；腾讯WorkBuddy开放平台首批引入超百家生态伙伴；豆包工作流新增多Agents并行和Mac系统操作能力。</p>
+      <div class="source">Kixron</div>
+      <a class="read-more" href="https://kixron.com/?p=4505" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-med">🧠 科学</span>
+        <span class="news-date">2026-09-09</span>
+      </div>
+      <h3>AI设计抗衰老药物rentosertib早期试验：患者生物学年龄最多逆转6岁</h3>
+      <p>Insilico Medicine开发的AI设计药物rentosertib（用于特发性肺纤维化IPF）在早期试验中显示，治疗组患者的蛋白质模式在六种衰老时钟上均呈现生物学更年轻状态，最多逆转6岁。虽然试验规模较小，但标志着AI制药进入「抗衰老」新赛道。</p>
+      <div class="source">Agentic AI News</div>
+      <a class="read-more" href="https://agentic-ai-news.uk/?lang=zh-cn/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-09-09</span>
+      </div>
+      <h3>Claude完成费马大定理首个完整计算机验证证明，AI数学推理再破纪录</h3>
+      <p>Claude创造了费马大定理的首个完整计算机验证证明，历时11小时。这一成就与OpenAI攻克纳维-斯托克斯方程共同标志着2026年9月成为AI基础科学研究的里程碑月份——AI不再只是辅助工具，而是独立产出顶级数学成果。</p>
+      <div class="source">Agentic AI News</div>
+      <a class="read-more" href="https://agentic-ai-news.uk/?lang=zh-cn/" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>AI科学突破与Agent生产力革命双线并进：当AI既能解1822年的数学难题，又能一天干3天的活</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>OpenAI模型首次攻克自1822年悬而未决的纳维-斯托克斯方程，Claude同日完成费马大定理首个计算机验证证明——AI在基础科学领域正在从「辅助计算」跃迁为「独立发现者」。</li><li>前沿AI实验室内部数据显示，编码Agent的人均产出已达人类研究者的3.1倍，日Token消耗较12月暴涨124倍，典型研究者每天为Agent支付超600美元推理成本——Agent劳动力的经济账已经开始显现。</li><li>国内Agent生态本周密集发力：阿里云「万有无界」公测、腾讯WorkBuddy开放平台上线、豆包工作流新增Mac系统操作能力，同时微信支付AI眼镜SDK和最高法AI司法解释同步落地——产品、政策、硬件三端齐发。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>本周AI行业呈现出一条清晰的「双峰并进」主线：一边是基础科学的巅峰突破——纳维-斯托克斯方程和费马大定理，这两个困扰人类数百年的数学难题，在48小时内被AI相继攻克。这不仅仅是算力的胜利，更意味着AI的推理能力已经触及人类最顶尖智力活动的边界。另一边是生产关系的深度重构——Agent在前沿实验室里的产出已是人类的3.1倍，日推理成本虽然高达600-7000美元不等，但这笔账正在快速变得划算：当Agent能替代实习生、初级研究员、代码审查员时，企业的人才结构正在被重新定义。国内的动作同样值得注意：阿里Qwen3.8-Max以5美元/百万Token的定价继续「卷」价格，Agent协作平台从概念走向公测，最高法首次为AI纠纷定规则——产品、生态、治理三条线同时推进。2026年9月的这一周，AI不再只是「工具升级」的故事，而是「科学发现者」+「全天候员工」的双重身份确认。</p>
+      <div class="highlight">AI解开了1822年的数学难题，也解开了「一个人一天能干几天活」的算术题——科学突破与生产力革命，正在同一周发生。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>关注Agent的「角色化」配置：给AI分配具体岗位（如「数据分析同事」「代码审查员」），而非泛泛的「帮我做XX」。角色化能显著提升输出一致性和质量，这是3.1倍效率差距的核心来源之一。</p></div><div class="worker-tip"><div class="num">2</div><p>评估你团队的「AI人力成本」：把现有AI工具按等效人力时间折算，对比实际支出。如果AI产出已达人类30%-50%但成本仅5%-10%，就是向管理层推动扩大AI使用的最佳时机。</p></div><div class="worker-tip"><div class="num">3</div><p>这周测试Qwen3.8-Max的编程和长文本能力：5美元/百万Token的定价+100万上下文，对于需要处理大量代码或长文档的团队来说，可能是性价比最优的替代方案。建议用你最常用的3个编程/写作场景做A/B测试。</p></div><div class="worker-tip"><div class="num">4</div><p>留意最高法AI司法解释的落地影响：如果你是AI产品从业者或企业法务，这份意见明确了AI生成内容侵权、隐私保护、自动驾驶责任等关键边界——在产品设计和用户协议层面提前对齐，避免踩雷。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
