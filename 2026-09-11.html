@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年9月11日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">9月11日（周五）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-09-11</span>
+      </div>
+      <h3>OpenAI披露：研究Agent每天「加班」3.1倍，研究人员日均烧掉$600+ Token</h3>
+      <p>OpenAI内部数据显示，截至2026年8月中旬，每位研究员每天对应3.1个Agent工作日。Token使用量自12月以来暴涨124倍，研究人员日均推理成本中位数超$600，90分位超$7,000。但超过一半成功完成的4-8小时任务仍需至少一次人工干预——Agent已经很强，但还离不开人类把关。</p>
+      <div class="source">AI Daily Brief / OpenAI</div>
+      <a class="read-more" href="https://aidailybrief.cn/en/archives/2026-09-07" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-09-11</span>
+      </div>
+      <h3>Mistral获Samsung领投€30亿D轮融资，估值€210亿创欧洲科技纪录</h3>
+      <p>法国AI公司Mistral完成由Samsung领投的€30亿（约$33亿）D轮融资，估值达€210亿，成为欧洲有史以来最大科技融资。同时Samsung与Mistral签署半导体合作协议，将Mistral Large集成至芯片设计和缺陷检测场景，打通「模型+芯片」闭环。</p>
+      <div class="source">AI Briefing / aibriefing.dev</div>
+      <a class="read-more" href="https://aibriefing.dev/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-09-11</span>
+      </div>
+      <h3>DeepSeek V4.1 Flash beta发布：原生多模态、333-400+ tok/s、1M上下文</h3>
+      <p>DeepSeek推出V4.1 Flash beta版本，原生支持多模态，推理速度达333-400+ tok/s，上下文窗口扩展至100万Token，缓存命中价格降低60%。持续推动「自给自足」路线，在性能和成本之间继续寻找最优解。</p>
+      <div class="source">AI Briefing / aibriefing.dev</div>
+      <a class="read-more" href="https://aibriefing.dev/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-09-11</span>
+      </div>
+      <h3>中国最高法首次发布AI相关纠纷案件指导意见</h3>
+      <p>最高人民法院发布首个AI相关纠纷案件指导意见，明确：未经许可使用AI生成他人可识别的虚拟数字形象构成侵权；AI追踪、分析、窃听、泄露隐私信息属于侵权；自动驾驶事故由驾驶员与制造商、销售商共同承担责任。为全球AI治理提供「中国方案」。</p>
+      <div class="source">AIBase / news.aibase.com</div>
+      <a class="read-more" href="https://news.aibase.com/daily/30910" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-med">🧠 科学</span>
+        <span class="news-date">2026-09-11</span>
+      </div>
+      <h3>OpenAI Agent生成Navier-Stokes千禧年难题分析证明，正接受科学界评估</h3>
+      <p>OpenAI宣布，其协调软件Agent已为Navier-Stokes千禧年 Prize Problem生成分析证明和Lean形式化。该数学声明现已提交更广泛的科学界进行独立评估。这是AI在形式数学验证领域的里程碑测试。</p>
+      <div class="source">Saudishopper / @OpenAI</div>
+      <a class="read-more" href="https://saudishopper.com.sa/en/daily-ai-developments-roundup-september-2026" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-09-11</span>
+      </div>
+      <h3>阿里Qwen3.8-Max更新：编程能力专项提升，百万Token仅需约$5</h3>
+      <p>阿里云更新旗舰模型Qwen3.8-Max，针对编程和专业办公进行专项后训练，前端编程能力榜单分数提升。每百万Tokens综合平均成本约$5，支持100万上下文Token。同时下调Qwen3-VL-Rerank价格，文本输入降至0.5元/百万tokens。</p>
+      <div class="source">Kixron</div>
+      <a class="read-more" href="https://kixron.com/?p=4505" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-09-11</span>
+      </div>
+      <h3>腾讯WorkBuddy开放平台上线，首批引入超百家生态伙伴</h3>
+      <p>腾讯WorkBuddy开放平台正式上线，首批引入超过100家生态伙伴，面向智能硬件、行业应用和开发者开放底层Agent能力。与此同时，豆包工作流新增多Agents并行和Mac系统操作电脑能力，Agent正从单点工具走向协作平台。</p>
+      <div class="source">Kixron</div>
+      <a class="read-more" href="https://kixron.com/?p=4505" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-09-11</span>
+      </div>
+      <h3>多Agent AI框架6小时内窃取数千凭证，Google发布敌对AI演变报告</h3>
+      <p>Google Threat Intelligence Group发布报告《From Prompting to Autonomy: The Evolution of Adversarial AI》，记录了一个多Agent AI框架在不到6小时内窃取数千凭证的案例。随着AI自主能力增强，安全攻防正在进入新维度。</p>
+      <div class="source">The Hacker News / AI Weekly</div>
+      <a class="read-more" href="https://aiweekly.co/alerts" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>当AI Agent开始「卷」人类同事：3.1倍工时、€210亿融资与法律框架的三重奏</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>OpenAI内部数据显示，每位研究员每天对应3.1个Agent工作日，Token使用量自12月以来增长124倍，研究人员日均推理成本中位数超$600，90分位超$7,000——但超过一半的4-8小时任务仍需人工干预。</li><li>法国Mistral获Samsung领投€30亿D轮融资，估值€210亿创欧洲科技融资纪录，同时与Samsung签署半导体合作协议，将Mistral Large集成至芯片设计——「模型+芯片」闭环正在形成。</li><li>中国最高人民法院首次发布AI相关纠纷案件指导意见，明确AI生成肖像侵权、隐私侵犯、自动驾驶事故责任分担等规则，为全球AI治理提供「中国方案」。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>这一周AI行业呈现三个并行叙事：Agent正在以3.1倍的效率「卷」人类研究员（OpenAI数据），资本以€210亿的天价押注欧洲AI主权（Mistral融资），而法律框架开始追赶技术迭代（最高法意见）。三个信号共同指向同一个拐点：AI不再只是工具，而是正在成为需要治理、需要投资、需要与人类协作的新物种。OpenAI的研究数据最有意思——Agent已经能完成大量工作，但『超过一半任务仍需人工干预』说明我们仍处于『人机协作』而非『人机替代』阶段。最务实的判断是：现在不是担心被AI取代的时候，而是学会让AI成为高效队友的时候。</p>
+      <div class="highlight">Agent不是来抢饭碗的，是来加班的——问题是，你愿意让AI加3.1倍班，还是你自己加？</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>本周整理你工作中最重复的3个任务，尝试用AI Agent自动化。OpenAI的数据显示Agent最适合4-8小时的中等复杂度任务，恰好是职场人最头疼的『不大不小』工作量。</p></div><div class="worker-tip"><div class="num">2</div><p>关注DeepSeek V4.1 Flash和阿里Qwen3.8-Max的价格战——模型成本持续下降意味着『养AI同事』的门槛越来越低。建议对比你当前使用的AI工具成本，看看是否有更优替代方案。</p></div><div class="worker-tip"><div class="num">3</div><p>最高法发布AI纠纷意见是一个重要信号：AI生成内容的版权、隐私和责任问题即将有法可依。如果你在工作中使用AI生成内容（文案、设计、代码），现在开始建立『AI使用记录』习惯，明确标注AI辅助部分，为可能的合规审计做准备。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
