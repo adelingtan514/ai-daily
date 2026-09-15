@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年9月15日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">9月15日（周二）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-09-15</span>
+      </div>
+      <h3>英伟达等顶级金主「集体拔网线」，全线封杀Anthropic旗舰模型</h3>
+      <p>英伟达、Palantir、博思艾伦等Anthropic重要客户近期在核心业务中全线封杀其旗舰模型Fable：英伟达将供应链AI换成自家Nemotron，军工巨头诺斯罗普·格鲁曼干脆物理断网本地跑开源模型。导火索被指是三个月前Anthropic单方面撕毁的一纸承诺，AI商业信任危机浮出水面。</p>
+      <div class="source">新浪财经</div>
+      <a class="read-more" href="http://finance.sina.com.cn/wm/2026-09-15/doc-inirvzhn4088959.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-09-15</span>
+      </div>
+      <h3>特朗普驳斥「放缓AI」呼声，称存在针对AI与数据中心的「阴谋」</h3>
+      <p>针对OpenAI、Anthropic高管呼吁放缓前沿AI研发，特朗普明确拒绝为AI模型增设管控，称美国必须保持AI领先，「谁赢得AI，谁才是赢」。受AI放缓担忧影响，全球芯片股隔夜重挫。白宫AI事务负责人萨克斯则称AI实验室无需政府把控节奏，但应接受信息公开与审计。</p>
+      <div class="source">新浪财经 / 华尔街见闻</div>
+      <a class="read-more" href="http://finance.sina.com.cn/stock/usstock/c/2026-09-15/doc-inirvzhn4067262.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-09-15</span>
+      </div>
+      <h3>苹果推送iOS 27，跳票两年的Siri AI终于开启公开测试</h3>
+      <p>苹果周一正式推送iOS 27及macOS 27等全系更新，重新设计的Siri AI进入公开Beta阶段，用户需在设置中主动加入测试。新版Siri依托设备端高速芯片与本地个人数据实现「真正属于个人的个人智能」，为本周上市的iPhone 18系列铺路；法语、日语等多语言10月陆续支持。</p>
+      <div class="source">网易科技 / 新浪科技</div>
+      <a class="read-more" href="http://finance.sina.com.cn/stock/usstock/c/2026-09-15/doc-inirvuyk7038661.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-09-15</span>
+      </div>
+      <h3>Anthropic推出Claude for Financial Advisors，联手贝莱德深化金融布局</h3>
+      <p>Anthropic面向财务顾问推出Claude金融版，将聊天机器人与贝莱德、领航集团的金融分析和风险管理技术结合，并可连接嘉信理财、iCapital等工具，用于加速研究、行政与投资组合监控。这是Anthropic迄今向金融行业扩张的最重要举措之一。</p>
+      <div class="source">新浪科技</div>
+      <a class="read-more" href="http://finance.sina.com.cn/world/2026-09-15/doc-inirvuyk7035923.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-med">🧠 科学</span>
+        <span class="news-date">2026-09-14</span>
+      </div>
+      <h3>DeepMind安全研究员离职加入METR，预警「屋中已无成年人」</h3>
+      <p>继Anthropic安全研究员警示AI失控风险后，谷歌DeepMind通用人工智能安全团队研究员Josh Engels宣布离职加入独立AI评估机构METR。他表示「There are no adults in the room」，所有人都在被狂热的资本与竞争裹挟。最接近前沿模型的一批人正陆续流向独立安全机构。</p>
+      <div class="source">第一财经</div>
+      <a class="read-more" href="http://finance.sina.com.cn/wm/2026-09-14/doc-iniruxuw4090272.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-09-14</span>
+      </div>
+      <h3>微软发布37页《人文主义AI行为准则》：明确「人比AI更重要」</h3>
+      <p>在AI安全争论升温之际，微软发布37页行为准则，开篇强调「人比人工智能更重要」，提出AI模型不具备意识、不应被设计成模仿意识，并反对赋予AI法人资格或权利。这与Anthropic呼吁第三方机构入驻审查形成鲜明对比，巨头间的AI治理路线分歧公开化。</p>
+      <div class="source">财联社 / IT之家</div>
+      <a class="read-more" href="http://finance.sina.com.cn/stock/t/2026-09-14/doc-inirveaq9311961.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-09-14</span>
+      </div>
+      <h3>半年6亿人「中毒」AI短剧：红果热播榜前99名AI剧占77席</h3>
+      <p>AI短剧行业爆发式增长：3人核心团队半年连出十二季、保守估计利润600万元；红果热播榜前99名中AI短剧独占77席。出海更猛，「3000块换50万美元」的故事流传，中国出品AI短剧已占据海外七成以上市场，AIGC内容生产力正在改写内容产业格局。</p>
+      <div class="source">表外表里 / 新浪财经</div>
+      <a class="read-more" href="http://finance.sina.com.cn/jjxw/2026-09-14/doc-inirupey7342649.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-09-14</span>
+      </div>
+      <h3>服贸会观察：88%中国企业完成AI试点，仅14%实现显著价值转化</h3>
+      <p>2026服贸会发布的《中国企业数字化转型指数》显示，88%的中国企业已完成AI试点布局，但仅14%真正实现显著价值转化。霍尼韦尔高管指出，「不能只关注怎么使用AI，更要关注AI能否落地、能否产生规模化价值」，AI应用正从技术炫技转向价值兑现深水区。</p>
+      <div class="source">每日经济新闻</div>
+      <a class="read-more" href="http://finance.sina.com.cn/jjxw/2026-09-14/doc-inirvkkq7178225.shtml" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>AI安全之争白热化：实验室、白宫、巨头三方割席，安全与竞速的博弈进入深水区</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>Anthropic CEO阿莫代伊呼吁协同放缓前沿AI研发，OpenAI奥特曼与马斯克表态支持；但特朗普明确拒绝，称存在针对AI的「阴谋」，白宫AI负责人也强调无需政府把控节奏——科技巨头与政府在最核心的「该不该踩刹车」问题上公开对立。</li><li>行动层面的裂痕同步出现：英伟达、Palantir等Anthropic金主在核心业务中封杀其旗舰模型，DeepMind安全研究员离职加入独立机构METR并警告「屋中已无成年人」；微软则用37页行为准则划出另一条路线——「人比AI更重要」，聚焦自律而非外部审查。</li><li>与此同时，AI的商业化继续高歌猛进：苹果Siri AI落地、Anthropic进军金融顾问市场、AI短剧半年斩获6亿观众；但埃森哲数据显示，88%中国企业完成AI试点的同时，仅14%实现显著价值转化——热潮与落差并存。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>这一周的AI新闻，主线不是某个新模型，而是一场围绕「节奏」的公开决裂。实验室说太快了要刹车，白宫说不许刹车，客户用脚投票换供应商，安全研究员用离职表达立场。值得注意的是，这场争论的双方都不是「反AI」的：阿莫代伊担心的是失控，特朗普担心的是输给中国，微软划的是「以人为本」的底线——所有人都在争夺「负责任」的定义权。对普通人而言，比站队更有价值的信息藏在数据里：AI试点遍地开花，但只有14%跑出了真价值。安全争论解决的是「别翻车」，价值转化解决的是「别白干」，这两件事恰恰是AI从狂热期走向成熟期的一体两面。当最懂模型的人开始离开大公司去独立机构「当成年人」，说明行业已经意识到：下一步的竞争，不只是谁的模型更强，还有谁的护栏更可信。</p>
+      <div class="highlight">AI行业第一次同时出现「刹车派」「油门派」「换车道派」——争夺的从来不是技术，而是定义「负责任」的权力。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>冷静看待「14%魔咒」：如果你们团队也在推AI落地，先别急着上新工具，对照埃森哲这组数据做一次「价值盘点」——哪些AI场景真的省了时间/赚了钱，哪些只是演示给领导看的？把资源从「试点」挪到「已验证的场景放大」上，这比多试10个新工具更有价值。</p></div><div class="worker-tip"><div class="num">2</div><p>关注AI治理窗口期：微软行为准则、白宫审计立场、 Anthropic「放慢」倡议标志着AI治理规则正在快速成形。如果你负责企业内的AI应用，建议本周起草一份简版「AI使用边界清单」（数据能不能进模型、哪些决策必须人工复核），等监管细化后再补，比事后补救成本低得多。</p></div><div class="worker-tip"><div class="num">3</div><p>留意供应商锁定风险：英伟达等大客户一夜之间封杀Anthropic模型说明，把核心业务绑在单一模型上是脆弱的。如果你重度依赖某一家的大模型API，可以评估双供应商策略或在提示词层面做抽象，让切换成本可控。</p></div><div class="worker-tip"><div class="num">4</div><p>Siri AI值得实测：iOS 27已开放Siri AI测试，首次真正用上本地个人数据。如果你是iPhone用户，本周加入Beta试一试日程、短信场景的体验，提前感受「端侧个人智能」的形态——它很可能定义未来两年手机AI交互的标准。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
