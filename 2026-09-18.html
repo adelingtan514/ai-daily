@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年9月18日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">9月18日（周五）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2025-09-18</span>
+      </div>
+      <h3>华为全联接大会2025在上海开幕：超节点互联技术引领AI基础设施新范式</h3>
+      <p>9月18日，2025华为全联接大会在上海举行。华为公布「超节点+集群」算力解决方案，基于昇腾芯片打造国产AI算力底座。同时宣布CANN编译器全面开源、Mind工具链开源、openPangu基础大模型开源，2025年12月31日前完成全部开源开放。华为云AI研发团队从春节到4月30日完成昇腾910B/910C推理能力升级，接住了DeepSeek带来的流量增长。</p>
+      <div class="source">华为</div>
+      <a class="read-more" href="https://www.huawei.com/cn/news/2025/9/hc-xu-keynote-speech" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2025-09-18</span>
+      </div>
+      <h3>黄仁勋谈AI工具日常使用：视其为「思考伙伴」，混用Gemini/Grok/Perplexity/ChatGPT</h3>
+      <p>英伟达CEO黄仁勋在伦敦媒体活动中分享个人AI使用体验，称AI为「思考伙伴」，日常混用多个系统：Gemini处理技术任务，Grok用于创意工作，Perplexity快速获取信息，ChatGPT几乎每天使用。他认为AI有助于学习、写作和思维梳理，并预测其使用模式将成为未来人机协作的常态。</p>
+      <div class="source">新浪网</div>
+      <a class="read-more" href="https://news.sina.cn/2025-09-18/detail-infqwcvv4288513.d.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2025-09-18</span>
+      </div>
+      <h3>OpenAI奥尔特曼爆料：GPT-5重构一切，一人顶五个团队</h3>
+      <p>OpenAI CEO奥尔特曼在最新访谈中透露，GPT-5实现了从工具到「同行者」的跨越，具备更强的推理、多模态和任务协同能力，可一人替代多个团队完成编程、客服、营销等任务。他强调AI原生思维是关键竞争力，年轻人应快速掌握AI工具并保持适应力，同时认为真实人际互动在AI时代将更显稀缺。</p>
+      <div class="source">新浪网</div>
+      <a class="read-more" href="https://news.sina.cn/2025-09-18/detail-infqwcvv4288513.d.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2025-09-18</span>
+      </div>
+      <h3>2025中国—东盟人工智能部长圆桌会议在南宁举行</h3>
+      <p>9月18日，以「携手并进 智绘未来」为主题的2025中国—东盟人工智能部长圆桌会议在南宁举行。会议宣布启动建设中国—东盟国家人工智能应用合作中心，推动区域AI合作迈向新阶段。这是中国与东盟在AI领域最高级别的对话机制，标志着AI国际合作持续升温。</p>
+      <div class="source">广西日报 / 百家号</div>
+      <a class="read-more" href="https://baijiahao.baidu.com/s?id=1843563223489304861&wfr=spider&for=pc" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2025-09-24</span>
+      </div>
+      <h3>阿里云栖大会发布Qwen3-Max：万亿参数旗舰模型，编程能力对标GPT-5和Claude 4</h3>
+      <p>在2025云栖大会上，阿里云发布七款大模型技术产品，其中Qwen3-Max参数突破1万亿，在SWE-Bench编码基准测试中得分69.6，与顶尖闭源模型不相伯仲。同时发布Qwen3-VL视觉语言模型（支持3D定位和视觉编程）、Qwen3-Omni全模态模型等。阿里宣布三年投入3800亿元于AI与云基础设施，并牵手英伟达布局Physical AI。</p>
+      <div class="source">阿里巴巴集团 / 今日头条</div>
+      <a class="read-more" href="https://www.alibabagroup.com/document-1911884625546838016" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2025-09-25</span>
+      </div>
+      <h3>月之暗面发布Kimi「OK Computer」Agent模式：AI自主完成网站开发，效率提升5-10倍</h3>
+      <p>9月25日，月之暗面发布Kimi AI全新Agent模式「OK Computer」，基于万亿参数MoE架构Kimi K2。具备虚拟电脑环境、自主任务规划、20+工具协同三大核心能力。实测可独立完成「分析英伟达股价并生成可视化网站」全流程任务，包括数据爬取、深度分析、代码编写、部署上线。复杂任务处理效率较传统交互提升5-10倍。</p>
+      <div class="source">澎湃新闻</div>
+      <a class="read-more" href="https://m.thepaper.cn/newsDetail_forward_31746341" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2025-09-22</span>
+      </div>
+      <h3>英伟达计划向OpenAI投资1000亿美元，共建大规模AI数据中心</h3>
+      <p>9月22日，英伟达宣布计划向OpenAI投资高达1000亿美元，双方共建大规模数据中心。这笔投资与部署至少10GW英伟达AI系统绑定，首期1GW目标2026下半年上线，采用Vera Rubin平台。同日，OpenAI、甲骨文和软银联合宣布「星际之门」项目将在美国新建5个AI数据中心。这是AI史上最大单笔投资之一。</p>
+      <div class="source">新华网 / LinkedIn</div>
+      <a class="read-more" href="https://www.linkedin.com/pulse/ai-roundup-september-2025-from-breakthroughs-billion-dollar-bets-hh9if" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2025-09-18</span>
+      </div>
+      <h3>抖音上线AI冒用声音举报入口，声音侵权举报量同比翻倍</h3>
+      <p>9月18日，抖音正式上线冒用声音举报入口，专门处理AI合成、私自盗用他人声音等侵权问题。平台数据显示近一个月声音侵权相关举报量同比翻倍。新增举报通道支持个人和企业用户，需在PC端提交投诉，整个流程共4步。这反映出AI声音克隆技术门槛降低后，声音维权已成为平台治理新焦点。</p>
+      <div class="source">快科技 / 新浪网</div>
+      <a class="read-more" href="https://finance.sina.com.cn/stock/t/2026-09-18/doc-inisewtp0195293.shtml" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>AI从「工具」到「同行者」：当黄仁勋混用4个AI系统、奥尔特曼说GPT-5一人顶五团队，人机协作新范式正在定稿</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>黄仁勋在伦敦公开分享日常AI使用习惯：Gemini做技术、Grok做创意、Perplexity查信息、ChatGPT天天用——英伟达CEO本人已把AI视为「思考伙伴」而非工具，这或许是AI融入日常工作流最具说服力的背书。</li><li>奥尔特曼在最新访谈中直言GPT-5「重构一切」，一人可替代多个团队完成编程、客服、营销任务。他把「AI原生思维」定义为关键竞争力，认为真实人际互动在AI时代反而更稀缺——这不是技术预测，而是对社会结构变化的判断。</li><li>9月18日华为全联接大会公布昇腾算力底座全面开源路线图（CANN、Mind工具链、openPangu），加上阿里云栖大会Qwen3-Max万亿参数旗舰模型发布、月之暗面Kimi OK Computer实现AI自主开发网站——国产AI从算力到模型到应用全链路正在快速闭环。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>今天三条最重要的AI新闻，恰好构成了一个完整的叙事链：黄仁勋的「思考伙伴论」代表了使用者的感知变化，奥尔特曼的「一人顶五团队」代表了能力边界的突破，华为和阿里的大规模开源与发布代表了基础设施的成熟。三条线索指向同一个结论：AI不再是「可以试试的工具」，而是「必须重新设计工作流的原住民」。当英伟达CEO自己每天混用4个AI系统、OpenAI CEO说一个模型能顶五个团队、华为把芯片到模型全链路开源——2025年9月，AI人机协作的新范式正在被这些关键参与者共同定稿。对每个打工人来说，问题已经不是「AI会不会取代我」，而是「我有没有把AI当同事在使用」。</p>
+      <div class="highlight">黄仁勋混用4个AI系统当「思考伙伴」，奥尔特曼说GPT-5一人顶五团队——当行业领袖已经开始用AI重新定义自己的工作方式，你还在把AI当搜索引擎用吗？</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>本周尝试「AI同事角色化」：不要说「帮我写个报告」，而是说「你是我的数据分析师同事，每天早上9点总结昨日核心指标并发给我」。给AI一个明确的角色、节奏和产出标准，输出质量和一致性会大幅提升——黄仁勋混用4个AI系统的本质就是角色分工。</p></div><div class="worker-tip"><div class="num">2</div><p>关注华为昇腾全链路开源（CANN+Mind+openPangu，12月31日前完成）。如果你所在团队在评估国产AI算力方案，现在是最好的调研窗口。开源意味着迁移成本降低，但也意味着需要提前储备昇腾生态的工程能力。</p></div><div class="worker-tip"><div class="num">3</div><p>Kimi OK Computer的「AI自主开发网站」能力值得亲测：花30分钟用自然语言让AI完成一个「数据抓取→分析→可视化→部署」的完整任务。这会改变你对Agent能力天花板的认知——如果AI能独立完成这种多步骤任务，你团队里哪些工作流可以交给AI同事？</p></div><div class="worker-tip"><div class="num">4</div><p>抖音上线声音侵权举报通道是一个信号：AI声音克隆已经从「技术demo」变成「社会问题」。如果你在做内容创作或营销，现在就必须建立AI素材的合规审查流程——标注来源、获取授权、留存证据，别等监管落地再补课。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
