@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年10月6日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">10月6日（周二）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-10-06</span>
+      </div>
+      <h3>Gemini 4 Argon 正式发布，谷歌称代码与安全测试追平或超越 OpenAI/Anthropic</h3>
+      <p>谷歌9月30日发布Gemini 4系列首款旗舰模型Argon，主打真实软件工程、企业知识工作与网络安全防御，在代码编写、数理科学与网络安全基准上表现顶尖，意在夺回企业级AI市场领军地位，但目前采用受限灰度开放。</p>
+      <div class="source">上观新闻/金融时报</div>
+      <a class="read-more" href="https://finance.sina.com.cn/jjxw/2026-10-01/doc-initsyaf5328924.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-10-06</span>
+      </div>
+      <h3>决策模型新赛道爆发：初创模型Jev日处理万亿Token，硅谷集体跟进</h3>
+      <p>前OpenAI员工开发的决策模型Jev上线仅三周日处理Token达1万亿，约四分之一世界500强企业投入使用，新融资意向估值超百亿美元。OpenAI上线Decisions API，Databricks、Cloudflare、亚马逊纷纷推出同类产品，「分类判断式AI」正成为大模型之外的新技术分支。</p>
+      <div class="source">环球网/华尔街日报</div>
+      <a class="read-more" href="https://www.toutiao.com/article/7693009105136501282/" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-10-06</span>
+      </div>
+      <h3>OpenAI推出隐形文本水印textGrain：欧盟强制启用，API全球可选</h3>
+      <p>OpenAI宣布为欧盟ChatGPT与Codex用户默认启用隐形统计水印textGrain，以符合欧盟AI法案透明度要求；API客户可全球自愿开启并将开源该系统。但检测可靠性受文本长度影响，经编辑后大幅下降，初期检测器仅向部分研究者开放。</p>
+      <div class="source">The Decoder/The Verge</div>
+      <a class="read-more" href="https://techmeridian.news/entities/6/openai" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-10-06</span>
+      </div>
+      <h3>OpenAI同步推进ChatGPT广告与虚拟试穿，商业化持续加码</h3>
+      <p>OpenAI宣布在ChatGPT图片结果旁测试商品广告位，本月在美部分广告主中启动；同时向全球用户推出「Try On」虚拟试穿与商品收藏功能，用户上传自拍即可预览穿搭效果。免费用户将分阶段获得权限，订阅用户暂不看到广告。</p>
+      <div class="source">Daily AI Thread</div>
+      <a class="read-more" href="https://www.dailyaithread.com/en/archive/2026-10-06.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-10-06</span>
+      </div>
+      <h3>何恺明团队NAT-ARC：纯视觉方案逼近LLM解ARC推理纪录</h3>
+      <p>何恺明团队提出NAT-ARC，不用LLM，仅用ImageNet猫狗花草预训练让模型学会「看」，再迁移到抽象格子推理，最好单模型在ARC-1上取得63.4% pass@2，集成后达70.2%，首次证明纯视觉方案可逼近专用LLM系统水平。</p>
+      <div class="source">量子位</div>
+      <a class="read-more" href="https://k.sina.cn/article_7857201856_1d45362c001908pibm.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-10-06</span>
+      </div>
+      <h3>GPT-6通关全部48个「我不是机器人」验证关卡，准确率100%</h3>
+      <p>GPT-6 Astra成功通关neal.fun上的「我不是机器人」游戏全部48关，人类靠常识验证码构筑的最后一道防线被突破。同期OpenAI内部数据显示编码智能体已达到「自动化研究实习生」里程碑，智能体能力边界持续外扩。</p>
+      <div class="source">新智元</div>
+      <a class="read-more" href="https://finance.sina.com.cn/stock/t/2026-10-01/doc-initsyaf1306472.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-10-06</span>
+      </div>
+      <h3>美国AI政策再收紧：任命首位「超级智能」主管，AI改名SI引争议</h3>
+      <p>特朗普任命前SEC主席Jay Clayton为首任「超级智能Force」AI主管，集中化监管AI竞争，并推动将Artificial Intelligence改称Super Intelligence（SI）。签署的「超级智能协议」落款拼错「美国」一词，遭舆论嘲讽。</p>
+      <div class="source">AI NewsCycle/独立报</div>
+      <a class="read-more" href="https://ainewscycle.com/story/aws-and-nvidia-expand-inference-capabilities-across-cloud-and-local-hardware-870d36ce" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-10-06</span>
+      </div>
+      <h3>美光：人形机器人将成存储需求下一爆发点，内存难回低价</h3>
+      <p>美光CEO称每台人形机器人需超200GB DRAM和数TB NAND闪存，与L4自动驾驶相当；即便AI泡沫破裂，存储价格也难回从前。摩根士丹利预测2030年人形机器人出货25万-120万台，2050年前后达每年9.3亿台。</p>
+      <div class="source">快科技</div>
+      <a class="read-more" href="https://finance.sina.com.cn/tech/discovery/2026-10-01/doc-inittekf2032954.shtml" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>「决策模型」成为大模型之外的新赛道，AI从生成走向判断</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>初创模型Jev上线三周日处理Token达1万亿，约1/4世界500强企业已使用，新融资意向估值超百亿美元</li><li>OpenAI上线Decisions API、Databricks推出ai_decide、Cloudflare开源Clef、亚马逊落地Strands Decider 2B，头部厂商集体布局</li><li>决策模型不做自由文本生成，只输出「是/否」、评分等确定性结论，速度快、成本低、结果可复现，更易嵌入自动化流程</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>Jev的走红揭示了一个被忽视的信号：企业自动化场景里，大部分AI调用并不需要「写文章」，而需要「做判断」。传统大模型逐Token生成的输出不可预测、成本高，恰恰卡住了自动化软件嵌入的喉咙。决策模型用确定性和可复现性换掉创造力，本质上是在为大模型的『幻觉税』提供解药。当生成式AI卷不动差异化时，『判断型AI』可能才是真正进入千行百业生产系统的入口——这也解释了为什么OpenAI、Databricks、Cloudflare会如此迅速地跟进同一赛道。</p>
+      <div class="highlight">AI的价值正在从「能生成什么」转向「能 reliably 判断什么」——确定性的判断，比华丽的生成更值钱。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>识别自己工作中的高频判断环节（审批、分类、筛选、打分），这类任务正被决策模型快速接管——主动梳理规则、沉淀判断标准的人，才能主导这类自动化</p></div><div class="worker-tip"><div class="num">2</div><p>关注OpenAI Decisions API、Cloudflare Clef等新工具，它们成本低、结果可复现，适合作为业务流程自动化的第一块实验田</p></div><div class="worker-tip"><div class="num">3</div><p>生成式AI能力已高度同质化，职场竞争力正转向「判断力+流程设计力」：与其焦虑被替代，不如把自己变成定义「对错标准」的那个人</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
