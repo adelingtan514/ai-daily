@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年10月8日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">10月8日（周四）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-10-08</span>
+      </div>
+      <h3>OpenAI面向全球推送GPT-6，全面替代GPT-5.6系列</h3>
+      <p>OpenAI宣布面向全球所有免费及付费计划的ChatGPT用户推出GPT-6，替代原有的GPT-5.6 Sol与GPT-5.6 Luna，旗舰模型首次全量开放免费用户。</p>
+      <div class="source">新浪财经</div>
+      <a class="read-more" href="https://finance.sina.com.cn/7x24/2026-10-08/doc-iniumumt4639544.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-10-08</span>
+      </div>
+      <h3>微软提出“混合智能”新路线：Win11云端AI与本地计算协同</h3>
+      <p>微软在旧金山发布会提出“混合智能”理念：隐私敏感、需快速响应的任务由本地处理，复杂模型与高算力需求交由云端，Windows AI不再局限于单一云端或端侧运行。</p>
+      <div class="source">IT之家</div>
+      <a class="read-more" href="https://k.sina.com.cn/article_5953740931_162dee0830670415qi.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-10-08</span>
+      </div>
+      <h3>英伟达发布DGX Station for Windows：本地运行1万亿参数模型</h3>
+      <p>英伟达发布定位桌面级AI超级计算机的DGX Station for Windows，让开发者和研究团队在本地运行万亿参数大模型，将于2026年第四季度上市。</p>
+      <div class="source">IT之家</div>
+      <a class="read-more" href="https://k.sina.com.cn/article_5953740931_162dee0830670415s4.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-10-08</span>
+      </div>
+      <h3>微软Surface Laptop Ultra搭载英伟达AI芯片，2599美元起</h3>
+      <p>搭载英伟达AI芯片的Surface Laptop Ultra开放预购，10月16日发货，配备类MagSafe磁吸USB-C接口，微软加速把AI能力带入消费级设备。</p>
+      <div class="source">新浪科技</div>
+      <a class="read-more" href="https://k.sina.com.cn/article_5953740931_162dee0830670415s4.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-10-08</span>
+      </div>
+      <h3>DeepSeek新一轮融资逼近1000亿元，宁德时代腾讯领投</h3>
+      <p>DeepSeek接近锁定至少800亿元人民币融资，最终规模可逼近1000亿元，远超最初约500亿目标，所筹资金将为IPO铺路，宁德时代与腾讯或为最大出资方。</p>
+      <div class="source">新浪财经</div>
+      <a class="read-more" href="https://finance.sina.com.cn/jjxw/2026-10-07/doc-iniumcqf4569404.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-10-08</span>
+      </div>
+      <h3>富豪投资人Novogratz：AI处于“毕生最大泡沫”但还不到离场时</h3>
+      <p>Galaxy Digital创始人Novogratz称AI正处于毕生最大泡沫之中，但投资者仍应参与。AI股推动标普500创新高，英伟达市值逼近6万亿美元，泡沫争论焦点在追涨还是离场。</p>
+      <div class="source">新浪财经</div>
+      <a class="read-more" href="https://finance.sina.com.cn/world/2026-10-08/doc-iniumytv4187266.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-10-08</span>
+      </div>
+      <h3>美团队用AI设计“视觉隐身”无人机，每秒转25圈实现肉眼隐身</h3>
+      <p>美国西北大学团队研发“幻影旋扭”无人机，约手掌大小、重30克，通过每秒25圈高速旋转产生运动模糊实现肉眼隐身，设计主要由AI完成。</p>
+      <div class="source">上观新闻</div>
+      <a class="read-more" href="https://k.sina.com.cn/article_5952915720_162d2490806704ymo2.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-10-08</span>
+      </div>
+      <h3>彭博报告：美国对华AI领先优势缩窄至3%，创历史最低</h3>
+      <p>彭博行业研究报告称，自DeepSeek 9月发布V4.1 Flash后，中美顶尖模型基准测试差距已缩窄至仅3%，而今年早些时候为15%，5月约为9%。</p>
+      <div class="source">新浪财经</div>
+      <a class="read-more" href="https://k.sina.com.cn/article_1887344341_707e96d501901wb0g.html" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>GPT-6全量开放与“端云混合智能”时代开启</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>OpenAI向全球所有免费及付费用户推送GPT-6，旗舰能力首次不再设付费门槛，直接替代GPT-5.6 Sol与Luna双版本策略。</li><li>微软发布会提出“混合智能”路线：按任务类型、设备性能与安全需求在本地与云端动态协同，英伟达同步发布可在本地跑1万亿参数模型的DGX Station for Windows。</li><li>资本面持续升温：DeepSeek新一轮融资逼近1000亿元，而Novogratz等大佬公开称AI是“毕生最大泡沫”；彭博数据显示中美顶尖模型差距已缩至3%。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>今天这两条主线其实互为镜像：GPT-6全量开放意味着前沿模型能力正在快速“水电化”，单纯靠模型领先赚溢价的空间被压缩，厂商只能向端侧体验和垂直场景要增量——这正是微软与英伟达力推“混合智能”和桌面AI超算的原因。另一边，融资规模屡破纪录与“最大泡沫”论调并存，说明市场已进入信仰与风险定价的分歧期。对普通从业者而言，能力平价化反而是利好：工具越强越便宜，个人与中小团队的杠杆倍数越高。</p>
+      <div class="highlight">当旗舰模型成为免费的水电煤，真正的护城河从“造模型”转移到“用好模型”。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>GPT-6已免费开放，把重复性的写作、翻译、代码初稿类工作流尽快迁移到最新模型上，别再用旧版本习惯性“降智”。</p></div><div class="worker-tip"><div class="num">2</div><p>关注端侧AI机会：DGX Station这类桌面级设备让本地部署大模型门槛大降，涉隐私数据的岗位可提前研究本地化方案。</p></div><div class="worker-tip"><div class="num">3</div><p>在行业泡沫争论中保持冷静：与其预测涨跌，不如把AI技能沉淀成可验证的项目成果——无论市场冷暖，会用AI的人始终稀缺。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
