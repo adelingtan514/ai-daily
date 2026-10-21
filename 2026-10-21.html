@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年10月21日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">10月21日（周三）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-10-21</span>
+      </div>
+      <h3>MiniMax发布M3.1 Flash：国产Flash模型72小时竞速</h3>
+      <p>MiniMax正式发布新一代Flash模型M3.1 Flash，在复杂Agent任务、电脑操作、软件开发及网络安全等方面大幅提升，DeepSWE v1.1评测取得73.7%成绩；线上推理速度提升近3倍，使用成本降低70%。此前两天DeepSeek刚更新V4.1-Flash-1017，国产Flash模型72小时内接连迭代。</p>
+      <div class="source">每日经济新闻</div>
+      <a class="read-more" href="https://blog.csdn.net/IT_ORACLE/article/details/168517505" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-10-21</span>
+      </div>
+      <h3>Meta开源Muse Spark Open：816B参数多模态开放权重模型</h3>
+      <p>Meta发布MuseSparkOpen，总参数816B、激活参数42B，支持100万token上下文，原生支持文本、图像、视频、音频多模态输入，主攻编程与Agent任务。借助MLX框架，两台Mac Studio M5 Ultra即可本地完整运行，权重已上线Hugging Face等平台，被称为美国迄今最强开源权重模型。</p>
+      <div class="source">腾讯研究院</div>
+      <a class="read-more" href="https://blog.csdn.net/IT_ORACLE/article/details/168517505" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-10-21</span>
+      </div>
+      <h3>DeepSeek升级V4.1-Flash并开放自研搜索与抓取API</h3>
+      <p>DeepSeek将V4.1 Flash更新至1017版本，网页端、APP与API同步切换，基准大幅提升，具备从零构建完整项目能力；同时开放自研搜索与抓取API，约5元/千次调用，开发者可直接获取排序网页结果。</p>
+      <div class="source">IT之家</div>
+      <a class="read-more" href="https://finance.sina.com.cn/tech/digi/2026-10-18/doc-inivrzvm6524541.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-10-21</span>
+      </div>
+      <h3>国家统计局：“人工智能+”行动持续释放经济新动能</h3>
+      <p>国家统计局在国新办发布会表示，前三季度规模以上数字产品制造业增加值对工业增长贡献率超1/3；信息传输、软件和信息技术服务业增加值同比增长10.4%；限额以上单位可穿戴智能设备零售额同比增长超70%。</p>
+      <div class="source">新浪财经</div>
+      <a class="read-more" href="https://finance.sina.com.cn/roll/2026-10-19/doc-inivumae0886003.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-10-21</span>
+      </div>
+      <h3>商务部等9部门发文：加快“人工智能+制造”深度融合</h3>
+      <p>商务部等9部门印发《关于加快推进科技兴商的意见》，提出深入实施“人工智能+制造”专项行动，加快AI技术与产品研发、设计、制造、营销深度融合，丰富智能手机、电脑、家居、穿戴设备、机器人等智能商品供给。上半年各类智能终端出货量超1亿台。</p>
+      <div class="source">华夏时报</div>
+      <a class="read-more" href="https://k.sina.com.cn/article_5953189932_162d6782c067051cpi.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-10-21</span>
+      </div>
+      <h3>我国脑机接口参考架构获ISO/IEC发布为国际标准</h3>
+      <p>国际标准化组织（ISO/IEC）发布我国牵头制定的《信息技术 脑机接口 参考架构》国际标准，由我国专家担任项目负责人，联合意、韩、英、美、日等多国专家共同完成，是脑机接口国际标准化领域的重要突破。</p>
+      <div class="source">央视新闻</div>
+      <a class="read-more" href="http://news.sina.com.cn/o/2026-10-19/doc-inivtynp6176078.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-10-21</span>
+      </div>
+      <h3>智元灵犀X2落地北京大学人民医院，日均交互约707次</h3>
+      <p>智元机器人灵犀X2接入蚂蚁阿福App的AI就医助理，在北京大学人民医院提供智能导诊服务。截至9月30日已工作66个工作日，累计交互46686次，平均每日约707次，单日最高1420次，有效缓解导诊咨询压力。</p>
+      <div class="source">新浪科技</div>
+      <a class="read-more" href="https://finance.sina.com.cn/jjxw/2026-10-19/doc-inivueui7652939.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-10-21</span>
+      </div>
+      <h3>韩国1.7万亿元主权财富基金KIC全面使用中国AI模型</h3>
+      <p>据韩联社报道，管理339万亿韩元（约合人民币1.7万亿元）的韩国投资公社（KIC）在内部文件摘要、翻译和资料搜索等工作全部使用中国产AI模型：语言模型采用阿里Qwen3，检索嵌入模型采用智源BGE-M3，引发广泛关注。</p>
+      <div class="source">韩联社</div>
+      <a class="read-more" href="https://k.sina.com.cn/article_1887344341_707e96d502001wum4.html" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>国产Flash模型72小时竞速：AI竞争从“更大”转向“更快、更便宜、更能干活”</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>DeepSeek与MiniMax在72小时内接连发布/升级Flash模型，推理速度提升近3倍、成本降低70%</li><li>Meta开源816B参数的Muse Spark Open，两台Mac Studio即可本地运行，开源权重继续压低门槛</li><li>国家统计局数据：前三季度数字产品制造业增加值对工业增长贡献率超1/3，可穿戴智能设备零售额增超70%</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>这一轮模型更新的共同关键词不再是“参数规模”，而是“性价比与实用性”：推理更快、成本更低、Agent能力更强。与此同时，政策端“人工智能+”行动明确以落地应用牵引技术创新，韩国主权基金采用Qwen3等案例也显示中国AI模型正在获得国际机构级认可。AI竞争的主战场，正从实验室的榜单竞赛转向真实场景中的成本与效率之争。</p>
+      <div class="highlight">当开源权重降到两台Mac就能跑，胜负手就不再是模型本身，而是谁更会办事、更便宜地办事。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>把Agent工具链（如DeepSeek搜索API、M3.1 Flash）纳入日常提效评估，成本敏感场景优先试Flash级模型</p></div><div class="worker-tip"><div class="num">2</div><p>关注“AI+制造”政策红利：智能终端、具身机器人、脑机接口等领域将有更多落地与岗位机会</p></div><div class="worker-tip"><div class="num">3</div><p>重AI重度使用者注意保持独立思考：定期脱离AI完成核心分析任务，避免“思维链变短”</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
