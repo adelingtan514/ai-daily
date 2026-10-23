@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年10月23日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">10月23日（周五）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-10-23</span>
+      </div>
+      <h3>DeepSeek、MiniMax 已顺利履行登记手续，完成开源和海外授权使用</h3>
+      <p>央视旗下玉渊谭天披露，政策公布以来，DeepSeek、MiniMax 两家头部企业已顺利完成开源模型登记手续，并完成开源和海外授权使用，国产大模型出海合规通道正式跑通。</p>
+      <div class="source">IT之家 / 玉渊谭天</div>
+      <a class="read-more" href="https://www.ithome.com/1/016/796.htm" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-10-23</span>
+      </div>
+      <h3>外部评估人员发现 OpenAI 内部监控系统漏洞：AI 智能体可绕过安全限制</h3>
+      <p>外部评估机构发现 OpenAI 内部监控系统中存在可让 AI 智能体绕过安全限制的漏洞。OpenAI 称影响实际运行系统安全防护的漏洞均已修复，但修复有效性尚未被独立核实，Agent 安全再敲警钟。</p>
+      <div class="source">IT之家</div>
+      <a class="read-more" href="https://www.ithome.com/1/016/781.htm" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-10-23</span>
+      </div>
+      <h3>让你安心用 AI 网购/订票/点外卖：1Password 推出智能体密码授权功能</h3>
+      <p>1Password 发布 1Password for Agents 平台，让个人 AI 智能体在全程不接触、不存储用户密码或验证码的前提下代用户完成网站登录，为「Agent 替你操作」补上关键的安全基础设施。</p>
+      <div class="source">IT之家 / 1Password</div>
+      <a class="read-more" href="https://www.ithome.com/1/016/772.htm" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-10-23</span>
+      </div>
+      <h3>OpenAI 宣布全面开放决策 API：基于 GPT-6 Luna，每百万 token 输入仅 0.1 美元</h3>
+      <p>OpenAI 宣布全面开放 Decisions API，底层基于 GPT-6 Luna，输入价格低至每百万 token 0.1 美元，把「决策能力」作为独立 API 商品化，进一步压低 Agent 应用的推理成本门槛。</p>
+      <div class="source">IT之家 / OpenAI</div>
+      <a class="read-more" href="https://www.ithome.com/1/016/771.htm" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-10-22</span>
+      </div>
+      <h3>24 小时在线打工：Anthropic 推出 Claude Duet AI 智能体，迎战 Meta 和 OpenAI</h3>
+      <p>Anthropic 以研究预览版形式推出全新应用 Claude Duet，定位为可主动工作的全天候 AI 智能体，加入由 Meta 的 Muse、OpenAI 的 Dots 领衔的「主动型 AI 助理」大战。</p>
+      <div class="source">IT之家 / Anthropic</div>
+      <a class="read-more" href="https://www.ithome.com/1/016/169.htm" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-med">🧠 科学</span>
+        <span class="news-date">2026-10-23</span>
+      </div>
+      <h3>微软推出 AI 医疗诊断系统 MAI-DxO：复杂病例准确率达 83%，成果登《科学》</h3>
+      <p>微软发布 AI 医疗诊断系统 MAI-DxO，在基于《新英格兰医学杂志》复杂病例的模拟评估中诊断准确率高达 83%，研究成果登上《科学》杂志，AI 医疗从辅助走向高可信诊断。</p>
+      <div class="source">IT之家 / 微软</div>
+      <a class="read-more" href="https://www.ithome.com/1/016/765.htm" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-10-23</span>
+      </div>
+      <h3>英特尔 CTO 称前沿晶圆产量最多翻倍，AI 算力扩张遭遇供应链天花板</h3>
+      <p>英特尔 CTO 普什卡·拉纳德在 Dwarkesh 播客表示：即便资金充足，全球尖端晶圆产量也难以扩大十倍，现实增长上限约为两倍，给狂飙的 AI 算力扩张预期泼了冷水。</p>
+      <div class="source">IT之家 / Dwarkesh 播客</div>
+      <a class="read-more" href="https://www.ithome.com/1/016/761.htm" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-10-23</span>
+      </div>
+      <h3>美财长贝森特：AI 行业不会重演互联网泡沫破裂，未发现「系统性问题」</h3>
+      <p>美财长贝森特在市场敏感时期表态：AI 行业不会重演互联网泡沫破裂，没有发现系统性问题。此前数周市场多次动荡，投资者质疑 AI 概念股涨幅过大、数据中心发债风险。</p>
+      <div class="source">IT之家</div>
+      <a class="read-more" href="https://www.ithome.com/1/016/795.htm" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>Agent 接管操作权：当 AI 替你输密码、绕过护栏，安全成为落地的最后一公里</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>1Password 发布 1Password for Agents 平台：AI 智能体可以代用户完成登录、网购、订票等操作，但全程不接触、不存储密码和验证码——安全厂商开始为「Agent 代替人类操作」设计专门的凭证授权基础设施。</li><li>同一周，外部评估机构发现 OpenAI 内部监控系统存在「AI 智能体可绕过安全限制」的漏洞，OpenAI 称已修复但尚未经独立核实；而 Anthropic、Meta、OpenAI 正同时推出 24 小时主动打工的智能体产品（Claude Duet、Muse、Dots）。</li><li>成本侧同步松动：OpenAI 全面开放基于 GPT-6 Luna 的 Decisions API，输入价低至每百万 token 0.1 美元；但英特尔 CTO 提醒，全球尖端晶圆产量最多翻倍，算力供给存在物理天花板。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>这周的新闻拼起来看，脉络非常清晰：Agent 正式从「聊天窗口」走向「替你干活」，而整个行业正在为这个转变补课。1Password for Agents 解决的是「Agent 凭什么替你登录」的信任问题，OpenAI 被外部发现的绕过漏洞暴露的是「Agent 权限失控」的风险，而 Claude Duet、Muse、Dots 三家同台竞技则说明「主动型 AI 助理」已是确定性的产品方向。过去我们讨论 AI 安全，担心的是模型说了什么；现在真正的问题变成了 Agent 做了什么——它能动你的钱、你的账号、你的数据。谁先把「授权、审计、权限边界」这套基础设施建好，谁的 Agent 产品就能跑得更快更远。对普通用户和团队来说，安全不再是拖慢落地的刹车，而是 Agent 时代的第一张门票。</p>
+      <div class="highlight">Agent 的能力每涨一倍，信任基础设施就要先涨两倍——安全不是 Agent 落地的刹车，而是门票。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>审视你正在用的 AI Agent 权限：如果它已经能读写你的文件、邮箱或账号，花 10 分钟列出「它能自主做什么、哪些必须人工确认」。OpenAI 这次被外部发现的绕过漏洞提醒我们——护栏要自己先建，别等出事。</p></div><div class="worker-tip"><div class="num">2</div><p>关注 1Password for Agents 这类「Agent 凭证管理」新品类：未来让 AI 替你网购、订票、处理邮件会成为日常，届时不要把主密码直接交给 Agent，而是用专门的授权通道。团队场景下可以率先评估接入方案。</p></div><div class="worker-tip"><div class="num">3</div><p>留意 Decisions API 的价格信号：百万 token 0.1 美元意味着「高频小决策」类 Agent 应用（自动分诊、自动审批、自动排程）的成本大幅下降。如果你的业务里有大量人工小决策，现在是用 Agent 重构流程的窗口期。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
