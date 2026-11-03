@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年11月3日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">11月3日（周二）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">7 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-11-03</span>
+      </div>
+      <h3>我国AI推理数据量首超训练数据量，迈入规模化应用阶段</h3>
+      <p>中国电子信息产业发展研究院报告显示，截至2026年6月我国AI推理数据量首次超过训练数据量，日均词元调用量超175万亿、较2024年初增长1000多倍，标志着AI从'喂模型'的实验室阶段全面转入'用模型'的产业落地阶段。</p>
+      <div class="source">央视新闻</div>
+      <a class="read-more" href="http://finance.sina.com.cn/roll/2026-11-01/doc-inixfvpp6381874.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-11-03</span>
+      </div>
+      <h3>Marvell斥资800亿美元全股票收购Lumentum，打造AI连接龙头</h3>
+      <p>AI芯片厂商迈威尔科技（Marvell）达成约800亿美元全股票交易收购光器件厂商Lumentum，合并AI赛道增长最猛的两家上游供应商，扩充数据中心光互联产品线。</p>
+      <div class="source">新浪财经</div>
+      <a class="read-more" href="http://finance.sina.com.cn/stock/usstock/c/2026-11-02/doc-inixkeuv9266435.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-11-03</span>
+      </div>
+      <h3>标普下调Meta信用展望至负面：AI高投入变现能力遭质疑</h3>
+      <p>标普将Meta的AA-评级展望由稳定下调至负面，理由是AI相关高支出令资产负债表承压、变现能力弱于同行。Meta股价一个月内跌逾19%，市值蒸发约3758亿美元。</p>
+      <div class="source">新浪财经</div>
+      <a class="read-more" href="http://finance.sina.com.cn/stock/zqgd/2026-11-01/doc-inixeyiu4196371.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-11-03</span>
+      </div>
+      <h3>扩散智能开源350亿参数扩散语言模型Clover-35B，速度最高10倍</h3>
+      <p>扩散智能（DiffuSpace）发布并开源350亿参数扩散语言模型Clover-35B-A3B-Preview，在智能体编程等任务超越同类，生成速度最高达同尺寸自回归模型的5-10倍，并完成数亿元融资创扩散LM领域纪录。</p>
+      <div class="source">中国经济网</div>
+      <a class="read-more" href="https://www.sohu.com/a/1096290299_121732504" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-11-03</span>
+      </div>
+      <h3>OpenRouter数据：国产模型调用量连续26周力压美国</h3>
+      <p>全球AI模型聚合平台OpenRouter数据显示，DeepSeek V4.1-Flash单周调用量33.6万亿Token登顶全球第一，全球调用量前五清一色中国模型，总调用量93.54万亿Token远超美国模型的22.47万亿，国产开源模型以性价比赢得开发者用真金白银投票。</p>
+      <div class="source">中国新闻网</div>
+      <a class="read-more" href="http://finance.sina.com.cn/jjxw/2026-11-01/doc-inixetzy1038741.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-11-03</span>
+      </div>
+      <h3>进博会后厨装上'食安AI博士'：145路探头背后AI实时打分</h3>
+      <p>第九届进博会开幕在即，上海市场监管部门自研的'食安AI博士'全面升级，AI巡检员随机截取明厨亮灶直播画面并对供餐单位实时风险评分，AI监管从'人盯人'走向'机器巡查'。</p>
+      <div class="source">上观新闻</div>
+      <a class="read-more" href="http://finance.sina.com.cn/jjxw/2026-11-02/doc-inixkeuv9232416.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-11-03</span>
+      </div>
+      <h3>Spotify拟推AI音乐混音服务，或于格莱美前后亮相</h3>
+      <p>据金融时报，Spotify正推进版权谈判，计划明年初（或2027年初）推出AI驱动的歌曲混音与翻唱服务，可能在格莱美奖前后首发，考虑向订阅用户每月额外收取4-5美元增值费。</p>
+      <div class="source">IT之家</div>
+      <a class="read-more" href="http://finance.sina.com.cn/tech/digi/2026-11-01/doc-inixeuac3227160.shtml" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>AI从'训练竞赛'转向'推理应用'：产业落地的拐点信号</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>我国AI推理数据量首次超过训练数据量，日均词元调用量超175万亿，较2024年初增长1000多倍</li><li>OpenRouter数据显示国产模型调用量连续26周领先美国，DeepSeek单周调用33.6万亿Token登顶全球</li><li>资本同步转向'应用与连接'：Marvell 800亿美元收购Lumentum补强AI基础设施，而标普因AI变现乏力下调Meta展望</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>三组新闻拼在一起，指向同一个拐点：AI的主战场正从'谁的模型更强'转向'谁用得更狠、更省'。推理数据量首超训练量，说明真实业务调用已成为算力消耗主体；国产开源模型靠性价比连续26周霸榜调用榜，验证了'应用侧用脚投票'的逻辑；而资本端一边是Marvell豪掷800亿美元押注AI连接层，一边是Meta因变现不及预期被下调评级展望——市场不再为'投入'买单，只为'产出'定价。对从业者而言，这意味着叙事重心已经切换：能把模型塞进真实业务流、算得清单次调用成本的人，比单纯追新模型的人更值钱。</p>
+      <div class="highlight">当'用模型'比'喂模型'更烧钱时，AI竞争的胜负手就从实验室搬进了业务流水线。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>关注推理成本：选模型时把'每百万Token调用成本×日均调用量'算进方案，国产开源模型在性价比上已是默认选项</p></div><div class="worker-tip"><div class="num">2</div><p>把AI嵌入现有流程而非另起炉灶：进博会'食安AI博士'的启示是，AI在成熟流程的巡检、审核环节最先产生价值</p></div><div class="worker-tip"><div class="num">3</div><p>警惕'为AI而AI'：苹果CEO明确表示不做AI功能堆砌，个人与团队做产品同理——用户要的是问题被解决，不是标签上有AI</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
