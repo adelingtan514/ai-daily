@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年11月24日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">11月24日（周二）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-11-24</span>
+      </div>
+      <h3>智谱 Z.ai 发布 GLM-5.4：首个 Loop Transformer 架构</h3>
+      <p>GLM-5.4 把 28 层网络循环执行两次以换取更深推理，宣称达到 2T-3T 参数级模型水平，主打「泛化编程」与原生多模态。发布后登顶 Hacker News 榜首（900+ 分），被视为中国实验室在算力受限下「复用层深」的新路径。</p>
+      <div class="source">Hacker News / 今日头条</div>
+      <a class="read-more" href="https://itstimeai.com.au/blog/ai-news-roundup-24-november-2026" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-11-24</span>
+      </div>
+      <h3>Anthropic 发布 Claude Approvals：智能体可代行代码审批</h3>
+      <p>新增的 Claude Approvals 智能体（公测，面向 Team/Enterprise）可按团队策略在 PR 上发出批准式 review，是否合入仍由 GitHub 分支保护规则决定。软件工程流程中的「人签发」环节开始向 AI 分担，规则设计与审计能力随之变得关键。</p>
+      <div class="source">今日头条</div>
+      <a class="read-more" href="https://www.toutiao.com/a7711505015382245903" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-11-24</span>
+      </div>
+      <h3>Google DeepMind：多智能体 + 形式化验证，发现更快量子算法</h3>
+      <p>DeepMind 公布研究显示，AI 智能体团队结合形式化验证技术，在核聚变能源与化学领域发现了更快的量子算法。研究同时证明两条路径可行：多智能体系统能有效探索高度专业化的数学搜索空间，且发现结果可被证明为正确，而非仅经验性有效。</p>
+      <div class="source">Google DeepMind / ItsTimeAI</div>
+      <a class="read-more" href="https://itstimeai.com.au/blog/ai-news-roundup-24-november-2026" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-11-24</span>
+      </div>
+      <h3>中国电信开源 2850 亿参数「星辰 4.1」，全程国产算力</h3>
+      <p>11 月 22 日放权重，MoE 架构约 170 亿激活参数，Apache 2.0 可商用，原生 100 万 token 上下文，预训练在 8192 张昇腾 910C 上完成、未使用英伟达 GPU。既证明国产算力栈可支撑大模型训练，也为需要可审计、可私有化部署的企业提供了新选项（BF16 全量约 521GB，部署门槛不低）。</p>
+      <div class="source">今日头条</div>
+      <a class="read-more" href="https://www.toutiao.com/a7711505015382245903" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-11-24</span>
+      </div>
+      <h3>AWS 发布 Strands Decider v2 决策模型家族</h3>
+      <p>基于 Gemma 4 架构的五个开源决策模型，专司在预设选项中打分选路。其初代模型在亚马逊内部工单标注场景替换通用大模型后，成本降低 98%、速度提升 78%。「大模型负责推理、小模型负责高频判断」的分层架构值得部署大量智能体的企业参考。</p>
+      <div class="source">今日头条</div>
+      <a class="read-more" href="https://www.toutiao.com/a7711505015382245903" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-11-24</span>
+      </div>
+      <h3>BioEmu2 发布：原子级精度模拟生物分子动力学</h3>
+      <p>生成式模型 BioEmu2 将静态结构预测、平衡态采样与时间演化整合进单一框架，模拟速度比传统分子动力学快几个数量级；结构预测精度媲美主流开源折叠模型，自由能误差约 1 kcal/mol，支持光达尔级超大复合物与用户自定义偏置势，对药物发现意义重大。</p>
+      <div class="source">arXiv / ItsTimeAI</div>
+      <a class="read-more" href="https://itstimeai.com.au/blog/ai-news-roundup-24-november-2026" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-11-24</span>
+      </div>
+      <h3>Google Cloud 扩展 Envoy 代理，为智能体流量加治理层</h3>
+      <p>新增请求体解析、按 Token 限流、模型与 MCP 工具路由及安全检查，并把携带相同系统提示的请求路由到已命中缓存的 GPU。网络基础设施正在长出「AI 流量管理层」，企业的预算管控与工具治理有望在代理层完成。</p>
+      <div class="source">今日头条</div>
+      <a class="read-more" href="https://www.toutiao.com/a7711505015382245903" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-11-24</span>
+      </div>
+      <h3>Klarna 与 Adyen 打通智能体代下单支付</h3>
+      <p>Klarna 成为 Adyen Agentic 套件中首个非卡支付方式（支持全额、免息分期、融资），每次购买仍需消费者确认。与此同时，市场对「智能体代下单」态度分化，智能体正从工具变成需要被授权、被风控的一环。</p>
+      <div class="source">今日头条</div>
+      <a class="read-more" href="https://www.toutiao.com/a7711505015382245903" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>智能体从「能干活」走向「被授权」</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>Anthropic 让 Claude Approvals 在 PR 上代发审批意见，但最终合入仍归 GitHub 分支保护规则管——AI 拿到的是「建议权」，不是「决定权」。</li><li>Klarna 与 Adyen 打通智能体代下单支付，但每笔交易仍需消费者确认；支付与电信巨头对智能体代下单态度明显分化。</li><li>Google Cloud 在 Envoy 代理层加入按 Token 限流、工具路由与安全检查，把预算和权限治理下沉到网络基础设施。</li><li>AWS Strands Decider v2 用小决策模型替代通用大模型做高频判断，内部工单场景成本降 98%、速度提 78%，说明「分层」比「更大」更省钱。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>今天这几条新闻放在一起看，指向同一个转折：智能体的瓶颈已经从「能力」转移到「授权与问责」。模型已经能写代码、下订单、做审批，但行业不约而同地在它前面加了一道道闸门——审批仍由分支保护规则终裁、每笔支付仍需消费者点头、流量在代理层被限流与审计。同时 AWS 的 98% 降本案例提醒我们：真正落地的架构不是让一个更大的模型干所有事，而是大模型负责推理、小模型负责高频判断、基础设施负责治理。对企业的现实含义是：与其纠结选哪个最强的模型，不如先设计清楚「谁授权、谁审计、谁兜底」，这三件事决定了智能体能不能进生产环境。</p>
+      <div class="highlight">智能体拿到的从来不是「决定权」，而是「在护栏内行动的权利」。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>给自己的 AI 工作流加一道「人工闸门」：让 AI 出建议稿，关键节点（发布、付款、对外发送）保留人确认，别让效率吞掉判断。</p></div><div class="worker-tip"><div class="num">2</div><p>高频、格式固定的判断不妨试试小模型或规则打分，把大模型留给定性推理——参考 AWS 案例，分层往往比升级模型更省钱。</p></div><div class="worker-tip"><div class="num">3</div><p>把 AI 输出当「草稿」而非「答案」：核验数据来源、检查适用边界，正如《光明日报》今日所言，让工具「激发思考」而不是「终止思考」。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
