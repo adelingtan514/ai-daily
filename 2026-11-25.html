@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年11月25日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">11月25日（周三）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-11-25</span>
+      </div>
+      <h3>豆包个人AI助理「小豆」开启邀请制公测：从「问答」走向「主动办事」</h3>
+      <p>11月24日，豆包旗下个人智能体产品「小豆」开启邀请制公测。与聊天式问答不同，小豆更侧重主动服务、长期记忆与任务执行：用户交代事项后可后台持续跟进、按时提醒或代为处理。经授权接入抖音、飞书、日历、健康等应用后，小豆能主动汇总健康信息，提示商品降价、团购券到期、日程冲突并给出处理建议。豆包表示相关能力后续将逐步放开到主端。这标志着国内头部应用正式把「Personal Agent」当作独立产品形态来打。</p>
+      <div class="source">新浪科技 / 豆包</div>
+      <a class="read-more" href="http://k.sina.com.cn/article_1496814565_593793e5020029600.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-11-25</span>
+      </div>
+      <h3>商汤开放 SenseNova U1.6 权重，生图后能「自查」信息图文字</h3>
+      <p>11月25日，商汤发布并开源 SenseNova U1.6，在同一模型中保留图像理解、生成与编辑能力，并为信息图增加了自修正流程：先生成首稿，再对照原始提示检查文字问题，最后输出修订图。商汤称在 UltraTextBench 密集信息图任务上，自修正相对一次生成平均提升约 7%。此次公开了 8B 模型权重与 4 步、8 步蒸馏版本，并提供官方 ComfyUI 支持，本地平衡模式参考配置为 24GB 显存 / 64GB 内存。同日百度亦开放文心 5.5 Flash Preview 权重（Apache 2.0）。</p>
+      <div class="source">商汤 SenseNova / AIGC日报</div>
+      <a class="read-more" href="https://weibo.com/2/detail/5369053736605775" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-11-25</span>
+      </div>
+      <h3>腾讯开源混元翻译模型 Hy-MT3，覆盖 102 种语言</h3>
+      <p>11月25日，腾讯开源混元翻译模型 Hy-MT3，支持覆盖 102 种语言的多语互译。在国产大模型普遍走向开源的这一个月里，腾讯选择了「专精单点能力 + 开源」的路线：不追通用榜单，而是把翻译这个高频、刚性、可量化的场景做到工业可用。对出海团队、跨境电商、内容平台而言，这是少数可以立刻替换掉付费 API 的实用选项。同日蚂蚁 OceanBase 也发布了 AI 数据平台 OceanLake。</p>
+      <div class="source">腾讯混元 / AIGC日报</div>
+      <a class="read-more" href="https://weibo.com/2/detail/5369053736605775" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-11-25</span>
+      </div>
+      <h3>中国大模型周调用量连续 30 周全球第一，前五名中四款是国产</h3>
+      <p>《每日经济新闻》依据 OpenRouter 数据测算，11月16日至22日全球大模型总调用量 210 万亿 Token，环比增长 8.25%。其中中国大模型周调用量 111.16 万亿 Token，连续 30 周超过美国居全球首位；美国为 19.21 万亿 Token，环比增长 29.53%。值得注意的是，中国调用量本周环比下滑 6.67% 而美国大涨近三成，两者差距在收窄。全球调用量前五中，有四款是中国模型，DeepSeek 已连续五周霸榜。</p>
+      <div class="source">每日经济新闻 / OpenRouter</div>
+      <a class="read-more" href="http://finance.sina.com.cn/jjxw/2026-11-23/doc-inizsuwe5497745.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-11-25</span>
+      </div>
+      <h3>一周蒸发 4 万亿美元：AI 泡沫争议从「口水战」变成「财报战」</h3>
+      <p>近期投资者开始重新审视 AI 行业的盈利能力、巨额资本开支与融资风险，美国科技股遭遇大规模抛售，纳指年内涨幅一夜归零，一周市值蒸发约 4 万亿美元。财联社对比 2000 年互联网泡沫与 2026 年至今科技巨头的跌幅，发现首年惨状已「相差无几」。与此同时马斯克警告 AI 行业明年可能面临严重资金短缺；但另一面是亚马逊被传将以约 75 亿美元收购 AI 初创 Decart，CrowdStrike 拟以 439 亿美元全股票收购 Zscaler——泡沫与并购狂热同时发生。</p>
+      <div class="source">快科技 / 财联社</div>
+      <a class="read-more" href="https://news.mydrivers.com/tag/rengongzhineng.htm" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 资讯</span>
+        <span class="news-date">2026-11-25</span>
+      </div>
+      <h3>Anthropic 数学家称用 Claude 攻克黎曼猜想，陶哲轩泼冷水：「有毒废料」</h3>
+      <p>Anthropic 宣布其一名数学家借助 Claude 模型解决了数学界最棘手难题之一——黎曼猜想，称在 AI 帮助下已完成证明，Lean 与 Mathlib 社区确认命题表述与证明代码层正确。但陶哲轩把 AI 批量产出、未经充分整理的证明称为「有毒废料」，认为过去「有证明就有人理解」，AI 介入后「已有证明」与「能理解证明」之间出现了新的断层；邓煜则表示在人类可读版本出现前不予评价。陶哲轩提出「Maths 2.0」，主张把评价重心转向解释、社区协作与开源数学体系。</p>
+      <div class="source">澎湃新闻 / 新浪科技</div>
+      <a class="read-more" href="https://www.thepaper.cn/tag/49" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-11-25</span>
+      </div>
+      <h3>中国牵头推动全球首个生成式 AI 治理国际标准提案</h3>
+      <p>为应对 AI 伪造等风险，我国牵头推动全球首个生成式人工智能治理国际标准提案，市场监管总局已披露相关进展。同一周内，中国信通院人工智能研究所亦发布声明，提示个别机构假借其名义开展 AI 数据质量评估技术服务。在模型能力高速迭代的当下，标准与治理的话语权，正在成为与模型能力同等重要的竞争维度——谁定义标准，谁就定义合规成本。</p>
+      <div class="source">澎湃新闻 / 市场监管总局</div>
+      <a class="read-more" href="https://www.thepaper.cn/tag/49" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-11-25</span>
+      </div>
+      <h3>「AI 训练师」成为新职业：40 个 20 岁出头的年轻人，在教人形机器人上班</h3>
+      <p>新华社走进湖北人形机器人创新中心三楼训练场：22 岁的李必修正用手柄遥控一台人形机器人抬手、抓取货架商品、放入购物篮，他最近的任务是训练机器人下架过期商品、摆放促销标识牌。机器人手腕处的摄像头会记录视觉与运动轨迹数据。这里像他一样的人工智能训练师有 40 人，平均年龄 20 岁出头。另一侧，bauma CHINA 2026 展区内一整套土石方作业全程无人驾驶，多家企业发布 AI 智能体与具身智能产品。</p>
+      <div class="source">新华社 / 证券日报</div>
+      <a class="read-more" href="http://finance.sina.com.cn/jjxw/2026-11-25/doc-inizwmwt9822794.shtml" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>从「回答问题」到「主动办事」：AI 的战场已从参数转向成本、标准与信任</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>本周最重要的产品信号不是又一个榜单刷新，而是豆包「小豆」的公测：它的卖点不是聊得多好，而是能在你授权后接入抖音、飞书、日历、健康，持续跟进任务、主动提醒日程冲突和降价。这是国内头部应用第一次把 Personal Agent 当作独立产品形态来推向市场——AI 的交互范式正在从「你问我答」切换成「我替你盯」。</li><li>与产品转向同步发生的，是推理成本的断崖式下降：阿里 Qwen4-Max 单任务平均成本从 26.58 元降到 11.16 元，腾讯 Hy4 flash 靠稀疏激活把日常办公任务单任务成本压到老版本二十分之一、缓存命中时百万 token 只要两分钱。当「让 AI 一直在后台干活」的边际成本趋近于零，Agent 才第一次在商业上成立。</li><li>但资本市场的反应完全相反：一周蒸发 4 万亿美元、纳指年内涨幅归零、马斯克警告明年全行业面临资金短缺。同一周里，亚马逊传出 75 亿美元收购 Decart，CrowdStrike 拟以 439 亿美元收购 Zscaler。泡沫之争的本质不是「AI 有没有用」，而是「巨额资本开支什么时候能变成利润」——成本在跌，投入在涨，中间的差额就是泡沫。</li><li>而在最硬核的能力侧， Anthropic 称用 Claude 攻克黎曼猜想，却被陶哲轩批为「有毒废料」。这暴露了一个更深的问题：当 AI 能批量产出人类来不及理解的结果，「正确」和「可理解」开始分家。这也是中国牵头推动全球首个生成式 AI 治理国际标准提案的现实背景——能力越强，定义规则的权力越值钱。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>把这一周的新闻摆在一起看，会发现它们指向同一件事：AI 行业的主战场已经换赛道了。过去两年比的是「谁的模型更聪明」，这一周比的是「谁能让 AI 便宜地、可靠地、合规地一直干活」。豆包小豆的公测是这个转向最清晰的注脚——它的护城河不在模型参数，而在授权接入的那几个应用，以及愿意把任务托付给它的那份信任。阿里和腾讯在同一天把单任务成本砍掉六成到二十分之一，这不是价格战，这是在为「留存式 AI」铺路：只有当 AI 常驻后台的成本可以忽略，个人助理才会从玩具变成基础设施。而资本市场的一周 4 万亿蒸发，恰恰说明市场在等同一个答案：这些不断下降的成本，能否换来不断上升的利润？我认为答案会分层出现。做通用 Agent 和卖算力的公司，短期还要承受资本开支的重压；而真正在具体场景里交付确定性结果的团队——把翻译做到 102 种语言、把信息图文字做到自查自修、把机器人训练成能下架过期商品——反而会在这个阶段悄悄跑出正向现金流。另一条暗线同样重要：陶哲轩那句「有毒废料」提醒我们，效率的提升会以「理解力的稀释」为代价。当 AI 给出的答案我们不再有能力验证，信任就成了最稀缺的资源。中国牵头推生成式 AI 治理国际标准，本质上是在争夺「谁来定义可信」的位置。所以未来一两年，值得押注的不是最大的模型，而是三样东西：最低的单位任务成本、最具体的场景闭环、和最可被验证的输出。</p>
+      <div class="highlight">这一轮的胜负手不再是「模型多聪明」，而是「让 AI 一直在后台干活，一天要花多少钱，以及你敢不敢不看结果就直接用」。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>给你的日常任务做一次「后台化」盘点：把现在每天需要你主动打开 App 去问 AI 的事（查降价格、对日程、读长文档、催进度）列出来，标出哪些可以交给常驻型 Agent 做。豆包小豆这类产品的窗口期刚开，越早把授权边界和提醒规则定好，越早省下每天那十几分钟的「人工巡检」。</p></div><div class="worker-tip"><div class="num">2</div><p>把「单位任务成本」变成你选模型的第一个指标。腾讯 Hy4 flash 单任务成本压到老版本二十分之一、缓存命中百万 token 两分钱，意味着同一个工作流这个月和上个月的成本可能差 20 倍。每季度重算一次你的 AI 账单，把降下来的预算投到更多场景上，而不是省下来。</p></div><div class="worker-tip"><div class="num">3</div><p>做 PPT、改表格、读长文档这类高频办公任务，本周就可以动手做一次 A/B 迁移测试：把你最常用的 3 个流程分别跑一遍新模型，记录「一次成功率 + 人工返工时间」，而不只看跑分。成本降 20 倍但返工翻倍的模型，是负收益。</p></div><div class="worker-tip"><div class="num">4</div><p>对 AI 的输出，给自己设一条「可验证性」红线。陶哲轩的批评值得所有用 AI 干活的人警醒：如果一份产出你无法判断对错，就不要用它做决策依据。习惯给关键结论加上来源、样本量或可复核的推导过程——尤其在数据、法务、对外内容这些一旦出错就要赔钱的场景。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
