@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年11月27日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">11月27日（周五）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-11-26</span>
+      </div>
+      <h3>AI股再遭猛烈抛售：纳指100单日跌4.3%，半导体指数较高点暴跌43%</h3>
+      <p>11月25日，AI概念股再遭大规模抛售，从芯片制造商、服务器供应商到数据中心运营商全线承压。纳斯达克100指数单日下跌4.3%，市值蒸发规模超1.5万亿美元，费城半导体指数较高点已回撤43%。部分科技巨头的债务违约保险成本飙升至历史新高，市场担忧正从股票蔓延至信用市场。</p>
+      <div class="source">FX168财经</div>
+      <a class="read-more" href="http://3g.cnfol.com/gold/huanqiugushi/20261126/32432547.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-11-23</span>
+      </div>
+      <h3>一周蒸发4万亿美元：纳指年内涨幅一夜归零，「AI泡沫」论全面升温</h3>
+      <p>过去一周纳斯达克成分股市值蒸发超4万亿美元，11月20日直接抹去2026年以来全部涨幅。多重因素叠加：科技巨头财报虽强但AI资本开支持续攀升，投入能否转化为商业回报被打上问号；中期选举后AI监管不确定性上升；美联储偏鹰派信号加剧估值担忧。</p>
+      <div class="source">快科技 / 微博财经</div>
+      <a class="read-more" href="http://weibo.com/1659643027/RsFs9DeGB" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-11-23</span>
+      </div>
+      <h3>美科技巨头隐性债务风险暴露，新华国际观察直指「AI泡沫」隐忧</h3>
+      <p>新华社发文指出，11月5日标普500与纳指单日分别下跌4.36%和5.52%，11月20日三大股指均跌入技术回调区间。除估值与利率因素外，科技巨头通过债务融资支撑AI基础设施的做法被市场重新审视，隐性债务风险成为新的观察焦点。</p>
+      <div class="source">新华社 / 人民网</div>
+      <a class="read-more" href="https://world.people.com.cn/n1/2026/1123/c1002-40838969.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 产品</span>
+        <span class="news-date">2026-11-24</span>
+      </div>
+      <h3>豆包「小豆」开启邀请制公测：从「会聊天」走向「主动办事」的个人Agent</h3>
+      <p>11月24日，豆包推出个人AI助理「小豆」并开启邀请制公测。区别于问答式助手，小豆主打主动服务、长期记忆与跨应用任务执行：经授权接入抖音、飞书、日历、健康等应用后，可主动汇总健康信息、提示商品降价、团购券到期与日程冲突，并在后台持续跟进用户交代的事项。</p>
+      <div class="source">第一财经 / 北京商报</div>
+      <a class="read-more" href="https://baijiahao.baidu.com/s?id=1882710078695204914&wfr=spider&for=pc" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-11-26</span>
+      </div>
+      <h3>个人AI助理竞速：小豆 vs 千问Go，规模化仍有「关卡」</h3>
+      <p>传媒实测显示，「小豆」与阿里「千问Go」几乎同期对标竞速，个人AI助理赛道从「能聊」进入「能办事」的正面竞争。但报道同时指出，主动执行类助手在权限授权、跨应用衔接、任务可靠性上仍存在体验断层，规模化落地仍存关卡。</p>
+      <div class="source">每日经济新闻 / 传媒实测</div>
+      <a class="read-more" href="http://k.sina.com.cn/article_7857201856_1d45362c001908w576.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-11-26</span>
+      </div>
+      <h3>八部门：稳妥有序推动云计算、大模型等AI服务出海</h3>
+      <p>商务部等8部门印发《服务贸易发展「十五五」规划》，提出稳妥有序推动云计算、大模型等人工智能相关服务出海，鼓励企业整合硬件制造商、算力提供商与IT基础设施运营商，形成「技术+产品+服务」一体化解决方案，并加强与共建「一带一路」国家在农业、医疗、教育、金融等场景的落地合作。</p>
+      <div class="source">商务部 / 新浪财经</div>
+      <a class="read-more" href="https://k.sina.com.cn/article_7857201856_1d45362c001908w4mk.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-11-26</span>
+      </div>
+      <h3>算力租赁价格松动：SpaceX下调Blackwell租金最高35%，Anthropic退租约5万块H200</h3>
+      <p>SemiAnalysis报告披露，SpaceX将小规模Blackwell集群租金从每小时15-15.5美元下调至10-12美元，降幅20%-35%，已接近大客户批量价；同时Anthropic不再续租约5万块H200，SpaceX以约5美元/小时重新招租，低于现货价约23%。算力供需关系出现微妙转向。</p>
+      <div class="source">SemiAnalysis / 新浪财经</div>
+      <a class="read-more" href="https://k.sina.com.cn/article_7857201856_1d45362c001908w4r6.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-11-25</span>
+      </div>
+      <h3>小鹏IRON定档：2027年1月硬件量产，二季度面向外部商业客户发布</h3>
+      <p>11月25日小鹏AI科技日上，何小鹏披露新一代人形机器人IRON已于9月8日从自动化组装线下线，进入上市前最后准备阶段，计划2027年1月启动硬件量产、二季度正式对外商业发布。其判断是：颠覆汽车公司的，可能是机器人公司——「物理AI」成为新的主战场。</p>
+      <div class="source">界面新闻 / 新浪科技</div>
+      <a class="read-more" href="https://k.sina.com.cn/article_7857201856_1d45362c001908w4eh.html" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>「AI泡沫」争论与「主动办事」竞赛同时上演：钱在退潮，产品在往前跑</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>一周内纳斯达克成分股市值蒸发超4万亿美元，11月20日抹平2026年全部涨幅；11月25日AI产业链再遭抛售，纳指100单日跌4.3%、市值蒸发超1.5万亿美元，费城半导体指数较高点回撤43%，科技巨头CDS（债务违约保险）成本创历史新高——担忧已从股价蔓延到信用市场。</li><li>资本退潮的直接触发点是回报质疑：谷歌等巨头的AI资本开支持续攀升，但商业化收入曲线明显更平缓；与此同时，算力租赁价格开始松动——SpaceX下调Blackwell小集群租金最高35%，Anthropic不续租约5万块H200，供给端首次出现「卖方降价」信号。</li><li>但产品侧并未减速：豆包「小豆」11月24日开启邀请制公测，主打主动提醒、长期记忆与跨应用执行；阿里「千问Go」同期对标竞速。个人Agent正从「聊天工具」升级为「替你办事的代理」，这是To C侧最实质的一次形态变化。</li><li>政策与产业同步加码：八部门《服务贸易发展「十五五」规划》明确提出推动大模型等AI服务出海；小鹏IRON敲定2027年1月量产、二季度对外商业发布，「物理AI」进入倒计时。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>把这几条新闻放在一起看，会发现一个很清晰的分裂：资本市场在给AI「挤泡沫」，产品市场却在加速「交作业」。这并不矛盾。过去两年AI叙事的支点是「算力越贵、模型越大、故事越性感」，而现在市场的定价逻辑换成了三个更朴素的问题：收入在哪、毛利多少、护城河多深。算力租赁降价与Anthropic退租H200，是这轮逻辑切换最诚实的信号——不是AI不行了，而是「堆算力就能赢」的阶段结束了。反过来看，小豆、千问Go这类主动型个人Agent的密集发布，恰恰是在回答「收入在哪」：它们不再按token卖智能，而是按「办成一件事」卖时间。接下来 6-12 个月，真正值得盯的不是又发了什么新模型，而是三件事——AI产品的留存与复购是否跑通、算力价格是否继续下行（这决定应用层毛利）、以及企业侧的Agent权限与审计体系是否成型。泡沫挤掉的是估值，留下的是能力。能在这一轮把「能力」变成「收入」的团队，才是下一轮的主角。</p>
+      <div class="highlight">市场在给估值挤泡沫，产品在给用户交作业——AI没有退潮，只是从「讲故事」切换到「算账本」。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>如果你在公司里推AI项目，现在最该准备的是「算账语言」：把方案写成「省了多少人时 / 缩短多少天 / 降低多少错误率」，而不是「用了多先进的大模型」。预算收紧期，能算清ROI的提案才有机会过会。</p></div><div class="worker-tip"><div class="num">2</div><p>去试一次主动型个人Agent（小豆邀请码 / 千问Go），重点观察三件事：它记不记得你上一轮的偏好、任务失败时怎么回滚、跨应用授权是否可控。这三点决定你能否把「个人助理」真正接进日常工作。</p></div><div class="worker-tip"><div class="num">3</div><p>关注算力价格这条线：租赁价格松动意味着推理成本还有下行空间。如果你手上有推理密集型的业务（客服、内容审核、批处理分析），可以每季度重算一次成本模型，别用去年的价格做今年的预算。</p></div><div class="worker-tip"><div class="num">4</div><p>风险提示：AI板块波动加剧，若你的团队持有相关标的或有股权激励，建议避免在情绪最差的时点做决策；同时注意公司层面AI项目的「宣传口径」与实际交付之间的差距，别把自己写进过度承诺里。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
