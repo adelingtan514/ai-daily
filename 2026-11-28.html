@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日AI早知道 · 2026年11月28日</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; padding: 0 0 60px; }
+    .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 40px 20px 36px; text-align: center; border-bottom: 1px solid rgba(99,102,241,0.2); position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%); }
+    .header-badge { display: inline-block; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.4); color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; }
+    .header h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; color: #fff; letter-spacing: -0.02em; position: relative; }
+    .header h1 span { color: #818cf8; }
+    .header .date { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); position: relative; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    .section-title { display: flex; align-items: center; gap: 10px; margin: 36px 0 16px; }
+    .section-title .icon { width: 32px; height: 32px; background: rgba(99,102,241,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .section-title h2 { font-size: 18px; font-weight: 700; color: #c7d2fe; letter-spacing: -0.01em; }
+    .section-title .count { margin-left: auto; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .news-grid { display: flex; flex-direction: column; gap: 10px; }
+    .news-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s, background 0.2s; }
+    .news-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(99,102,241,0.3); }
+    .news-card .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .news-card .tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; }
+    .tag-hot { background: rgba(239,68,68,0.15); color: #fca5a5; }
+    .tag-tech { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-gov { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+    .tag-biz { background: rgba(245,158,11,0.15); color: #fcd34d; }
+    .tag-med { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .news-card .news-date { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .news-card h3 { font-size: 15px; font-weight: 600; color: #f0f0ff; line-height: 1.5; margin-bottom: 6px; }
+    .news-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .news-card .source { margin-top: 8px; font-size: 11px; color: rgba(255,255,255,0.25); }
+    .news-card .source::before { content: '来源：'; }
+    .news-card .read-more { display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 12px; color: #818cf8; text-decoration: none; border: 1px solid rgba(99,102,241,0.25); padding: 3px 10px; border-radius: 6px; transition: background 0.2s, border-color 0.2s; }
+    .news-card .read-more:hover { background: rgba(99,102,241,0.12); border-color: rgba(99,102,241,0.5); }
+    .news-card .read-more::after { content: ' →'; }
+    .insight-card { background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(139,92,246,0.06) 100%); border: 1px solid rgba(99,102,241,0.2); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .insight-topic { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #a5b4fc; margin-bottom: 16px; }
+    .insight-card h3 { font-size: 17px; font-weight: 700; color: #e0e7ff; line-height: 1.5; margin-bottom: 20px; }
+    .insight-block { margin-bottom: 20px; }
+    .insight-block:last-child { margin-bottom: 0; }
+    .insight-block-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .insight-block-title .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; flex-shrink: 0; }
+    .insight-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .insight-block ul li { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; padding-left: 14px; position: relative; }
+    .insight-block ul li::before { content: '·'; position: absolute; left: 0; color: #6366f1; font-weight: 700; }
+    .insight-block p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .insight-block .highlight { background: rgba(99,102,241,0.1); border-left: 2px solid #6366f1; padding: 10px 14px; border-radius: 0 6px 6px 0; margin-top: 10px; font-size: 13px; color: #c7d2fe; line-height: 1.7; font-style: italic; }
+    .worker-tips { display: flex; flex-direction: column; gap: 8px; }
+    .worker-tip { display: flex; gap: 10px; align-items: flex-start; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px 12px; }
+    .worker-tip .num { width: 20px; height: 20px; background: rgba(99,102,241,0.2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #a5b4fc; flex-shrink: 0; margin-top: 1px; }
+    .worker-tip p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(255,255,255,0.2); }
+    .footer span { color: rgba(99,102,241,0.6); }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="header-badge">🤖 每日AI早知道</div>
+  <h1>每日AI早知道 · <span>2026</span></h1>
+  <div class="date">11月28日（周六）· 由小猪猪🐷整理</div>
+</div>
+<div class="container">
+  <div class="section-title">
+    <div class="icon">📰</div>
+    <h2>行业动态</h2>
+    <span class="count">8 条 · 最近 48 小时</span>
+  </div>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-hot">🔥 热点</span>
+        <span class="news-date">2026-11-28</span>
+      </div>
+      <h3>英伟达暂停向东南亚四国出货，全球AI算力供应链迎新一轮震荡</h3>
+      <p>随着美国商务部最新出口管制新规正式落地，英伟达已通知服务器制造合作伙伴，暂停向马来西亚、新加坡、泰国和印度尼西亚四国发货，戴尔、超微电脑等整机厂同步受影响。东南亚此前是算力转运与数据中心建设的关键节点，此次停供意味着AI芯片的全球流通路径再次被压缩，区域数据中心建设节奏可能被迫重排。</p>
+      <div class="source">香港新闻网</div>
+      <a class="read-more" href="https://www.hkcna.hk/cn/content/s6b0941dee4b0f1a1d8daf6d1.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-11-27</span>
+      </div>
+      <h3>Sand.ai 发布视频模型 MAGI-2：登顶图生视频榜，价格仅 SeeDance 2.5 的七分之一</h3>
+      <p>摩根士丹利报告指出，Sand.ai 于11月24日发布 AI 视频模型 MAGI-2 完整版，在 Artificial Analysis 图生视频质量排名中位列第一，成为首个超越字节跳动 SeeDance 2.5 的模型，而每分钟生成价格仅为后者的七分之一。大摩认为这将进一步加剧视频生成赛道的价格与质量双线竞争。</p>
+      <div class="source">观点网 / 摩根士丹利</div>
+      <a class="read-more" href="https://www.msn.com/zh-cn/news/other/sandai%E5%8F%91%E5%B8%83ai%E8%A7%86%E9%A2%91%E6%A8%A1%E5%9E%8Bmagi-2-%E5%A4%A7%E6%91%A9%E7%A7%B0%E6%88%96%E5%8A%A0%E5%89%A7%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90%E7%AB%9E%E4%BA%89/ar-AA2ilCqw" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-tech">⚡ 模型</span>
+        <span class="news-date">2026-11-27</span>
+      </div>
+      <h3>格灵深瞳发布端侧多模态模型 OV2.5，把全帧率视频理解搬进边缘设备</h3>
+      <p>格灵深瞳联合开源团队 LMMs-Lab 发布 LLaVA-OneVision-2.5（OV2.5）。与主流厂商把图文视频理解放在云端大参数模型不同，该模型将流式全帧率视频理解下沉到本地边缘设备，在脱离云端网络的情况下也能实时理解物理现场正在发生的事件，直指物理AI实时推理场景。</p>
+      <div class="source">ITBear科技资讯 / MSN</div>
+      <a class="read-more" href="https://www.msn.cn/zh-cn/%E6%8A%80%E6%9C%AF/%E7%A1%AC%E4%BB%B6%E5%92%8C%E8%AE%BE%E5%A4%87/%E6%A0%BC%E7%81%B5%E6%B7%B1%E7%9E%B3%E5%8F%91%E5%B8%83%E7%AB%AF%E4%BE%A7%E5%A4%9A%E6%A8%A1%E6%80%81%E6%A8%A1%E5%9E%8Bov2-5-%E5%B8%83%E5%B1%80%E7%89%A9%E7%90%86ai%E5%AE%9E%E6%97%B6%E6%8E%A8%E7%90%86/ar-AA2ikCQD" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-11-27</span>
+      </div>
+      <h3>加州政府发布人工智能安全报告：建议强化前沿模型监管与紧急处置机制</h3>
+      <p>美国加州政府发布人工智能安全报告，建议强化对前沿模型的监管，并建立紧急处置机制，以便在模型出现失控或重大风险事件时能够快速干预、暂停或回滚。这是州层面在前沿模型治理上的又一次实质性动作，也为企业合规提出了更明确的执行层要求。</p>
+      <div class="source">安全内参</div>
+      <a class="read-more" href="https://www.secrss.com" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-gov">🏛 政策</span>
+        <span class="news-date">2026-11-27</span>
+      </div>
+      <h3>新加坡竞消委发布AI市场研究报告，提出八项指导原则防算法垄断</h3>
+      <p>新加坡竞争与消费者委员会11月27日公布人工智能市场研究报告，指出AI可能被企业用来制造虚假网络评价、误导消费者，也可能让竞争企业通过算法暗中协调价格。报告提出八项指导原则，覆盖公平竞争、市场透明度与消费者信任三个方向，为AI应用划出反垄断红线。</p>
+      <div class="source">8视界新闻网</div>
+      <a class="read-more" href="https://www.8world.com/singapore/ccs-sets-out-guiding-principles-to-safeguard-competition-and-consumers-3353261" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 产业</span>
+        <span class="news-date">2026-11-27</span>
+      </div>
+      <h3>国产大模型集体进军 AI4S：年内融资突破200亿元，从「会聊天」转向「做科研」</h3>
+      <p>AI4S（科学智能）正在成为国产大模型的新战场。与传统科研中AI只做数据处理不同，AI4S 试图介入科学发现的核心环节，形成一条可被AI加速甚至部分自主运行的科研链条。年内该方向融资规模已突破200亿元，资本开始押注「会做实验的模型」。</p>
+      <div class="source">东方财富网</div>
+      <a class="read-more" href="https://finance.eastmoney.com/a/202611273941044395.html" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-biz">💼 商业</span>
+        <span class="news-date">2026-11-27</span>
+      </div>
+      <h3>小摩称AI概念股抛售接近尾声，美股科技股盘前拉升</h3>
+      <p>11月27日，摩根大通发布观点认为AI概念股的抛售已接近尾声，美股科技股盘前随即拉升。此前科技股连续七周下跌、纳斯达克一度跌入熊市，高盛与摩根士丹利交易台数据显示对冲基金已完成一轮近乎恐慌的降杠杆，而共同基金、散户与ETF资金仍在场内。市场对AI估值泡沫的争论进入下半场。</p>
+      <div class="source">财闻网 / 摩根大通</div>
+      <a class="read-more" href="https://www.caiwennews.com/article/1722564.shtml" target="_blank">查看原文</a>
+    </div>
+    <div class="news-card">
+      <div class="meta">
+        <span class="tag tag-med">🧠 科学</span>
+        <span class="news-date">2026-11-27</span>
+      </div>
+      <h3>研究提醒：AI 越方便，人可能越没耐心——关键在是否仍愿独立思考</h3>
+      <p>应用行为科学专家指出，AI让人更快拿到答案、减少摸索时间，但也可能悄悄削弱试错与学习的机会。关键不在于有没有使用AI，而在于人是否仍愿意独立思考、判断并从错误中学习。这为个人与组织的AI使用方式提出了一个被忽视的效率之外的问题。</p>
+      <div class="source">8视界新闻网《狮城有约》</div>
+      <a class="read-more" href="https://vibes.8world.com/in-depth/hello-singapore/tott-does-ai-reliance-make-us-impatient-3353526" target="_blank">查看原文</a>
+    </div></div>
+  <div class="section-title">
+    <div class="icon">💡</div>
+    <h2>今日洞察</h2>
+  </div>
+  <div class="insight-card">
+    <div class="insight-topic">🎯 今日话题</div>
+    <h3>AI 同时在被「卡脖子」和被「卷价格」：算力地缘管制与视频模型价格战，把AI竞争推向两个极端</h3>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>事实</div>
+      <ul><li>供应端在收紧：英伟达暂停向马来西亚、新加坡、泰国、印尼四国出货，戴尔、超微等整机厂同步受影响。东南亚原本是算力转运与数据中心建设的关键节点，新规落地后区域AI基础设施的推进节奏被打乱，算力可获得性重新成为不确定变量。</li><li>需求端在降价：Sand.ai 的 MAGI-2 在图生视频质量榜上首次超越字节 SeeDance 2.5，价格却只有后者的七分之一。视频生成这种最吃算力的场景，单位产出成本下降得比预期更快，模型层的竞争已经从「谁更强」转向「谁更便宜地强」。</li><li>治理端在补位：一周之内，加州政府发布AI安全报告建议强化前沿模型监管与紧急处置机制，新加坡竞消委针对算法合谋与虚假评价提出八项指导原则。监管的关注点正在从「模型要不要管」下移到「算法行为怎么管」。</li></ul>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>观点</div>
+      <p>这一周的AI行业呈现出一种割裂的图景：算力在地缘政治上越来越昂贵、越来越难拿到，而模型能力在商业竞争中越来越便宜、越来越普及。英伟达停供四国、加州要求紧急处置机制、新加坡盯上算法合谋——这些都是「AI太大，必须被约束」的信号；而 MAGI-2 以七分之一的价格登顶、端侧模型把视频理解搬到本地、AI4S 年内吸金200亿——这些则是「AI正在变小、变便宜、变得人人可用」的信号。两条线并不矛盾，它们其实是同一件事的两面：越是被管制的资源，越会驱动架构效率和工程优化去替代它。算力越难拿，端侧推理、模型压缩、单位成本优化就越有商业价值。对从业者来说，真正的判断标准不是模型榜单，而是「同样一件事，我的成本曲线在往哪边跑」。而资本市场那场关于AI泡沫是否见底的争论，本质上也是在问同一个问题：成本下降的速度，能不能追上收入兑现的速度。</p>
+      <div class="highlight">算力越被管制，工程效率就越值钱——这一轮AI竞争的分水岭，不在模型榜单，而在你的成本曲线。</div>
+    </div>
+    <div class="insight-block">
+      <div class="insight-block-title"><div class="dot"></div>打工人视角</div>
+      <div class="worker-tips"><div class="worker-tip"><div class="num">1</div><p>如果你的业务依赖海外算力或云服务，本周就把供应链风险列成一张清单：哪些环节可能被管制波及、是否有替代区域或国产算力方案、迁移成本大概多少。不用马上动手，但要有备份方案，别等通知落地才想。</p></div><div class="worker-tip"><div class="num">2</div><p>重新评估你的多模态成本。视频/图像生成的单位价格正在快速下滑（MAGI-2 只有头部产品七分之一的价格），过去因为太贵而砍掉的内容生产场景值得重新算一次账，尤其是批量素材、短视频矩阵这类高频需求。</p></div><div class="worker-tip"><div class="num">3</div><p>关注端侧方案：OV2.5 这类把视频理解放到本地边缘设备的模型，意味着不联网也能实时理解现场。如果你们有门店、工厂、仓储等场景，端侧推理能同时解决成本、延迟和数据合规三个问题，值得做一次小规模验证。</p></div><div class="worker-tip"><div class="num">4</div><p>监管口径在细化：算法合谋、虚假评价、紧急处置机制都被点名了。如果你们做定价、推荐或营销文案生成，现在就和法务过一遍「AI不能做什么」——合规成本远低于事后整改。</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="footer">由 <span>小猪猪🐷</span> 自动整理 · 每日 09:00 更新</div>
+</div>
+</body>
+</html>
